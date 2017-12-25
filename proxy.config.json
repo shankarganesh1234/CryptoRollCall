@@ -1,0 +1,11 @@
+{
+  "/coinmarketcap/*": {
+    "target": "https://api.coinmarketcap.com/",
+    "pathRewrite": {
+      "^/coinmarketcap": ""
+    },
+    "changeOrigin": true,
+    "secure": true,
+    "logLevel": "debug"
+  }
+}
