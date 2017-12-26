@@ -6,11 +6,17 @@ import {CryptoPricesComponent} from "./crypto-prices/crypto-prices.component";
 import {CryptoService} from "./services/crypto.service";
 import {AppComponent} from "./app.component";
 import {AppRoutingModule} from "./app-routing.module";
+import {CryptoFavoritesComponent} from "./crypto-favorites/crypto-favorites.component";
+import {CryptoContactComponent} from "./crypto-contact/crypto-contact.component";
+import {CryptoDonateComponent} from "./crypto-donate/crypto-donate.component";
 
 @NgModule({
   declarations: [
     AppComponent,
-    CryptoPricesComponent
+    CryptoPricesComponent,
+    CryptoFavoritesComponent,
+    CryptoContactComponent,
+    CryptoDonateComponent
   ],
   imports: [BrowserModule,
     FormsModule,

@@ -4,11 +4,12 @@
     <div class="col-md-3">
         <input type="text" (ngModelChange)="filterResults($event)" [(ngModel)]="filterText" class="form-control" id="filter" aria-describedby="filterHelp" placeholder="Filter Results">
     </div>
-    <div class="col-md-5"></div>
-    <div class="col-md-2">
-            <button type="button" [routerLink]="'/favorites'" class="btn btn-primary">Favorites</button>
+    <div class="col-md-3"></div>
+    <div class="col-md-4">
+        <h5><small>Total Portfolio Value ~ </small>{{totalPortfolioStr}} $</h5>
     </div>
-    <div class="col-md-1"> <button type="submit" class="btn btn-primary" (click)="invokeCryptoService()">Refresh</button></div>
+
+    <div class="col-md-1"> <button type="submit" class="btn btn-primary" (click)="getFavs()">Refresh</button></div>
 
 </div>
     <br/>
@@ -22,20 +23,27 @@
             <th scope="col">Name</th>
             <th scope="col">Price (USD)</th>
             <th scope="col">Price (BTC)</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Total (USD)</th>
+            <th scope="col">Total (BTC)</th>
             <th scope="col"></th>
         </tr>
         </thead>
         <tbody>
         <ng-container
-                *ngFor="let item of cryptoPrices;">
+                *ngFor="let item of favs; let j=index">
             <tr>
                 <th scope="row">{{item.symbol}}</th>
                 <td>{{item.name}}</td>
                 <td>{{item.price_usd}}</td>
                 <td>{{item.price_btc}}</td>
+                <td><input type="text" maxlength="10" size="10" [(ngModel)]="item.quantity" (ngModelChange)="updateTotals($event, j)" value="{{item.quantity}}">
+                </td>
+                <td>{{item.total_usd}}</td>
+                <td>{{item.total_btc}}</td>
                 <td>
-                    <a (click)="addToFavorites(item)" title="Add to favorites">
-                        <i [ngClass]="item.isFavorite ? 'fa fa-2x fa-star' : 'fa fa-2x fa-star-o'" aria-hidden="true"></i>
+                    <a (click)="removeFavorite(item.symbol)" title="Remove from favorites">
+                        <i class="fa fa-2x fa-minus-circle text-danger" aria-hidden="true"></i>
                     </a>
                 </td>
             </tr>

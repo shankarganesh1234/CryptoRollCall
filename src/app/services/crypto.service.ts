@@ -5,7 +5,6 @@ import "rxjs/add/operator/toPromise";
 import {Observable} from "rxjs/Rx";
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/catch";
-import {CryptoPrices} from "../models/crypto-prices";
 import {CryptoPrice} from "../models/crypto-price";
 
 
@@ -26,6 +25,14 @@ export class CryptoService {
 
     getPriceTicker(): Observable<CryptoPrice[]> {
         let url = 'coinmarketcap/v1/ticker?limit=0';
+        return this.http
+            .get(url)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
+    getPriceTickerForId(id: string): Observable<CryptoPrice> {
+        let url = 'coinmarketcap/v1/ticker/' + id;
         return this.http
             .get(url)
             .map(this.extractData)

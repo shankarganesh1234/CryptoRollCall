@@ -1,8 +1,10 @@
-export class CryptoPrice {
+export class CryptoFavorite {
     id: string;
     symbol: string;
     name: string;
     price_usd: string;
     price_btc: string;
-    isFavorite: boolean = false;
+    quantity: number;
+    total_usd: number;
+    total_btc: number;
 }

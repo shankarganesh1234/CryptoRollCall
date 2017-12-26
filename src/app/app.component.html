@@ -1,10 +1,39 @@
-<br/>
+
+<nav class="navbar navbar-default collapse navbar-collapse navbar-fixed-top">
+    <div class="row">
+        <div class="col-md-1">
+            &nbsp;<a [routerLink]="'/'" title="Home">
+            <i class="fa fa-2x fa-home" aria-hidden="true"></i>
+        </a>
+        </div>
+        <div class="col-md-1">
+            &nbsp;<a [routerLink]="'/contact'" title="Contact">
+            <i class="fa fa-2x fa-envelope-o" aria-hidden="true"></i>
+        </a>
+        </div>
+        <div class="col-md-1">
+            &nbsp;<a [routerLink]="'/donate'" title="Donate">
+            <i class="fa fa-2x fa-gift" aria-hidden="true"></i>
+        </a>
+        </div>
+        <div class="col-md-1">
+            &nbsp;<a [routerLink]="'/favorites'" title="Favorites">
+            <i class="fa fa-2x fa-star-o" aria-hidden="true"></i>
+        </a>
+        </div>
+        <div class="col-md-8"></div>
+    </div>
+    <br/>
+</nav>
+
+<br/><br/><br/>
 <section id="welcome" class="home-section auto-height-margin">
     <div class="row">
-        <div class="col-md-4 col-sm-offset-5">
+        <div class="col-md-2 col-sm-offset-5">
             <img src="../../assets/img/cryptorollcallcropped.png" class="img-responsive"/>
         </div>
     </div>
 </section>
 
-<crypto-prices></crypto-prices>
+<router-outlet></router-outlet>
+
