@@ -58,7 +58,6 @@ export class CryptoPricesComponent implements OnInit{
                 this.cryptoPrices[i].isFavorite = false;
             }
         }
-
         this.cryptoPricesCopy = this.cryptoPrices;
     }
 
@@ -90,6 +89,7 @@ export class CryptoPricesComponent implements OnInit{
             cryptoFavorite.id = item.id;
             cryptoFavorite.symbol = item.symbol;
             cryptoFavorite.quantity = 1;
+            cryptoFavorite.rank = item.rank;
             localStorage.setItem(this.localStorageKey + cryptoFavorite.symbol, JSON.stringify(cryptoFavorite));
             item.isFavorite = true;
         }

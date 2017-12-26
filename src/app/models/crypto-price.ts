@@ -5,4 +5,5 @@ export class CryptoPrice {
     price_usd: string;
     price_btc: string;
     isFavorite: boolean = false;
+    rank: number;
 }

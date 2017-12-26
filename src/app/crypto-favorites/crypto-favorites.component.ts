@@ -1,9 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {ActivatedRoute, Router} from "@angular/router";
 import {CryptoService} from "../services/crypto.service";
-import {CryptoPrice} from "../models/crypto-price";
 import {CryptoFavorite} from "../models/crypto-favorite";
-import {isUndefined} from "util";
 
 declare const $:any;
 @Component({
@@ -16,12 +14,10 @@ export class CryptoFavoritesComponent implements OnInit{
 
     favs: CryptoFavorite[] = [];
     favsCopy: CryptoFavorite[] = [];
-    cryptoPrice: CryptoPrice;
     filterText: string;
     totalPortfolio: number = 0;
     totalPortfolioStr: string;
     localStorageKey: string = "crypto_";
-
 
     constructor(private route: ActivatedRoute, private router: Router, private cryptoService: CryptoService){
         route.params.subscribe(val => {
@@ -69,6 +65,14 @@ export class CryptoFavoritesComponent implements OnInit{
         fav.quantity = q;
         this.favs.push(fav);
         this.favsCopy.push(fav);
+
+        this.favs.sort(function(a,b) {
+           return a.rank - b.rank;
+        });
+
+        this.favsCopy.sort(function(a,b) {
+            return a.rank - b.rank;
+        });
     }
 
     /**

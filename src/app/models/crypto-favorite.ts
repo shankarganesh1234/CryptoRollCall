@@ -7,4 +7,5 @@ export class CryptoFavorite {
     quantity: number;
     total_usd: number;
     total_btc: number;
+    rank: number;
 }
