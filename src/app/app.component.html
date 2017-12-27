@@ -7,24 +7,23 @@
         </a>
         </div>
         <div class="col-md-1">
-            &nbsp;<a [routerLink]="'/contact'" title="Contact">
-            <i class="fa fa-2x fa-envelope-o" aria-hidden="true"></i>
+            &nbsp;<a [routerLink]="'/favorites'" title="My Favorites">
+            <i class="fa fa-2x fa-star" aria-hidden="true"></i>
         </a>
         </div>
-        <div class="col-md-1">
-            &nbsp;<a [routerLink]="'/donate'" title="Donate">
-            <i class="fa fa-2x fa-gift" aria-hidden="true"></i>
-        </a>
+        <div class="col-md-1 col-md-offset-8">
+            <a href="#footerId" class="page-scroll" title="Scroll to bottom">
+                <i class="fa fa-2x fa-arrow-down" aria-hidden="true"></i>
+            </a>
         </div>
-        <div class="col-md-1">
-            &nbsp;<a [routerLink]="'/favorites'" title="Favorites">
-            <i class="fa fa-2x fa-star-o" aria-hidden="true"></i>
-        </a>
-        </div>
-        <div class="col-md-8"></div>
     </div>
     <br/>
 </nav>
+
+<a href="#welcome" class="page-scroll" title="Scroll to bottom" style="position:fixed;bottom: 20px;right: 30px">
+    <i class="fa fa-2x fa-arrow-up" aria-hidden="true"></i>
+</a>
+
 
 <br/><br/><br/>
 <section id="welcome" class="home-section auto-height-margin">
@@ -37,3 +36,4 @@
 
 <router-outlet></router-outlet>
 
+<crypto-footer></crypto-footer>
