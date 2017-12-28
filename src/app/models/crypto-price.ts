@@ -6,4 +6,7 @@ export class CryptoPrice {
     price_btc: string;
     isFavorite: boolean = false;
     rank: number;
+    percent_change_1h: string;
+    percent_change_24h: string;
+    percent_change_7d: string;
 }

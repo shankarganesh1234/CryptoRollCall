@@ -22,6 +22,9 @@
             <th scope="col">Name</th>
             <th scope="col">Price (USD)</th>
             <th scope="col">Price (BTC)</th>
+            <th scope="col">Change % (1h)</th>
+            <th scope="col">Change % (24h)</th>
+            <th scope="col">Change % (7d)</th>
             <th scope="col"></th>
         </tr>
         </thead>
@@ -31,8 +34,11 @@
             <tr>
                 <th scope="row">{{item.symbol}}</th>
                 <td>{{item.name}}</td>
-                <td>{{item.price_usd}}</td>
-                <td>{{item.price_btc}}</td>
+                <td class="numbers-font"><b>{{item.price_usd}}</b></td>
+                <td class="numbers-font"><b>{{item.price_btc}}</b></td>
+                <td class="numbers-font" [ngClass] = "(item.percent_change_1h != null && item.percent_change_1h.includes('-') ? 'numbers-negative' : 'numbers-positive')"><b>{{item.percent_change_1h}}</b></td>
+                <td class="numbers-font" [ngClass] = "(item.percent_change_24h != null && item.percent_change_24h.includes('-') ? 'numbers-negative' : 'numbers-positive')"><b>{{item.percent_change_24h}}</b></td>
+                <td class="numbers-font" [ngClass] = "(item.percent_change_7d != null && item.percent_change_7d.includes('-') ? 'numbers-negative' : 'numbers-positive')"><b>{{item.percent_change_7d}}</b></td>
                 <td>
                     <a (click)="addToFavorites(item)" title="Add to favorites">
                         <i [ngClass]="item.isFavorite ? 'fa fa-2x fa-star' : 'fa fa-2x fa-star-o'" aria-hidden="true"></i>

@@ -5,7 +5,7 @@ import {CryptoPrice} from "../models/crypto-price";
 import {CryptoFavorite} from "../models/crypto-favorite";
 import {isUndefined} from "util";
 
-declare const $:any;
+declare const $: any;
 @Component({
     selector: 'crypto-prices',
     templateUrl: `./crypto-prices.component.html`,
@@ -13,14 +13,14 @@ declare const $:any;
 })
 
 
-export class CryptoPricesComponent implements OnInit{
+export class CryptoPricesComponent implements OnInit {
 
     cryptoPrices: CryptoPrice[] = [];
     cryptoPricesCopy: CryptoPrice[] = [];
     filterText: string;
     localStorageKey: string = "crypto_";
 
-    constructor(private route: ActivatedRoute, private router: Router, private cryptoService: CryptoService){
+    constructor(private route: ActivatedRoute, private router: Router, private cryptoService: CryptoService) {
         route.params.subscribe(val => {
             this.invokeCryptoService();
         });
@@ -33,7 +33,7 @@ export class CryptoPricesComponent implements OnInit{
     /**
      *
      */
-    invokeCryptoService() : void {
+    invokeCryptoService(): void {
         this.cryptoService
             .getPriceTicker()
             .subscribe(
@@ -46,13 +46,13 @@ export class CryptoPricesComponent implements OnInit{
      *
      * @param result
      */
-    setResult(result : CryptoPrice[]) : void {
+    setResult(result: CryptoPrice[]): void {
 
 
         this.cryptoPrices = result;
-        for(var i=0; i<this.cryptoPrices.length; i++) {
+        for (var i = 0; i < this.cryptoPrices.length; i++) {
 
-            if(localStorage.getItem(this.localStorageKey + this.cryptoPrices[i].symbol) != null && !isUndefined(localStorage.getItem(this.localStorageKey + this.cryptoPrices[i].symbol))) {
+            if (localStorage.getItem(this.localStorageKey + this.cryptoPrices[i].symbol) != null && !isUndefined(localStorage.getItem(this.localStorageKey + this.cryptoPrices[i].symbol))) {
                 this.cryptoPrices[i].isFavorite = true;
             } else {
                 this.cryptoPrices[i].isFavorite = false;
@@ -65,9 +65,9 @@ export class CryptoPricesComponent implements OnInit{
      *
      * @param filterText
      */
-    filterResults(filterText: string) : void {
+    filterResults(filterText: string): void {
         console.log(this.cryptoPrices);
-        if(filterText.trim() == '') {
+        if (filterText.trim() == '') {
             this.cryptoPrices = this.cryptoPricesCopy;
         } else {
             this.cryptoPrices = this.cryptoPricesCopy.filter(
@@ -79,9 +79,9 @@ export class CryptoPricesComponent implements OnInit{
      *
      * @param item
      */
-    addToFavorites(item: CryptoPrice) : void {
+    addToFavorites(item: CryptoPrice): void {
 
-        if(item.isFavorite) {
+        if (item.isFavorite) {
             localStorage.removeItem(this.localStorageKey + item.symbol);
             item.isFavorite = false;
         } else {

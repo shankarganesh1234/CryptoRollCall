@@ -6,7 +6,8 @@ import {CryptoFavorite} from "../models/crypto-favorite";
 declare const $:any;
 @Component({
     selector: 'crypto-favorites',
-    templateUrl: `./crypto-favorites.component.html`
+    templateUrl: `./crypto-favorites.component.html`,
+    styleUrls: ['crypto-favorites.component.css']
 })
 
 
@@ -57,10 +58,10 @@ export class CryptoFavoritesComponent implements OnInit{
         let q: number = fav.quantity;
         fav = result[0];
 
-        fav.total_usd = parseFloat(fav.price_usd) * q;
-        fav.total_btc = parseFloat(fav.price_btc) * q;
+        fav.total_usd = (parseFloat(fav.price_usd) * q).toFixed(2);
+        fav.total_btc = (parseFloat(fav.price_btc) * q).toFixed(2);
 
-        this.totalPortfolio += fav.total_usd;
+        this.totalPortfolio += parseFloat(fav.total_usd);
         this.totalPortfolioStr = this.totalPortfolio.toFixed(2);
         fav.quantity = q;
         this.favs.push(fav);
@@ -90,12 +91,12 @@ export class CryptoFavoritesComponent implements OnInit{
 
     updateTotals(quantity: number, index: number) : void {
         this.favs[index].quantity = quantity;
-        this.favs[index].total_usd = this.favs[index].quantity * parseFloat(this.favs[index].price_usd);
-        this.favs[index].total_btc = this.favs[index].quantity * parseFloat(this.favs[index].price_btc);
+        this.favs[index].total_usd = (this.favs[index].quantity * parseFloat(this.favs[index].price_usd)).toFixed(2);
+        this.favs[index].total_btc = (this.favs[index].quantity * parseFloat(this.favs[index].price_btc)).toFixed(2);
 
         this.totalPortfolio = 0;
         for(var i=0; i<this.favs.length; i++) {
-            this.totalPortfolio += this.favs[i].total_usd;
+            this.totalPortfolio += parseFloat(this.favs[i].total_usd);
         }
         this.totalPortfolioStr = this.totalPortfolio.toFixed(2);
         let itemIndex = this.favsCopy.findIndex(item => item.symbol == this.favs[index].symbol);

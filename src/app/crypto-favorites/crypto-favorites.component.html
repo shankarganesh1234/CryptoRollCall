@@ -26,6 +26,9 @@
             <th scope="col">Quantity</th>
             <th scope="col">Total (USD)</th>
             <th scope="col">Total (BTC)</th>
+            <th scope="col">Change % (1h)</th>
+            <th scope="col">Change % (24h)</th>
+            <th scope="col">Change % (7d)</th>
             <th scope="col"></th>
         </tr>
         </thead>
@@ -35,12 +38,15 @@
             <tr>
                 <th scope="row">{{item.symbol}}</th>
                 <td>{{item.name}}</td>
-                <td>{{item.price_usd}}</td>
-                <td>{{item.price_btc}}</td>
-                <td><input type="text" maxlength="10" size="10" [(ngModel)]="item.quantity" (ngModelChange)="updateTotals($event, j)" value="{{item.quantity}}">
+                <td class="numbers-font">{{item.price_usd}}</td>
+                <td class="numbers-font">{{item.price_btc}}</td>
+                <td><input type="text" maxlength="10" size="7" [(ngModel)]="item.quantity" (ngModelChange)="updateTotals($event, j)" value="{{item.quantity}}">
                 </td>
-                <td>{{item.total_usd}}</td>
-                <td>{{item.total_btc}}</td>
+                <td class="numbers-font">{{item.total_usd}}</td>
+                <td class="numbers-font">{{item.total_btc}}</td>
+                <td class="numbers-font" [ngClass] = "(item.percent_change_1h != null && item.percent_change_1h.includes('-') ? 'numbers-negative' : 'numbers-positive')">{{item.percent_change_1h}}</td>
+                <td class="numbers-font" [ngClass] = "(item.percent_change_24h != null && item.percent_change_24h.includes('-') ? 'numbers-negative' : 'numbers-positive')">{{item.percent_change_24h}}</td>
+                <td class="numbers-font" [ngClass] = "(item.percent_change_7d != null && item.percent_change_7d.includes('-') ? 'numbers-negative' : 'numbers-positive')">{{item.percent_change_7d}}</td>
                 <td>
                     <a (click)="removeFavorite(item.symbol)" title="Remove from favorites">
                         <i class="fa fa-2x fa-minus-circle text-danger" aria-hidden="true"></i>
