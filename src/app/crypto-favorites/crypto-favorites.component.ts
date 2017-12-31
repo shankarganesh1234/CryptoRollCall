@@ -85,7 +85,7 @@ export class CryptoFavoritesComponent implements OnInit{
             this.favs = this.favsCopy;
         } else {
             this.favs = this.favsCopy.filter(
-                (fav) => fav.symbol.includes(filterText));
+                (fav) => fav.symbol.includes(filterText.toUpperCase()));
         }
     }
 

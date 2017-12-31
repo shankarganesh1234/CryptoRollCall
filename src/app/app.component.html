@@ -1,40 +1,37 @@
-
-<nav class="navbar navbar-default collapse navbar-collapse navbar-fixed-top">
+<section id="top"></section>
+<nav class="navbar navbar-default collapse navbar-collapse navbar-fixed-top" style="background-color: black">
     <div class="row">
         <div class="col-md-1">
             &nbsp;<a [routerLink]="'/'" title="Home">
-            <i class="fa fa-2x fa-home" aria-hidden="true"></i>
+            <i class="fa fa-2x fa-home fa-white" aria-hidden="true"></i>
         </a>
         </div>
         <div class="col-md-1">
             &nbsp;<a [routerLink]="'/favorites'" title="My Favorites">
-            <i class="fa fa-2x fa-star" aria-hidden="true"></i>
+            <i class="fa fa-2x fa-star fa-white" aria-hidden="true"></i>
         </a>
         </div>
-        <div class="col-md-1 col-md-offset-8">
+        <div class="col-md-2 col-sm-offset-3">
+                <img src="../../assets/img/CryptoRo.png" class="img-responsive"/>
+        </div>
+
+        <div class="col-md-1 col-md-offset-4">
             <a href="#footerId" class="page-scroll" title="Scroll to bottom">
-                <i class="fa fa-2x fa-arrow-down" aria-hidden="true"></i>
+                <i class="fa fa-2x fa-arrow-down fa-white" aria-hidden="true"></i>
             </a>
         </div>
     </div>
     <br/>
 </nav>
 
-<a href="#welcome" class="page-scroll" title="Scroll to bottom" style="position:fixed;bottom: 20px;right: 30px">
+<a href="#top" class="page-scroll" title="Scroll to bottom" style="position:fixed;bottom: 20px;right: 30px">
     <i class="fa fa-2x fa-arrow-up" aria-hidden="true"></i>
 </a>
 
+<br/><br/><br/><br/><br/><br/>
 
-<br/><br/><br/>
 <section id="welcome" class="home-section auto-height-margin">
-    <div class="row">
-        <div class="col-md-2 col-sm-offset-5">
-            <img src="../../assets/img/cryptorollcallcropped.png" class="img-responsive"/>
-        </div>
-    </div>
-    <div class="row">
-        <div class="lead"><b>Crypto currency tracker and portfolio manager</b></div>
-    </div>
+        <p class="lead">Track all major crypto currencies | Real time data | Portfolio snapshot of favorite crypto assets</p>
 </section>
 
 <router-outlet></router-outlet>

@@ -71,7 +71,7 @@ export class CryptoPricesComponent implements OnInit {
             this.cryptoPrices = this.cryptoPricesCopy;
         } else {
             this.cryptoPrices = this.cryptoPricesCopy.filter(
-                (cryptoPrice) => cryptoPrice.symbol.includes(filterText));
+                (cryptoPrice) => cryptoPrice.symbol.includes(filterText.toUpperCase()));
         }
     }
 
