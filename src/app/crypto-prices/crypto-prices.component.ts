@@ -84,6 +84,14 @@ export class CryptoPricesComponent implements OnInit {
         if (item.isFavorite) {
             localStorage.removeItem(this.localStorageKey + item.symbol);
             item.isFavorite = false;
+
+            $("#favRemoved").text(item.symbol + " removed from favorites");
+            $("#favRemoved").addClass("in");
+            window.setTimeout(function () {
+                $("#favRemoved").removeClass("in");
+                $("#favRemoved").addCLass("out");
+            }, 2000);
+
         } else {
             let cryptoFavorite: CryptoFavorite = new CryptoFavorite();
             cryptoFavorite.id = item.id;
@@ -92,6 +100,15 @@ export class CryptoPricesComponent implements OnInit {
             cryptoFavorite.rank = item.rank;
             localStorage.setItem(this.localStorageKey + cryptoFavorite.symbol, JSON.stringify(cryptoFavorite));
             item.isFavorite = true;
+
+            // alert for adding to favorites
+            $("#favAdded").text(item.symbol + " added to favorites");
+            $("#favAdded").addClass("in");
+            window.setTimeout(function () {
+                $("#favAdded").removeClass("in");
+                $("#favAdded").addCLass("out");
+            }, 2000);
+
         }
     }
 }

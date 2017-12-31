@@ -115,6 +115,12 @@ export class CryptoFavoritesComponent implements OnInit{
      */
     removeFavorite(symbol: string) : void {
         localStorage.removeItem(this.localStorageKey + symbol);
+        $("#favRemoved").text(symbol + " removed from favorites");
+        $("#favRemoved").addClass("in");
+        window.setTimeout(function () {
+            $("#favRemoved").removeClass("in");
+            $("#favRemoved").addCLass("out");
+        }, 2000);
         this.getFavs();
     }
 
