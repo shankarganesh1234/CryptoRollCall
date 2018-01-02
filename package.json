@@ -23,11 +23,13 @@
     "angular2-image-upload": "^0.6.6",
     "aos": "^2.2.0",
     "bootstrap": "^3.3.7",
+    "classlist.js": "^1.1.20150312",
     "core-js": "^2.5.3",
     "cryptocurrencies": "^1.1.1",
     "ng2-bootstrap": "^1.6.3",
     "ng2-smart-table": "^1.2.2",
     "rxjs": "^5.5.6",
+    "web-animations-js": "^2.3.1",
     "zone.js": "^0.8.18"
   },
   "devDependencies": {
