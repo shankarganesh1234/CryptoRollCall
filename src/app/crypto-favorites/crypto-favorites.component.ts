@@ -2,6 +2,7 @@ import {Component, OnInit} from "@angular/core";
 import {ActivatedRoute, Router} from "@angular/router";
 import {CryptoService} from "../services/crypto.service";
 import {CryptoFavorite} from "../models/crypto-favorite";
+import {Title} from "@angular/platform-browser";
 
 declare const $:any;
 @Component({
@@ -20,14 +21,14 @@ export class CryptoFavoritesComponent implements OnInit{
     totalPortfolioStr: string;
     localStorageKey: string = "crypto_";
 
-    constructor(private route: ActivatedRoute, private router: Router, private cryptoService: CryptoService){
+    constructor(private route: ActivatedRoute, private router: Router, private cryptoService: CryptoService, private titleService: Title){
         route.params.subscribe(val => {
             this.getFavs();
         });
     }
 
     ngOnInit(): void {
-        //this.invokeCryptoService();
+        this.titleService.setTitle('CryptoRollCall : Favorites - Manage crypto portfolio and calculate investment net worth with 1 click.');
     }
 
     /**

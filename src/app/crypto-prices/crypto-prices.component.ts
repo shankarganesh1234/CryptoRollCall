@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {CryptoService} from "../services/crypto.service";
 import {CryptoPrice} from "../models/crypto-price";
 import {CryptoFavorite} from "../models/crypto-favorite";
+import { Title } from '@angular/platform-browser';
 import {isUndefined} from "util";
 
 declare const $: any;
@@ -20,14 +21,14 @@ export class CryptoPricesComponent implements OnInit {
     filterText: string;
     localStorageKey: string = "crypto_";
 
-    constructor(private route: ActivatedRoute, private router: Router, private cryptoService: CryptoService) {
+    constructor(private route: ActivatedRoute, private router: Router, private cryptoService: CryptoService, private titleService: Title) {
         route.params.subscribe(val => {
             this.invokeCryptoService();
         });
     }
 
     ngOnInit(): void {
-        //this.invokeCryptoService();
+        this.titleService.setTitle('CryptoRollCall : Home - Track crypto currencies and get real time updates on Bitcoin, Litecoin, Ripple and all major crypto currencies');
     }
 
     /**

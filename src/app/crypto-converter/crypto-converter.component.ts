@@ -2,6 +2,7 @@ import {Component, OnInit} from "@angular/core";
 import {ActivatedRoute, Router} from "@angular/router";
 import {CryptoService} from "../services/crypto.service";
 import {CryptoPrice} from "../models/crypto-price";
+import {Title} from "@angular/platform-browser";
 
 declare const $: any;
 @Component({
@@ -10,7 +11,7 @@ declare const $: any;
     styleUrls: ['crypto-converter.component.css']
 })
 
-export class CryptoConverterComponent {
+export class CryptoConverterComponent implements OnInit{
 
     cryptoPrices: CryptoPrice[] = [];
     cryptoQuantity: string = "1";
@@ -20,10 +21,14 @@ export class CryptoConverterComponent {
     total: number;
     cryptoTotal: number;
 
-    constructor(private route: ActivatedRoute, private router: Router, private cryptoService: CryptoService) {
+    constructor(private route: ActivatedRoute, private router: Router, private cryptoService: CryptoService, private titleService: Title) {
         route.params.subscribe(val => {
             this.invokeCryptoService();
         });
+    }
+
+    ngOnInit(): void {
+        this.titleService.setTitle('CryptoRollCall : Converter - USD to ETH BTC XRP and all major crypto currency converter.');
     }
 
     /**
