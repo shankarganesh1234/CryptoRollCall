@@ -1,0 +1,71 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-3"></div>
+        <div class="col-md-4">
+        </div>
+         <div class="col-md-1"> <button type="submit" class="btn btn-primary" (click)="invokeCryptoService()">Refresh</button></div>
+
+    </div>
+    <br/>
+</div>
+<div class="container">
+    <h5>Convert to USD</h5>
+    <table class="table table-bordered table-striped">
+        <tbody>
+        <tr id="convertToUsd">
+            <td>
+                <input (ngModelChange)="calculateToUsd($event, cryptoStr)" [(ngModel)]="cryptoQuantity" type="text" class="form-control" id="filter" aria-describedby="filterHelp" placeholder="0"/>
+            </td>
+            <td>
+                <select (ngModelChange)="calculateToUsd(cryptoQuantity, $event)" [(ngModel)]="cryptoStr" class="form-control" id="cryptoSelect">
+                    <option *ngFor="let item of cryptoPrices" value= {{item.symbol}}>
+                        {{item.symbol}} : {{item.name}}
+                    </option>
+                </select>
+            </td>
+            <td><i class="fa fa-2x fa-arrow-right" aria-hidden="true"></i></td>
+            <td>
+                <select class="form-control">
+                    <option> USD : US Dollar </option>
+                </select>
+            </td>
+            <td>
+                <strong>{{total}} $</strong></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="container">
+    <h5>Convert from USD</h5>
+    <table class="table table-bordered table-striped">
+        <tbody>
+        <tr id="convertFromUsd">
+            <td>
+                <input (ngModelChange)="calculateFromUsd($event, usdCryptoStr)" [(ngModel)]="usdQuantity" type="text" class="form-control" id="filter" aria-describedby="filterHelp" placeholder="0"/>
+            </td>
+            <td>
+                <select class="form-control">
+                    <option> USD : US Dollar </option>
+                </select>
+            </td>
+            <td><i class="fa fa-2x fa-arrow-right" aria-hidden="true"></i></td>
+            <td>
+                <select (ngModelChange)="calculateFromUsd(usdQuantity, $event)" [(ngModel)]="usdCryptoStr" class="form-control" id="cryptoSelect">
+                    <option *ngFor="let item of cryptoPrices" value= {{item.symbol}}>
+                        {{item.symbol}} : {{item.name}}
+                    </option>
+                </select>
+            </td>
+            <td>
+                <strong>{{cryptoTotal}}</strong></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+
