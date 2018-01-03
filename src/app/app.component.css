@@ -7,8 +7,7 @@
     right: 30px;
     z-index: 999999;
 }
-.font-size-header {
-    font-family: 'Roboto', sans-serif;
-    font-size: 15px;
-    font-weight:bold;
+.header-links {
+    font-family: 'Roboto' sans-serif;
+    font-size: medium
 }
