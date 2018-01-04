@@ -25,6 +25,7 @@ export class CryptoService {
 
     getPriceTicker(): Observable<CryptoPrice[]> {
         let url = 'coinmarketcap/v1/ticker?limit=0';
+        //let url = 'test';
         return this.http
             .get(url)
             .map(this.extractData)
@@ -32,7 +33,8 @@ export class CryptoService {
     }
 
     getPriceTickerForId(id: string): Observable<CryptoPrice> {
-        let url = 'coinmarketcap/v1/ticker/' + id;
+        //let url = 'coinmarketcap/v1/ticker/' + id;
+        let url = 'test';
         return this.http
             .get(url)
             .map(this.extractData)
