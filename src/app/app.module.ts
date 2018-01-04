@@ -9,6 +9,7 @@ import {AppRoutingModule} from "./app-routing.module";
 import {CryptoFavoritesComponent} from "./crypto-favorites/crypto-favorites.component";
 import {CryptoFooterComponent} from "./crypto-footer/crypto-footer.component";
 import {CryptoConverterComponent} from "./crypto-converter/crypto-converter.component";
+import {CryptoAboutComponent} from "./crypto-about/crypto-about.component";
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import {CryptoConverterComponent} from "./crypto-converter/crypto-converter.comp
     CryptoPricesComponent,
     CryptoFavoritesComponent,
     CryptoFooterComponent,
-    CryptoConverterComponent
+    CryptoConverterComponent,
+    CryptoAboutComponent
   ],
   imports: [BrowserModule,
     FormsModule,

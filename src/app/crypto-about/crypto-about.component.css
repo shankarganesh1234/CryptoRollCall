@@ -1,0 +1,21 @@
+.auto-height-margin {
+    height: auto;
+    margin-bottom:30%
+}
+
+.vertical-alignment {
+    vertical-align: top
+}
+
+.numbers-font {
+    font-family: 'Arial';
+    font-size: medium;
+    font-weight: bold;
+}
+
+.numbers-negative {
+    color: red;
+}
+.numbers-positive {
+    color: green;
+}

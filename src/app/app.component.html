@@ -3,21 +3,19 @@
     <div class="row">
         <div class="col-md-4">
             <a [routerLink]="'/'" title="Home">
-            <i class="fa fa-2x fa-home fa-white" aria-hidden="true">
-                <small class="header-links">Home</small>
-            </i>
+                <small class="header-links text-white">Home</small>
+            </a>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <a [routerLink]="'/about'" title="Home">
+                <small class="header-links text-white">About</small>
             </a>
             &nbsp;&nbsp;&nbsp;&nbsp;
             <a [routerLink]="'/favorites'" title="My Favorites">
-                <i class="fa fa-2x fa-star fa-white" aria-hidden="true">
-                    <small class="header-links">Favorites</small>
-                </i>
+                    <small class="header-links text-white">Favorites</small>
             </a>
             &nbsp;&nbsp;&nbsp;&nbsp;
             <a [routerLink]="'/convert'" title="Converter">
-                <i class="fa fa-2x fa-bitcoin fa-white" aria-hidden="true">
-                    <small class="header-links">Converter</small>
-                </i>
+                    <small class="header-links text-white">Currency Converter</small>
             </a>
         </div>
         <div class="col-md-2 col-md-offset-1">
@@ -45,17 +43,17 @@
 
 </div>
 
-
 <br/><br/><br/><br/><br/><br/>
 
-<section id="welcome" class="home-section auto-height-margin">
+<div class="container">
+    <div class="row text-center">
         <p class="lead">Crypto currency tracker | Real time data | Portfolio manager</p>
-    <p>To get started, add your favorite crypto currency to your portfolio by clicking on the <i class="fa fa-2x fa-star-o"></i> icon
-    <br/>
-    </p>
-</section>
-<br/>
-<br/>
+    </div>
+    <div *ngIf="router.url == '/'" class="row text-center">
+        <p>To get started, add your favorite crypto currency to your portfolio by clicking on the <i class="fa fa-2x fa-star-o"></i> icon
+        </p>
+    </div>
+</div>
 <hr/>
 <router-outlet></router-outlet>
 
