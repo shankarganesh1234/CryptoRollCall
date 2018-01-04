@@ -28,7 +28,7 @@ export class CryptoFavoritesComponent implements OnInit{
     }
 
     ngOnInit(): void {
-        this.titleService.setTitle('CryptoRollCall : Favorites - Manage crypto portfolio and calculate investment net worth with 1 click.');
+        this.titleService.setTitle('CryptoRollCall - Crypto portfolio manager and crypto tracker');
     }
 
     /**

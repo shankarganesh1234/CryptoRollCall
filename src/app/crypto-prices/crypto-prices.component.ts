@@ -28,7 +28,7 @@ export class CryptoPricesComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.titleService.setTitle('CryptoRollCall : Home - Track crypto currencies and get real time updates on Bitcoin, Litecoin, Ripple and all major crypto currencies');
+        this.titleService.setTitle('CryptoRollCall - Crypto currency tracker, portfolio manager and more');
     }
 
     /**

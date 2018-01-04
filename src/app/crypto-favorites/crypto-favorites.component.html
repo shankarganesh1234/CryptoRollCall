@@ -5,11 +5,12 @@
     <div class="col-md-3">
         <input type="text" (ngModelChange)="filterResults($event)" [(ngModel)]="filterText" class="form-control" id="filter" aria-describedby="filterHelp" placeholder="Filter Results">
     </div>
-    <div class="col-md-3"></div>
+    <div class="col-md-1"></div>
     <div class="col-md-4">
         <h5><small>Total Portfolio Value ~ </small>{{totalPortfolioStr}} $</h5>
     </div>
 
+    <div class="col-md-2"> <button type="submit" class="btn btn-primary" (click)="getFavs()">Home</button></div>
     <div class="col-md-1"> <button type="submit" class="btn btn-primary" (click)="getFavs()">Refresh</button></div>
 
 </div>
