@@ -1,5 +1,5 @@
 <section id="top"></section>
-<nav class="navbar navbar-default" style="background-color: black">
+<nav class="navbar navbar-default navbar-fixed-top" style="background-color: black;">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -11,7 +11,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a [routerLink]="'/'" title="Home" class="navbar-brand">
-                <small class="header-links text-white">Home</small>
+                    <small class="header-links text-white">Home</small>
                 </a>
             </div>
 
@@ -35,21 +35,16 @@
                     <small class="header-links text-white">Currency Converter</small>
                     </a>
                 </li>
-                <li style="left: 15%;display:block;">
-                    <img src="../../assets/img/CryptoRo.png" class="img-responsive" style="max-width: 50%"/>
-                </li>
-                <li style="left: 35%;display:block;">
-                    <a href="#footerId" class="page-scroll" title="Scroll to bottom">
-                    <i class="fa fa-2x fa-arrow-down fa-white" aria-hidden="true"></i>
-                    </a>
-                </li>
             </ul>
          </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
 
+<a href="#footerId" class="page-scroll" title="Scroll to bottom" style="position:fixed;top: 15px;right: 80px;z-index:99999;">
+    <i class="fa fa-2x fa-arrow-down text-white" aria-hidden="true"></i>
+</a>
 
-<a href="#top" class="page-scroll" title="Scroll to bottom" style="position:fixed;bottom: 20px;right: 30px">
+<a href="#top" class="page-scroll" title="Scroll to top" style="position:fixed;bottom: 20px;right: 30px">
     <i class="fa fa-2x fa-arrow-up" aria-hidden="true"></i>
 </a>
 
@@ -60,7 +55,7 @@
 <div id= "favRemoved" class="alert alert-danger fade alert-position">
 
 </div>
-<br/>
+<br/><br/><br/><br/>
 <div class="container">
     <div class="row text-center">
         <p class="lead">Crypto currency tracker | Real time data | Portfolio manager</p>

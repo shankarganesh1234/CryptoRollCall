@@ -19,3 +19,44 @@
 .numbers-positive {
     color: green;
 }
+
+@media screen and (min-width: 10px) and (max-width: 320px) {
+    .col_2, .col_3, .col_4, .col_5, .col_6, .col_7{
+        display:none;
+        width:0;
+        height:0;
+        opacity:0;
+        visibility: collapse;
+    }
+}
+
+@media screen and (min-width: 321px) and (max-width: 480px) {
+    .col_2, .col_4, .col_5, .col_6, .col_7{
+        display:none;
+        width:0;
+        height:0;
+        opacity:0;
+        visibility: collapse;
+    }
+}
+
+@media screen and (min-width: 481px) and (max-width: 720px) {
+    .col_2, .col_5, .col_6, .col_7{
+        display:none;
+        width:0;
+        height:0;
+        opacity:0;
+        visibility: collapse;
+    }
+}
+
+@media screen and (min-width: 721px) and (max-width: 1080px) {
+    .col_2, .col_6, .col_7{
+        display:none;
+        width:0;
+        height:0;
+        opacity:0;
+        visibility: collapse;
+    }
+}
+

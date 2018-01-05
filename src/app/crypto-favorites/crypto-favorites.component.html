@@ -1,4 +1,3 @@
-<br/>
 <div class="container">
     <h5>Favorites</h5>
 <div class="row">
@@ -7,7 +6,7 @@
     </div>
     <div class="col-md-1"></div>
     <div class="col-md-4">
-        <h5><small>Total Portfolio Value ~ </small>{{totalPortfolioStr}} $</h5>
+        
     </div>
 
     <div class="col-md-2"> <button type="submit" class="btn btn-primary" [routerLink]="'/'">Home</button></div>
@@ -17,39 +16,39 @@
     <br/>
 </div>
 <div class="container">
-
+    <h5><small>Total Portfolio Value ~ </small>{{totalPortfolioStr}} $</h5>
     <table class="table table-bordered table-striped">
         <thead>
         <tr>
-            <th scope="col">Symbol</th>
-            <th scope="col">Name</th>
-            <th scope="col">Price (USD)</th>
-            <th scope="col">Price (BTC)</th>
-            <th scope="col">Quantity</th>
-            <th scope="col">Total (USD)</th>
-            <th scope="col">Total (BTC)</th>
-            <th scope="col">Change % (1h)</th>
-            <th scope="col">Change % (24h)</th>
-            <th scope="col">Change % (7d)</th>
-            <th scope="col"></th>
+            <th scope="col" class="col_1">Symbol</th>
+            <th scope="col" class="col_2">Name</th>
+            <th scope="col" class="col_3">Price (USD)</th>
+            <th scope="col" class="col_4">Price (BTC)</th>
+            <th scope="col" class="col_5">Quantity</th>
+            <th scope="col" class="col_6">Total (USD)</th>
+            <th scope="col" class="col_7">Total (BTC)</th>
+            <th scope="col" class="col_8">Change % (1h)</th>
+            <th scope="col" class="col_9">Change % (24h)</th>
+            <th scope="col" class="col_10">Change % (7d)</th>
+            <th scope="col" class="col_11"></th>
         </tr>
         </thead>
         <tbody>
         <ng-container
                 *ngFor="let item of favs; let j=index">
             <tr>
-                <th scope="row">{{item.symbol}}</th>
-                <td>{{item.name}}</td>
-                <td class="numbers-font">{{item.price_usd}}</td>
-                <td class="numbers-font">{{item.price_btc}}</td>
-                <td><input type="text" maxlength="10" size="7" [(ngModel)]="item.quantity" (ngModelChange)="updateTotals($event, j)" value="{{item.quantity}}">
+                <th scope="row" class="col_1">{{item.symbol}}</th>
+                <td class="col_2">{{item.name}}</td>
+                <td class="numbers-font col_3">{{item.price_usd}}</td>
+                <td class="numbers-font col_4">{{item.price_btc}}</td>
+                <td class="col_5"><input type="text" maxlength="10" size="7" [(ngModel)]="item.quantity" (ngModelChange)="updateTotals($event, j)" value="{{item.quantity}}">
                 </td>
-                <td class="numbers-font">{{item.total_usd}}</td>
-                <td class="numbers-font">{{item.total_btc}}</td>
-                <td class="numbers-font" [ngClass] = "(item.percent_change_1h != null && item.percent_change_1h.includes('-') ? 'numbers-negative' : 'numbers-positive')">{{item.percent_change_1h}}</td>
-                <td class="numbers-font" [ngClass] = "(item.percent_change_24h != null && item.percent_change_24h.includes('-') ? 'numbers-negative' : 'numbers-positive')">{{item.percent_change_24h}}</td>
-                <td class="numbers-font" [ngClass] = "(item.percent_change_7d != null && item.percent_change_7d.includes('-') ? 'numbers-negative' : 'numbers-positive')">{{item.percent_change_7d}}</td>
-                <td>
+                <td class="numbers-font col_6">{{item.total_usd}}</td>
+                <td class="numbers-font col_7">{{item.total_btc}}</td>
+                <td class="numbers-font col_8" [ngClass] = "(item.percent_change_1h != null && item.percent_change_1h.includes('-') ? 'numbers-negative' : 'numbers-positive')">{{item.percent_change_1h}}</td>
+                <td class="numbers-font col_9" [ngClass] = "(item.percent_change_24h != null && item.percent_change_24h.includes('-') ? 'numbers-negative' : 'numbers-positive')">{{item.percent_change_24h}}</td>
+                <td class="numbers-font col_10" [ngClass] = "(item.percent_change_7d != null && item.percent_change_7d.includes('-') ? 'numbers-negative' : 'numbers-positive')">{{item.percent_change_7d}}</td>
+                <td class="col_11">
                     <a (click)="removeFavorite(item.symbol)" title="Remove from favorites">
                         <i class="fa fa-2x fa-minus-circle text-danger" aria-hidden="true"></i>
                     </a>
