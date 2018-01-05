@@ -1,37 +1,50 @@
 <section id="top"></section>
-<nav class="navbar navbar-default collapse navbar-collapse navbar-fixed-top" style="background-color: black">
-    <div class="row">
-        <div class="col-md-4">
-            <a [routerLink]="'/'" title="Home">
-                <small class="header-links text-white">Home</small>
-            </a>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <a [routerLink]="'/about'" title="Home">
-                <small class="header-links text-white">About</small>
-            </a>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <a [routerLink]="'/favorites'" title="My Favorites">
-                    <small class="header-links text-white">Favorites</small>
-            </a>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <a [routerLink]="'/convert'" title="Converter">
-                    <small class="header-links text-white">Currency Converter</small>
-            </a>
-        </div>
-        <div class="col-md-2 col-md-offset-1">
-                <img src="../../assets/img/CryptoRo.png" class="img-responsive"/>
+<nav class="navbar navbar-default navbar-fixed-top" style="background-color: black;">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a [routerLink]="'/'" title="Home" class="navbar-brand">
+                    <small class="header-links text-white">Home</small>
+                </a>
+            </div>
+
         </div>
 
-        <div class="col-md-1 col-md-offset-4">
-            <a href="#footerId" class="page-scroll" title="Scroll to bottom">
-                <i class="fa fa-2x fa-arrow-down fa-white" aria-hidden="true"></i>
-            </a>
-        </div>
-    </div>
-    <br/>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a [routerLink]="'/about'" title="Home">
+                    <small class="header-links text-white">About</small>
+                    </a>
+                </li>
+                <li>
+                    <a [routerLink]="'/favorites'" title="My Favorites">
+                    <small class="header-links text-white">Favorites</small>
+                    </a>
+                </li>
+                <li>
+                    <a [routerLink]="'/convert'" title="Converter">
+                    <small class="header-links text-white">Currency Converter</small>
+                    </a>
+                </li>
+            </ul>
+         </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
 </nav>
 
-<a href="#top" class="page-scroll" title="Scroll to bottom" style="position:fixed;bottom: 20px;right: 30px">
+<a href="#footerId" class="page-scroll" title="Scroll to bottom" style="position:fixed;top: 15px;right: 80px;z-index:99999;">
+    <i class="fa fa-2x fa-arrow-down text-white" aria-hidden="true"></i>
+</a>
+
+<a href="#top" class="page-scroll" title="Scroll to top" style="position:fixed;bottom: 20px;right: 30px">
     <i class="fa fa-2x fa-arrow-up" aria-hidden="true"></i>
 </a>
 
@@ -42,9 +55,7 @@
 <div id= "favRemoved" class="alert alert-danger fade alert-position">
 
 </div>
-
-<br/><br/><br/><br/><br/>
-
+<br/><br/><br/><br/>
 <div class="container">
     <div class="row text-center">
         <p class="lead">Crypto currency tracker | Real time data | Portfolio manager</p>
