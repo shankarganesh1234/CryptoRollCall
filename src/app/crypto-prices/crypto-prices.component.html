@@ -4,7 +4,14 @@
     <div class="col-md-3">
         <input type="text" (ngModelChange)="filterResults($event)" [(ngModel)]="filterText" class="form-control" id="filter" aria-describedby="filterHelp" placeholder="Filter Results">
     </div>
-    <div class="col-md-5"></div>
+        <div class="col-md-3">
+            <select [(ngModel)]="currStr" (ngModelChange)="currencyChanged($event)" class="form-control" id="cryptoSelect">
+                <option *ngFor="let item of staticCurrencies.values" value= {{item.value}}>
+                    {{item.value}} : {{item.displayName}}
+                </option>
+            </select>
+        </div>
+    <div class="col-md-2"></div>
     <div class="col-md-2">
             <button type="button" [routerLink]="'/favorites'" class="btn btn-primary">Favorites</button>
     </div>
@@ -13,18 +20,18 @@
 </div>
     <br/>
 </div>
-<div class="container table-responsive">
 
+<div class="container table-responsive">
     <table class="table table-bordered table-striped">
         <thead>
         <tr>
             <th scope="col" class="col_1 col-md-1">Symbol</th>
             <th scope="col" class="col_2 col-md-1">Name</th>
-            <th scope="col" class="col_3 col-md-1">Price (USD)</th>
-            <th scope="col" class="col_4 col-md-1">Price (BTC)</th>
-            <th scope="col" class="col_5 col-md-2">Change % (1h)</th>
-            <th scope="col" class="col_6 col-md-2">Change % (24h)</th>
-            <th scope="col" class="col_7 col-md-2">Change % (7d)</th>
+            <th scope="col" class="col_3 col-md-1">Price <small>({{currStr}})</small></th>
+            <th scope="col" class="col_4 col-md-1">Price <small>(BTC)</small></th>
+            <th scope="col" class="col_5 col-md-2">Change % <small>(1h)</small></th>
+            <th scope="col" class="col_6 col-md-2">Change % <small>(24h)</small></th>
+            <th scope="col" class="col_7 col-md-2">Change % <small>(7d)</small></th>
             <th scope="col" class="col_8"></th>
         </tr>
         </thead>
@@ -34,13 +41,13 @@
             <tr>
                 <th scope="row" class="col_1">{{item.symbol}}</th>
                 <td class="col_2">{{item.name}}</td>
-                <td class="numbers-font col_3"><b>{{item.price_usd}}</b></td>
+                <td class="numbers-font col_3"><b>{{item.price}}</b></td>
                 <td class="numbers-font col_4" ><b>{{item.price_btc}}</b></td>
                 <td class="numbers-font col_5"  [ngClass] = "(item.percent_change_1h != null && item.percent_change_1h.includes('-') ? 'numbers-negative' : 'numbers-positive')"><b>{{item.percent_change_1h}}</b></td>
                 <td class="numbers-font col_6"  [ngClass] = "(item.percent_change_24h != null && item.percent_change_24h.includes('-') ? 'numbers-negative' : 'numbers-positive')"><b>{{item.percent_change_24h}}</b></td>
                 <td class="numbers-font col_7"  [ngClass] = "(item.percent_change_7d != null && item.percent_change_7d.includes('-') ? 'numbers-negative' : 'numbers-positive')"><b>{{item.percent_change_7d}}</b></td>
                 <td class="col_8">
-                    <a (click)="addToFavorites(item)" title="Add to favorites">
+                    <a (click)="addToFavorites(item)" title="Add to Portfolio">
                         <i [ngClass]="item.isFavorite ? 'fa fa-2x fa-star' : 'fa fa-2x fa-star-o'" aria-hidden="true"></i>
                     </a>
 

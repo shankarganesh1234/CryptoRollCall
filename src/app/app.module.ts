@@ -10,6 +10,7 @@ import {CryptoFavoritesComponent} from "./crypto-favorites/crypto-favorites.comp
 import {CryptoFooterComponent} from "./crypto-footer/crypto-footer.component";
 import {CryptoConverterComponent} from "./crypto-converter/crypto-converter.component";
 import {CryptoAboutComponent} from "./crypto-about/crypto-about.component";
+import {CurrencyService} from "./services/currency.service";
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import {CryptoAboutComponent} from "./crypto-about/crypto-about.component";
     JsonpModule,
     ReactiveFormsModule,
   ],
-  providers: [CryptoService],
+  providers: [CryptoService, CurrencyService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA], // add this!
 })

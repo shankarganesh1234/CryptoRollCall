@@ -5,6 +5,9 @@ import {CryptoPrice} from "../models/crypto-price";
 import {CryptoFavorite} from "../models/crypto-favorite";
 import { Title } from '@angular/platform-browser';
 import {isUndefined} from "util";
+import {CurrencyService} from "../services/currency.service";
+import {CurrencyExchange} from "../models/currency-exchange";
+import {Currencies} from "../models/currencies";
 
 declare const $: any;
 @Component({
@@ -21,14 +24,42 @@ export class CryptoPricesComponent implements OnInit {
     filterText: string;
     localStorageKey: string = "crypto_";
 
-    constructor(private route: ActivatedRoute, private router: Router, private cryptoService: CryptoService, private titleService: Title) {
+    // currency related
+    currencyExchange: CurrencyExchange;
+    staticCurrencies: Currencies = new Currencies();
+    currStr: string = "USD";
+
+    constructor(private route: ActivatedRoute, private router: Router, private cryptoService: CryptoService, private titleService: Title, private currencyService: CurrencyService) {
+
         route.params.subscribe(val => {
-            this.invokeCryptoService();
+            this.invokeCurrencyService();
         });
     }
 
     ngOnInit(): void {
         this.titleService.setTitle('CryptoRollCall - Crypto currency tracker, portfolio manager and more');
+    }
+
+    /**
+     *
+     */
+    invokeCurrencyService(): void {
+        this.currencyService
+            .getCurrExchRates(this.currStr)
+            .subscribe(
+                currExch => this.setCurrency(currExch),
+                error => console.log(error),
+            );
+    }
+
+    setCurrency(currExch: CurrencyExchange): void {
+        this.currencyExchange = currExch;
+
+        // get from local storage if present
+        if(localStorage.getItem(this.localStorageKey + "currencyPreference") != null)
+            this.currStr = localStorage.getItem(this.localStorageKey + "currencyPreference");
+
+        this.invokeCryptoService();
     }
 
     /**
@@ -58,6 +89,11 @@ export class CryptoPricesComponent implements OnInit {
             } else {
                 this.cryptoPrices[i].isFavorite = false;
             }
+
+            if(this.currStr === "USD")
+                this.cryptoPrices[i].price = this.cryptoPrices[i].price_usd;
+            else
+                this.cryptoPrices[i].price = (parseFloat(this.cryptoPrices[i].price_usd) * parseFloat(this.currencyExchange.rates[this.currStr])).toFixed(2);
         }
         this.cryptoPricesCopy = this.cryptoPrices;
     }
@@ -67,7 +103,6 @@ export class CryptoPricesComponent implements OnInit {
      * @param filterText
      */
     filterResults(filterText: string): void {
-        console.log(this.cryptoPrices);
         if (filterText.trim() == '') {
             this.cryptoPrices = this.cryptoPricesCopy;
         } else {
@@ -90,7 +125,7 @@ export class CryptoPricesComponent implements OnInit {
             $("#favRemoved").addClass("in");
             window.setTimeout(function () {
                 $("#favRemoved").removeClass("in");
-                $("#favRemoved").addCLass("out");
+                //$("#favRemoved").addCLass("out");
             }, 2000);
 
         } else {
@@ -107,10 +142,37 @@ export class CryptoPricesComponent implements OnInit {
             $("#favAdded").addClass("in");
             window.setTimeout(function () {
                 $("#favAdded").removeClass("in");
-                $("#favAdded").addCLass("out");
+                //$("#favAdded").addCLass("out");
             }, 2000);
 
         }
     }
+
+    /**
+     * Invoked when the currency dropdown is changed
+     * All the prices need to be revised, based on the currency.
+     * @param currency
+     */
+    currencyChanged(currency: string): void {
+
+
+        let exchangeRate: number = this.currencyExchange.rates[currency];
+        for (var i = 0; i < this.cryptoPrices.length; i++) {
+
+            if(currency == "USD")
+                this.cryptoPrices[i].price = this.cryptoPrices[i].price_usd;
+            else
+                this.cryptoPrices[i].price = (parseFloat(this.cryptoPrices[i].price_usd) * exchangeRate).toFixed(2);
+        }
+        for (var i = 0; i < this.cryptoPricesCopy.length; i++) {
+            if(currency == "USD")
+                this.cryptoPricesCopy[i].price = this.cryptoPricesCopy[i].price_usd;
+            else
+                this.cryptoPricesCopy[i].price = (parseFloat(this.cryptoPricesCopy[i].price_usd) * exchangeRate).toFixed(2);        }
+
+        // set choice in local storage
+        localStorage.setItem(this.localStorageKey + "currencyPreference", currency);
+    }
+
 }
 
