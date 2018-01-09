@@ -8,6 +8,8 @@ import {isUndefined} from "util";
 import {CurrencyService} from "../services/currency.service";
 import {CurrencyExchange} from "../models/currency-exchange";
 import {Currencies} from "../models/currencies";
+import * as numeral from 'numeral';
+
 
 declare const $: any;
 @Component({
@@ -94,6 +96,11 @@ export class CryptoPricesComponent implements OnInit {
                 this.cryptoPrices[i].price = this.cryptoPrices[i].price_usd;
             else
                 this.cryptoPrices[i].price = (parseFloat(this.cryptoPrices[i].price_usd) * parseFloat(this.currencyExchange.rates[this.currStr])).toFixed(2);
+
+            if(this.cryptoPrices[i].market_cap_usd != '') {
+                this.cryptoPrices[i].market_cap_usd = numeral(parseInt(this.cryptoPrices[i].market_cap_usd)).format('0.0a');
+            }
+
         }
         this.cryptoPricesCopy = this.cryptoPrices;
     }
@@ -121,7 +128,7 @@ export class CryptoPricesComponent implements OnInit {
             localStorage.removeItem(this.localStorageKey + item.symbol);
             item.isFavorite = false;
 
-            $("#favRemoved").text(item.symbol + " removed from favorites");
+            $("#favRemoved").text(item.symbol + " removed from Portfolio");
             $("#favRemoved").addClass("in");
             window.setTimeout(function () {
                 $("#favRemoved").removeClass("in");
@@ -138,7 +145,7 @@ export class CryptoPricesComponent implements OnInit {
             item.isFavorite = true;
 
             // alert for adding to favorites
-            $("#favAdded").text(item.symbol + " added to favorites");
+            $("#favAdded").text(item.symbol + " added to Portfolio");
             $("#favAdded").addClass("in");
             window.setTimeout(function () {
                 $("#favAdded").removeClass("in");

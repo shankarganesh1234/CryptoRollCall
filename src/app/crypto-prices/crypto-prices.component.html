@@ -22,33 +22,37 @@
 </div>
 
 <div class="container table-responsive">
-    <table class="table table-bordered table-striped">
+    <table class="table table-bordered table-striped table-condensed">
         <thead>
         <tr>
-            <th scope="col" class="col_1 col-md-1">Symbol</th>
-            <th scope="col" class="col_2 col-md-1">Name</th>
-            <th scope="col" class="col_3 col-md-1">Price <small>({{currStr}})</small></th>
-            <th scope="col" class="col_4 col-md-1">Price <small>(BTC)</small></th>
-            <th scope="col" class="col_5 col-md-2">Change % <small>(1h)</small></th>
-            <th scope="col" class="col_6 col-md-2">Change % <small>(24h)</small></th>
-            <th scope="col" class="col_7 col-md-2">Change % <small>(7d)</small></th>
-            <th scope="col" class="col_8"></th>
+            <th class="col_1 col-md-1 align-top"></th>
+            <th scope="col" class="col_2 col-md-1 align-top">Price <small>({{currStr}})</small></th>
+            <th scope="col" class="col_3 col-md-1 align-top">Price <small>(BTC)</small></th>
+            <th scope="col" class="col_4 col-md-3 align-top">Change %<br/> <small>1h / 1d / 7d</small></th>
+            <th scope="col" class="col_5 col-md-1 align-top">Market Cap</th>
+            <th scope="col" class="col_6 col-md-2 align-top">Available Supply</th>
+            <th scope="col" class="col_7 col-md-2"></th>
         </tr>
         </thead>
         <tbody>
         <ng-container
                 *ngFor="let item of cryptoPrices;">
-            <tr>
-                <th scope="row" class="col_1">{{item.symbol}}</th>
-                <td class="col_2">{{item.name}}</td>
-                <td class="numbers-font col_3"><b>{{item.price}}</b></td>
-                <td class="numbers-font col_4" ><b>{{item.price_btc}}</b></td>
-                <td class="numbers-font col_5"  [ngClass] = "(item.percent_change_1h != null && item.percent_change_1h.includes('-') ? 'numbers-negative' : 'numbers-positive')"><b>{{item.percent_change_1h}}</b></td>
-                <td class="numbers-font col_6"  [ngClass] = "(item.percent_change_24h != null && item.percent_change_24h.includes('-') ? 'numbers-negative' : 'numbers-positive')"><b>{{item.percent_change_24h}}</b></td>
-                <td class="numbers-font col_7"  [ngClass] = "(item.percent_change_7d != null && item.percent_change_7d.includes('-') ? 'numbers-negative' : 'numbers-positive')"><b>{{item.percent_change_7d}}</b></td>
-                <td class="col_8">
+            <tr [ngClass]="item.isFavorite ? 'favorite-row' : ''">
+                <th class="col_1">
+                    {{item.symbol}}
+                    <small class="subscript-span">{{item.name}}</small>
+                </th>
+                <td class="numbers-font col_2">{{item.price}}</td>
+                <td class="numbers-font col_3">{{item.price_btc}}</td>
+                <td class="numbers-font col_4"><span [ngClass] = "(item.percent_change_1h != null && item.percent_change_1h.includes('-') ? 'numbers-negative' : 'numbers-positive')">{{item.percent_change_1h}} <i [ngClass] = "(item.percent_change_1h != null && item.percent_change_1h.includes('-') ? 'fa fa-arrow-down' : 'fa fa-arrow-up')"></i></span> / <span [ngClass] = "(item.percent_change_24h != null && item.percent_change_24h.includes('-') ? 'numbers-negative' : 'numbers-positive')">{{item.percent_change_24h}} <i [ngClass] = "(item.percent_change_24h != null && item.percent_change_24h.includes('-') ? 'fa fa-arrow-down' : 'fa fa-arrow-up')"></i></span> / <span [ngClass] = "(item.percent_change_7d != null && item.percent_change_7d.includes('-') ? 'numbers-negative' : 'numbers-positive')">{{item.percent_change_7d}} <i [ngClass] = "(item.percent_change_7d != null && item.percent_change_7d.includes('-') ? 'fa fa-arrow-down' : 'fa fa-arrow-up')"></i></span></td>
+                <td class="numbers-font col_5">{{item.market_cap_usd}} <small>USD</small></td>
+                <td class="numbers-font col_6">{{item.available_supply}} <small>{{item.symbol}}</small></td>
+                <td class="col_7 text-center">
                     <a (click)="addToFavorites(item)" title="Add to Portfolio">
-                        <i [ngClass]="item.isFavorite ? 'fa fa-2x fa-star' : 'fa fa-2x fa-star-o'" aria-hidden="true"></i>
+                        <i [ngClass]="item.isFavorite ? 'fa fa-2x fa-minus-circle' : 'fa fa-2x fa-plus'" aria-hidden="true"></i>
+                        <br/>
+                        <small *ngIf="item.isFavorite">Remove coin</small>
+                        <small *ngIf="!item.isFavorite">Add coin</small>
                     </a>
 
                 </td>

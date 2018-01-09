@@ -10,4 +10,6 @@ export class CryptoPrice {
     percent_change_1h: string;
     percent_change_24h: string;
     percent_change_7d: string;
+    market_cap_usd:string;
+    available_supply:string;
 }

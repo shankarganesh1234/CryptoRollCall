@@ -11,6 +11,7 @@ import {CryptoFooterComponent} from "./crypto-footer/crypto-footer.component";
 import {CryptoConverterComponent} from "./crypto-converter/crypto-converter.component";
 import {CryptoAboutComponent} from "./crypto-about/crypto-about.component";
 import {CurrencyService} from "./services/currency.service";
+import {CryptoHowToComponent} from "./crypto-howto/crypto-howto.component";
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {CurrencyService} from "./services/currency.service";
     CryptoFavoritesComponent,
     CryptoFooterComponent,
     CryptoConverterComponent,
-    CryptoAboutComponent
+    CryptoAboutComponent,
+    CryptoHowToComponent
   ],
   imports: [BrowserModule,
     FormsModule,

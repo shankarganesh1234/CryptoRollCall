@@ -22,7 +22,7 @@
 
 
 @media screen and (min-width: 10px) and (max-width: 320px) {
-    .col_2, .col_4, .col_6, .col_7, .col_8, .col_9, .col_10{
+    .col_3, .col_5, .col_6, .col_7{
         display:none;
         width:0;
         height:0;
@@ -32,7 +32,7 @@
 }
 
 @media screen and (min-width: 321px) and (max-width: 480px) {
-    .col_2, .col_4, .col_7, .col_8, .col_9, .col_10{
+    .col_3, .col_5, .col_6, .col_7, .col_8{
         display:none;
         width:0;
         height:0;
@@ -42,7 +42,7 @@
 }
 
 @media screen and (min-width: 481px) and (max-width: 720px) {
-    .col_2, .col_4, .col_7, .col_9, .col_10{
+    .col_5, .col_6, .col_0{
         display:none;
         width:0;
         height:0;
@@ -52,11 +52,30 @@
 }
 
 @media screen and (min-width: 721px) and (max-width: 1080px) {
-    .col_2, .col_4, .col_7, .col_10{
+     .col_6, .col_0{
         display:none;
         width:0;
         height:0;
         opacity:0;
         visibility: collapse;
     }
+}
+
+@media screen and (min-width: 1081px) {
+    .col_0{
+        display:none;
+        width:0;
+        height:0;
+        opacity:0;
+        visibility: collapse;
+    }
+}
+
+.subscript-span {
+    display: block;
+    width: 20px;
+}
+
+.align-top {
+    vertical-align: top;
 }
