@@ -181,5 +181,22 @@ export class CryptoPricesComponent implements OnInit {
         localStorage.setItem(this.localStorageKey + "currencyPreference", currency);
     }
 
+    /**
+     *
+     * @param sortField
+     * @param sortDirection
+     */
+    sortData(sortField: string, sortDirection: string): void {
+        if(sortDirection === 'up') {
+            this.cryptoPrices.sort(function(a,b) {
+                    return numeral(a[sortField]).value() < numeral(b[sortField]).value() ? 1 : -1;
+            });
+        } else if(sortDirection === 'down') {
+            this.cryptoPrices.sort(function(a,b) {
+                    return numeral(a[sortField]).value() > numeral(b[sortField]).value() ? 1 : -1;
+            });
+        }
+    }
+
 }
 

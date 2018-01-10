@@ -25,10 +25,10 @@
         <thead>
         <tr>
             <th scope="col" class="col_1 align-top col-md-1"></th>
-            <th scope="col" class="col_2 align-top col-md-1">Price <small>({{currStr}})</small></th>
-            <th scope="col" class="col_3 align-top col-md-1">Price <small>(BTC)</small></th>
-            <th scope="col" class="col_4 align-top col-md-1">Quantity</th>
-            <th scope="col" class="col_5 align-top col-md-1">Total </th>
+            <th scope="col" class="col_2 align-top col-md-1">Price <small>({{currStr}})</small><br/><a (click)="sortData('price_usd','up')"><i class="fa fa-arrow-down"></i></a> <a (click)="sortData('price_usd','down')"><i class="fa fa-arrow-up"></i></a></th>
+            <th scope="col" class="col_3 align-top col-md-1">Price <small>(BTC)</small><br/><a (click)="sortData('price_btc','up')"><i class="fa fa-arrow-down"></i></a> <a (click)="sortData('price_usd','down')"><i class="fa fa-arrow-up"></i></a></th>
+            <th scope="col" class="col_4 align-top col-md-1">Quantity <br/><a (click)="sortData('quantity','up')"><i class="fa fa-arrow-down"></i></a> <a (click)="sortData('price_usd','down')"><i class="fa fa-arrow-up"></i></a></th>
+            <th scope="col" class="col_5 align-top col-md-1">Total <br/><a (click)="sortData('total','up')"><i class="fa fa-arrow-down"></i></a> <a (click)="sortData('total','down')"><i class="fa fa-arrow-up"></i></a></th>
             <th scope="col" class="col_6 align-top col-md-1">Total <small>(BTC)</small></th>
             <th scope="col" class="col_7 align-top col-md-3">Change %<br/> <small>1h / 1d / 7d</small></th>
             <th scope="col" class="col_8 col-md-1"></th>

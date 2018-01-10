@@ -6,6 +6,8 @@ import {Title} from "@angular/platform-browser";
 import {CurrencyExchange} from "../models/currency-exchange";
 import {Currencies} from "../models/currencies";
 import {CurrencyService} from "../services/currency.service";
+import * as numeral from 'numeral';
+
 
 declare const $:any;
 @Component({
@@ -209,6 +211,23 @@ export class CryptoFavoritesComponent implements OnInit{
 
             // set choice in local storage
             localStorage.setItem(this.localStorageKey + "currencyPreference", currency);
+        }
+    }
+
+    /**
+     *
+     * @param sortField
+     * @param sortDirection
+     */
+    sortData(sortField: string, sortDirection: string): void {
+        if(sortDirection === 'up') {
+            this.favs.sort(function(a,b) {
+                return numeral(a[sortField]).value() < numeral(b[sortField]).value() ? 1 : -1;
+            });
+        } else if(sortDirection === 'down') {
+            this.favs.sort(function(a,b) {
+                return numeral(a[sortField]).value() > numeral(b[sortField]).value() ? 1 : -1;
+            });
         }
     }
 }
