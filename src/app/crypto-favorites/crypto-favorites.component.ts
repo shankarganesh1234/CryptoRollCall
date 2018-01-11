@@ -46,6 +46,8 @@ export class CryptoFavoritesComponent implements OnInit{
      *
      */
     invokeCurrencyService(): void {
+        // hide the welcome message
+        $('#welcomeMessage').hide();
         this.currencyService
             .getCurrExchRates(this.currStr)
             .subscribe(

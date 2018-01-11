@@ -46,6 +46,8 @@ export class CryptoPricesComponent implements OnInit {
      *
      */
     invokeCurrencyService(): void {
+        // hide the welcome message
+        $('#welcomeMessage').show();
         this.currencyService
             .getCurrExchRates(this.currStr)
             .subscribe(

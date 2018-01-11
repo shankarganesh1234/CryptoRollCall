@@ -44,6 +44,8 @@ export class CryptoConverterComponent implements OnInit{
      *
      */
     invokeCurrencyService(): void {
+        // hide the welcome message
+        $('#welcomeMessage').hide();
         this.currencyService
             .getCurrExchRates(this.currStr)
             .subscribe(

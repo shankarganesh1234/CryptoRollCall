@@ -15,7 +15,8 @@ export class CryptoHowToComponent implements OnInit{
 
     constructor(private route: ActivatedRoute, private router: Router,private titleService: Title) {
         route.params.subscribe(val => {
-            //this.invokeCryptoService();
+            // hide the welcome message
+            $('#welcomeMessage').hide();
         });
     }
 
