@@ -1,6 +1,11 @@
 <div class="container">
     <h3>My Portfolio</h3>
-<div class="row">
+    <div *ngIf="favsCopy.length <= 0" class="row text-center">
+        <p>Your portfolio is empty at the moment.
+            <br/>Please add your favorite crypto currency to your portfolio by clicking on the <i class="fa fa-2x fa-plus"></i> icon in the home page
+        </p>
+    </div>
+<div *ngIf="favsCopy.length > 0" class="row">
     <div class="col-md-2">
         <input type="text" (ngModelChange)="filterResults($event)" [(ngModel)]="filterText" class="form-control" id="filter" aria-describedby="filterHelp" placeholder="Filter Results">
     </div>
@@ -16,7 +21,7 @@
     <div class="col-md-1"> <a (click)="getFavs()"><i class="fa fa-2x fa-refresh"></i></a></div>
 </div>
     <br/>
-    <div class="row">
+    <div id="chartContainer" class="row">
         <div class="col-md-6">
             <canvas #donut></canvas>
         </div>
@@ -26,7 +31,7 @@
     </div>
 </div>
 <br/>
-<div class="container">
+<div *ngIf="favsCopy.length > 0" class="container">
     <table class="table table-bordered table-striped">
         <thead>
         <tr>

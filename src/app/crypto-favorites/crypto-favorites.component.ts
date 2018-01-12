@@ -60,6 +60,14 @@ export class CryptoFavoritesComponent implements OnInit{
         this.barChartData = [];
         this.chartLabels = [];
 
+        if(this.favsCopy.length == 0)
+        {
+            $('#chartContainer').hide();
+            return;
+        } else {
+            $('#chartContainer').show();
+        }
+
         for(let i=0; i<this.favsCopy.length; i++) {
             this.chartData.push(parseInt(this.favsCopy[i].total));
             this.barChartData.push(this.favsCopy[i].quantity);
@@ -229,6 +237,12 @@ export class CryptoFavoritesComponent implements OnInit{
                 this.itemLen = this.itemLen + 1;
             }
         }
+        if(this.itemLen == 0) {
+            $('#chartContainer').hide();
+        } else {
+            $('#chartContainer').show();
+        }
+
     }
 
     setResult(result : any, fav: CryptoFavorite) : void {
@@ -318,8 +332,8 @@ export class CryptoFavoritesComponent implements OnInit{
         $("#favRemoved").addClass("in");
         window.setTimeout(function () {
             $("#favRemoved").removeClass("in");
-            $("#favRemoved").addCLass("out");
         }, 2000);
+        this.itemLen = 0;
         this.getFavs();
     }
 
