@@ -1,0 +1,38 @@
+import {Currency} from "./currency";
+export class Currencies {
+
+values: Currency[] = [
+    {displayName:"Australia Dollar", value:"AUD"},
+    {displayName:"Bulgaria Lev", value:"BGN"},
+    {displayName:"Brazil Real", value:"BRL"},
+    {displayName:"Canada Dollar", value:"CAD"},
+    {displayName:"Switzerland Franc", value:"CHF"},
+    {displayName:"China Yuan/Renminbi", value:"CNY"},
+    {displayName:"Czech Koruna", value:"CZK"},
+    {displayName:"Denmark Krone", value:"DKK"},
+    {displayName:"Euro", value:"EUR"},
+    {displayName:"Great Britain Pound", value:"GBP"},
+    {displayName:"Hong Kong Dollar", value:"HKD"},
+    {displayName:"Croatia Kuna", value:"HRK"},
+    {displayName:"Hungary Forint", value:"HUF"},
+    {displayName:"Indonesia Rupiah", value:"IDR"},
+    {displayName:"Israel New Shekel", value:"ILS"},
+    {displayName:"India Rupee", value:"INR"},
+    {displayName:"Japan Yen", value:"JPY"},
+    {displayName:"South Korea Won", value:"KRW"},
+    {displayName:"Mexico Peso", value:"MXN"},
+    {displayName:"Malaysia Ringgit", value:"MYR"},
+    {displayName:"Norway Kroner", value:"NOK"},
+    {displayName:"New Zealand Dollar", value:"NZD"},
+    {displayName:"Philippines Peso", value:"PHP"},
+    {displayName:"Poland Zloty", value:"PLN"},
+    {displayName:"Romania New Lei", value:"RON"},
+    {displayName:"Russia Rouble", value:"RUB"},
+    {displayName:"Sweden Krona", value:"SEK"},
+    {displayName:"Singapore Dollar", value:"SGD"},
+    {displayName:"Thailand Baht ", value:"THB"},
+    {displayName:"Turkish New Lira", value:"TRY"},
+    {displayName:"USA Dollar", value:"USD"},
+    {displayName:"South Africa Rand ", value:"ZAR"},
+];
+}

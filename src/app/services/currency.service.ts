@@ -6,35 +6,35 @@ import {Observable} from "rxjs/Rx";
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/catch";
 import {CryptoPrice} from "../models/crypto-price";
+import {CurrencyExchange} from "../models/currency-exchange";
 
 
 @Injectable()
-export class CryptoService {
+export class CurrencyService {
 
     private headers: Headers;
     private options: RequestOptions;
+    private currencyExchange: Observable<CurrencyExchange>;
 
     constructor(private http: Http) {
         this.headers = new Headers({
             'Content-Type': 'application/json',
-            'Accept': 'application/json',
-            'Access-Control-Allow-Origin' : '*'
+            'Accept': 'application/json'
         });
         this.options = new RequestOptions({headers: this.headers});
     }
 
-    getPriceTicker(): Observable<CryptoPrice[]> {
-        let url = 'coinmarketcap/v1/ticker?limit=0';
+    /**
+     *
+     * @returns {Observable<R|T>}
+     */
+    getCurrExchRates(currency: string): Observable<CurrencyExchange> {
+        let url = 'https://api.fixer.io/latest?base=' + currency;
         //let url = 'invalidurl';
-        return this.http
-            .get(url)
-            .map(this.extractData)
-            .catch(this.handleError);
-    }
 
-    getPriceTickerForId(id: string): Observable<CryptoPrice> {
-        let url = 'coinmarketcap/v1/ticker/' + id;
-        //let url = 'invalidurl';
+        if(this.currencyExchange != null)
+            return this.currencyExchange;
+
         return this.http
             .get(url)
             .map(this.extractData)
@@ -43,7 +43,8 @@ export class CryptoService {
 
     private extractData(res: Response) {
         let body = res.json();
-        return body || {};
+        this.currencyExchange = body || {};
+        return this.currencyExchange;
     }
 
     private handleError(error: any) {

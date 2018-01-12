@@ -1,14 +1,18 @@
 <div class="container">
-    <h5>Favorites</h5>
+    <h5>My Portfolio</h5>
 <div class="row">
     <div class="col-md-3">
         <input type="text" (ngModelChange)="filterResults($event)" [(ngModel)]="filterText" class="form-control" id="filter" aria-describedby="filterHelp" placeholder="Filter Results">
     </div>
-    <div class="col-md-1"></div>
-    <div class="col-md-4">
-        
+    <div class="col-md-3">
+        <select [(ngModel)]="currStr" (ngModelChange)="currencyChanged($event)" class="form-control" id="cryptoSelect">
+            <option *ngFor="let item of staticCurrencies.values" value= {{item.value}}>
+                {{item.value}} : {{item.displayName}}
+            </option>
+        </select>
     </div>
-
+    <div class="col-md-2">
+    </div>
     <div class="col-md-2"> <button type="submit" class="btn btn-primary" [routerLink]="'/'">Home</button></div>
     <div class="col-md-1"> <button type="submit" class="btn btn-primary" (click)="getFavs()">Refresh</button></div>
 
@@ -16,41 +20,42 @@
     <br/>
 </div>
 <div class="container">
-    <h5><small>Total Portfolio Value ~ </small>{{totalPortfolioStr}} $</h5>
+    <h5><small>Total Portfolio Value ~ </small>{{totalPortfolioStr}} <small>{{currStr}}</small></h5>
     <table class="table table-bordered table-striped">
         <thead>
         <tr>
-            <th scope="col" class="col_1">Symbol</th>
-            <th scope="col" class="col_2">Name</th>
-            <th scope="col" class="col_3">Price (USD)</th>
-            <th scope="col" class="col_4">Price (BTC)</th>
-            <th scope="col" class="col_5">Quantity</th>
-            <th scope="col" class="col_6">Total (USD)</th>
-            <th scope="col" class="col_7">Total (BTC)</th>
-            <th scope="col" class="col_8">Change % (1h)</th>
-            <th scope="col" class="col_9">Change % (24h)</th>
-            <th scope="col" class="col_10">Change % (7d)</th>
-            <th scope="col" class="col_11"></th>
+            <th scope="col" class="col_1 align-top col-md-1"></th>
+            <th scope="col" class="col_2 align-top col-md-1">Price <small>({{currStr}})</small><br/><a (click)="sortData('price_usd','up')"><i class="fa fa-arrow-down"></i></a> <a (click)="sortData('price_usd','down')"><i class="fa fa-arrow-up"></i></a></th>
+            <th scope="col" class="col_3 align-top col-md-1">Price <small>(BTC)</small><br/><a (click)="sortData('price_btc','up')"><i class="fa fa-arrow-down"></i></a> <a (click)="sortData('price_usd','down')"><i class="fa fa-arrow-up"></i></a></th>
+            <th scope="col" class="col_4 align-top col-md-1">Quantity <br/><a (click)="sortData('quantity','up')"><i class="fa fa-arrow-down"></i></a> <a (click)="sortData('price_usd','down')"><i class="fa fa-arrow-up"></i></a></th>
+            <th scope="col" class="col_5 align-top col-md-1">Total <br/><a (click)="sortData('total','up')"><i class="fa fa-arrow-down"></i></a> <a (click)="sortData('total','down')"><i class="fa fa-arrow-up"></i></a></th>
+            <th scope="col" class="col_6 align-top col-md-1">Total <small>(BTC)</small></th>
+            <th scope="col" class="col_7 align-top col-md-3">Change %<br/> <small>1h / 1d / 7d</small></th>
+            <th scope="col" class="col_8 col-md-1"></th>
         </tr>
         </thead>
         <tbody>
         <ng-container
                 *ngFor="let item of favs; let j=index">
             <tr>
-                <th scope="row" class="col_1">{{item.symbol}}</th>
-                <td class="col_2">{{item.name}}</td>
-                <td class="numbers-font col_3">{{item.price_usd}}</td>
-                <td class="numbers-font col_4">{{item.price_btc}}</td>
-                <td class="col_5"><input type="text" maxlength="10" size="7" [(ngModel)]="item.quantity" (ngModelChange)="updateTotals($event, j)" value="{{item.quantity}}">
+                <th scope="row" class="col_1">
+                    <a class="col_0" (click)="removeFavorite(item.symbol)" title="Remove from portfolio">
+                        <i class="fa fa-2x fa-minus-circle text-danger" aria-hidden="true"></i><br/>
+                    </a>
+                    {{item.symbol}}
+                    <small class="subscript-span">{{item.name}}</small>
+                </th>
+                <td class="numbers-font col_2">{{item.price}}</td>
+                <td class="numbers-font col_3">{{item.price_btc}}</td>
+                <td class="col_4"><input type="text" maxlength="10" size="10" [(ngModel)]="item.quantity" (ngModelChange)="updateTotals($event, j)" value="{{item.quantity}}">
                 </td>
-                <td class="numbers-font col_6">{{item.total_usd}}</td>
-                <td class="numbers-font col_7">{{item.total_btc}}</td>
-                <td class="numbers-font col_8" [ngClass] = "(item.percent_change_1h != null && item.percent_change_1h.includes('-') ? 'numbers-negative' : 'numbers-positive')">{{item.percent_change_1h}}</td>
-                <td class="numbers-font col_9" [ngClass] = "(item.percent_change_24h != null && item.percent_change_24h.includes('-') ? 'numbers-negative' : 'numbers-positive')">{{item.percent_change_24h}}</td>
-                <td class="numbers-font col_10" [ngClass] = "(item.percent_change_7d != null && item.percent_change_7d.includes('-') ? 'numbers-negative' : 'numbers-positive')">{{item.percent_change_7d}}</td>
-                <td class="col_11">
-                    <a (click)="removeFavorite(item.symbol)" title="Remove from favorites">
-                        <i class="fa fa-2x fa-minus-circle text-danger" aria-hidden="true"></i>
+                <td class="numbers-font col_5">{{item.total}}</td>
+                <td class="numbers-font col_6">{{item.total_btc}}</td>
+                <td class="numbers-font col_7"><span [ngClass] = "(item.percent_change_1h != null && item.percent_change_1h.includes('-') ? 'numbers-negative' : 'numbers-positive')">{{item.percent_change_1h}} <i [ngClass] = "(item.percent_change_1h != null && item.percent_change_1h.includes('-') ? 'fa fa-arrow-down' : 'fa fa-arrow-up')"></i></span> / <span [ngClass] = "(item.percent_change_24h != null && item.percent_change_24h.includes('-') ? 'numbers-negative' : 'numbers-positive')">{{item.percent_change_24h}} <i [ngClass] = "(item.percent_change_24h != null && item.percent_change_24h.includes('-') ? 'fa fa-arrow-down' : 'fa fa-arrow-up')"></i></span> / <span [ngClass] = "(item.percent_change_7d != null && item.percent_change_7d.includes('-') ? 'numbers-negative' : 'numbers-positive')">{{item.percent_change_7d}} <i [ngClass] = "(item.percent_change_7d != null && item.percent_change_7d.includes('-') ? 'fa fa-arrow-down' : 'fa fa-arrow-up')"></i></span></td>
+                <td class="col_8 text-center">
+                    <a (click)="removeFavorite(item.symbol)" title="Remove from portfolio">
+                        <i class="fa fa-2x fa-minus-circle text-danger" aria-hidden="true"></i><br/>
+                        Remove coin
                     </a>
                 </td>
             </tr>

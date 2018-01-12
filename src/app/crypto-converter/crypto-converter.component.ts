@@ -3,6 +3,9 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {CryptoService} from "../services/crypto.service";
 import {CryptoPrice} from "../models/crypto-price";
 import {Title} from "@angular/platform-browser";
+import {CurrencyExchange} from "../models/currency-exchange";
+import {Currencies} from "../models/currencies";
+import {CurrencyService} from "../services/currency.service";
 
 declare const $: any;
 @Component({
@@ -21,14 +24,39 @@ export class CryptoConverterComponent implements OnInit{
     total: number;
     cryptoTotal: number;
 
-    constructor(private route: ActivatedRoute, private router: Router, private cryptoService: CryptoService, private titleService: Title) {
+    currencyExchange: CurrencyExchange;
+    staticCurrencies: Currencies = new Currencies();
+    currStr: string = "USD";
+    currStrFiat: string = "USD";
+
+
+    constructor(private route: ActivatedRoute, private router: Router, private cryptoService: CryptoService, private titleService: Title, private currencyService: CurrencyService) {
         route.params.subscribe(val => {
-            this.invokeCryptoService();
+            this.invokeCurrencyService();
         });
     }
 
     ngOnInit(): void {
         this.titleService.setTitle('CryptoRollCall - Convert ETH XRP BTC to/from USD');
+    }
+
+    /**
+     *
+     */
+    invokeCurrencyService(): void {
+        // hide the welcome message
+        $('#welcomeMessage').hide();
+        this.currencyService
+            .getCurrExchRates(this.currStr)
+            .subscribe(
+                currExch => this.setCurrency(currExch),
+                error => console.log(error),
+            );
+    }
+
+    setCurrency(currExch: CurrencyExchange): void {
+        this.currencyExchange = currExch;
+        this.invokeCryptoService();
     }
 
     /**
@@ -49,16 +77,23 @@ export class CryptoConverterComponent implements OnInit{
      */
     setResult(result: CryptoPrice[]): void {
         this.cryptoPrices = result;
-        this.calculateToUsd(this.cryptoQuantity, this.cryptoStr);
-        this.calculateFromUsd(this.usdQuantity, this.usdCryptoStr);
+        this.calculateToFIAT(this.cryptoQuantity, this.cryptoStr, this.currStr);
+        this.calculateFromFiat(this.usdQuantity, this.usdCryptoStr, this.currStrFiat);
     }
 
     /**
      *
      * @param filterText
      */
-    calculateToUsd(cryptoQuantity: string, cryptoStr: string): void {
-        this.total = parseFloat(cryptoQuantity) * this.getCryptoPrice(cryptoStr);
+    calculateToFIAT(cryptoQuantity: string, cryptoStr: string, currency: string): void {
+        let exchangeRate: number;
+
+        if(currency == "USD")
+            exchangeRate = 1;
+        else
+            exchangeRate = this.currencyExchange.rates[currency];
+
+        this.total = exchangeRate * parseFloat(cryptoQuantity) * this.getCryptoPrice(cryptoStr);
     }
 
     /**
@@ -66,8 +101,17 @@ export class CryptoConverterComponent implements OnInit{
      * @param usdQuantity
      * @param cryptoStr
      */
-    calculateFromUsd(usdQuantity: string, cryptoStr: string) : void {
-        this.cryptoTotal = parseFloat(usdQuantity)/this.getCryptoPrice(cryptoStr);
+    calculateFromFiat(usdQuantity: string, cryptoStr: string, currStrFiat: string) : void {
+
+        let exchangeRate: number;
+
+        if(currStrFiat == "USD")
+            exchangeRate = 1;
+        else
+            exchangeRate = this.currencyExchange.rates[currStrFiat];
+
+        this.cryptoTotal = parseFloat(usdQuantity) / (this.getCryptoPrice(cryptoStr) * exchangeRate);
+
     }
 
     /**
