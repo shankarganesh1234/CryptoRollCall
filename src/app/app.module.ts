@@ -12,6 +12,8 @@ import {CryptoConverterComponent} from "./crypto-converter/crypto-converter.comp
 import {CryptoAboutComponent} from "./crypto-about/crypto-about.component";
 import {CurrencyService} from "./services/currency.service";
 import {CryptoHowToComponent} from "./crypto-howto/crypto-howto.component";
+import { ChartsModule } from 'ng2-charts/ng2-charts';
+
 
 @NgModule({
   declarations: [
@@ -29,6 +31,7 @@ import {CryptoHowToComponent} from "./crypto-howto/crypto-howto.component";
     HttpModule,
     JsonpModule,
     ReactiveFormsModule,
+    ChartsModule
   ],
   providers: [CryptoService, CurrencyService],
   bootstrap: [AppComponent],

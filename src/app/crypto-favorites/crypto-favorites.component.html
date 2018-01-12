@@ -1,26 +1,32 @@
 <div class="container">
-    <h5>My Portfolio</h5>
+    <h3>My Portfolio</h3>
 <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-2">
         <input type="text" (ngModelChange)="filterResults($event)" [(ngModel)]="filterText" class="form-control" id="filter" aria-describedby="filterHelp" placeholder="Filter Results">
     </div>
-    <div class="col-md-3">
+    <div class="col-md-2">
         <select [(ngModel)]="currStr" (ngModelChange)="currencyChanged($event)" class="form-control" id="cryptoSelect">
             <option *ngFor="let item of staticCurrencies.values" value= {{item.value}}>
                 {{item.value}} : {{item.displayName}}
             </option>
         </select>
     </div>
-    <div class="col-md-2">
+    <div class="col-md-6">
     </div>
-    <div class="col-md-2"> <button type="submit" class="btn btn-primary" [routerLink]="'/'">Home</button></div>
-    <div class="col-md-1"> <button type="submit" class="btn btn-primary" (click)="getFavs()">Refresh</button></div>
-
+    <div class="col-md-1"> <a (click)="getFavs()"><i class="fa fa-2x fa-refresh"></i></a></div>
 </div>
     <br/>
+    <div class="row">
+        <div class="col-md-6">
+            <canvas #donut></canvas>
+        </div>
+        <div class="col-md-6">
+            <canvas #bar></canvas>
+        </div>
+    </div>
 </div>
+<br/>
 <div class="container">
-    <h5><small>Total Portfolio Value ~ </small>{{totalPortfolioStr}} <small>{{currStr}}</small></h5>
     <table class="table table-bordered table-striped">
         <thead>
         <tr>

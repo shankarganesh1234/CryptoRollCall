@@ -1,5 +1,4 @@
 <div class="container">
-<h5>Home</h5>
     <div class="row">
     <div class="col-md-3">
         <input type="text" (ngModelChange)="filterResults($event)" [(ngModel)]="filterText" class="form-control" id="filter" aria-describedby="filterHelp" placeholder="Filter Results">
@@ -11,11 +10,8 @@
                 </option>
             </select>
         </div>
-    <div class="col-md-2"></div>
-    <div class="col-md-2">
-            <button type="button" [routerLink]="'/favorites'" class="btn btn-primary">Portfolio</button>
-    </div>
-    <div class="col-md-1"> <button type="submit" class="btn btn-primary" (click)="invokeCryptoService()">Refresh</button></div>
+    <div class="col-md-5"></div>
+    <div class="col-md-1"><a (click)="invokeCryptoService()"><i class="fa fa-2x fa-refresh"></i></a> </div>
 
 </div>
     <br/>

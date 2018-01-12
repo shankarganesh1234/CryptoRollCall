@@ -8317,4 +8317,52 @@ a > img.fh5co-align-center {
 a:hover {
   cursor:pointer;
 }
-/*# sourceMappingURL=style.css.map */
+
+/**
+changes to UI
+ */
+.body-bg-gradient {
+  background: linear-gradient(to right, #757F9A,#D7DDE8);
+}
+
+.div-bg-gradient {
+  background: linear-gradient(to right, #2BC0E4,#EAECC6);
+}
+.div-profit {
+  background-color: lightgreen;
+  color: black;
+  font-size:medium;
+  font-family: 'Roboto', sans-serif;
+}
+
+.div-loss {
+  background-color: #EB2B36;
+  color: white;
+  font-size:medium;
+  font-family: 'Roboto', sans-serif;
+}
+
+.li-inline-block {
+  display: inline-block;
+}
+
+.li-panel-heading {
+  color: white;
+  font-size: x-large;
+}
+.fav-input {
+  float:right;
+  color: black
+}
+
+.float-right{
+  float:right
+}
+.price {
+  color: yellow;
+  font-size: large
+}
+.price-total {
+  font-size: x-large;
+  color:lightgreen
+}

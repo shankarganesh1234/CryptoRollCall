@@ -1,4 +1,4 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, ElementRef, OnInit, ViewChild} from "@angular/core";
 import {ActivatedRoute, Router} from "@angular/router";
 import {CryptoService} from "../services/crypto.service";
 import {CryptoFavorite} from "../models/crypto-favorite";
@@ -7,6 +7,8 @@ import {CurrencyExchange} from "../models/currency-exchange";
 import {Currencies} from "../models/currencies";
 import {CurrencyService} from "../services/currency.service";
 import * as numeral from 'numeral';
+import Chart from 'chart.js';
+
 
 
 declare const $:any;
@@ -32,6 +34,15 @@ export class CryptoFavoritesComponent implements OnInit{
     staticCurrencies: Currencies = new Currencies();
     currStr: string = "USD";
 
+    // chart related
+    @ViewChild('donut') donut: ElementRef;
+    @ViewChild('bar') bar: ElementRef;
+
+    chartData: number[] = [];
+    barChartData: number[] = [];
+    chartLabels: string[] = [];
+    itemLen: number = 0;
+
     constructor(private route: ActivatedRoute, private router: Router, private cryptoService: CryptoService, private titleService: Title, private currencyService: CurrencyService){
         route.params.subscribe(val => {
             this.invokeCurrencyService();
@@ -40,7 +51,137 @@ export class CryptoFavoritesComponent implements OnInit{
 
     ngOnInit(): void {
         this.titleService.setTitle('CryptoRollCall - Crypto portfolio manager and crypto tracker');
+        this.initChart();
     }
+
+    initChart(): void {
+        this.itemLen = 0;
+        this.chartData = [];
+        this.barChartData = [];
+        this.chartLabels = [];
+
+        for(let i=0; i<this.favsCopy.length; i++) {
+            this.chartData.push(parseInt(this.favsCopy[i].total));
+            this.barChartData.push(this.favsCopy[i].quantity);
+            this.chartLabels.push(this.favsCopy[i].symbol);
+        }
+        this.initPieChart();
+        this.initBarChart();
+    }
+
+    initBarChart(): void {
+
+        let barCtx = this.bar.nativeElement.getContext('2d');
+        var data = {
+            labels: this.chartLabels,
+            datasets: [
+                {
+                    "data": this.barChartData,   // Example data
+                    "backgroundColor": [
+                        "#1fc8f8",
+                        "#76a346",
+                        "#5787dd",
+                        "#3a2974",
+                        "#a0f75b",
+                        "#fc5484",
+                        "#14a51b",
+                        "#133d48",
+                        "#76c543",
+                        "#3021d2",
+                        "#c38aba",
+                        "#6b70a5",
+                        "#6061ea",
+                        "#aa3bb3",
+                        "#80509a",
+                        "#1c5ba2",
+                        "#fda00d",
+                        "#c55a3a",
+                        "#cb10d9",
+                        "#bcc7f3",
+                        "#27ddb9",
+                        "#c7394e"
+                    ]
+                }]
+        };
+
+        var chart = new Chart(
+            barCtx,
+            {
+                "type": 'bar',
+                "data": data,
+                "options": {
+                    "legend":{"display": false},
+                    "cutoutPercentage": 10,
+                    "animation": {
+                        "animateScale": true,
+                        "animateRotate": false
+                    },
+                    "title": {
+                        "display":true,
+                        "text":'Coin distribution',
+                        "fontSize":20
+                    }
+                }
+            }
+        );
+    }
+
+    initPieChart() : void {
+
+        let donutCtx = this.donut.nativeElement.getContext('2d');
+        var data = {
+            labels: this.chartLabels,
+            datasets: [
+                {
+                    "data": this.chartData,   // Example data
+                    "backgroundColor": [
+                        "#1fc8f8",
+                        "#76a346",
+                        "#5787dd",
+                        "#3a2974",
+                        "#a0f75b",
+                        "#fc5484",
+                        "#14a51b",
+                        "#133d48",
+                        "#76c543",
+                        "#3021d2",
+                        "#c38aba",
+                        "#6b70a5",
+                        "#6061ea",
+                        "#aa3bb3",
+                        "#80509a",
+                        "#1c5ba2",
+                        "#fda00d",
+                        "#c55a3a",
+                        "#cb10d9",
+                        "#bcc7f3",
+                        "#27ddb9",
+                        "#c7394e"
+                    ]
+                }]
+        };
+
+        var chart = new Chart(
+            donutCtx,
+            {
+                "type": 'doughnut',
+                "data": data,
+                "options": {
+                    "cutoutPercentage": 50,
+                    "animation": {
+                        "animateScale": true,
+                        "animateRotate": false
+                    },
+                    "title": {
+                        "display":true,
+                        "text": this.totalPortfolioStr + ' ' + this.currStr,
+                        "fontSize":20
+                    }
+                }
+            }
+        );
+    }
+
 
     /**
      *
@@ -85,6 +226,7 @@ export class CryptoFavoritesComponent implements OnInit{
                         result => this.setResult(result, fav),
                         error => console.log(error),
                     );
+                this.itemLen = this.itemLen + 1;
             }
         }
     }
@@ -115,6 +257,11 @@ export class CryptoFavoritesComponent implements OnInit{
         fav.quantity = q;
         this.favs.push(fav);
         this.favsCopy.push(fav);
+
+         // total length equal
+        if(this.itemLen == this.favsCopy.length) {
+            this.initChart();
+        }
 
         this.favs.sort(function(a,b) {
            return a.rank - b.rank;
@@ -158,6 +305,7 @@ export class CryptoFavoritesComponent implements OnInit{
 
         localStorage.removeItem(this.localStorageKey + this.favs[index].symbol);
         localStorage.setItem(this.localStorageKey + this.favs[index].symbol, JSON.stringify(this.favs[index]));
+        this.initChart();
     }
 
     /**
@@ -214,6 +362,7 @@ export class CryptoFavoritesComponent implements OnInit{
             // set choice in local storage
             localStorage.setItem(this.localStorageKey + "currencyPreference", currency);
         }
+        this.initChart();
     }
 
     /**
