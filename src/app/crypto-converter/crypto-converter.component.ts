@@ -37,7 +37,7 @@ export class CryptoConverterComponent implements OnInit{
     }
 
     ngOnInit(): void {
-        this.titleService.setTitle('CryptoRollCall - Convert ETH XRP BTC to/from USD');
+        this.titleService.setTitle('CryptoRollCall - Convert ETH XRP BTC to/from USD EUR AUD');
     }
 
     /**

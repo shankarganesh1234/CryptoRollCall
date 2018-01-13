@@ -7,9 +7,19 @@
     </div>
 <div *ngIf="favsCopy.length > 0" class="row">
     <div class="col-md-2">
-        <input type="text" (ngModelChange)="filterResults($event)" [(ngModel)]="filterText" class="form-control" id="filter" aria-describedby="filterHelp" placeholder="Filter Results">
+
+        <select [(ngModel)]="filterText" (ngModelChange)="filterResults($event)" class="form-control" id="cryptoSelect">
+            <option value="">
+                Filter results
+            </option>
+            <option *ngFor="let item of favsCopy" value= {{item.symbol}}>
+                {{item.symbol}} : {{item.name}}
+            </option>
+        </select>
+
+        <!--<input type="text" (ngModelChange)="filterResults($event)" [(ngModel)]="filterText" class="form-control" id="filter" aria-describedby="filterHelp" placeholder="Filter Results">-->
     </div>
-    <div class="col-md-2">
+    <div class="col-md-3">
         <select [(ngModel)]="currStr" (ngModelChange)="currencyChanged($event)" class="form-control" id="cryptoSelect">
             <option *ngFor="let item of staticCurrencies.values" value= {{item.value}}>
                 {{item.value}} : {{item.displayName}}
@@ -41,7 +51,7 @@
             <th scope="col" class="col_4 align-top col-md-1">Quantity <br/><a (click)="sortData('quantity','up')"><i class="fa fa-arrow-down"></i></a> <a (click)="sortData('price_usd','down')"><i class="fa fa-arrow-up"></i></a></th>
             <th scope="col" class="col_5 align-top col-md-1">Total <br/><a (click)="sortData('total','up')"><i class="fa fa-arrow-down"></i></a> <a (click)="sortData('total','down')"><i class="fa fa-arrow-up"></i></a></th>
             <th scope="col" class="col_6 align-top col-md-1">Total <small>(BTC)</small></th>
-            <th scope="col" class="col_7 align-top col-md-3">Change %<br/> <small>1h / 1d / 7d</small></th>
+            <th scope="col" class="col_7 align-top col-md-3">Change %<br/> <small>1h <a (click)="sortData('percent_change_1h','up')"><i class="fa fa-arrow-down"></i></a> <a (click)="sortData('percent_change_1h','down')"><i class="fa fa-arrow-up"></i></a>/ 1d <a (click)="sortData('percent_change_1h','up')"><i class="fa fa-arrow-down"></i></a> <a (click)="sortData('percent_change_1h','down')"><i class="fa fa-arrow-up"></i></a>/ 7d <a (click)="sortData('percent_change_1h','up')"><i class="fa fa-arrow-down"></i></a> <a (click)="sortData('percent_change_1h','down')"><i class="fa fa-arrow-up"></i></a></small></th>
             <th scope="col" class="col_8 col-md-1"></th>
         </tr>
         </thead>

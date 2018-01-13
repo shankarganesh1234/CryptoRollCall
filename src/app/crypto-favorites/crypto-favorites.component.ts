@@ -23,7 +23,7 @@ export class CryptoFavoritesComponent implements OnInit{
 
     favs: CryptoFavorite[] = [];
     favsCopy: CryptoFavorite[] = [];
-    filterText: string;
+    filterText: string = '';
     totalPortfolio: number = 0;
     totalPortfolioUsd: number = 0;
     totalPortfolioStr: string;
@@ -107,7 +107,20 @@ export class CryptoFavoritesComponent implements OnInit{
                         "#cb10d9",
                         "#bcc7f3",
                         "#27ddb9",
-                        "#c7394e"
+                        "#c7394e",
+                        "#A52A2A",
+                        "#BE2625",
+                        "#B22222",
+                        "#330000",
+                        "#CC1100",
+                        "#EE5C42",
+                        "#FF7256",
+                        "#CDC5BF",
+                        "#EE8833",
+                        "#FFCC11",
+                        "#B3C95A",
+                        "#AADD00",
+                        "#BCEE68"
                     ]
                 }]
         };
@@ -119,7 +132,7 @@ export class CryptoFavoritesComponent implements OnInit{
                 "data": data,
                 "options": {
                     "legend":{"display": false},
-                    "cutoutPercentage": 10,
+                    "cutoutPercentage": 100,
                     "animation": {
                         "animateScale": true,
                         "animateRotate": false
@@ -128,7 +141,8 @@ export class CryptoFavoritesComponent implements OnInit{
                         "display":true,
                         "text":'Coin distribution',
                         "fontSize":20
-                    }
+                    },
+                    "showTooltips": false
                 }
             }
         );
@@ -164,7 +178,20 @@ export class CryptoFavoritesComponent implements OnInit{
                         "#cb10d9",
                         "#bcc7f3",
                         "#27ddb9",
-                        "#c7394e"
+                        "#c7394e",
+                        "#A52A2A",
+                        "#BE2625",
+                        "#B22222",
+                        "#330000",
+                        "#CC1100",
+                        "#EE5C42",
+                        "#FF7256",
+                        "#CDC5BF",
+                        "#EE8833",
+                        "#FFCC11",
+                        "#B3C95A",
+                        "#AADD00",
+                        "#BCEE68"
                     ]
                 }]
         };
@@ -355,8 +382,9 @@ export class CryptoFavoritesComponent implements OnInit{
                 this.favs[i].price = (parseFloat(this.favs[i].price_usd) * exchangeRate).toFixed(2);
                 this.favs[i].total = (parseFloat(this.favs[i].total_usd) * exchangeRate).toFixed(2);
             }
+        }
 
-            for (var i = 0; i < this.favsCopy.length; i++) {
+        for (var i = 0; i < this.favsCopy.length; i++) {
 
                 if (currency == "USD") {
                     this.favsCopy[i].price = this.favsCopy[i].price_usd;
@@ -365,18 +393,16 @@ export class CryptoFavoritesComponent implements OnInit{
                     this.favsCopy[i].price = (parseFloat(this.favsCopy[i].price_usd) * exchangeRate).toFixed(2);
                     this.favsCopy[i].total = (parseFloat(this.favsCopy[i].total_usd) * exchangeRate).toFixed(2);
                 }
-            }
+        }
 
-            if (currency == "USD") {
+        if (currency == "USD") {
                 this.totalPortfolioStr = this.totalPortfolioUsd.toFixed(2);
-            } else {
+        } else {
                 this.totalPortfolioStr = (this.totalPortfolioUsd * exchangeRate).toFixed(2);
-            }
-
+        }
             // set choice in local storage
             localStorage.setItem(this.localStorageKey + "currencyPreference", currency);
-        }
-        this.initChart();
+            this.initChart();
     }
 
     /**
