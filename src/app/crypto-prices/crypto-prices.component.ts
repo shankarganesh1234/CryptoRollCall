@@ -1,4 +1,4 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, ElementRef, OnInit, ViewChild} from "@angular/core";
 import {ActivatedRoute, Router} from "@angular/router";
 import {CryptoService} from "../services/crypto.service";
 import {CryptoPrice} from "../models/crypto-price";
@@ -9,6 +9,8 @@ import {CurrencyService} from "../services/currency.service";
 import {CurrencyExchange} from "../models/currency-exchange";
 import {Currencies} from "../models/currencies";
 import * as numeral from 'numeral';
+import Chart from 'chart.js';
+
 
 
 declare const $: any;
@@ -23,6 +25,7 @@ export class CryptoPricesComponent implements OnInit {
 
     cryptoPrices: CryptoPrice[] = [];
     cryptoPricesCopy: CryptoPrice[] = [];
+
     filterText: string;
     localStorageKey: string = "crypto_";
 
@@ -30,6 +33,16 @@ export class CryptoPricesComponent implements OnInit {
     currencyExchange: CurrencyExchange;
     staticCurrencies: Currencies = new Currencies();
     currStr: string = "USD";
+
+    // chart related
+    @ViewChild('horbar1') horbar1: ElementRef;
+    @ViewChild('horbar2') horbar2: ElementRef;
+    gainersData: number[] = [];
+    gainersLabels: string[] = [];
+    losersData: number[] = [];
+    losersLabels: string[] = [];
+    cryptoPricesGainers : CryptoPrice[] = [];
+    cryptoPricesLosers : CryptoPrice[] = [];
 
     constructor(private route: ActivatedRoute, private router: Router, private cryptoService: CryptoService, private titleService: Title, private currencyService: CurrencyService) {
 
@@ -105,7 +118,12 @@ export class CryptoPricesComponent implements OnInit {
 
         }
         this.cryptoPricesCopy = this.cryptoPrices;
+
+        // chart related
+        this.initChart(this.cryptoPrices);
     }
+
+
 
     /**
      *
@@ -198,6 +216,133 @@ export class CryptoPricesComponent implements OnInit {
                     return numeral(a[sortField]).value() > numeral(b[sortField]).value() ? 1 : -1;
             });
         }
+    }
+
+
+    initChart(cryptoPrices: CryptoPrice[]): void {
+
+        // reset all fields
+        this.cryptoPricesGainers = [];
+        this.cryptoPricesLosers = [];
+        this.gainersLabels = [];
+        this.gainersData = [];
+        this.losersLabels = [];
+        this.losersData = [];
+
+        this.cryptoPricesGainers = cryptoPrices;
+        this.cryptoPricesLosers = cryptoPrices;
+        // top 5 charts
+        this.cryptoPricesGainers = this.cryptoPricesGainers.slice().sort(function(a,b) {
+            return numeral(a['percent_change_24h']).value() < numeral(b['percent_change_24h']).value() ? 1 : -1;
+        }).slice(0,5);
+
+        this.cryptoPricesLosers = this.cryptoPricesLosers.slice().sort(function(a,b) {
+            return numeral(a['percent_change_24h']).value() > numeral(b['percent_change_24h']).value() ? 1 : -1;
+        }).slice(0,5);
+
+        for(let i=0; i<this.cryptoPricesGainers.length; i++) {
+            this.gainersLabels.push(this.cryptoPricesGainers[i].name);
+            this.gainersData.push(parseFloat(this.cryptoPricesGainers[i].percent_change_24h));
+        }
+
+        for(let i=0; i<this.cryptoPricesLosers.length; i++) {
+            this.losersLabels.push(this.cryptoPricesLosers[i].name);
+            this.losersData.push(parseFloat(this.cryptoPricesLosers[i].percent_change_24h));
+        }
+        this.initGainersChart();
+        this.initLosersChart();
+    }
+
+    /**
+     *
+     */
+    initGainersChart(): void {
+
+        let barCtx = this.horbar1.nativeElement.getContext('2d');
+        var data = {
+            labels: this.gainersLabels,
+            datasets: [
+                {
+                    "data": this.gainersData,   // Example data
+                    "backgroundColor": [
+                        "#7CFC00",
+                        "#32CD32",
+                        "#228B22",
+                        "#006400",
+                        "#ADFF2F",
+                        "#00FF7F",
+                        "#98FB98"
+                    ]
+                }]
+        };
+
+        var chart = new Chart(
+            barCtx,
+            {
+                "type": 'horizontalBar',
+                "data": data,
+                "options": {
+                    "legend":{"display": false},
+                    "cutoutPercentage": 100,
+                    "animation": {
+                        "animateScale": true,
+                        "animateRotate": false
+                    },
+                    "title": {
+                        "display":true,
+                        "text":'Top 5 Gain (24h)',
+                        "fontSize":20
+                    },
+                    "showTooltips": false
+                }
+            }
+        );
+    }
+
+    /**
+     *
+     */
+    initLosersChart(): void {
+
+        let barCtx = this.horbar2.nativeElement.getContext('2d');
+        var data = {
+            labels: this.losersLabels,
+            datasets: [
+                {
+                    "data": this.losersData,   // Example data
+                    "backgroundColor": [
+                        "#FA8072",
+                        "#DC143C",
+                        "#FF0000",
+                        "#ff0000",
+                        "#800000",
+                        "#FF4500",
+                        "#FF6347"
+                    ]
+                }]
+        };
+
+        var chart = new Chart(
+            barCtx,
+            {
+                "type": 'horizontalBar',
+                "data": data,
+                "options": {
+                    "legend":{"display": false},
+                    "cutoutPercentage": 100,
+                    "animation": {
+                        "animateScale": true,
+                        "animateRotate": false
+                    },
+                    "title": {
+                        "display":true,
+                        "text":'Top 5 Loss (24h)',
+                        "fontSize":20
+                    },
+                    "showTooltips": false
+                }
+            }
+        );
     }
 
 }

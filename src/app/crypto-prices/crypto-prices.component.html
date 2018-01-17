@@ -1,4 +1,14 @@
+
 <div class="container" id="cryptoprices">
+    <div class="row">
+            <div class="col-md-5">
+                <canvas #horbar1></canvas>
+            </div>
+            <div class="col-md-5 col-md-offset-2">
+                <canvas #horbar2></canvas>
+            </div>
+    </div>
+    <hr/>
     <div class="row">
     <div class="col-md-3">
         <input type="text" (ngModelChange)="filterResults($event)" [(ngModel)]="filterText" class="form-control" id="filter" aria-describedby="filterHelp" placeholder="Filter Results">
