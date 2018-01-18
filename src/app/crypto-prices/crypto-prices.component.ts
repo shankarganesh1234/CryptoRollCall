@@ -3,14 +3,13 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {CryptoService} from "../services/crypto.service";
 import {CryptoPrice} from "../models/crypto-price";
 import {CryptoFavorite} from "../models/crypto-favorite";
-import { Title } from '@angular/platform-browser';
+import {Title} from "@angular/platform-browser";
 import {isUndefined} from "util";
 import {CurrencyService} from "../services/currency.service";
 import {CurrencyExchange} from "../models/currency-exchange";
 import {Currencies} from "../models/currencies";
-import * as numeral from 'numeral';
-import Chart from 'chart.js';
-
+import * as numeral from "numeral";
+import Chart from "chart.js";
 
 
 declare const $: any;
@@ -37,12 +36,20 @@ export class CryptoPricesComponent implements OnInit {
     // chart related
     @ViewChild('horbar1') horbar1: ElementRef;
     @ViewChild('horbar2') horbar2: ElementRef;
-    gainersData: number[] = [];
-    gainersLabels: string[] = [];
-    losersData: number[] = [];
-    losersLabels: string[] = [];
-    cryptoPricesGainers : CryptoPrice[] = [];
-    cryptoPricesLosers : CryptoPrice[] = [];
+    @ViewChild('horbar3') horbar3: ElementRef;
+
+    gainersHourData: number[] = [];
+    gainersHourLabels: string[] = [];
+
+    gainersDayData: number[] = [];
+    gainersDayLabels: string[] = [];
+
+    gainersWeekData: number[] = [];
+    gainersWeekLabels: string[] = [];
+
+    cryptoHourGainers : CryptoPrice[] = [];
+    cryptoDayGainers : CryptoPrice[] = [];
+    cryptoWeekGainers : CryptoPrice[] = [];
 
     constructor(private route: ActivatedRoute, private router: Router, private cryptoService: CryptoService, private titleService: Title, private currencyService: CurrencyService) {
 
@@ -209,11 +216,11 @@ export class CryptoPricesComponent implements OnInit {
     sortData(sortField: string, sortDirection: string): void {
         if(sortDirection === 'up') {
             this.cryptoPrices.sort(function(a,b) {
-                    return numeral(a[sortField]).value() < numeral(b[sortField]).value() ? 1 : -1;
+                return numeral(a[sortField]).value() < numeral(b[sortField]).value() ? 1 : -1;
             });
         } else if(sortDirection === 'down') {
             this.cryptoPrices.sort(function(a,b) {
-                    return numeral(a[sortField]).value() > numeral(b[sortField]).value() ? 1 : -1;
+                return numeral(a[sortField]).value() > numeral(b[sortField]).value() ? 1 : -1;
             });
         }
     }
@@ -222,56 +229,119 @@ export class CryptoPricesComponent implements OnInit {
     initChart(cryptoPrices: CryptoPrice[]): void {
 
         // reset all fields
-        this.cryptoPricesGainers = [];
-        this.cryptoPricesLosers = [];
-        this.gainersLabels = [];
-        this.gainersData = [];
-        this.losersLabels = [];
-        this.losersData = [];
+        this.cryptoHourGainers = [];
+        this.cryptoDayGainers = [];
+        this.cryptoWeekGainers = [];
 
-        this.cryptoPricesGainers = cryptoPrices;
-        this.cryptoPricesLosers = cryptoPrices;
+        this.gainersHourLabels = [];
+        this.gainersDayLabels = [];
+        this.gainersWeekLabels = [];
+
+        this.gainersHourData = [];
+        this.gainersDayData = [];
+        this.gainersWeekData = [];
+
+
+        this.cryptoHourGainers = cryptoPrices;
+        this.cryptoDayGainers = cryptoPrices;
+        this.cryptoWeekGainers = cryptoPrices;
+
         // top 5 charts
-        this.cryptoPricesGainers = this.cryptoPricesGainers.slice().sort(function(a,b) {
+        this.cryptoHourGainers = this.cryptoHourGainers.slice().sort(function(a,b) {
+            return numeral(a['percent_change_1h']).value() < numeral(b['percent_change_1h']).value() ? 1 : -1;
+        }).slice(0,5);
+
+        this.cryptoDayGainers = this.cryptoDayGainers.slice().sort(function(a,b) {
             return numeral(a['percent_change_24h']).value() < numeral(b['percent_change_24h']).value() ? 1 : -1;
         }).slice(0,5);
 
-        this.cryptoPricesLosers = this.cryptoPricesLosers.slice().sort(function(a,b) {
-            return numeral(a['percent_change_24h']).value() > numeral(b['percent_change_24h']).value() ? 1 : -1;
+        this.cryptoWeekGainers = this.cryptoWeekGainers.slice().sort(function(a,b) {
+            return numeral(a['percent_change_7d']).value() < numeral(b['percent_change_7d']).value() ? 1 : -1;
         }).slice(0,5);
 
-        for(let i=0; i<this.cryptoPricesGainers.length; i++) {
-            this.gainersLabels.push(this.cryptoPricesGainers[i].name);
-            this.gainersData.push(parseFloat(this.cryptoPricesGainers[i].percent_change_24h));
+        for(let i=0; i<this.cryptoHourGainers.length; i++) {
+            this.gainersHourLabels.push(this.cryptoHourGainers[i].name);
+            this.gainersHourData.push(parseFloat(this.cryptoHourGainers[i].percent_change_1h));
         }
 
-        for(let i=0; i<this.cryptoPricesLosers.length; i++) {
-            this.losersLabels.push(this.cryptoPricesLosers[i].name);
-            this.losersData.push(parseFloat(this.cryptoPricesLosers[i].percent_change_24h));
+        for(let i=0; i<this.cryptoDayGainers.length; i++) {
+            this.gainersDayLabels.push(this.cryptoDayGainers[i].name);
+            this.gainersDayData.push(parseFloat(this.cryptoDayGainers[i].percent_change_24h));
         }
-        this.initGainersChart();
-        this.initLosersChart();
+
+        for(let i=0; i<this.cryptoWeekGainers.length; i++) {
+            this.gainersWeekLabels.push(this.cryptoWeekGainers[i].name);
+            this.gainersWeekData.push(parseFloat(this.cryptoWeekGainers[i].percent_change_7d));
+        }
+
+        this.initGainersHourChart();
+        this.initGainersDayChart();
+        this.initGainersWeekChart();
     }
 
     /**
      *
      */
-    initGainersChart(): void {
+    initGainersHourChart(): void {
 
         let barCtx = this.horbar1.nativeElement.getContext('2d');
         var data = {
-            labels: this.gainersLabels,
+            labels: this.gainersHourLabels,
             datasets: [
                 {
-                    "data": this.gainersData,   // Example data
+                    "data": this.gainersHourData,   // Example data
                     "backgroundColor": [
-                        "#7CFC00",
-                        "#32CD32",
-                        "#228B22",
-                        "#006400",
-                        "#ADFF2F",
-                        "#00FF7F",
-                        "#98FB98"
+                        "#aa3bb3",
+                        "#80509a",
+                        "#1c5ba2",
+                        "#fda00d",
+                        "#c55a3a",
+                        "#cb10d9",
+                        "#bcc7f3",
+                        "#27ddb9",
+                        "#c7394e",
+                        "#A52A2A",
+                        "#BE2625",
+                        "#B22222",
+                        "#330000",
+                        "#CC1100",
+                        "#EE5C42",
+                        "#FF7256",
+                        "#3a2974",
+                        "#a0f75b",
+                        "#fc5484",
+                        "#14a51b",
+                        "#133d48",
+                        "#76c543",
+                        "#3021d2",
+                        "#c38aba",
+                        "#6b70a5",
+                        "#6061ea",
+                        "#aa3bb3",
+                        "#80509a",
+                        "#1c5ba2",
+                        "#fda00d",
+                        "#c55a3a",
+                        "#cb10d9",
+                        "#bcc7f3",
+                        "#27ddb9",
+                        "#c7394e",
+                        "#A52A2A",
+                        "#a0f75b",
+                        "#fc5484",
+                        "#14a51b",
+                        "#133d48",
+                        "#76c543",
+                        "#3021d2",
+                        "#c38aba",
+                        "#6b70a5",
+                        "#6061ea",
+                        "#CDC5BF",
+                        "#EE8833",
+                        "#FFCC11",
+                        "#B3C95A",
+                        "#AADD00",
+                        "#BCEE68"
                     ]
                 }]
         };
@@ -290,7 +360,7 @@ export class CryptoPricesComponent implements OnInit {
                     },
                     "title": {
                         "display":true,
-                        "text":'Top 5 Gain (24h)',
+                        "text":'Top 5 Gain (Hourly)',
                         "fontSize":20
                     },
                     "showTooltips": false
@@ -302,22 +372,66 @@ export class CryptoPricesComponent implements OnInit {
     /**
      *
      */
-    initLosersChart(): void {
+    initGainersDayChart(): void {
 
         let barCtx = this.horbar2.nativeElement.getContext('2d');
         var data = {
-            labels: this.losersLabels,
+            labels: this.gainersDayLabels,
             datasets: [
                 {
-                    "data": this.losersData,   // Example data
+                    "data": this.gainersDayData,   // Example data
                     "backgroundColor": [
-                        "#FA8072",
-                        "#DC143C",
-                        "#FF0000",
-                        "#ff0000",
-                        "#800000",
-                        "#FF4500",
-                        "#FF6347"
+                        "#1c5ba2",
+                        "#fda00d",
+                        "#c55a3a",
+                        "#cb10d9",
+                        "#bcc7f3",
+                        "#27ddb9",
+                        "#3a2974",
+                        "#a0f75b",
+                        "#fc5484",
+                        "#14a51b",
+                        "#133d48",
+                        "#76c543",
+                        "#3021d2",
+                        "#c38aba",
+                        "#6b70a5",
+                        "#6061ea",
+                        "#aa3bb3",
+                        "#80509a",
+                        "#c7394e",
+                        "#A52A2A",
+                        "#a0f75b",
+                        "#fc5484",
+                        "#14a51b",
+                        "#133d48",
+                        "#76c543",
+                        "#3021d2",
+                        "#c38aba",
+                        "#6b70a5",
+                        "#6061ea",
+                        "#aa3bb3",
+                        "#80509a",
+                        "#1c5ba2",
+                        "#fda00d",
+                        "#c55a3a",
+                        "#cb10d9",
+                        "#bcc7f3",
+                        "#27ddb9",
+                        "#c7394e",
+                        "#A52A2A",
+                        "#BE2625",
+                        "#B22222",
+                        "#330000",
+                        "#CC1100",
+                        "#EE5C42",
+                        "#FF7256",
+                        "#CDC5BF",
+                        "#EE8833",
+                        "#FFCC11",
+                        "#B3C95A",
+                        "#AADD00",
+                        "#BCEE68"
                     ]
                 }]
         };
@@ -336,7 +450,97 @@ export class CryptoPricesComponent implements OnInit {
                     },
                     "title": {
                         "display":true,
-                        "text":'Top 5 Loss (24h)',
+                        "text":'Top 5 Gain (Daily)',
+                        "fontSize":20
+                    },
+                    "showTooltips": false
+                }
+            }
+        );
+    }
+
+    /**
+     *
+     */
+    initGainersWeekChart(): void {
+
+        let barCtx = this.horbar3.nativeElement.getContext('2d');
+        var data = {
+            labels: this.gainersWeekLabels,
+            datasets: [
+                {
+                    "data": this.gainersWeekData,   // Example data
+                    "backgroundColor": [
+                        "#133d48",
+                        "#76c543",
+                        "#3021d2",
+                        "#B22222",
+                        "#330000",
+                        "#CC1100",
+                        "#EE5C42",
+                        "#FF7256",
+                        "#CDC5BF",
+                        "#EE8833",
+                        "#FFCC11",
+                        "#B3C95A",
+                        "#AADD00",
+                        "#BCEE68",
+                        "#c38aba",
+                        "#6b70a5",
+                        "#6061ea",
+                        "#aa3bb3",
+                        "#80509a",
+                        "#1c5ba2",
+                        "#fda00d",
+                        "#c55a3a",
+                        "#cb10d9",
+                        "#bcc7f3",
+                        "#27ddb9",
+                        "#3a2974",
+                        "#a0f75b",
+                        "#fc5484",
+                        "#14a51b",
+                        "#133d48",
+                        "#76c543",
+                        "#3021d2",
+                        "#c38aba",
+                        "#6b70a5",
+                        "#6061ea",
+                        "#aa3bb3",
+                        "#80509a",
+                        "#1c5ba2",
+                        "#fda00d",
+                        "#c55a3a",
+                        "#cb10d9",
+                        "#bcc7f3",
+                        "#27ddb9",
+                        "#c7394e",
+                        "#A52A2A",
+                        "#a0f75b",
+                        "#fc5484",
+                        "#14a51b",
+                        "#c7394e",
+                        "#A52A2A",
+                        "#BE2625",
+                    ]
+                }]
+        };
+
+        var chart = new Chart(
+            barCtx,
+            {
+                "type": 'horizontalBar',
+                "data": data,
+                "options": {
+                    "legend":{"display": false},
+                    "cutoutPercentage": 100,
+                    "animation": {
+                        "animateScale": true,
+                        "animateRotate": false
+                    },
+                    "title": {
+                        "display":true,
+                        "text":'Top 5 Gain (Weekly)',
                         "fontSize":20
                     },
                     "showTooltips": false

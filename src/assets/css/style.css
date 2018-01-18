@@ -8366,3 +8366,10 @@ changes to UI
   font-size: x-large;
   color:lightgreen
 }
+.chart-bg {
+  background-color: #f8f8f8;
+}
+.table-header-bg {
+  background-color: #f9f9f9;
+  border-bottom: solid
+}

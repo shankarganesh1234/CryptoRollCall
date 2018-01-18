@@ -43,6 +43,23 @@ export class CryptoFavoritesComponent implements OnInit{
     chartLabels: string[] = [];
     itemLen: number = 0;
 
+    @ViewChild('horbar1') horbar1: ElementRef;
+    @ViewChild('horbar2') horbar2: ElementRef;
+    @ViewChild('horbar3') horbar3: ElementRef;
+
+    gainersHourData: number[] = [];
+    gainersHourLabels: string[] = [];
+
+    gainersDayData: number[] = [];
+    gainersDayLabels: string[] = [];
+
+    gainersWeekData: number[] = [];
+    gainersWeekLabels: string[] = [];
+
+    cryptoHourGainers : CryptoFavorite[] = [];
+    cryptoDayGainers : CryptoFavorite[] = [];
+    cryptoWeekGainers : CryptoFavorite[] = [];
+
     constructor(private route: ActivatedRoute, private router: Router, private cryptoService: CryptoService, private titleService: Title, private currencyService: CurrencyService){
         route.params.subscribe(val => {
             this.invokeCurrencyService();
@@ -51,10 +68,9 @@ export class CryptoFavoritesComponent implements OnInit{
 
     ngOnInit(): void {
         this.titleService.setTitle('CryptoRollCall - Crypto portfolio manager and crypto tracker');
-        this.initChart();
     }
 
-    initChart(): void {
+    initChart(cryptoPrices: CryptoFavorite[]): void {
         this.itemLen = 0;
         this.chartData = [];
         this.barChartData = [];
@@ -63,9 +79,13 @@ export class CryptoFavoritesComponent implements OnInit{
         if(this.favsCopy.length == 0)
         {
             $('#chartContainer').hide();
+            $('#chartContainer1').hide();
+
             return;
         } else {
             $('#chartContainer').show();
+            $('#chartContainer1').show();
+
         }
 
         for(let i=0; i<this.favsCopy.length; i++) {
@@ -73,8 +93,59 @@ export class CryptoFavoritesComponent implements OnInit{
             this.barChartData.push(this.favsCopy[i].quantity);
             this.chartLabels.push(this.favsCopy[i].symbol);
         }
+
+        // reset all fields
+        this.cryptoHourGainers = [];
+        this.cryptoDayGainers = [];
+        this.cryptoWeekGainers = [];
+
+        this.gainersHourLabels = [];
+        this.gainersDayLabels = [];
+        this.gainersWeekLabels = [];
+
+        this.gainersHourData = [];
+        this.gainersDayData = [];
+        this.gainersWeekData = [];
+
+
+        this.cryptoHourGainers = cryptoPrices;
+        this.cryptoDayGainers = cryptoPrices;
+        this.cryptoWeekGainers = cryptoPrices;
+
+        // top 5 charts
+        this.cryptoHourGainers = this.cryptoHourGainers.slice().sort(function(a,b) {
+            return numeral(a['percent_change_1h']).value() < numeral(b['percent_change_1h']).value() ? 1 : -1;
+        }).slice(0,5);
+
+        this.cryptoDayGainers = this.cryptoDayGainers.slice().sort(function(a,b) {
+            return numeral(a['percent_change_24h']).value() < numeral(b['percent_change_24h']).value() ? 1 : -1;
+        }).slice(0,5);
+
+        this.cryptoWeekGainers = this.cryptoWeekGainers.slice().sort(function(a,b) {
+            return numeral(a['percent_change_7d']).value() < numeral(b['percent_change_7d']).value() ? 1 : -1;
+        }).slice(0,5);
+
+        for(let i=0; i<this.cryptoHourGainers.length; i++) {
+            this.gainersHourLabels.push(this.cryptoHourGainers[i].name);
+            this.gainersHourData.push(parseFloat(this.cryptoHourGainers[i].percent_change_1h));
+        }
+
+        for(let i=0; i<this.cryptoDayGainers.length; i++) {
+            this.gainersDayLabels.push(this.cryptoDayGainers[i].name);
+            this.gainersDayData.push(parseFloat(this.cryptoDayGainers[i].percent_change_24h));
+        }
+
+        for(let i=0; i<this.cryptoWeekGainers.length; i++) {
+            this.gainersWeekLabels.push(this.cryptoWeekGainers[i].name);
+            this.gainersWeekData.push(parseFloat(this.cryptoWeekGainers[i].percent_change_7d));
+        }
+
         this.initPieChart();
         this.initBarChart();
+
+        this.initGainersHourChart();
+        this.initGainersDayChart();
+        this.initGainersWeekChart();
     }
 
     initBarChart(): void {
@@ -89,6 +160,57 @@ export class CryptoFavoritesComponent implements OnInit{
                         "#1fc8f8",
                         "#76a346",
                         "#5787dd",
+                        "#1c5ba2",
+                        "#fda00d",
+                        "#c55a3a",
+                        "#cb10d9",
+                        "#bcc7f3",
+                        "#27ddb9",
+                        "#3a2974",
+                        "#a0f75b",
+                        "#fc5484",
+                        "#14a51b",
+                        "#133d48",
+                        "#76c543",
+                        "#3021d2",
+                        "#c38aba",
+                        "#6b70a5",
+                        "#6061ea",
+                        "#aa3bb3",
+                        "#80509a",
+                        "#c7394e",
+                        "#A52A2A",
+                        "#a0f75b",
+                        "#fc5484",
+                        "#14a51b",
+                        "#133d48",
+                        "#76c543",
+                        "#3021d2",
+                        "#c38aba",
+                        "#6b70a5",
+                        "#6061ea",
+                        "#aa3bb3",
+                        "#80509a",
+                        "#1c5ba2",
+                        "#fda00d",
+                        "#c55a3a",
+                        "#cb10d9",
+                        "#bcc7f3",
+                        "#27ddb9",
+                        "#c7394e",
+                        "#A52A2A",
+                        "#BE2625",
+                        "#B22222",
+                        "#330000",
+                        "#CC1100",
+                        "#EE5C42",
+                        "#FF7256",
+                        "#CDC5BF",
+                        "#EE8833",
+                        "#FFCC11",
+                        "#B3C95A",
+                        "#AADD00",
+                        "#BCEE68",
                         "#3a2974",
                         "#a0f75b",
                         "#fc5484",
@@ -128,7 +250,7 @@ export class CryptoFavoritesComponent implements OnInit{
         var chart = new Chart(
             barCtx,
             {
-                "type": 'bar',
+                "type": 'horizontalBar',
                 "data": data,
                 "options": {
                     "legend":{"display": false},
@@ -157,9 +279,26 @@ export class CryptoFavoritesComponent implements OnInit{
                 {
                     "data": this.chartData,   // Example data
                     "backgroundColor": [
-                        "#1fc8f8",
-                        "#76a346",
-                        "#5787dd",
+                        "#1c5ba2",
+                        "#fda00d",
+                        "#c55a3a",
+                        "#cb10d9",
+                        "#bcc7f3",
+                        "#27ddb9",
+                        "#c7394e",
+                        "#A52A2A",
+                        "#BE2625",
+                        "#B22222",
+                        "#330000",
+                        "#CC1100",
+                        "#EE5C42",
+                        "#FF7256",
+                        "#CDC5BF",
+                        "#EE8833",
+                        "#FFCC11",
+                        "#B3C95A",
+                        "#AADD00",
+                        "#BCEE68",
                         "#3a2974",
                         "#a0f75b",
                         "#fc5484",
@@ -185,6 +324,40 @@ export class CryptoFavoritesComponent implements OnInit{
                         "#330000",
                         "#CC1100",
                         "#EE5C42",
+                        "#1fc8f8",
+                        "#76a346",
+                        "#5787dd",
+                        "#1c5ba2",
+                        "#fda00d",
+                        "#c55a3a",
+                        "#cb10d9",
+                        "#bcc7f3",
+                        "#27ddb9",
+                        "#3a2974",
+                        "#a0f75b",
+                        "#fc5484",
+                        "#14a51b",
+                        "#133d48",
+                        "#76c543",
+                        "#3021d2",
+                        "#c38aba",
+                        "#6b70a5",
+                        "#6061ea",
+                        "#aa3bb3",
+                        "#80509a",
+                        "#c7394e",
+                        "#A52A2A",
+                        "#a0f75b",
+                        "#fc5484",
+                        "#14a51b",
+                        "#133d48",
+                        "#76c543",
+                        "#3021d2",
+                        "#c38aba",
+                        "#6b70a5",
+                        "#6061ea",
+                        "#aa3bb3",
+                        "#80509a",
                         "#FF7256",
                         "#CDC5BF",
                         "#EE8833",
@@ -266,8 +439,12 @@ export class CryptoFavoritesComponent implements OnInit{
         }
         if(this.itemLen == 0) {
             $('#chartContainer').hide();
+            $('#chartContainer1').hide();
+
         } else {
             $('#chartContainer').show();
+            $('#chartContainer1').show();
+
         }
 
     }
@@ -301,7 +478,7 @@ export class CryptoFavoritesComponent implements OnInit{
 
          // total length equal
         if(this.itemLen == this.favsCopy.length) {
-            this.initChart();
+            this.initChart(this.favsCopy);
         }
 
         this.favs.sort(function(a,b) {
@@ -346,7 +523,7 @@ export class CryptoFavoritesComponent implements OnInit{
 
         localStorage.removeItem(this.localStorageKey + this.favs[index].symbol);
         localStorage.setItem(this.localStorageKey + this.favs[index].symbol, JSON.stringify(this.favs[index]));
-        this.initChart();
+        this.initChart(this.favsCopy);
     }
 
     /**
@@ -395,6 +572,13 @@ export class CryptoFavoritesComponent implements OnInit{
                 }
         }
 
+        this.totalPortfolio = 0;
+        this.totalPortfolioUsd = 0;
+        for(var i=0; i<this.favsCopy.length; i++) {
+            this.totalPortfolio += parseFloat(this.favsCopy[i].total);
+            this.totalPortfolioUsd += parseFloat(this.favsCopy[i].total_usd);
+        }
+
         if (currency == "USD") {
                 this.totalPortfolioStr = this.totalPortfolioUsd.toFixed(2);
         } else {
@@ -402,7 +586,7 @@ export class CryptoFavoritesComponent implements OnInit{
         }
             // set choice in local storage
             localStorage.setItem(this.localStorageKey + "currencyPreference", currency);
-            this.initChart();
+            this.initChart(this.favsCopy);
     }
 
     /**
@@ -420,6 +604,276 @@ export class CryptoFavoritesComponent implements OnInit{
                 return numeral(a[sortField]).value() > numeral(b[sortField]).value() ? 1 : -1;
             });
         }
+    }
+
+    /**
+     *
+     */
+    initGainersHourChart(): void {
+
+        let barCtx = this.horbar1.nativeElement.getContext('2d');
+        var data = {
+            labels: this.gainersHourLabels,
+            datasets: [
+                {
+                    "data": this.gainersHourData,   // Example data
+                    "backgroundColor": [
+                        "#aa3bb3",
+                        "#80509a",
+                        "#1c5ba2",
+                        "#fda00d",
+                        "#c55a3a",
+                        "#cb10d9",
+                        "#bcc7f3",
+                        "#27ddb9",
+                        "#c7394e",
+                        "#A52A2A",
+                        "#BE2625",
+                        "#B22222",
+                        "#330000",
+                        "#CC1100",
+                        "#EE5C42",
+                        "#FF7256",
+                        "#3a2974",
+                        "#a0f75b",
+                        "#fc5484",
+                        "#14a51b",
+                        "#133d48",
+                        "#76c543",
+                        "#3021d2",
+                        "#c38aba",
+                        "#6b70a5",
+                        "#6061ea",
+                        "#aa3bb3",
+                        "#80509a",
+                        "#1c5ba2",
+                        "#fda00d",
+                        "#c55a3a",
+                        "#cb10d9",
+                        "#bcc7f3",
+                        "#27ddb9",
+                        "#c7394e",
+                        "#A52A2A",
+                        "#a0f75b",
+                        "#fc5484",
+                        "#14a51b",
+                        "#133d48",
+                        "#76c543",
+                        "#3021d2",
+                        "#c38aba",
+                        "#6b70a5",
+                        "#6061ea",
+                        "#CDC5BF",
+                        "#EE8833",
+                        "#FFCC11",
+                        "#B3C95A",
+                        "#AADD00",
+                        "#BCEE68"
+                    ]
+                }]
+        };
+
+        var chart = new Chart(
+            barCtx,
+            {
+                "type": 'horizontalBar',
+                "data": data,
+                "options": {
+                    "legend":{"display": false},
+                    "cutoutPercentage": 100,
+                    "animation": {
+                        "animateScale": true,
+                        "animateRotate": false
+                    },
+                    "title": {
+                        "display":true,
+                        "text":'Top 5 Change (Hourly)',
+                        "fontSize":20
+                    },
+                    "showTooltips": false
+                }
+            }
+        );
+    }
+
+    /**
+     *
+     */
+    initGainersDayChart(): void {
+
+        let barCtx = this.horbar2.nativeElement.getContext('2d');
+        var data = {
+            labels: this.gainersDayLabels,
+            datasets: [
+                {
+                    "data": this.gainersDayData,   // Example data
+                    "backgroundColor": [
+                        "#1c5ba2",
+                        "#fda00d",
+                        "#c55a3a",
+                        "#cb10d9",
+                        "#bcc7f3",
+                        "#27ddb9",
+                        "#3a2974",
+                        "#a0f75b",
+                        "#fc5484",
+                        "#14a51b",
+                        "#133d48",
+                        "#76c543",
+                        "#3021d2",
+                        "#c38aba",
+                        "#6b70a5",
+                        "#6061ea",
+                        "#aa3bb3",
+                        "#80509a",
+                        "#c7394e",
+                        "#A52A2A",
+                        "#a0f75b",
+                        "#fc5484",
+                        "#14a51b",
+                        "#133d48",
+                        "#76c543",
+                        "#3021d2",
+                        "#c38aba",
+                        "#6b70a5",
+                        "#6061ea",
+                        "#aa3bb3",
+                        "#80509a",
+                        "#1c5ba2",
+                        "#fda00d",
+                        "#c55a3a",
+                        "#cb10d9",
+                        "#bcc7f3",
+                        "#27ddb9",
+                        "#c7394e",
+                        "#A52A2A",
+                        "#BE2625",
+                        "#B22222",
+                        "#330000",
+                        "#CC1100",
+                        "#EE5C42",
+                        "#FF7256",
+                        "#CDC5BF",
+                        "#EE8833",
+                        "#FFCC11",
+                        "#B3C95A",
+                        "#AADD00",
+                        "#BCEE68"
+                    ]
+                }]
+        };
+
+        var chart = new Chart(
+            barCtx,
+            {
+                "type": 'horizontalBar',
+                "data": data,
+                "options": {
+                    "legend":{"display": false},
+                    "cutoutPercentage": 100,
+                    "animation": {
+                        "animateScale": true,
+                        "animateRotate": false
+                    },
+                    "title": {
+                        "display":true,
+                        "text":'Top 5 Change (Daily)',
+                        "fontSize":20
+                    },
+                    "showTooltips": false
+                }
+            }
+        );
+    }
+
+    /**
+     *
+     */
+    initGainersWeekChart(): void {
+
+        let barCtx = this.horbar3.nativeElement.getContext('2d');
+        var data = {
+            labels: this.gainersWeekLabels,
+            datasets: [
+                {
+                    "data": this.gainersWeekData,   // Example data
+                    "backgroundColor": [
+                        "#133d48",
+                        "#76c543",
+                        "#3021d2",
+                        "#B22222",
+                        "#330000",
+                        "#CC1100",
+                        "#EE5C42",
+                        "#FF7256",
+                        "#CDC5BF",
+                        "#EE8833",
+                        "#FFCC11",
+                        "#B3C95A",
+                        "#AADD00",
+                        "#BCEE68",
+                        "#c38aba",
+                        "#6b70a5",
+                        "#6061ea",
+                        "#aa3bb3",
+                        "#80509a",
+                        "#1c5ba2",
+                        "#fda00d",
+                        "#c55a3a",
+                        "#cb10d9",
+                        "#bcc7f3",
+                        "#27ddb9",
+                        "#3a2974",
+                        "#a0f75b",
+                        "#fc5484",
+                        "#14a51b",
+                        "#133d48",
+                        "#76c543",
+                        "#3021d2",
+                        "#c38aba",
+                        "#6b70a5",
+                        "#6061ea",
+                        "#aa3bb3",
+                        "#80509a",
+                        "#1c5ba2",
+                        "#fda00d",
+                        "#c55a3a",
+                        "#cb10d9",
+                        "#bcc7f3",
+                        "#27ddb9",
+                        "#c7394e",
+                        "#A52A2A",
+                        "#a0f75b",
+                        "#fc5484",
+                        "#14a51b",
+                        "#c7394e",
+                        "#A52A2A",
+                        "#BE2625",
+                    ]
+                }]
+        };
+
+        var chart = new Chart(
+            barCtx,
+            {
+                "type": 'horizontalBar',
+                "data": data,
+                "options": {
+                    "legend":{"display": false},
+                    "cutoutPercentage": 100,
+                    "animation": {
+                        "animateScale": true,
+                        "animateRotate": false
+                    },
+                    "title": {
+                        "display":true,
+                        "text":'Top 5 Change (Weekly)',
+                        "fontSize":20
+                    },
+                    "showTooltips": false
+                }
+            }
+        );
     }
 }
 
