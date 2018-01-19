@@ -29,9 +29,9 @@ export class CurrencyService {
      * @returns {Observable<R|T>}
      */
     getCurrExchRates(currency: string): Observable<CurrencyExchange> {
-        let url = 'https://api.fixer.io/latest?base=' + currency;
-        //let url = 'invalidurl';
 
+        let baseUrl = "crcserver/ticker/";
+        let url = baseUrl + 'currency/' + currency;
         if(this.currencyExchange != null)
             return this.currencyExchange;
 
