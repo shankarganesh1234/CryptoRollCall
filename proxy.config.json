@@ -1,8 +1,8 @@
 {
-  "/coinmarketcap/*": {
-    "target": "https://api.coinmarketcap.com/",
+  "/crcserver/ticker/*": {
+    "target": "http://54.186.44.67:8080/CryptoRollCallService/ticker",
     "pathRewrite": {
-      "^/coinmarketcap": ""
+      "^/crcserver/ticker/": ""
     },
     "changeOrigin": true,
     "secure": true,
