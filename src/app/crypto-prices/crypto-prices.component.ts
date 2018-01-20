@@ -10,6 +10,7 @@ import {CurrencyExchange} from "../models/currency-exchange";
 import {Currencies} from "../models/currencies";
 import * as numeral from "numeral";
 import Chart from "chart.js";
+import {ChartDataList} from "../models/chart-data-list";
 
 
 declare const $: any;
@@ -98,12 +99,44 @@ export class CryptoPricesComponent implements OnInit {
             );
     }
 
+    invokeChartService(): void {
+        this.cryptoService
+            .getChartsHome()
+            .subscribe(
+                result => this.setCharts(result),
+                error => console.log(error),
+            );
+    }
+
+    setCharts(result: ChartDataList): void {
+
+        this.gainersHourLabels = [];
+        this.gainersDayLabels = [];
+        this.gainersWeekLabels = [];
+
+        this.gainersHourData = [];
+        this.gainersDayData = [];
+        this.gainersWeekData = [];
+
+
+        for(let i=0; i<5; i++) {
+            this.gainersHourLabels.push(result['hourlyList'][i].label);
+            this.gainersHourData.push(result['hourlyList'][i].data);
+
+            this.gainersDayLabels.push(result['dailyList'][i].label);
+            this.gainersDayData.push(result['dailyList'][i].data);
+
+            this.gainersWeekLabels.push(result['weeklyList'][i].label);
+            this.gainersWeekData.push(result['weeklyList'][i].data);
+        }
+
+        this.initChart();
+    }
     /**
      *
      * @param result
      */
     setResult(result: CryptoPrice[]): void {
-
 
         this.cryptoPrices = result;
         for (var i = 0; i < this.cryptoPrices.length; i++) {
@@ -127,7 +160,7 @@ export class CryptoPricesComponent implements OnInit {
         this.cryptoPricesCopy = this.cryptoPrices;
 
         // chart related
-        this.initChart(this.cryptoPrices);
+        this.invokeChartService();
     }
 
 
@@ -226,54 +259,7 @@ export class CryptoPricesComponent implements OnInit {
     }
 
 
-    initChart(cryptoPrices: CryptoPrice[]): void {
-
-        // reset all fields
-        this.cryptoHourGainers = [];
-        this.cryptoDayGainers = [];
-        this.cryptoWeekGainers = [];
-
-        this.gainersHourLabels = [];
-        this.gainersDayLabels = [];
-        this.gainersWeekLabels = [];
-
-        this.gainersHourData = [];
-        this.gainersDayData = [];
-        this.gainersWeekData = [];
-
-
-        this.cryptoHourGainers = cryptoPrices;
-        this.cryptoDayGainers = cryptoPrices;
-        this.cryptoWeekGainers = cryptoPrices;
-
-        // top 5 charts
-        this.cryptoHourGainers = this.cryptoHourGainers.slice().sort(function(a,b) {
-            return numeral(a['percent_change_1h']).value() < numeral(b['percent_change_1h']).value() ? 1 : -1;
-        }).slice(0,5);
-
-        this.cryptoDayGainers = this.cryptoDayGainers.slice().sort(function(a,b) {
-            return numeral(a['percent_change_24h']).value() < numeral(b['percent_change_24h']).value() ? 1 : -1;
-        }).slice(0,5);
-
-        this.cryptoWeekGainers = this.cryptoWeekGainers.slice().sort(function(a,b) {
-            return numeral(a['percent_change_7d']).value() < numeral(b['percent_change_7d']).value() ? 1 : -1;
-        }).slice(0,5);
-
-        for(let i=0; i<this.cryptoHourGainers.length; i++) {
-            this.gainersHourLabels.push(this.cryptoHourGainers[i].name);
-            this.gainersHourData.push(parseFloat(this.cryptoHourGainers[i].percent_change_1h));
-        }
-
-        for(let i=0; i<this.cryptoDayGainers.length; i++) {
-            this.gainersDayLabels.push(this.cryptoDayGainers[i].name);
-            this.gainersDayData.push(parseFloat(this.cryptoDayGainers[i].percent_change_24h));
-        }
-
-        for(let i=0; i<this.cryptoWeekGainers.length; i++) {
-            this.gainersWeekLabels.push(this.cryptoWeekGainers[i].name);
-            this.gainersWeekData.push(parseFloat(this.cryptoWeekGainers[i].percent_change_7d));
-        }
-
+    initChart(): void {
         this.initGainersHourChart();
         this.initGainersDayChart();
         this.initGainersWeekChart();
