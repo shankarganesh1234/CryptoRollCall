@@ -48,9 +48,7 @@ export class CryptoPricesComponent implements OnInit {
     gainersWeekData: number[] = [];
     gainersWeekLabels: string[] = [];
 
-    cryptoHourGainers : CryptoPrice[] = [];
-    cryptoDayGainers : CryptoPrice[] = [];
-    cryptoWeekGainers : CryptoPrice[] = [];
+    recordsPerPage: number = 100;
 
     constructor(private route: ActivatedRoute, private router: Router, private cryptoService: CryptoService, private titleService: Title, private currencyService: CurrencyService) {
 
