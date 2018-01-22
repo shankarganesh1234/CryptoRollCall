@@ -1,5 +1,5 @@
 <section id="top"></section>
-<nav class="navbar navbar-default navbar-fixed-top" style="background-color: black;">
+<nav class="navbar navbar-default" style="background-color: white">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -11,7 +11,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a [routerLink]="'/'" title="Home" class="navbar-brand">
-                    <small class="header-links text-white">Home</small>
+                    <small class="header-links">Home</small>
                 </a>
             </div>
 
@@ -22,32 +22,33 @@
             <ul class="nav navbar-nav">
                 <li>
                     <a [routerLink]="'/about'" title="Home">
-                    <small class="header-links text-white">About</small>
+                    <small class="header-links">About</small>
                     </a>
                 </li>
                 <li>
                     <a [routerLink]="'/howto'" title="Home">
-                        <small class="header-links text-white">How to</small>
+                        <small class="header-links">How to</small>
                     </a>
                 </li>
                 <li>
                     <a [routerLink]="'/favorites'" title="Portfolio Manager">
-                    <small class="header-links text-white">Portfolio</small>
+                    <small class="header-links">Portfolio</small>
                     </a>
                 </li>
                 <li>
                     <a [routerLink]="'/convert'" title="Converter">
-                    <small class="header-links text-white">Currency Converter</small>
+                    <small class="header-links">Currency Converter</small>
+                    </a>
+                </li>
+                <li>
+                    <a title="Donate" href="#footerId" class="page-scroll">
+                        <small class="header-links">Donate</small>
                     </a>
                 </li>
             </ul>
          </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
-
-<a href="#footerId" class="page-scroll" title="Scroll to bottom" style="position:fixed;top: 15px;right: 80px;z-index:99999;">
-    <i class="fa fa-2x fa-arrow-down text-white" aria-hidden="true"></i>
-</a>
 
 <a href="#top" class="page-scroll" title="Scroll to top" style="position:fixed;bottom: 20px;right: 30px">
     <i class="fa fa-2x fa-arrow-up" aria-hidden="true"></i>
@@ -60,17 +61,15 @@
 <div id= "favRemoved" class="alert alert-danger fade alert-position">
 
 </div>
-<br/><br/><br/><br/>
 <div class="container" id="welcomeMessage">
     <div class="row text-center">
-        <p class="lead">Crypto currency tracker | Real time data | Portfolio manager</p>
+        <h3>Crypto currency tracker | Portfolio manager | Utilities</h3>
     </div>
     <div class="row text-center">
-        <p>To get started, add your favorite crypto currency to your portfolio by clicking on the <i class="fa fa-2x fa-plus"></i> icon
+        <p>To get started, visit the <strong><a [routerLink]="'/howto'">How to</a></strong> link or scroll below and click <i class="fa fa-2x fa-plus"></i> next to the coin
         </p>
     </div>
 </div>
-<hr/>
 <router-outlet></router-outlet>
 
 <crypto-footer></crypto-footer>

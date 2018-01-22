@@ -1,73 +1,67 @@
 <div class="container">
-    <h5>Utilities</h5>
+    <h3>Currency Converter</h3>
     <div class="row">
         <div class="col-md-7">
-            <p>Convert between crypto currencies and major global currencies</p>
+            <p class="lead">Convert between crypto currencies and major global currencies</p>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-4">
         </div>
-         <div class="col-md-1"> <button type="submit" class="btn btn-primary" (click)="invokeCryptoService()">Refresh</button></div>
+         <div class="col-md-1"> <a (click)="invokeCryptoService()"><i class="fa fa-2x fa-refresh"></i></a></div>
     </div>
-    <br/>
 </div>
 <div class="container">
-    <h6>Convert to FIAT</h6>
-    <table class="table table-bordered table-striped">
-        <tbody>
-        <tr id="convertToUsd">
-            <td class="col-md-2">
-                <input (ngModelChange)="calculateToFIAT($event, cryptoStr, currStr)" [(ngModel)]="cryptoQuantity" type="text" class="form-control" aria-describedby="filterHelp" placeholder="0"/>
-            </td>
-            <td class="col-md-2">
-                <select maxlength="10" (ngModelChange)="calculateToFIAT(cryptoQuantity, $event, currStr)" [(ngModel)]="cryptoStr" class="form-control">
-                    <option *ngFor="let item of cryptoPrices" value= {{item.symbol}}>
-                        {{item.symbol}} : {{item.name}}
-                    </option>
-                </select>
-            </td>
-            <td class="col-sm-1"><i class="fa fa-2x fa-arrow-right" aria-hidden="true"></i></td>
-            <td class="col-md-2">
-                <select [(ngModel)]="currStr" (ngModelChange)="calculateToFIAT(cryptoQuantity, cryptoStr, $event)" class="form-control" id="cryptoSelect">
-                    <option *ngFor="let item of staticCurrencies.values" value= {{item.value}}>
-                        {{item.value}} : {{item.displayName}}
-                    </option>
-                </select>
-            </td>
-            <td>
-                <strong style="font-size: x-large">{{total}}</strong> <small>{{currStr}}</small></td>
-        </tr>
-        </tbody>
-    </table>
+    <h6>Convert From Crypto Currency to Global Currency</h6>
+    <div class="row">
+    <div class="col-md-2">
+        <input (ngModelChange)="calculateToFIAT($event, cryptoStr, currStr)" [(ngModel)]="cryptoQuantity" type="text" class="form-control" aria-describedby="filterHelp" placeholder="0"/>
+    </div>
+    <div class="col-md-2">
+        <select maxlength="10" (ngModelChange)="calculateToFIAT(cryptoQuantity, $event, currStr)" [(ngModel)]="cryptoStr" class="form-control">
+            <option *ngFor="let item of cryptoPrices" value= {{item.symbol}}>
+                {{item.symbol}} : {{item.name}}
+            </option>
+        </select>
+    </div>
+    <div class="col-md-2">
+        <select [(ngModel)]="currStr" (ngModelChange)="calculateToFIAT(cryptoQuantity, cryptoStr, $event)" class="form-control" id="cryptoSelect">
+            <option *ngFor="let item of staticCurrencies.values" value= {{item.value}}>
+                {{item.value}} : {{item.displayName}}
+            </option>
+        </select>
+    </div>
+    <div class="col-md-2">
+        <h6>{{total}}</h6>
+    </div>
+    </div>
 </div>
+<br/>
+<br/>
+<div class="container">
+    <h6>Convert from Global Currency to Crypto Currency</h6>
+    <div class="row">
+        <div class="col-md-2">
+            <input (ngModelChange)="calculateFromFiat($event, usdCryptoStr, currStrFiat)" [(ngModel)]="usdQuantity" type="text" class="form-control" id="filter" aria-describedby="filterHelp" placeholder="0"/>
+        </div>
+        <div class="col-md-2">
+            <select [(ngModel)]="currStrFiat" (ngModelChange)="calculateFromFiat(usdQuantity, usdCryptoStr, $event)" class="form-control" id="cryptoSelect">
+                <option *ngFor="let item of staticCurrencies.values" value= {{item.value}}>
+                    {{item.value}} : {{item.displayName}}
+                </option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <select (ngModelChange)="calculateFromFiat(usdQuantity, $event, currStrFiat)" [(ngModel)]="usdCryptoStr" class="form-control" id="cryptoSelect">
+                <option *ngFor="let item of cryptoPrices" value= {{item.symbol}}>
+                    {{item.symbol}} : {{item.name}}
+                </option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <h6>{{cryptoTotal}}</h6>
+        </div>
+    </div>
 
-<div class="container">
-    <h6>Convert from FIAT</h6>
-    <table class="table table-bordered table-striped">
-        <tbody>
-        <tr id="convertFromUsd">
-            <td class="col-md-2">
-                <input (ngModelChange)="calculateFromFiat($event, usdCryptoStr, currStrFiat)" [(ngModel)]="usdQuantity" type="text" class="form-control" id="filter" aria-describedby="filterHelp" placeholder="0"/>
-            </td>
-            <td class="col-md-2">
-                <select [(ngModel)]="currStrFiat" (ngModelChange)="calculateFromFiat(usdQuantity, usdCryptoStr, $event)" class="form-control" id="cryptoSelect">
-                    <option *ngFor="let item of staticCurrencies.values" value= {{item.value}}>
-                        {{item.value}} : {{item.displayName}}
-                    </option>
-                </select>
-            </td>
-            <td class="col-md-1"><i class="fa fa-2x fa-arrow-right" aria-hidden="true"></i></td>
-            <td class="col-md-2">
-                <select (ngModelChange)="calculateFromFiat(usdQuantity, $event, currStrFiat)" [(ngModel)]="usdCryptoStr" class="form-control" id="cryptoSelect">
-                    <option *ngFor="let item of cryptoPrices" value= {{item.symbol}}>
-                        {{item.symbol}} : {{item.name}}
-                    </option>
-                </select>
-            </td>
-            <td>
-                <strong style="font-size: x-large">{{cryptoTotal}}</strong></td>
-        </tr>
-        </tbody>
-    </table>
+
 </div>
 
 

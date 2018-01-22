@@ -6,6 +6,7 @@ import {Observable} from "rxjs/Rx";
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/catch";
 import {CryptoPrice} from "../models/crypto-price";
+import {ChartDataList} from "../models/chart-data-list";
 
 
 @Injectable()
@@ -24,8 +25,8 @@ export class CryptoService {
     }
 
     getPriceTicker(): Observable<CryptoPrice[]> {
-        let url = 'coinmarketcap/v1/ticker?limit=0';
-        //let url = 'invalidurl';
+        let baseUrl = "crcserver/ticker/";
+        let url = baseUrl + 'list';
         return this.http
             .get(url)
             .map(this.extractData)
@@ -33,8 +34,16 @@ export class CryptoService {
     }
 
     getPriceTickerForId(id: string): Observable<CryptoPrice> {
-        let url = 'coinmarketcap/v1/ticker/' + id;
-        //let url = 'invalidurl';
+        let baseUrl = "crcserver/ticker/";
+        let url = baseUrl + id;
+        return this.http
+            .get(url)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
+    getChartsHome(): Observable<ChartDataList> {
+        let url = "crcserver/ticker/charts/home";
         return this.http
             .get(url)
             .map(this.extractData)

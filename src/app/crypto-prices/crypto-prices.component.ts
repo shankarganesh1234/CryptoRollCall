@@ -1,14 +1,16 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, ElementRef, OnInit, ViewChild} from "@angular/core";
 import {ActivatedRoute, Router} from "@angular/router";
 import {CryptoService} from "../services/crypto.service";
 import {CryptoPrice} from "../models/crypto-price";
 import {CryptoFavorite} from "../models/crypto-favorite";
-import { Title } from '@angular/platform-browser';
+import {Title} from "@angular/platform-browser";
 import {isUndefined} from "util";
 import {CurrencyService} from "../services/currency.service";
 import {CurrencyExchange} from "../models/currency-exchange";
 import {Currencies} from "../models/currencies";
-import * as numeral from 'numeral';
+import * as numeral from "numeral";
+import Chart from "chart.js";
+import {ChartDataList} from "../models/chart-data-list";
 
 
 declare const $: any;
@@ -23,6 +25,7 @@ export class CryptoPricesComponent implements OnInit {
 
     cryptoPrices: CryptoPrice[] = [];
     cryptoPricesCopy: CryptoPrice[] = [];
+
     filterText: string;
     localStorageKey: string = "crypto_";
 
@@ -30,6 +33,22 @@ export class CryptoPricesComponent implements OnInit {
     currencyExchange: CurrencyExchange;
     staticCurrencies: Currencies = new Currencies();
     currStr: string = "USD";
+
+    // chart related
+    @ViewChild('horbar1') horbar1: ElementRef;
+    @ViewChild('horbar2') horbar2: ElementRef;
+    @ViewChild('horbar3') horbar3: ElementRef;
+
+    gainersHourData: number[] = [];
+    gainersHourLabels: string[] = [];
+
+    gainersDayData: number[] = [];
+    gainersDayLabels: string[] = [];
+
+    gainersWeekData: number[] = [];
+    gainersWeekLabels: string[] = [];
+
+    recordsPerPage: number = 100;
 
     constructor(private route: ActivatedRoute, private router: Router, private cryptoService: CryptoService, private titleService: Title, private currencyService: CurrencyService) {
 
@@ -78,12 +97,44 @@ export class CryptoPricesComponent implements OnInit {
             );
     }
 
+    invokeChartService(): void {
+        this.cryptoService
+            .getChartsHome()
+            .subscribe(
+                result => this.setCharts(result),
+                error => console.log(error),
+            );
+    }
+
+    setCharts(result: ChartDataList): void {
+
+        this.gainersHourLabels = [];
+        this.gainersDayLabels = [];
+        this.gainersWeekLabels = [];
+
+        this.gainersHourData = [];
+        this.gainersDayData = [];
+        this.gainersWeekData = [];
+
+
+        for(let i=0; i<5; i++) {
+            this.gainersHourLabels.push(result['hourlyList'][i].label);
+            this.gainersHourData.push(result['hourlyList'][i].data);
+
+            this.gainersDayLabels.push(result['dailyList'][i].label);
+            this.gainersDayData.push(result['dailyList'][i].data);
+
+            this.gainersWeekLabels.push(result['weeklyList'][i].label);
+            this.gainersWeekData.push(result['weeklyList'][i].data);
+        }
+
+        this.initChart();
+    }
     /**
      *
      * @param result
      */
     setResult(result: CryptoPrice[]): void {
-
 
         this.cryptoPrices = result;
         for (var i = 0; i < this.cryptoPrices.length; i++) {
@@ -105,7 +156,12 @@ export class CryptoPricesComponent implements OnInit {
 
         }
         this.cryptoPricesCopy = this.cryptoPrices;
+
+        // chart related
+        this.invokeChartService();
     }
+
+
 
     /**
      *
@@ -191,13 +247,290 @@ export class CryptoPricesComponent implements OnInit {
     sortData(sortField: string, sortDirection: string): void {
         if(sortDirection === 'up') {
             this.cryptoPrices.sort(function(a,b) {
-                    return numeral(a[sortField]).value() < numeral(b[sortField]).value() ? 1 : -1;
+                return numeral(a[sortField]).value() < numeral(b[sortField]).value() ? 1 : -1;
             });
         } else if(sortDirection === 'down') {
             this.cryptoPrices.sort(function(a,b) {
-                    return numeral(a[sortField]).value() > numeral(b[sortField]).value() ? 1 : -1;
+                return numeral(a[sortField]).value() > numeral(b[sortField]).value() ? 1 : -1;
             });
         }
+    }
+
+
+    initChart(): void {
+        this.initGainersHourChart();
+        this.initGainersDayChart();
+        this.initGainersWeekChart();
+    }
+
+    /**
+     *
+     */
+    initGainersHourChart(): void {
+
+        let barCtx = this.horbar1.nativeElement.getContext('2d');
+        var data = {
+            labels: this.gainersHourLabels,
+            datasets: [
+                {
+                    "data": this.gainersHourData,   // Example data
+                    "backgroundColor": [
+                        "#aa3bb3",
+                        "#80509a",
+                        "#1c5ba2",
+                        "#fda00d",
+                        "#c55a3a",
+                        "#cb10d9",
+                        "#bcc7f3",
+                        "#27ddb9",
+                        "#c7394e",
+                        "#A52A2A",
+                        "#BE2625",
+                        "#B22222",
+                        "#330000",
+                        "#CC1100",
+                        "#EE5C42",
+                        "#FF7256",
+                        "#3a2974",
+                        "#a0f75b",
+                        "#fc5484",
+                        "#14a51b",
+                        "#133d48",
+                        "#76c543",
+                        "#3021d2",
+                        "#c38aba",
+                        "#6b70a5",
+                        "#6061ea",
+                        "#aa3bb3",
+                        "#80509a",
+                        "#1c5ba2",
+                        "#fda00d",
+                        "#c55a3a",
+                        "#cb10d9",
+                        "#bcc7f3",
+                        "#27ddb9",
+                        "#c7394e",
+                        "#A52A2A",
+                        "#a0f75b",
+                        "#fc5484",
+                        "#14a51b",
+                        "#133d48",
+                        "#76c543",
+                        "#3021d2",
+                        "#c38aba",
+                        "#6b70a5",
+                        "#6061ea",
+                        "#CDC5BF",
+                        "#EE8833",
+                        "#FFCC11",
+                        "#B3C95A",
+                        "#AADD00",
+                        "#BCEE68"
+                    ]
+                }]
+        };
+
+        var chart = new Chart(
+            barCtx,
+            {
+                "type": 'horizontalBar',
+                "data": data,
+                "options": {
+                    "legend":{"display": false},
+                    "cutoutPercentage": 100,
+                    "animation": {
+                        "animateScale": true,
+                        "animateRotate": false
+                    },
+                    "title": {
+                        "display":true,
+                        "text":'Top 5 Gain (Hourly)',
+                        "fontSize":20
+                    },
+                    "showTooltips": false
+                }
+            }
+        );
+    }
+
+    /**
+     *
+     */
+    initGainersDayChart(): void {
+
+        let barCtx = this.horbar2.nativeElement.getContext('2d');
+        var data = {
+            labels: this.gainersDayLabels,
+            datasets: [
+                {
+                    "data": this.gainersDayData,   // Example data
+                    "backgroundColor": [
+                        "#1c5ba2",
+                        "#fda00d",
+                        "#c55a3a",
+                        "#cb10d9",
+                        "#bcc7f3",
+                        "#27ddb9",
+                        "#3a2974",
+                        "#a0f75b",
+                        "#fc5484",
+                        "#14a51b",
+                        "#133d48",
+                        "#76c543",
+                        "#3021d2",
+                        "#c38aba",
+                        "#6b70a5",
+                        "#6061ea",
+                        "#aa3bb3",
+                        "#80509a",
+                        "#c7394e",
+                        "#A52A2A",
+                        "#a0f75b",
+                        "#fc5484",
+                        "#14a51b",
+                        "#133d48",
+                        "#76c543",
+                        "#3021d2",
+                        "#c38aba",
+                        "#6b70a5",
+                        "#6061ea",
+                        "#aa3bb3",
+                        "#80509a",
+                        "#1c5ba2",
+                        "#fda00d",
+                        "#c55a3a",
+                        "#cb10d9",
+                        "#bcc7f3",
+                        "#27ddb9",
+                        "#c7394e",
+                        "#A52A2A",
+                        "#BE2625",
+                        "#B22222",
+                        "#330000",
+                        "#CC1100",
+                        "#EE5C42",
+                        "#FF7256",
+                        "#CDC5BF",
+                        "#EE8833",
+                        "#FFCC11",
+                        "#B3C95A",
+                        "#AADD00",
+                        "#BCEE68"
+                    ]
+                }]
+        };
+
+        var chart = new Chart(
+            barCtx,
+            {
+                "type": 'horizontalBar',
+                "data": data,
+                "options": {
+                    "legend":{"display": false},
+                    "cutoutPercentage": 100,
+                    "animation": {
+                        "animateScale": true,
+                        "animateRotate": false
+                    },
+                    "title": {
+                        "display":true,
+                        "text":'Top 5 Gain (Daily)',
+                        "fontSize":20
+                    },
+                    "showTooltips": false
+                }
+            }
+        );
+    }
+
+    /**
+     *
+     */
+    initGainersWeekChart(): void {
+
+        let barCtx = this.horbar3.nativeElement.getContext('2d');
+        var data = {
+            labels: this.gainersWeekLabels,
+            datasets: [
+                {
+                    "data": this.gainersWeekData,   // Example data
+                    "backgroundColor": [
+                        "#133d48",
+                        "#76c543",
+                        "#3021d2",
+                        "#B22222",
+                        "#330000",
+                        "#CC1100",
+                        "#EE5C42",
+                        "#FF7256",
+                        "#CDC5BF",
+                        "#EE8833",
+                        "#FFCC11",
+                        "#B3C95A",
+                        "#AADD00",
+                        "#BCEE68",
+                        "#c38aba",
+                        "#6b70a5",
+                        "#6061ea",
+                        "#aa3bb3",
+                        "#80509a",
+                        "#1c5ba2",
+                        "#fda00d",
+                        "#c55a3a",
+                        "#cb10d9",
+                        "#bcc7f3",
+                        "#27ddb9",
+                        "#3a2974",
+                        "#a0f75b",
+                        "#fc5484",
+                        "#14a51b",
+                        "#133d48",
+                        "#76c543",
+                        "#3021d2",
+                        "#c38aba",
+                        "#6b70a5",
+                        "#6061ea",
+                        "#aa3bb3",
+                        "#80509a",
+                        "#1c5ba2",
+                        "#fda00d",
+                        "#c55a3a",
+                        "#cb10d9",
+                        "#bcc7f3",
+                        "#27ddb9",
+                        "#c7394e",
+                        "#A52A2A",
+                        "#a0f75b",
+                        "#fc5484",
+                        "#14a51b",
+                        "#c7394e",
+                        "#A52A2A",
+                        "#BE2625",
+                    ]
+                }]
+        };
+
+        var chart = new Chart(
+            barCtx,
+            {
+                "type": 'horizontalBar',
+                "data": data,
+                "options": {
+                    "legend":{"display": false},
+                    "cutoutPercentage": 100,
+                    "animation": {
+                        "animateScale": true,
+                        "animateRotate": false
+                    },
+                    "title": {
+                        "display":true,
+                        "text":'Top 5 Gain (Weekly)',
+                        "fontSize":20
+                    },
+                    "showTooltips": false
+                }
+            }
+        );
     }
 
 }

@@ -1,28 +1,62 @@
 <div class="container">
-    <h5>My Portfolio</h5>
-<div class="row">
-    <div class="col-md-3">
-        <input type="text" (ngModelChange)="filterResults($event)" [(ngModel)]="filterText" class="form-control" id="filter" aria-describedby="filterHelp" placeholder="Filter Results">
+    <h3>My Portfolio &nbsp;<small><a (click)="getFavs()"><i class="fa fa-refresh"></i></a></small></h3>
+    <div *ngIf="favsCopy.length <= 0" class="row text-center">
+        <p>Your portfolio is empty at the moment.
+            <br/>Please add your favorite crypto currency to your portfolio by clicking on the <i class="fa fa-2x fa-plus"></i> icon in the home page
+        </p>
     </div>
-    <div class="col-md-3">
-        <select [(ngModel)]="currStr" (ngModelChange)="currencyChanged($event)" class="form-control" id="cryptoSelect">
-            <option *ngFor="let item of staticCurrencies.values" value= {{item.value}}>
-                {{item.value}} : {{item.displayName}}
-            </option>
-        </select>
+    <div id="chartContainer" class="row">
+        <div class="col-md-6">
+            <canvas #donut></canvas>
+        </div>
+        <div class="col-md-6">
+            <canvas #bar></canvas>
+        </div>
     </div>
-    <div class="col-md-2">
+    <br/><br/>
+    <div id="chartContainer1" class="row">
+        <div class="col-md-4">
+            <canvas #horbar1></canvas>
+        </div>
+        <div class="col-md-4">
+            <canvas #horbar2></canvas>
+        </div>
+        <div class="col-md-4">
+            <canvas #horbar3></canvas>
+        </div>
     </div>
-    <div class="col-md-2"> <button type="submit" class="btn btn-primary" [routerLink]="'/'">Home</button></div>
-    <div class="col-md-1"> <button type="submit" class="btn btn-primary" (click)="getFavs()">Refresh</button></div>
+    <br/><br/>
+    <div *ngIf="favsCopy.length > 0" class="row">
+        <div class="col-md-2">
+
+            <select [(ngModel)]="filterText" (ngModelChange)="filterResults($event)" class="form-control" id="cryptoSelect">
+                <option value="">
+                    Filter results
+                </option>
+                <option *ngFor="let item of favsCopy" value= {{item.symbol}}>
+                    {{item.symbol}} : {{item.name}}
+                </option>
+            </select>
+
+            <!--<input type="text" (ngModelChange)="filterResults($event)" [(ngModel)]="filterText" class="form-control" id="filter" aria-describedby="filterHelp" placeholder="Filter Results">-->
+        </div>
+        <div class="col-md-3">
+            <select [(ngModel)]="currStr" (ngModelChange)="currencyChanged($event)" class="form-control" id="cryptoSelect">
+                <option *ngFor="let item of staticCurrencies.values" value= {{item.value}}>
+                    {{item.value}} : {{item.displayName}}
+                </option>
+            </select>
+        </div>
+        <div class="col-md-6">
+        </div>
+        <div class="col-md-1"> <a (click)="getFavs()"><i class="fa fa-2x fa-refresh"></i></a></div>
+    </div>
 
 </div>
-    <br/>
-</div>
-<div class="container">
-    <h5><small>Total Portfolio Value ~ </small>{{totalPortfolioStr}} <small>{{currStr}}</small></h5>
+<br/>
+<div *ngIf="favsCopy.length > 0" class="container">
     <table class="table table-bordered table-striped">
-        <thead>
+        <thead class="table-header-bg">
         <tr>
             <th scope="col" class="col_1 align-top col-md-1"></th>
             <th scope="col" class="col_2 align-top col-md-1">Price <small>({{currStr}})</small><br/><a (click)="sortData('price_usd','up')"><i class="fa fa-arrow-down"></i></a> <a (click)="sortData('price_usd','down')"><i class="fa fa-arrow-up"></i></a></th>
@@ -30,7 +64,7 @@
             <th scope="col" class="col_4 align-top col-md-1">Quantity <br/><a (click)="sortData('quantity','up')"><i class="fa fa-arrow-down"></i></a> <a (click)="sortData('price_usd','down')"><i class="fa fa-arrow-up"></i></a></th>
             <th scope="col" class="col_5 align-top col-md-1">Total <br/><a (click)="sortData('total','up')"><i class="fa fa-arrow-down"></i></a> <a (click)="sortData('total','down')"><i class="fa fa-arrow-up"></i></a></th>
             <th scope="col" class="col_6 align-top col-md-1">Total <small>(BTC)</small></th>
-            <th scope="col" class="col_7 align-top col-md-3">Change %<br/> <small>1h / 1d / 7d</small></th>
+            <th scope="col" class="col_7 align-top col-md-3">Change %<br/> <small>1h <a (click)="sortData('percent_change_1h','up')"><i class="fa fa-arrow-down"></i></a> <a (click)="sortData('percent_change_1h','down')"><i class="fa fa-arrow-up"></i></a>/ 1d <a (click)="sortData('percent_change_24h','up')"><i class="fa fa-arrow-down"></i></a> <a (click)="sortData('percent_change_24h','down')"><i class="fa fa-arrow-up"></i></a>/ 7d <a (click)="sortData('percent_change_7d','up')"><i class="fa fa-arrow-down"></i></a> <a (click)="sortData('percent_change_7d','down')"><i class="fa fa-arrow-up"></i></a></small></th>
             <th scope="col" class="col_8 col-md-1"></th>
         </tr>
         </thead>
@@ -42,7 +76,7 @@
                     <a class="col_0" (click)="removeFavorite(item.symbol)" title="Remove from portfolio">
                         <i class="fa fa-2x fa-minus-circle text-danger" aria-hidden="true"></i><br/>
                     </a>
-                    {{item.symbol}}
+                    <a [href]="'https://coinmarketcap.com/currencies/'+item.name" target="_blank">{{item.symbol}}</a>
                     <small class="subscript-span">{{item.name}}</small>
                 </th>
                 <td class="numbers-font col_2">{{item.price}}</td>
