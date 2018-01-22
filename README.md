@@ -10,9 +10,11 @@ Single Page App that powers http://www.cryptorollcall.com
     - Update amount of coins bought to get real time net worth of investment
     - Does not store user information on the servers (client side storage using localstorage)
     - Does not deal with PII data
-- Utility to convert crypto currency value to USD value
-- Utility to convert USD value to crypto currency value
+- Utility to convert crypto currency value to all major global currencies like USD EURO AUD etc
+- Utility to convert any major global currency like USD EURO AUD etc to crypto currency value
 
 Real time data retrieved from public apis powered by https://www.CoinMarketCap.com
+
+The services used by this project are implemented in the server side project [CryptoRollCallService](https://github.com/shankarganesh1234/CryptoRollCallService)
 
 
