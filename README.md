@@ -17,4 +17,9 @@ Real time data retrieved from public apis powered by https://www.CoinMarketCap.c
 
 The services used by this project are implemented in the server side project [CryptoRollCallService](https://github.com/shankarganesh1234/CryptoRollCallService)
 
+If you found this site useful, please donate :
+Ripple (XRP) : rEb8TK3gBgk5auZkwc6sHnwrGVJH8DuaLh 
+Ripple (XRP) Tag : 105680413 
+Ethereum (ETH) : 0xc02b304dc77b45fdad2f056ae9ceaf2fc0ddc57a
+
 
