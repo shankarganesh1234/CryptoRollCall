@@ -48,7 +48,7 @@
                 *ngFor="let item of cryptoPrices;let j=index">
             <tr *ngIf="j < recordsPerPage" [ngClass]="item.isFavorite ? 'favorite-row' : ''">
                 <th class="col_1">
-                    <a [href]="'https://coinmarketcap.com/currencies/'+item.name" target="_blank">{{item.symbol}}</a>
+                    <a [routerLink]="['/detail', item.name, item.symbol]">{{item.symbol}}</a>
                     <small class="subscript-span">{{item.name}}</small>
                 </th>
                 <td class="numbers-font col_2">{{item.price}}</td>

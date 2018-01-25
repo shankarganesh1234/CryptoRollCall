@@ -7,6 +7,7 @@ import "rxjs/add/operator/map";
 import "rxjs/add/operator/catch";
 import {CryptoPrice} from "../models/crypto-price";
 import {ChartDataList} from "../models/chart-data-list";
+import {HistoDataList} from "../models/histo-data-list";
 
 
 @Injectable()
@@ -44,6 +45,14 @@ export class CryptoService {
 
     getChartsHome(): Observable<ChartDataList> {
         let url = "crcserver/ticker/charts/home";
+        return this.http
+            .get(url)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
+    getHistoricalCharts(period: string, symbol: string): Observable<HistoDataList> {
+        let url = "crcserver/ticker/histo/" + period + "/" + symbol;
         return this.http
             .get(url)
             .map(this.extractData)

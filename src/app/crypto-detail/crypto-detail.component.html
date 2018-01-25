@@ -1,0 +1,65 @@
+<div *ngIf="cryptoPrice" class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <h3>{{cryptoPrice.name}} <small>{{cryptoPrice.symbol}}</small></h3>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="col-md-2">
+        <strong>Price</strong><br/>
+        <h6>{{cryptoPrice.price_usd}} <small>USD</small></h6>
+        <h6>{{cryptoPrice.price_btc}} <small>BTC</small></h6>
+    </div>
+    <div class="col-md-3">
+        <strong>Change</strong><br/>
+        <h6><small>1H : </small>{{cryptoPrice.percent_change_1h}}</h6>
+        <h6><small>1D : </small>{{cryptoPrice.percent_change_24h}}</h6>
+        <h6><small>7D : </small>{{cryptoPrice.percent_change_7d}}</h6>
+    </div>
+    <div class="col-md-3">
+        <strong>Supply</strong><br/>
+        <h6><small>Available : </small>{{cryptoPrice.available_supply}}</h6>
+        <h6><small>Total : </small>{{cryptoPrice.total_supply}}</h6>
+        <h6><small>Max : </small>{{cryptoPrice.max_supply}}</h6>
+    </div>
+    <div class="col-md-2">
+        <strong>Market Cap</strong><br/>
+        <h6>{{cryptoPrice.market_cap_usd}}</h6>
+    </div>
+</div>
+<hr/>
+<div class="container" style="border-top: solid">
+    <br/>
+    <div class="col-md-3">
+        <h6>Chart Options</h6>
+    </div>
+    <div class="col-md-1">
+        <button class="btn-primary btn-block" [ngClass]="this.period == 'DAY' ? 'active' : ''" (click)="this.period='DAY';invokeHistoService('DAY', symbol)">D</button>
+    </div>
+    <div class="col-md-1">
+        <button class="btn-primary btn-block" [ngClass]="this.period == 'WEEK' ? 'active' : ''" (click)="this.period='WEEK';invokeHistoService('WEEK', symbol)">W</button>
+    </div>
+    <div class="col-md-1">
+        <button class="btn-primary btn-block" [ngClass]="this.period == 'MONTH' ? 'active' : ''" (click)="this.period='MONTH';invokeHistoService('MONTH', symbol)">M</button>
+    </div>
+    <div class="col-md-1">
+        <button class="btn-primary btn-block" [ngClass]="this.period == 'THREE_MONTHS' ? 'active' : ''" (click)="this.period='THREE_MONTHS';invokeHistoService('THREE_MONTHS', symbol)">3 M</button>
+    </div>
+    <div class="col-md-1">
+        <button class="btn-primary btn-block" [ngClass]="this.period == 'SIX_MONTHS' ? 'active' : ''" (click)="this.period='SIX_MONTHS';invokeHistoService('SIX_MONTHS', symbol)">6 M</button>
+    </div>
+    <div class="col-md-1">
+        <button class="btn-primary btn-block" [ngClass]="this.period == 'YEAR' ? 'active' : ''" (click)="this.period='YEAR';invokeHistoService('YEAR', symbol)">Y</button>
+    </div>
+</div>
+<div class="container">
+    <div id="chartContainer3" class="row">
+        <div class="col-lg-12">
+            <canvas #timeline1></canvas>
+        </div>
+    </div>
+</div>
+

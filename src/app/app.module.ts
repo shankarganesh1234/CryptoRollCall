@@ -13,6 +13,7 @@ import {CryptoAboutComponent} from "./crypto-about/crypto-about.component";
 import {CurrencyService} from "./services/currency.service";
 import {CryptoHowToComponent} from "./crypto-howto/crypto-howto.component";
 import { ChartsModule } from 'ng2-charts/ng2-charts';
+import {CryptoDetailComponent} from "./crypto-detail/crypto-detail.component";
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
     CryptoFooterComponent,
     CryptoConverterComponent,
     CryptoAboutComponent,
-    CryptoHowToComponent
+    CryptoHowToComponent,
+    CryptoDetailComponent
   ],
   imports: [BrowserModule,
     FormsModule,
