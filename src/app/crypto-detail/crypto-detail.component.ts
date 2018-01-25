@@ -100,12 +100,18 @@ export class CryptoDetailComponent implements OnInit {
     initPerfChart(): void {
 
         let timeCtx = this.timeline1.nativeElement.getContext('2d');
+        let chartColors: string[] = ["#aa3bb3","#80509a","#1c5ba2","#fda00d","#c55a3a","#cb10d9","#bcc7f3","#27ddb9","#c7394e",
+            "#A52A2A","#BE2625","#B22222","#330000","#CC1100","#EE5C42","#FF7256","#3a2974","#a0f75b","#fc5484","#14a51b",
+            "#133d48","#76c543","#3021d2","#c38aba", "#6b70a5","#6061ea", "#aa3bb3", "#80509a","#1c5ba2","#fda00d", "#c55a3a",
+            "#cb10d9","#bcc7f3","#27ddb9","#c7394e", "#A52A2A","#a0f75b","#fc5484","#14a51b","#133d48", "#76c543","#3021d2",
+            "#c38aba", "#6b70a5", "#6061ea","#CDC5BF","#EE8833","#FFCC11","#B3C95A","#AADD00","#BCEE68"];
+
         var data = {
             labels: this.perfLabels,
             datasets: [
                 {
                     "data": this.perfData,   // Example data
-                    "backgroundColor": "#119C9C",
+                    "backgroundColor": chartColors[Math.floor(Math.random()*(52))],
                     "lineTension":0
                 }]
         };
