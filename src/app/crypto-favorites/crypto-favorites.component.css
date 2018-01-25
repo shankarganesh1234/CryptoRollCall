@@ -7,20 +7,6 @@
     vertical-align: top
 }
 
-.numbers-font {
-    font-family: 'Arial';
-    font-size: medium;
-    font-weight: bold;
-}
-
-.numbers-negative {
-    color: red;
-}
-.numbers-positive {
-    color: green;
-}
-
-
 @media screen and (min-width: 10px) and (max-width: 320px) {
     .col_3, .col_5, .col_6, .col_7{
         display:none;

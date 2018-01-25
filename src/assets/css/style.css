@@ -8373,3 +8373,28 @@ changes to UI
   background-color: #f9f9f9;
   border-bottom: solid
 }
+.numbers-font {
+  font-family: 'Arial';
+  font-size: medium;
+  font-weight: bold;
+}
+
+.numbers-negative {
+  color: red;
+}
+.numbers-positive {
+  color: green;
+}
+.p-numbers-font {
+  font-family: 'Arial';
+  font-size: large;
+  font-weight: bold;
+  color: black;
+  margin-bottom: 0;
+  margin-top:0;
+}
+.detail-link {
+  text-decoration: underline;
+  color: darkviolet
+}
+

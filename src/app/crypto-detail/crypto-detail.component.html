@@ -1,12 +1,12 @@
 <div *ngIf="cryptoPrice" class="container">
     <div class="row">
         <div class="col-md-3">
-            <h3>{{cryptoPrice.name}} <small>{{cryptoPrice.symbol}}</small></h3>
+            <h3>{{cryptoPrice.name}} <small>{{cryptoPrice.symbol}} &nbsp;<a (click)="invokeCryptoServiceForSymbol(name)"><i class="fa fa-refresh"></i></a></small></h3>
         </div>
     </div>
 </div>
 
-<div class="container">
+<div *ngIf="cryptoPrice" class="container">
 
     <div class="col-md-2">
         <strong>Price</strong><br/>
@@ -15,15 +15,24 @@
     </div>
     <div class="col-md-3">
         <strong>Change</strong><br/>
-        <h6><small>1H : </small>{{cryptoPrice.percent_change_1h}}</h6>
-        <h6><small>1D : </small>{{cryptoPrice.percent_change_24h}}</h6>
-        <h6><small>7D : </small>{{cryptoPrice.percent_change_7d}}</h6>
+        <h6 [ngClass] = "(cryptoPrice.percent_change_1h != null && cryptoPrice.percent_change_1h.includes('-') ? 'numbers-negative' : 'numbers-positive')"><small>1H : </small>{{cryptoPrice.percent_change_1h}}</h6>
+        <h6 [ngClass] = "(cryptoPrice.percent_change_24h != null && cryptoPrice.percent_change_24h.includes('-') ? 'numbers-negative' : 'numbers-positive')"><small>1D : </small>{{cryptoPrice.percent_change_24h}}</h6>
+        <h6 [ngClass] = "(cryptoPrice.percent_change_7d != null && cryptoPrice.percent_change_7d.includes('-') ? 'numbers-negative' : 'numbers-positive')"><small>7D : </small>{{cryptoPrice.percent_change_7d}}</h6>
     </div>
     <div class="col-md-3">
         <strong>Supply</strong><br/>
-        <h6><small>Available : </small>{{cryptoPrice.available_supply}}</h6>
-        <h6><small>Total : </small>{{cryptoPrice.total_supply}}</h6>
-        <h6><small>Max : </small>{{cryptoPrice.max_supply}}</h6>
+        <div class="row">
+            <div class="col-md-3" style="float:left">Available</div>
+            <div class="col-md-8"><p class="p-numbers-font">{{cryptoPrice.available_supply}}</p></div>
+        </div>
+        <div class="row">
+            <div class="col-md-3" style="float:left">Total</div>
+            <div class="col-md-8"><p class="p-numbers-font">{{cryptoPrice.total_supply}}</p></div>
+        </div>
+        <div class="row">
+            <div class="col-md-3" style="float:left">Max</div>
+            <div class="col-md-8"><p class="p-numbers-font">{{cryptoPrice.max_supply}}</p></div>
+        </div>
     </div>
     <div class="col-md-2">
         <strong>Market Cap</strong><br/>
