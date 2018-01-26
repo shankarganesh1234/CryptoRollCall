@@ -27,6 +27,7 @@ export class CryptoDetailComponent implements OnInit {
     name: string;
     period: string = "YEAR";
     chart: any;
+    selectVal: string = "Bitcoin~BTC";
 
     constructor(private route: ActivatedRoute, private router: Router, private cryptoService: CryptoService, private titleService: Title, private currencyService: CurrencyService) {
 
@@ -40,6 +41,7 @@ export class CryptoDetailComponent implements OnInit {
         this.route.params.subscribe(params => {
             this.symbol = params['symbol'];
             this.name = params['name'].replace(" ","-");
+            this.selectVal = this.name + "~" + this.symbol;
             this.invokeCryptoServiceForSymbol(this.name);
         });
     }
@@ -150,6 +152,15 @@ export class CryptoDetailComponent implements OnInit {
                 }
             }
         );
+    }
+
+    /**
+     * Invoked when currency changed on detail page
+     * @param selVal
+     */
+    coinChanged(selVal: string): void {
+        let selArr: string[] = selVal.split("~");
+        this.router.navigate(['/detail', selArr[0], selArr[1]]);
     }
 
 }

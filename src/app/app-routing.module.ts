@@ -13,6 +13,7 @@ const routes: Routes = [
     {path: 'convert', component: CryptoConverterComponent},
     {path: 'about', component: CryptoAboutComponent},
     {path: 'howto', component: CryptoHowToComponent},
+    {path: 'detail', component: CryptoPricesComponent},
     {path: 'detail/:name/:symbol', component: CryptoDetailComponent}
 ];
 @NgModule({
