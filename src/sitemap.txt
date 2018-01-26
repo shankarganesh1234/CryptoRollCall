@@ -2,6 +2,7 @@ http://www.cryptorollcall.com/favorites
 http://www.cryptorollcall.com/convert
 http://www.cryptorollcall.com/about
 http://www.cryptorollcall.com/howto
+http://www.cryptorollcall.com/referral
 http://www.cryptorollcall.com/detail/Bitcoin/BTC
 http://www.cryptorollcall.com/detail/Ethereum/ETH
 http://www.cryptorollcall.com/detail/Ripple/XRP
