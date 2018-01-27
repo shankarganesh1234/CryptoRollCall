@@ -30,8 +30,8 @@ export class CurrencyService {
      */
     getCurrExchRates(currency: string): Observable<CurrencyExchange> {
 
-        let baseUrl = "crcserver/ticker/";
-        let url = baseUrl + 'currency/' + currency;
+        let baseUrl = "crcserver/currency/";
+        let url = baseUrl + currency;
         if(this.currencyExchange != null)
             return this.currencyExchange;
 
@@ -50,7 +50,6 @@ export class CurrencyService {
     private handleError(error: any) {
         let errMsg = (error.message) ? error.message :
             error.status ? `${error.status} - ${error.statusText}` : 'Server error';
-        console.error(errMsg);
         return Observable.throw(errMsg);
     }
 }

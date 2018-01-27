@@ -11,6 +11,7 @@ import {Currencies} from "../models/currencies";
 import * as numeral from "numeral";
 import Chart from "chart.js";
 import {ChartDataList} from "../models/chart-data-list";
+import {CryptoDetail} from "../models/crypto-detail";
 
 
 declare const $: any;

@@ -4495,27 +4495,42 @@
 
 <div *ngIf="cryptoPrice" class="container">
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-4">
             <h3>{{cryptoPrice.name}} <small>{{cryptoPrice.symbol}} &nbsp;<a (click)="invokeCryptoServiceForSymbol(name)"><i class="fa fa-refresh"></i></a></small></h3>
+            <h6>{{cryptoPrice.price_usd}} <small>USD</small></h6>
+            <h6>{{cryptoPrice.price_btc}} <small>BTC</small></h6>
+            <a *ngIf="cryptoCoinDetail && cryptoCoinDetail.twitterUrl"  href="{{cryptoCoinDetail.twitterUrl}}" target="_blank" title="twitter"><i class="fa  fa-2x fa-twitter" style="color: #00aced;"></i></a>
+            &nbsp;&nbsp;<a *ngIf="cryptoCoinDetail && cryptoCoinDetail.facebookUrl"  href="{{cryptoCoinDetail.facebookUrl}}" target="_blank" title="facebook"><i class="fa  fa-2x fa-facebook-official" style="color: #3b5998;"></i></a>
+            &nbsp;&nbsp;<a *ngIf="cryptoCoinDetail && cryptoCoinDetail.redditUrl"  href="{{cryptoCoinDetail.redditUrl}}" target="_blank" title="reddit"><i class="fa  fa-2x fa-reddit" style="color: darkred;"></i></a>
+        </div>
+        <div class="col-md-4">
+            <br/>
+            <p class="remove-pad-marg">Hourly change : <span [ngClass] ="(cryptoPrice.percent_change_1h != null && cryptoPrice.percent_change_1h.includes('-') ? 'numbers-negative' : 'numbers-positive')"> <b>{{cryptoPrice.percent_change_1h}} % </b></span></p>
+            <p class="remove-pad-marg">Daily change : <span [ngClass] ="(cryptoPrice.percent_change_24h != null && cryptoPrice.percent_change_24h.includes('-') ? 'numbers-negative' : 'numbers-positive')"> <b>{{cryptoPrice.percent_change_24h}} % </b></span></p>
+            <p class="remove-pad-marg">Weekly change : <span [ngClass] ="(cryptoPrice.percent_change_7d != null && cryptoPrice.percent_change_7d.includes('-') ? 'numbers-negative' : 'numbers-positive')"> <b>{{cryptoPrice.percent_change_7d}} % </b></span></p>
         </div>
     </div>
 </div>
 
 <div *ngIf="cryptoPrice" class="container">
+    <div class="row">
+    <div *ngIf="cryptoCoinDetail && cryptoCoinDetail.codeRepoLinks" class="col-md-4">
+        <i class="fa fa-code" aria-hidden="true"></i> Source Code
+        <br/>
+            <ng-container *ngFor="let item of cryptoCoinDetail.codeRepoLinks">
+                <a href="{{item}}" target="_blank" class="detail-link">{{item}}</a><br/>
+            </ng-container>
+        </div>
 
-    <div class="col-md-2">
-        <strong>Price</strong><br/>
-        <h6>{{cryptoPrice.price_usd}} <small>USD</small></h6>
-        <h6>{{cryptoPrice.price_btc}} <small>BTC</small></h6>
-    </div>
-    <div class="col-md-3">
-        <strong>Change</strong><br/>
-        <h6 [ngClass] = "(cryptoPrice.percent_change_1h != null && cryptoPrice.percent_change_1h.includes('-') ? 'numbers-negative' : 'numbers-positive')"><small>1H : </small>{{cryptoPrice.percent_change_1h}}</h6>
-        <h6 [ngClass] = "(cryptoPrice.percent_change_24h != null && cryptoPrice.percent_change_24h.includes('-') ? 'numbers-negative' : 'numbers-positive')"><small>1D : </small>{{cryptoPrice.percent_change_24h}}</h6>
-        <h6 [ngClass] = "(cryptoPrice.percent_change_7d != null && cryptoPrice.percent_change_7d.includes('-') ? 'numbers-negative' : 'numbers-positive')"><small>7D : </small>{{cryptoPrice.percent_change_7d}}</h6>
-    </div>
-    <div class="col-md-3">
-        <strong>Supply</strong><br/>
+        <div *ngIf="cryptoCoinDetail" class="col-md-3">
+            <strong>Properties</strong><br/>
+            <p class="remove-pad-marg">Algorithm : <span><b>{{cryptoCoinDetail.algorithm}}</b></span></p>
+            <p class="remove-pad-marg">Pre Mined : <span><b>{{cryptoCoinDetail.isPreMined}}</b></span></p>
+            <p class="remove-pad-marg">Proof : <span><b>{{cryptoCoinDetail.proofType}}</b></span></p>
+        </div>
+
+        <div class="col-md-3">
+            <strong>Supply</strong><br/>
         <div class="row">
             <div class="col-md-3" style="float:left">Available</div>
             <div class="col-md-8"><p class="p-numbers-font">{{cryptoPrice.available_supply}}</p></div>
@@ -4532,6 +4547,7 @@
     <div class="col-md-2">
         <strong>Market Cap</strong><br/>
         <h6>{{cryptoPrice.market_cap_usd}}</h6>
+    </div>
     </div>
 </div>
 <hr/>

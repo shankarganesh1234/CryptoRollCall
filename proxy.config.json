@@ -1,8 +1,8 @@
 {
-  "/crcserver/ticker/*": {
-    "target": "http://localhost:8080/CryptoRollCallService/ticker",
+  "/crcserver/*": {
+    "target": "http://localhost:8080/CryptoRollCallService/",
     "pathRewrite": {
-      "^/crcserver/ticker/": ""
+      "^/crcserver/": ""
     },
     "changeOrigin": true,
     "secure": true,

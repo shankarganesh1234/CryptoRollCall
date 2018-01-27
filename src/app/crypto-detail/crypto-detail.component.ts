@@ -7,6 +7,7 @@ import {CurrencyService} from "../services/currency.service";
 import Chart from "chart.js";
 import {HistoDataList} from "../models/histo-data-list";
 import {HistoData} from "../models/histo-data";
+import {CryptoDetail} from "../models/crypto-detail";
 
 
 declare const $: any;
@@ -28,13 +29,14 @@ export class CryptoDetailComponent implements OnInit {
     period: string = "YEAR";
     chart: any;
     selectVal: string = "Bitcoin~BTC";
+    cryptoCoinDetail: CryptoDetail;
 
     constructor(private route: ActivatedRoute, private router: Router, private cryptoService: CryptoService, private titleService: Title, private currencyService: CurrencyService) {
 
     }
 
     ngOnInit(): void {
-        this.titleService.setTitle('CryptoRollCall - Crypto currency tracker, portfolio manager and more');
+        this.titleService.setTitle('CryptoRollCall - Crypto currency source code links, faceboook, twitter, reddit, market cap, available supply, price changes');
         // hide the welcome message
         $('#welcomeMessage').hide();
         window.scrollTo(0, 0);
@@ -43,6 +45,8 @@ export class CryptoDetailComponent implements OnInit {
             this.name = params['name'].replace(" ","-");
             this.selectVal = this.name + "~" + this.symbol;
             this.invokeCryptoServiceForSymbol(this.name);
+            this.invokeCryptoServiceDetail(this.symbol);
+            this.invokeHistoService(this.period, this.symbol);
         });
     }
 
@@ -62,11 +66,23 @@ export class CryptoDetailComponent implements OnInit {
 
     /**
      *
+     * @param symbol
+     */
+    invokeCryptoServiceDetail(symbol: string): void {
+        this.cryptoService
+            .getCryptoDetail(symbol)
+            .subscribe(
+                result => this.cryptoCoinDetail = result,
+                error => this.cryptoCoinDetail = null
+            )
+    }
+
+    /**
+     *
      * @param result
      */
     setCrypto(result: CryptoPrice): void {
         this.cryptoPrice = result[0];
-        this.invokeHistoService(this.period, this.symbol);
     }
 
     /**
@@ -85,11 +101,12 @@ export class CryptoDetailComponent implements OnInit {
         this.perfData = [];
         this.perfLabels = [];
         let histDataArr: HistoData[] = result['price'];
-        for(let i=0; i<histDataArr.length; i+=5) {
-            this.perfData.push(histDataArr[i][1]);
-            this.perfLabels.push(new Date(histDataArr[i][0]));
+        if(histDataArr != null) {
+            for (let i = 0; i < histDataArr.length; i += 5) {
+                this.perfData.push(histDataArr[i][1]);
+                this.perfLabels.push(new Date(histDataArr[i][0]));
+            }
         }
-
         if(this.chart != null)
             this.chart.destroy();
 

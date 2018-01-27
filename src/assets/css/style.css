@@ -8397,4 +8397,7 @@ changes to UI
   text-decoration: underline;
   color: darkviolet
 }
-
+.remove-pad-marg {
+  padding: 0px;
+  margin: 0px;
+}
