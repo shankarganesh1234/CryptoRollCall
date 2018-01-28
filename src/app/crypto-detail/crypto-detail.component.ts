@@ -102,7 +102,7 @@ export class CryptoDetailComponent implements OnInit {
         this.perfLabels = [];
         let histDataArr: HistoData[] = result['price'];
         if(histDataArr != null) {
-            for (let i = 0; i < histDataArr.length; i += 5) {
+            for (let i = 0; i < histDataArr.length; i++) {
                 this.perfData.push(histDataArr[i][1]);
                 this.perfLabels.push(new Date(histDataArr[i][0]));
             }

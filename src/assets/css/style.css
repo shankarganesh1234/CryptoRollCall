@@ -8401,3 +8401,7 @@ changes to UI
   padding: 0px;
   margin: 0px;
 }
+.property-labels {
+  font-size: large;
+  font-weight: bold;
+}

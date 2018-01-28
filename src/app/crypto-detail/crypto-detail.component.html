@@ -4495,19 +4495,22 @@
 
 <div *ngIf="cryptoPrice" class="container">
     <div class="row">
+        <div *ngIf="cryptoCoinDetail && cryptoCoinDetail.imageUrl" class="col-sm-1" style="padding-top: 20px;">
+            <img src="{{cryptoCoinDetail.imageUrl}}" class="img-responsive img-rounded"/>
+        </div>
         <div class="col-md-4">
             <h3>{{cryptoPrice.name}} <small>{{cryptoPrice.symbol}} &nbsp;<a (click)="invokeCryptoServiceForSymbol(name)"><i class="fa fa-refresh"></i></a></small></h3>
-            <h6>{{cryptoPrice.price_usd}} <small>USD</small></h6>
-            <h6>{{cryptoPrice.price_btc}} <small>BTC</small></h6>
+            <h6 *ngIf="cryptoPrice.price_usd">{{cryptoPrice.price_usd}} <small>USD</small></h6>
+            <h6 *ngIf="cryptoPrice.price_btc">{{cryptoPrice.price_btc}} <small>BTC</small></h6>
             <a *ngIf="cryptoCoinDetail && cryptoCoinDetail.twitterUrl"  href="{{cryptoCoinDetail.twitterUrl}}" target="_blank" title="twitter"><i class="fa  fa-2x fa-twitter" style="color: #00aced;"></i></a>
             &nbsp;&nbsp;<a *ngIf="cryptoCoinDetail && cryptoCoinDetail.facebookUrl"  href="{{cryptoCoinDetail.facebookUrl}}" target="_blank" title="facebook"><i class="fa  fa-2x fa-facebook-official" style="color: #3b5998;"></i></a>
             &nbsp;&nbsp;<a *ngIf="cryptoCoinDetail && cryptoCoinDetail.redditUrl"  href="{{cryptoCoinDetail.redditUrl}}" target="_blank" title="reddit"><i class="fa  fa-2x fa-reddit" style="color: darkred;"></i></a>
         </div>
         <div class="col-md-4">
             <br/>
-            <p class="remove-pad-marg">Hourly change : <span [ngClass] ="(cryptoPrice.percent_change_1h != null && cryptoPrice.percent_change_1h.includes('-') ? 'numbers-negative' : 'numbers-positive')"> <b>{{cryptoPrice.percent_change_1h}} % </b></span></p>
-            <p class="remove-pad-marg">Daily change : <span [ngClass] ="(cryptoPrice.percent_change_24h != null && cryptoPrice.percent_change_24h.includes('-') ? 'numbers-negative' : 'numbers-positive')"> <b>{{cryptoPrice.percent_change_24h}} % </b></span></p>
-            <p class="remove-pad-marg">Weekly change : <span [ngClass] ="(cryptoPrice.percent_change_7d != null && cryptoPrice.percent_change_7d.includes('-') ? 'numbers-negative' : 'numbers-positive')"> <b>{{cryptoPrice.percent_change_7d}} % </b></span></p>
+            <p *ngIf="cryptoPrice.percent_change_1h" class="remove-pad-marg property-labels">Hourly change : <span [ngClass] ="(cryptoPrice.percent_change_1h != null && cryptoPrice.percent_change_1h.includes('-') ? 'numbers-negative' : 'numbers-positive')"> <b>{{cryptoPrice.percent_change_1h}} % </b></span></p>
+            <p *ngIf="cryptoPrice.percent_change_24h" class="remove-pad-marg property-labels">Daily change : <span [ngClass] ="(cryptoPrice.percent_change_24h != null && cryptoPrice.percent_change_24h.includes('-') ? 'numbers-negative' : 'numbers-positive')"> <b>{{cryptoPrice.percent_change_24h}} % </b></span></p>
+            <p *ngIf="cryptoPrice.percent_change_7d" class="remove-pad-marg property-labels">Weekly change : <span [ngClass] ="(cryptoPrice.percent_change_7d != null && cryptoPrice.percent_change_7d.includes('-') ? 'numbers-negative' : 'numbers-positive')"> <b>{{cryptoPrice.percent_change_7d}} % </b></span></p>
         </div>
     </div>
 </div>
@@ -4531,20 +4534,20 @@
 
         <div class="col-md-3">
             <strong>Supply</strong><br/>
-        <div class="row">
-            <div class="col-md-3" style="float:left">Available</div>
+        <div *ngIf="cryptoPrice.available_supply && cryptoPrice.available_supply != ''" class="row">
+            <div class="col-md-3" style="float:left"><p class="remove-pad-marg">Available</p></div>
             <div class="col-md-8"><p class="p-numbers-font">{{cryptoPrice.available_supply}}</p></div>
         </div>
-        <div class="row">
-            <div class="col-md-3" style="float:left">Total</div>
+        <div *ngIf="cryptoPrice.total_supply && cryptoPrice.total_supply != ''" class="row">
+            <div class="col-md-3" style="float:left"><p class="remove-pad-marg">Total</p></div>
             <div class="col-md-8"><p class="p-numbers-font">{{cryptoPrice.total_supply}}</p></div>
         </div>
-        <div class="row">
-            <div class="col-md-3" style="float:left">Max</div>
+        <div *ngIf="cryptoPrice.max_supply && cryptoPrice.max_supply != ''" class="row">
+            <div class="col-md-3" style="float:left"><p class="remove-pad-marg">Max</p></div>
             <div class="col-md-8"><p class="p-numbers-font">{{cryptoPrice.max_supply}}</p></div>
         </div>
     </div>
-    <div class="col-md-2">
+    <div *ngIf="cryptoPrice.market_cap_usd" class="col-md-2">
         <strong>Market Cap</strong><br/>
         <h6>{{cryptoPrice.market_cap_usd}}</h6>
     </div>
