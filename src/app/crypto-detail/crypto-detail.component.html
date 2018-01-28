@@ -1,0 +1,4588 @@
+<br/>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <select [(ngModel)]="selectVal" (ngModelChange)="coinChanged($event)" class="form-control" id="cryptoSelect">
+                <option value="Bitcoin~BTC">
+                    Select a coin (Default Bitcoin)
+                </option>
+                <option value ="Ethereum~ETH">
+                    Ethereum
+                </option>
+                <option value ="Ripple~XRP">
+                    Ripple
+                </option>
+                <option value ="Bitcoin-Cash~BCH">
+                    Bitcoin-Cash
+                </option>
+                <option value ="Cardano~ADA">
+                    Cardano
+                </option>
+                <option value ="Stellar~XLM">
+                    Stellar
+                </option>
+                <option value ="Litecoin~LTC">
+                    Litecoin
+                </option>
+                <option value ="EOS~EOS">
+                    EOS
+                </option>
+                <option value ="NEO~NEO">
+                    NEO
+                </option>
+                <option value ="NEM~XEM">
+                    NEM
+                </option>
+                <option value ="IOTA~MIOTA">
+                    IOTA
+                </option>
+                <option value ="Dash~DASH">
+                    Dash
+                </option>
+                <option value ="Monero~XMR">
+                    Monero
+                </option>
+                <option value ="TRON~TRX">
+                    TRON
+                </option>
+                <option value ="Bitcoin-Gold~BTG">
+                    Bitcoin-Gold
+                </option>
+                <option value ="VeChain~VEN">
+                    VeChain
+                </option>
+                <option value ="Qtum~QTUM">
+                    Qtum
+                </option>
+                <option value ="ICON~ICX">
+                    ICON
+                </option>
+                <option value ="Ethereum-Classic~ETC">
+                    Ethereum-Classic
+                </option>
+                <option value ="Lisk~LSK">
+                    Lisk
+                </option>
+                <option value ="RaiBlocks~XRB">
+                    RaiBlocks
+                </option>
+                <option value ="Populous~PPT">
+                    Populous
+                </option>
+                <option value ="OmiseGO~OMG">
+                    OmiseGO
+                </option>
+                <option value ="Tether~USDT">
+                    Tether
+                </option>
+                <option value ="Steem~STEEM">
+                    Steem
+                </option>
+                <option value ="Zcash~ZEC">
+                    Zcash
+                </option>
+                <option value ="Bytecoin~BCN">
+                    Bytecoin
+                </option>
+                <option value ="Binance-Coin~BNB">
+                    Binance-Coin
+                </option>
+                <option value ="Verge~XVG">
+                    Verge
+                </option>
+                <option value ="Siacoin~SC">
+                    Siacoin
+                </option>
+                <option value ="Stratis~STRAT">
+                    Stratis
+                </option>
+                <option value ="BitShares~BTS">
+                    BitShares
+                </option>
+                <option value ="Ardor~ARDR">
+                    Ardor
+                </option>
+                <option value ="Status~SNT">
+                    Status
+                </option>
+                <option value ="Augur~REP">
+                    Augur
+                </option>
+                <option value ="Maker~MKR">
+                    Maker
+                </option>
+                <option value ="Waves~WAVES">
+                    Waves
+                </option>
+                <option value ="Walton~WTC">
+                    Walton
+                </option>
+                <option value ="Dogecoin~DOGE">
+                    Dogecoin
+                </option>
+                <option value ="0x~ZRX">
+                    0x
+                </option>
+                <option value ="Hshare~HSR">
+                    Hshare
+                </option>
+                <option value ="Veritaseum~VERI">
+                    Veritaseum
+                </option>
+                <option value ="Electroneum~ETN">
+                    Electroneum
+                </option>
+                <option value ="Ark~ARK">
+                    Ark
+                </option>
+                <option value ="KuCoin-Shares~KCS">
+                    KuCoin-Shares
+                </option>
+                <option value ="Komodo~KMD">
+                    Komodo
+                </option>
+                <option value ="IOStoken~IOST">
+                    IOStoken
+                </option>
+                <option value ="Decred~DCR">
+                    Decred
+                </option>
+                <option value ="RChain~RHOC">
+                    RChain
+                </option>
+                <option value ="Loopring~LRC">
+                    Loopring
+                </option>
+                <option value ="PIVX~PIVX">
+                    PIVX
+                </option>
+                <option value ="Aeternity~AE">
+                    Aeternity
+                </option>
+                <option value ="Basic-Attention-Token~BAT">
+                    Basic-Attention-Token
+                </option>
+                <option value ="DigiByte~DGB">
+                    DigiByte
+                </option>
+                <option value ="Dragonchain~DRGN">
+                    Dragonchain
+                </option>
+                <option value ="Dentacoin~DCN">
+                    Dentacoin
+                </option>
+                <option value ="aelf~ELF">
+                    aelf
+                </option>
+                <option value ="Byteball-Bytes~GBYTE">
+                    Byteball-Bytes
+                </option>
+                <option value ="QASH~QASH">
+                    QASH
+                </option>
+                <option value ="Gas~GAS">
+                    Gas
+                </option>
+                <option value ="Golem~GNT">
+                    Golem
+                </option>
+                <option value ="Kyber-Network~KNC">
+                    Kyber-Network
+                </option>
+                <option value ="ZClassic~ZCL">
+                    ZClassic
+                </option>
+                <option value ="Cindicator~CND">
+                    Cindicator
+                </option>
+                <option value ="DigixDAO~DGD">
+                    DigixDAO
+                </option>
+                <option value ="WAX~WAX">
+                    WAX
+                </option>
+                <option value ="Bytom~BTM">
+                    Bytom
+                </option>
+                <option value ="FunFair~FUN">
+                    FunFair
+                </option>
+                <option value ="Factom~FCT">
+                    Factom
+                </option>
+                <option value ="Nebulas~NAS">
+                    Nebulas
+                </option>
+                <option value ="Ethos~ETHOS">
+                    Ethos
+                </option>
+                <option value ="SALT~SALT">
+                    SALT
+                </option>
+                <option value ="SmartCash~SMART">
+                    SmartCash
+                </option>
+                <option value ="Power-Ledger~POWR">
+                    Power-Ledger
+                </option>
+                <option value ="Aion~AION">
+                    Aion
+                </option>
+                <option value ="Dent~DENT">
+                    Dent
+                </option>
+                <option value ="Cryptonex~CNX">
+                    Cryptonex
+                </option>
+                <option value ="MonaCoin~MONA">
+                    MonaCoin
+                </option>
+                <option value ="Syscoin~SYS">
+                    Syscoin
+                </option>
+                <option value ="GXShares~GXS">
+                    GXShares
+                </option>
+                <option value ="Nxt~NXT">
+                    Nxt
+                </option>
+                <option value ="MediBloc~MED">
+                    MediBloc
+                </option>
+                <option value ="Nexus~NXS">
+                    Nexus
+                </option>
+                <option value ="Experience-Points~XP">
+                    Experience-Points
+                </option>
+                <option value ="Enigma~ENG">
+                    Enigma
+                </option>
+                <option value ="Kin~KIN">
+                    Kin
+                </option>
+                <option value ="Particl~PART">
+                    Particl
+                </option>
+                <option value ="MaidSafeCoin~MAID">
+                    MaidSafeCoin
+                </option>
+                <option value ="ReddCoin~RDD">
+                    ReddCoin
+                </option>
+                <option value ="Request-Network~REQ">
+                    Request-Network
+                </option>
+                <option value ="SIRIN-LABS-Token~SRN">
+                    SIRIN-LABS-Token
+                </option>
+                <option value ="Bancor~BNT">
+                    Bancor
+                </option>
+                <option value ="ZCoin~XZC">
+                    ZCoin
+                </option>
+                <option value ="GameCredits~GAME">
+                    GameCredits
+                </option>
+                <option value ="Bitcore~BTX">
+                    Bitcore
+                </option>
+                <option value ="Neblio~NEBL">
+                    Neblio
+                </option>
+                <option value ="ChainLink~LINK">
+                    ChainLink
+                </option>
+                <option value ="Quantstamp~QSP">
+                    Quantstamp
+                </option>
+                <option value ="Iconomi~ICN">
+                    Iconomi
+                </option>
+                <option value ="TenX~PAY">
+                    TenX
+                </option>
+                <option value ="Gnosis~GNO">
+                    Gnosis
+                </option>
+                <option value ="Pillar~PLR">
+                    Pillar
+                </option>
+                <option value ="SophiaTX~SPHTX">
+                    SophiaTX
+                </option>
+                <option value ="Substratum~SUB">
+                    Substratum
+                </option>
+                <option value ="Civic~CVC">
+                    Civic
+                </option>
+                <option value ="iExec-RLC~RLC">
+                    iExec-RLC
+                </option>
+                <option value ="Emercoin~EMC">
+                    Emercoin
+                </option>
+                <option value ="Raiden-Network-Token~RDN">
+                    Raiden-Network-Token
+                </option>
+                <option value ="DigitalNote~XDN">
+                    DigitalNote
+                </option>
+                <option value ="Po.et~POE">
+                    Po.et
+                </option>
+                <option value ="Storm~STORM">
+                    Storm
+                </option>
+                <option value ="Skycoin~SKY">
+                    Skycoin
+                </option>
+                <option value ="Enjin-Coin~ENJ">
+                    Enjin-Coin
+                </option>
+                <option value ="XPlay~XPA">
+                    XPlay
+                </option>
+                <option value ="Time-New-Bank~TNB">
+                    Time-New-Bank
+                </option>
+                <option value ="DEW~DEW">
+                    DEW
+                </option>
+                <option value ="Storj~STORJ">
+                    Storj
+                </option>
+                <option value ="Vertcoin~VTC">
+                    Vertcoin
+                </option>
+                <option value ="BitcoinDark~BTCD">
+                    BitcoinDark
+                </option>
+                <option value ="BLOCKv~VEE">
+                    BLOCKv
+                </option>
+                <option value ="Achain~ACT">
+                    Achain
+                </option>
+                <option value ="BridgeCoin~BCO">
+                    BridgeCoin
+                </option>
+                <option value ="Ubiq~UBQ">
+                    Ubiq
+                </option>
+                <option value ="ETHLend~LEND">
+                    ETHLend
+                </option>
+                <option value ="SingularDTV~SNGLS">
+                    SingularDTV
+                </option>
+                <option value ="VIBE~VIBE">
+                    VIBE
+                </option>
+                <option value ="Red-Pulse~RPX">
+                    Red-Pulse
+                </option>
+                <option value ="NAV-Coin~NAV">
+                    NAV-Coin
+                </option>
+                <option value ="Santiment-Network-Token~SAN">
+                    Santiment-Network-Token
+                </option>
+                <option value ="Monaco~MCO">
+                    Monaco
+                </option>
+                <option value ="Simple-Token~OST">
+                    Simple-Token
+                </option>
+                <option value ="Blocknet~BLOCK">
+                    Blocknet
+                </option>
+                <option value ="Dynamic-Trading-Rights~DTR">
+                    Dynamic-Trading-Rights
+                </option>
+                <option value ="Aragon~ANT">
+                    Aragon
+                </option>
+                <option value ="PACcoin~PAC">
+                    PACcoin
+                </option>
+                <option value ="Ambrosus~AMB">
+                    Ambrosus
+                </option>
+                <option value ="Theta-Token~THETA">
+                    Theta-Token
+                </option>
+                <option value ="Ripio-Credit-Network~RCN">
+                    Ripio-Credit-Network
+                </option>
+                <option value ="PayPie~PPP">
+                    PayPie
+                </option>
+                <option value ="AirSwap~AST">
+                    AirSwap
+                </option>
+                <option value ="DeepBrain-Chain~DBC">
+                    DeepBrain-Chain
+                </option>
+                <option value ="Counterparty~XCP">
+                    Counterparty
+                </option>
+                <option value ="HTMLCOIN~HTML">
+                    HTMLCOIN
+                </option>
+                <option value ="Telcoin~TEL">
+                    Telcoin
+                </option>
+                <option value ="Decentraland~MANA">
+                    Decentraland
+                </option>
+                <option value ="Asch~XAS">
+                    Asch
+                </option>
+                <option value ="Cobinhood~COB">
+                    Cobinhood
+                </option>
+                <option value ="SuperNET~UNITY">
+                    SuperNET
+                </option>
+                <option value ="INS-Ecosystem~INS">
+                    INS-Ecosystem
+                </option>
+                <option value ="AppCoins~APPC">
+                    AppCoins
+                </option>
+                <option value ="Einsteinium~EMC2">
+                    Einsteinium
+                </option>
+                <option value ="XTRABYTES~XBY">
+                    XTRABYTES
+                </option>
+                <option value ="Revain~R">
+                    Revain
+                </option>
+                <option value ="High-Performance-Blockchain~HPB">
+                    High-Performance-Blockchain
+                </option>
+                <option value ="Bibox-Token~BIX">
+                    Bibox-Token
+                </option>
+                <option value ="BitBay~BAY">
+                    BitBay
+                </option>
+                <option value ="Unikoin-Gold~UKG">
+                    Unikoin-Gold
+                </option>
+                <option value ="Peercoin~PPC">
+                    Peercoin
+                </option>
+                <option value ="WaBi~WABI">
+                    WaBi
+                </option>
+                <option value ="ZenCash~ZEN">
+                    ZenCash
+                </option>
+                <option value ="SONM~SNM">
+                    SONM
+                </option>
+                <option value ="Modum~MOD">
+                    Modum
+                </option>
+                <option value ="Edgeless~EDG">
+                    Edgeless
+                </option>
+                <option value ="SpankChain~SPANK">
+                    SpankChain
+                </option>
+                <option value ="CyberMiles~CMT">
+                    CyberMiles
+                </option>
+                <option value ="AdEx~ADX">
+                    AdEx
+                </option>
+                <option value ="MediShares~MDS">
+                    MediShares
+                </option>
+                <option value ="Centra~CTR">
+                    Centra
+                </option>
+                <option value ="Streamr-DATAcoin~DATA">
+                    Streamr-DATAcoin
+                </option>
+                <option value ="Tierion~TNT">
+                    Tierion
+                </option>
+                <option value ="ION~ION">
+                    ION
+                </option>
+                <option value ="Nuls~NULS">
+                    Nuls
+                </option>
+                <option value ="Agoras-Tokens~AGRS">
+                    Agoras-Tokens
+                </option>
+                <option value ="Quantum-Resistant-Ledger~QRL">
+                    Quantum-Resistant-Ledger
+                </option>
+                <option value ="IoT-Chain~ITC">
+                    IoT-Chain
+                </option>
+                <option value ="BitConnect~BCC">
+                    BitConnect
+                </option>
+                <option value ="Melon~MLN">
+                    Melon
+                </option>
+                <option value ="district0x~DNT">
+                    district0x
+                </option>
+                <option value ="Gulden~NLG">
+                    Gulden
+                </option>
+                <option value ="Electra~ECA">
+                    Electra
+                </option>
+                <option value ="Etherparty~FUEL">
+                    Etherparty
+                </option>
+                <option value ="Internet-Node-Token~INT">
+                    Internet-Node-Token
+                </option>
+                <option value ="Metal~MTL">
+                    Metal
+                </option>
+                <option value ="Metaverse-ETP~ETP">
+                    Metaverse-ETP
+                </option>
+                <option value ="ATMChain~ATM">
+                    ATMChain
+                </option>
+                <option value ="Bread~BRD">
+                    Bread
+                </option>
+                <option value ="ECC~ECC">
+                    ECC
+                </option>
+                <option value ="Wings~WINGS">
+                    Wings
+                </option>
+                <option value ="NAGA~NGC">
+                    NAGA
+                </option>
+                <option value ="Viacoin~VIA">
+                    Viacoin
+                </option>
+                <option value ="LBRY-Credits~LBC">
+                    LBRY-Credits
+                </option>
+                <option value ="Decision-Token~HST">
+                    Decision-Token
+                </option>
+                <option value ="Rise~RISE">
+                    Rise
+                </option>
+                <option value ="Trinity-Network-Credit~TNC">
+                    Trinity-Network-Credit
+                </option>
+                <option value ="HempCoin~THC">
+                    HempCoin
+                </option>
+                <option value ="QLINK~QLC">
+                    QLINK
+                </option>
+                <option value ="DECENT~DCT">
+                    DECENT
+                </option>
+                <option value ="Triggers~TRIG">
+                    Triggers
+                </option>
+                <option value ="Burst~BURST">
+                    Burst
+                </option>
+                <option value ="CloakCoin~CLOAK">
+                    CloakCoin
+                </option>
+                <option value ="UTRUST~UTK">
+                    UTRUST
+                </option>
+                <option value ="CoinDash~CDT">
+                    CoinDash
+                </option>
+                <option value ="adToken~ADT">
+                    adToken
+                </option>
+                <option value ="Wagerr~WGR">
+                    Wagerr
+                </option>
+                <option value ="Eidoo~EDO">
+                    Eidoo
+                </option>
+                <option value ="Cappasity~CAPP">
+                    Cappasity
+                </option>
+                <option value ="Lunyr~LUN">
+                    Lunyr
+                </option>
+                <option value ="MobileGo~MGO">
+                    MobileGo
+                </option>
+                <option value ="SaluS~SLS">
+                    SaluS
+                </option>
+                <option value ="Hive~HVN">
+                    Hive
+                </option>
+                <option value ="Oyster~PRL">
+                    Oyster
+                </option>
+                <option value ="Aeon~AEON">
+                    Aeon
+                </option>
+                <option value ="Gifto~GTO">
+                    Gifto
+                </option>
+                <option value ="FirstBlood~1ST">
+                    FirstBlood
+                </option>
+                <option value ="WeTrust~TRST">
+                    WeTrust
+                </option>
+                <option value ="Lamden~TAU">
+                    Lamden
+                </option>
+                <option value ="Spectrecoin~XSPEC">
+                    Spectrecoin
+                </option>
+                <option value ="I/O-Coin~IOC">
+                    I/O-Coin
+                </option>
+                <option value ="Groestlcoin~GRS">
+                    Groestlcoin
+                </option>
+                <option value ="Selfkey~KEY">
+                    Selfkey
+                </option>
+                <option value ="Grid+~GRID">
+                    Grid+
+                </option>
+                <option value ="Agrello~DLT">
+                    Agrello
+                </option>
+                <option value ="Mercury~MER">
+                    Mercury
+                </option>
+                <option value ="BitDegree~BDG">
+                    BitDegree
+                </option>
+                <option value ="MinexCoin~MNX">
+                    MinexCoin
+                </option>
+                <option value ="Genesis-Vision~GVT">
+                    Genesis-Vision
+                </option>
+                <option value ="Lykke~LKK">
+                    Lykke
+                </option>
+                <option value ="Ink~INK">
+                    Ink
+                </option>
+                <option value ="TokenCard~TKN">
+                    TokenCard
+                </option>
+                <option value ="iXledger~IXT">
+                    iXledger
+                </option>
+                <option value ="Dimecoin~DIME">
+                    Dimecoin
+                </option>
+                <option value ="TaaS~TAAS">
+                    TaaS
+                </option>
+                <option value ="Cofound.it~CFI">
+                    Cofound.it
+                </option>
+                <option value ="Shift~SHIFT">
+                    Shift
+                </option>
+                <option value ="Voxels~VOX">
+                    Voxels
+                </option>
+                <option value ="Datum~DAT">
+                    Datum
+                </option>
+                <option value ="Pura~PURA">
+                    Pura
+                </option>
+                <option value ="Everex~EVX">
+                    Everex
+                </option>
+                <option value ="COSS~COSS">
+                    COSS
+                </option>
+                <option value ="Crown~CRW">
+                    Crown
+                </option>
+                <option value ="Delphy~DPY">
+                    Delphy
+                </option>
+                <option value ="bitCNY~BITCNY">
+                    bitCNY
+                </option>
+                <option value ="Bloom~BLT">
+                    Bloom
+                </option>
+                <option value ="Paypex~PAYX">
+                    Paypex
+                </option>
+                <option value ="Karma~KRM">
+                    Karma
+                </option>
+                <option value ="Namecoin~NMC">
+                    Namecoin
+                </option>
+                <option value ="Spectre.ai-Dividend-Token~SXDT">
+                    Spectre.ai-Dividend-Token
+                </option>
+                <option value ="Trade-Token~TIO">
+                    Trade-Token
+                </option>
+                <option value ="Pepe-Cash~PEPECASH">
+                    Pepe-Cash
+                </option>
+                <option value ="EncrypGen~DNA">
+                    EncrypGen
+                </option>
+                <option value ="Mooncoin~MOON">
+                    Mooncoin
+                </option>
+                <option value ="Feathercoin~FTC">
+                    Feathercoin
+                </option>
+                <option value ="Monetha~MTH">
+                    Monetha
+                </option>
+                <option value ="Viberate~VIB">
+                    Viberate
+                </option>
+                <option value ="YOYOW~YOYOW">
+                    YOYOW
+                </option>
+                <option value ="Blocktix~TIX">
+                    Blocktix
+                </option>
+                <option value ="BitClave~CAT">
+                    BitClave
+                </option>
+                <option value ="PotCoin~POT">
+                    PotCoin
+                </option>
+                <option value ="Safe-Exchange-Coin~SAFEX">
+                    Safe-Exchange-Coin
+                </option>
+                <option value ="Nimiq~NET">
+                    Nimiq
+                </option>
+                <option value ="Flash~FLASH">
+                    Flash
+                </option>
+                <option value ="Worldcore~WRC">
+                    Worldcore
+                </option>
+                <option value ="Humaniq~HMQ">
+                    Humaniq
+                </option>
+                <option value ="Propy~PRO">
+                    Propy
+                </option>
+                <option value ="Mothership~MSP">
+                    Mothership
+                </option>
+                <option value ="Diamond~DMD">
+                    Diamond
+                </option>
+                <option value ="Steem-Dollars~SBD">
+                    Steem-Dollars
+                </option>
+                <option value ="Covesting~COV">
+                    Covesting
+                </option>
+                <option value ="Presearch~PRE">
+                    Presearch
+                </option>
+                <option value ="SIBCoin~SIB">
+                    SIBCoin
+                </option>
+                <option value ="Zeusshield~ZSC">
+                    Zeusshield
+                </option>
+                <option value ="CanYaCoin~CAN">
+                    CanYaCoin
+                </option>
+                <option value ="VeriCoin~VRC">
+                    VeriCoin
+                </option>
+                <option value ="Game.com~GTC">
+                    Game.com
+                </option>
+                <option value ="DomRaider~DRT">
+                    DomRaider
+                </option>
+                <option value ="E-coin~ECN">
+                    E-coin
+                </option>
+                <option value ="DeepOnion~ONION">
+                    DeepOnion
+                </option>
+                <option value ="Synereo~AMP">
+                    Synereo
+                </option>
+                <option value ="WhiteCoin~XWC">
+                    WhiteCoin
+                </option>
+                <option value ="Elastic~XEL">
+                    Elastic
+                </option>
+                <option value ="SHIELD~XSH">
+                    SHIELD
+                </option>
+                <option value ="SolarCoin~SLR">
+                    SolarCoin
+                </option>
+                <option value ="Neumark~NEU">
+                    Neumark
+                </option>
+                <option value ="BlockMason-Credit-Protocol~BCPT">
+                    BlockMason-Credit-Protocol
+                </option>
+                <option value ="Matchpool~GUP">
+                    Matchpool
+                </option>
+                <option value ="FairCoin~FAIR">
+                    FairCoin
+                </option>
+                <option value ="Aurora-DAO~AURA">
+                    Aurora-DAO
+                </option>
+                <option value ="LAToken~LA">
+                    LAToken
+                </option>
+                <option value ="HelloGold~HGT">
+                    HelloGold
+                </option>
+                <option value ="NuShares~NSR">
+                    NuShares
+                </option>
+                <option value ="Pascal-Coin~PASC">
+                    Pascal-Coin
+                </option>
+                <option value ="Moeda-Loyalty-Points~MDA">
+                    Moeda-Loyalty-Points
+                </option>
+                <option value ="Voise~VOISE">
+                    Voise
+                </option>
+                <option value ="Peerplays~PPY">
+                    Peerplays
+                </option>
+                <option value ="NoLimitCoin~NLC2">
+                    NoLimitCoin
+                </option>
+                <option value ="BlackCoin~BLK">
+                    BlackCoin
+                </option>
+                <option value ="SunContract~SNC">
+                    SunContract
+                </option>
+                <option value ="Primas~PST">
+                    Primas
+                </option>
+                <option value ="GridCoin~GRC">
+                    GridCoin
+                </option>
+                <option value ="Expanse~EXP">
+                    Expanse
+                </option>
+                <option value ="Snovio~SNOV">
+                    Snovio
+                </option>
+                <option value ="Stox~STX">
+                    Stox
+                </option>
+                <option value ="Golos~GOLOS">
+                    Golos
+                </option>
+                <option value ="PoSW-Coin~POSW">
+                    PoSW-Coin
+                </option>
+                <option value ="Aeron~ARN">
+                    Aeron
+                </option>
+                <option value ="Numeraire~NMR">
+                    Numeraire
+                </option>
+                <option value ="Swarm-City~SWT">
+                    Swarm-City
+                </option>
+                <option value ="Bounty0x~BNTY">
+                    Bounty0x
+                </option>
+                <option value ="Radium~RADS">
+                    Radium
+                </option>
+                <option value ="Phore~PHR">
+                    Phore
+                </option>
+                <option value ="Bodhi~BOT">
+                    Bodhi
+                </option>
+                <option value ="Xenon~XNN">
+                    Xenon
+                </option>
+                <option value ="Target-Coin~TGT">
+                    Target-Coin
+                </option>
+                <option value ="Ormeus-Coin~ORME">
+                    Ormeus-Coin
+                </option>
+                <option value ="Open-Trading-Network~OTN">
+                    Open-Trading-Network
+                </option>
+                <option value ="GET-Protocol~GET">
+                    GET-Protocol
+                </option>
+                <option value ="Divi~DIVX">
+                    Divi
+                </option>
+                <option value ="OKCash~OK">
+                    OKCash
+                </option>
+                <option value ="MonetaryUnit~MUE">
+                    MonetaryUnit
+                </option>
+                <option value ="OAX~OAX">
+                    OAX
+                </option>
+                <option value ="Rivetz~RVT">
+                    Rivetz
+                </option>
+                <option value ="eBitcoin~EBTC">
+                    eBitcoin
+                </option>
+                <option value ="Omni~OMNI">
+                    Omni
+                </option>
+                <option value ="Maecenas~ART">
+                    Maecenas
+                </option>
+                <option value ="Credo~CREDO">
+                    Credo
+                </option>
+                <option value ="BCAP~BCAP">
+                    BCAP
+                </option>
+                <option value ="NeosCoin~NEOS">
+                    NeosCoin
+                </option>
+                <option value ="AirToken~AIR">
+                    AirToken
+                </option>
+                <option value ="Boolberry~BBR">
+                    Boolberry
+                </option>
+                <option value ="ColossusCoinXT~COLX">
+                    ColossusCoinXT
+                </option>
+                <option value ="Rubycoin~RBY">
+                    Rubycoin
+                </option>
+                <option value ="ALIS~ALIS">
+                    ALIS
+                </option>
+                <option value ="NVO~NVST">
+                    NVO
+                </option>
+                <option value ="Myriad~XMY">
+                    Myriad
+                </option>
+                <option value ="LEOcoin~LEO">
+                    LEOcoin
+                </option>
+                <option value ="Blackmoon~BMC">
+                    Blackmoon
+                </option>
+                <option value ="Nexium~NXC">
+                    Nexium
+                </option>
+                <option value ="LIFE~LIFE">
+                    LIFE
+                </option>
+                <option value ="Bean-Cash~BITB">
+                    Bean-Cash
+                </option>
+                <option value ="NewYorkCoin~NYC">
+                    NewYorkCoin
+                </option>
+                <option value ="Gambit~GAM">
+                    Gambit
+                </option>
+                <option value ="DecentBet~DBET">
+                    DecentBet
+                </option>
+                <option value ="Paragon~PRG">
+                    Paragon
+                </option>
+                <option value ="Pandacoin~PND">
+                    Pandacoin
+                </option>
+                <option value ="Hedge~HDG">
+                    Hedge
+                </option>
+                <option value ="Neutron~NTRN">
+                    Neutron
+                </option>
+                <option value ="DubaiCoin~DBIX">
+                    DubaiCoin
+                </option>
+                <option value ="Bismuth~BIS">
+                    Bismuth
+                </option>
+                <option value ="BitSend~BSD">
+                    BitSend
+                </option>
+                <option value ="KickCoin~KICK">
+                    KickCoin
+                </option>
+                <option value ="Unobtanium~UNO">
+                    Unobtanium
+                </option>
+                <option value ="Patientory~PTOY">
+                    Patientory
+                </option>
+                <option value ="BLUE~BLUE">
+                    BLUE
+                </option>
+                <option value ="Playkey~PKT">
+                    Playkey
+                </option>
+                <option value ="OracleChain~OCT">
+                    OracleChain
+                </option>
+                <option value ="Waves-Community-Token~WCT">
+                    Waves-Community-Token
+                </option>
+                <option value ="Linda~LINDA">
+                    Linda
+                </option>
+                <option value ="Obsidian~ODN">
+                    Obsidian
+                </option>
+                <option value ="Zoin~ZOI">
+                    Zoin
+                </option>
+                <option value ="Incent~INCNT">
+                    Incent
+                </option>
+                <option value ="InvestFeed~IFT">
+                    InvestFeed
+                </option>
+                <option value ="QunQun~QUN">
+                    QunQun
+                </option>
+                <option value ="Hush~HUSH">
+                    Hush
+                </option>
+                <option value ="LUXCoin~LUX">
+                    LUXCoin
+                </option>
+                <option value ="Clams~CLAM">
+                    Clams
+                </option>
+                <option value ="ATBCoin~ATB">
+                    ATBCoin
+                </option>
+                <option value ="Chronobank~TIME">
+                    Chronobank
+                </option>
+                <option value ="Databits~DTB">
+                    Databits
+                </option>
+                <option value ="ICOS~ICOS">
+                    ICOS
+                </option>
+                <option value ="Primecoin~XPM">
+                    Primecoin
+                </option>
+                <option value ="OneRoot-Network~RNT">
+                    OneRoot-Network
+                </option>
+                <option value ="MyBit-Token~MYB">
+                    MyBit-Token
+                </option>
+                <option value ="Energycoin~ENRG">
+                    Energycoin
+                </option>
+                <option value ="LoMoCoin~LMC">
+                    LoMoCoin
+                </option>
+                <option value ="FlorinCoin~FLO">
+                    FlorinCoin
+                </option>
+                <option value ="Soarcoin~SOAR">
+                    Soarcoin
+                </option>
+                <option value ="FoldingCoin~FLDC">
+                    FoldingCoin
+                </option>
+                <option value ="Vsync~VSX">
+                    Vsync
+                </option>
+                <option value ="Mintcoin~MINT">
+                    Mintcoin
+                </option>
+                <option value ="ClearPoll~POLL">
+                    ClearPoll
+                </option>
+                <option value ="Elixir~ELIX">
+                    Elixir
+                </option>
+                <option value ="Dovu~DOVU">
+                    Dovu
+                </option>
+                <option value ="FedoraCoin~TIPS">
+                    FedoraCoin
+                </option>
+                <option value ="Etheroll~DICE">
+                    Etheroll
+                </option>
+                <option value ="ProChain~PRA">
+                    ProChain
+                </option>
+                <option value ="Aventus~AVT">
+                    Aventus
+                </option>
+                <option value ="Rialto~XRL">
+                    Rialto
+                </option>
+                <option value ="CVCoin~CVCOIN">
+                    CVCoin
+                </option>
+                <option value ="Polybius~PLBT">
+                    Polybius
+                </option>
+                <option value ="Universal-Currency~UNIT">
+                    Universal-Currency
+                </option>
+                <option value ="Change~CAG">
+                    Change
+                </option>
+                <option value ="Circuits-of-Value~COVAL">
+                    Circuits-of-Value
+                </option>
+                <option value ="Payfair~PFR">
+                    Payfair
+                </option>
+                <option value ="Oxycoin~OXY">
+                    Oxycoin
+                </option>
+                <option value ="Autonio~NIO">
+                    Autonio
+                </option>
+                <option value ="Musicoin~MUSIC">
+                    Musicoin
+                </option>
+                <option value ="Monoeci~XMCC">
+                    Monoeci
+                </option>
+                <option value ="Publica~PBL">
+                    Publica
+                </option>
+                <option value ="bitqy~BQ">
+                    bitqy
+                </option>
+                <option value ="SportyFi~SPF">
+                    SportyFi
+                </option>
+                <option value ="Pirl~PIRL">
+                    Pirl
+                </option>
+                <option value ="Flixxo~FLIXX">
+                    Flixxo
+                </option>
+                <option value ="bitUSD~BITUSD">
+                    bitUSD
+                </option>
+                <option value ="Sequence~SEQ">
+                    Sequence
+                </option>
+                <option value ="Global-Currency-Reserve~GCR">
+                    Global-Currency-Reserve
+                </option>
+                <option value ="Solaris~XLR">
+                    Solaris
+                </option>
+                <option value ="Xaurum~XAUR">
+                    Xaurum
+                </option>
+                <option value ="HEAT~HEAT">
+                    HEAT
+                </option>
+                <option value ="GoByte~GBX">
+                    GoByte
+                </option>
+                <option value ="Blockport~BPT">
+                    Blockport
+                </option>
+                <option value ="ArtByte~ABY">
+                    ArtByte
+                </option>
+                <option value ="Russian-Miner-Coin~RMC">
+                    Russian-Miner-Coin
+                </option>
+                <option value ="Leverj~LEV">
+                    Leverj
+                </option>
+                <option value ="LockChain~LOC">
+                    LockChain
+                </option>
+                <option value ="Quantum~QAU">
+                    Quantum
+                </option>
+                <option value ="Bitcrystals~BCY">
+                    Bitcrystals
+                </option>
+                <option value ="KiloCoin~KLC">
+                    KiloCoin
+                </option>
+                <option value ="Uquid-Coin~UQC">
+                    Uquid-Coin
+                </option>
+                <option value ="Sphere~SPHR">
+                    Sphere
+                </option>
+                <option value ="Stealthcoin~XST">
+                    Stealthcoin
+                </option>
+                <option value ="Espers~ESP">
+                    Espers
+                </option>
+                <option value ="B2B~B2B">
+                    B2B
+                </option>
+                <option value ="OBITS~OBITS">
+                    OBITS
+                </option>
+                <option value ="BlockCAT~CAT">
+                    BlockCAT
+                </option>
+                <option value ="Sumokoin~SUMO">
+                    Sumokoin
+                </option>
+                <option value ="BitDice~CSNO">
+                    BitDice
+                </option>
+                <option value ="ALQO~ALQO">
+                    ALQO
+                </option>
+                <option value ="Exchange-Union~XUC">
+                    Exchange-Union
+                </option>
+                <option value ="PinkCoin~PINK">
+                    PinkCoin
+                </option>
+                <option value ="AsiaCoin~AC">
+                    AsiaCoin
+                </option>
+                <option value ="Ethorse~HORSE">
+                    Ethorse
+                </option>
+                <option value ="Internet-of-People~IOP">
+                    Internet-of-People
+                </option>
+                <option value ="Curecoin~CURE">
+                    Curecoin
+                </option>
+                <option value ="Mysterium~MYST">
+                    Mysterium
+                </option>
+                <option value ="EarthCoin~EAC">
+                    EarthCoin
+                </option>
+                <option value ="Sprouts~SPRTS">
+                    Sprouts
+                </option>
+                <option value ="Regalcoin~REC">
+                    Regalcoin
+                </option>
+                <option value ="Aigang~AIX">
+                    Aigang
+                </option>
+                <option value ="Syndicate~SYNX">
+                    Syndicate
+                </option>
+                <option value ="Devery~EVE">
+                    Devery
+                </option>
+                <option value ="Pluton~PLU">
+                    Pluton
+                </option>
+                <option value ="FlypMe~FYP">
+                    FlypMe
+                </option>
+                <option value ="Lampix~PIX">
+                    Lampix
+                </option>
+                <option value ="DAO.Casino~BET">
+                    DAO.Casino
+                </option>
+                <option value ="Polis~POLIS">
+                    Polis
+                </option>
+                <option value ="E-Dinar-Coin~EDR">
+                    E-Dinar-Coin
+                </option>
+                <option value ="onG.social~ONG">
+                    onG.social
+                </option>
+                <option value ="CrowdCoin~CRC">
+                    CrowdCoin
+                </option>
+                <option value ="Spectre.ai-Utility-Token~SXUT">
+                    Spectre.ai-Utility-Token
+                </option>
+                <option value ="AudioCoin~ADC">
+                    AudioCoin
+                </option>
+                <option value ="SpreadCoin~SPR">
+                    SpreadCoin
+                </option>
+                <option value ="Atmos~ATMS">
+                    Atmos
+                </option>
+                <option value ="Astro~ASTRO">
+                    Astro
+                </option>
+                <option value ="Bulwark~BWK">
+                    Bulwark
+                </option>
+                <option value ="DopeCoin~DOPE">
+                    DopeCoin
+                </option>
+                <option value ="MyWish~WISH">
+                    MyWish
+                </option>
+                <option value ="Social-Send~SEND">
+                    Social-Send
+                </option>
+                <option value ="TIES-Network~TIE">
+                    TIES-Network
+                </option>
+                <option value ="Vcash~XVC">
+                    Vcash
+                </option>
+                <option value ="RussiaCoin~RC">
+                    RussiaCoin
+                </option>
+                <option value ="Hacken~HKN">
+                    Hacken
+                </option>
+                <option value ="GeoCoin~GEO">
+                    GeoCoin
+                </option>
+                <option value ="AdShares~ADST">
+                    AdShares
+                </option>
+                <option value ="BuzzCoin~BUZZ">
+                    BuzzCoin
+                </option>
+                <option value ="Wild-Crypto~WILD">
+                    Wild-Crypto
+                </option>
+                <option value ="Memetic-/-PepeCoin~MEME">
+                    Memetic-/-PepeCoin
+                </option>
+                <option value ="FirstCoin~FRST">
+                    FirstCoin
+                </option>
+                <option value ="Bitdeal~BDL">
+                    Bitdeal
+                </option>
+                <option value ="Bitmark~BTM">
+                    Bitmark
+                </option>
+                <option value ="ProCurrency~PROC">
+                    ProCurrency
+                </option>
+                <option value ="Verify~CRED">
+                    Verify
+                </option>
+                <option value ="TransferCoin~TX">
+                    TransferCoin
+                </option>
+                <option value ="TrezarCoin~TZC">
+                    TrezarCoin
+                </option>
+                <option value ="LendConnect~LCT">
+                    LendConnect
+                </option>
+                <option value ="Mercury-Protocol~GMT">
+                    Mercury-Protocol
+                </option>
+                <option value ="Auroracoin~AUR">
+                    Auroracoin
+                </option>
+                <option value ="HyperStake~HYP">
+                    HyperStake
+                </option>
+                <option value ="DigiPulse~DGPT">
+                    DigiPulse
+                </option>
+                <option value ="Breakout~BRK">
+                    Breakout
+                </option>
+                <option value ="Upfiring~UFR">
+                    Upfiring
+                </option>
+                <option value ="Hubii-Network~HBT">
+                    Hubii-Network
+                </option>
+                <option value ="Blitzcash~BLITZ">
+                    Blitzcash
+                </option>
+                <option value ="Innova~INN">
+                    Innova
+                </option>
+                <option value ="DCORP~DRP">
+                    DCORP
+                </option>
+                <option value ="CannabisCoin~CANN">
+                    CannabisCoin
+                </option>
+                <option value ="VeriumReserve~VRM">
+                    VeriumReserve
+                </option>
+                <option value ="Bitcloud~BTDX">
+                    Bitcloud
+                </option>
+                <option value ="PRIZM~PZM">
+                    PRIZM
+                </option>
+                <option value ="Qwark~QWARK">
+                    Qwark
+                </option>
+                <option value ="UFO-Coin~UFO">
+                    UFO-Coin
+                </option>
+                <option value ="Pesetacoin~PTC">
+                    Pesetacoin
+                </option>
+                <option value ="ATLANT~ATL">
+                    ATLANT
+                </option>
+                <option value ="Kore~KORE">
+                    Kore
+                </option>
+                <option value ="Ecobit~ECOB">
+                    Ecobit
+                </option>
+                <option value ="BitcoinZ~BTCZ">
+                    BitcoinZ
+                </option>
+                <option value ="Creditbit~CRB">
+                    Creditbit
+                </option>
+                <option value ="HEROcoin~PLAY">
+                    HEROcoin
+                </option>
+                <option value ="MicroMoney~AMM">
+                    MicroMoney
+                </option>
+                <option value ="Synergy~SNRG">
+                    Synergy
+                </option>
+                <option value ="Riecoin~RIC">
+                    Riecoin
+                </option>
+                <option value ="Masternodecoin~MTNC">
+                    Masternodecoin
+                </option>
+                <option value ="Novacoin~NVC">
+                    Novacoin
+                </option>
+                <option value ="Opus~OPT">
+                    Opus
+                </option>
+                <option value ="Tao~XTO">
+                    Tao
+                </option>
+                <option value ="Bonpay~BON">
+                    Bonpay
+                </option>
+                <option value ="GoldCoin~GLD">
+                    GoldCoin
+                </option>
+                <option value ="Bitcoin-Plus~XBC">
+                    Bitcoin-Plus
+                </option>
+                <option value ="Bela~BELA">
+                    Bela
+                </option>
+                <option value ="NuBits~USNBT">
+                    NuBits
+                </option>
+                <option value ="Social~SCL">
+                    Social
+                </option>
+                <option value ="IntenseCoin~ITNS">
+                    IntenseCoin
+                </option>
+                <option value ="Dotcoin~DOT">
+                    Dotcoin
+                </option>
+                <option value ="XGOX~XGOX">
+                    XGOX
+                </option>
+                <option value ="Bitzeny~ZNY">
+                    Bitzeny
+                </option>
+                <option value ="1337~1337">
+                    1337
+                </option>
+                <option value ="Altcoin~ALT">
+                    Altcoin
+                </option>
+                <option value ="Indorse-Token~IND">
+                    Indorse-Token
+                </option>
+                <option value ="CHIPS~CHIPS">
+                    CHIPS
+                </option>
+                <option value ="Breakout-Stake~BRX">
+                    Breakout-Stake
+                </option>
+                <option value ="Dai~DAI">
+                    Dai
+                </option>
+                <option value ="ExclusiveCoin~EXCL">
+                    ExclusiveCoin
+                </option>
+                <option value ="ChainCoin~CHC">
+                    ChainCoin
+                </option>
+                <option value ="2GIVE~2GIVE">
+                    2GIVE
+                </option>
+                <option value ="Interstellar-Holdings~HOLD">
+                    Interstellar-Holdings
+                </option>
+                <option value ="TrueFlip~TFL">
+                    TrueFlip
+                </option>
+                <option value ="ToaCoin~TOA">
+                    ToaCoin
+                </option>
+                <option value ="Sharechain~SSS">
+                    Sharechain
+                </option>
+                <option value ="REX~REX">
+                    REX
+                </option>
+                <option value ="Project-Decorum~PDC">
+                    Project-Decorum
+                </option>
+                <option value ="Rupee~RUP">
+                    Rupee
+                </option>
+                <option value ="REAL~REAL">
+                    REAL
+                </option>
+                <option value ="Blockpool~BPL">
+                    Blockpool
+                </option>
+                <option value ="EuropeCoin~ERC">
+                    EuropeCoin
+                </option>
+                <option value ="Sexcoin~SXC">
+                    Sexcoin
+                </option>
+                <option value ="Tokes~TKS">
+                    Tokes
+                </option>
+                <option value ="vSlice~VSL">
+                    vSlice
+                </option>
+                <option value ="DNotes~NOTE">
+                    DNotes
+                </option>
+                <option value ="vTorrent~VTR">
+                    vTorrent
+                </option>
+                <option value ="HollyWoodCoin~HWC">
+                    HollyWoodCoin
+                </option>
+                <option value ="Privatix~PRIX">
+                    Privatix
+                </option>
+                <option value ="Eroscoin~ERO">
+                    Eroscoin
+                </option>
+                <option value ="Magnet~MAG">
+                    Magnet
+                </option>
+                <option value ="VIVO~VIVO">
+                    VIVO
+                </option>
+                <option value ="Qvolta~QVT">
+                    Qvolta
+                </option>
+                <option value ="Startcoin~START">
+                    Startcoin
+                </option>
+                <option value ="WandX~WAND">
+                    WandX
+                </option>
+                <option value ="Pure~PURE">
+                    Pure
+                </option>
+                <option value ="GCN-Coin~GCN">
+                    GCN-Coin
+                </option>
+                <option value ="ZrCoin~ZRC">
+                    ZrCoin
+                </option>
+                <option value ="BitBoost~BBT">
+                    BitBoost
+                </option>
+                <option value ="Ethbits~ETBS">
+                    Ethbits
+                </option>
+                <option value ="Internxt~INXT">
+                    Internxt
+                </option>
+                <option value ="Creativecoin~CREA">
+                    Creativecoin
+                </option>
+                <option value ="Bowhead~AHT">
+                    Bowhead
+                </option>
+                <option value ="Zeitcoin~ZEIT">
+                    Zeitcoin
+                </option>
+                <option value ="Dynamic~DYN">
+                    Dynamic
+                </option>
+                <option value ="NobleCoin~NOBL">
+                    NobleCoin
+                </option>
+                <option value ="Global-Jobcoin~GJC">
+                    Global-Jobcoin
+                </option>
+                <option value ="TrustPlus~TRUST">
+                    TrustPlus
+                </option>
+                <option value ="Zero~ZER">
+                    Zero
+                </option>
+                <option value ="Terracoin~TRC">
+                    Terracoin
+                </option>
+                <option value ="Adelphoi~ADL">
+                    Adelphoi
+                </option>
+                <option value ="SmartBillions~SMART">
+                    SmartBillions
+                </option>
+                <option value ="CryptoPing~PING">
+                    CryptoPing
+                </option>
+                <option value ="MCAP~MCAP">
+                    MCAP
+                </option>
+                <option value ="Goodomy~GOOD">
+                    Goodomy
+                </option>
+                <option value ="Karbo~KRB">
+                    Karbo
+                </option>
+                <option value ="FLiK~FLIK">
+                    FLiK
+                </option>
+                <option value ="Magi~XMG">
+                    Magi
+                </option>
+                <option value ="Pylon-Network~PYLNT">
+                    Pylon-Network
+                </option>
+                <option value ="Starta~STA">
+                    Starta
+                </option>
+                <option value ="EverGreenCoin~EGC">
+                    EverGreenCoin
+                </option>
+                <option value ="PutinCoin~PUT">
+                    PutinCoin
+                </option>
+                <option value ="STRAKS~STAK">
+                    STRAKS
+                </option>
+                <option value ="Farad~FRD">
+                    Farad
+                </option>
+                <option value ="Monkey-Project~MONK">
+                    Monkey-Project
+                </option>
+                <option value ="e-Gulden~EFL">
+                    e-Gulden
+                </option>
+                <option value ="eBoost~EBST">
+                    eBoost
+                </option>
+                <option value ="SmileyCoin~SMLY">
+                    SmileyCoin
+                </option>
+                <option value ="Ellaism~ELLA">
+                    Ellaism
+                </option>
+                <option value ="Quark~QRK">
+                    Quark
+                </option>
+                <option value ="TheGCCcoin~GCC">
+                    TheGCCcoin
+                </option>
+                <option value ="Zephyr~ZEPH">
+                    Zephyr
+                </option>
+                <option value ="NEVERDIE~NDC">
+                    NEVERDIE
+                </option>
+                <option value ="Denarius~DNR">
+                    Denarius
+                </option>
+                <option value ="Ergo~EFYT">
+                    Ergo
+                </option>
+                <option value ="MarteXcoin~MXT">
+                    MarteXcoin
+                </option>
+                <option value ="BlueCoin~BLU">
+                    BlueCoin
+                </option>
+                <option value ="Commodity-Ad-Network~CDX">
+                    Commodity-Ad-Network
+                </option>
+                <option value ="bitJob~STU">
+                    bitJob
+                </option>
+                <option value ="HunterCoin~HUC">
+                    HunterCoin
+                </option>
+                <option value ="EquiTrader~EQT">
+                    EquiTrader
+                </option>
+                <option value ="APX~APX">
+                    APX
+                </option>
+                <option value ="Carboncoin~CARBON">
+                    Carboncoin
+                </option>
+                <option value ="Qbic~QBIC">
+                    Qbic
+                </option>
+                <option value ="Yocoin~YOC">
+                    Yocoin
+                </option>
+                <option value ="ParkByte~PKB">
+                    ParkByte
+                </option>
+                <option value ="FORCE~FOR">
+                    FORCE
+                </option>
+                <option value ="Anoncoin~ANC">
+                    Anoncoin
+                </option>
+                <option value ="Cryptopay~CPAY">
+                    Cryptopay
+                </option>
+                <option value ="Footy-Cash~XFT">
+                    Footy-Cash
+                </option>
+                <option value ="Adzcoin~ADZ">
+                    Adzcoin
+                </option>
+                <option value ="Ixcoin~IXC">
+                    Ixcoin
+                </option>
+                <option value ="Embers~MBRS">
+                    Embers
+                </option>
+                <option value ="OP-Coin~OPC">
+                    OP-Coin
+                </option>
+                <option value ="Emphy~EPY">
+                    Emphy
+                </option>
+                <option value ="Intelligent-Trading-Tech~ITT">
+                    Intelligent-Trading-Tech
+                </option>
+                <option value ="Greencoin~GRE">
+                    Greencoin
+                </option>
+                <option value ="Primalbase-Token~PBT">
+                    Primalbase-Token
+                </option>
+                <option value ="Condensate~RAIN">
+                    Condensate
+                </option>
+                <option value ="Crypto-Bullion~CBX">
+                    Crypto-Bullion
+                </option>
+                <option value ="Accelerator-Network~ACC">
+                    Accelerator-Network
+                </option>
+                <option value ="Centurion~CNT">
+                    Centurion
+                </option>
+                <option value ="DigitalPrice~DP">
+                    DigitalPrice
+                </option>
+                <option value ="Dinastycoin~DCY">
+                    Dinastycoin
+                </option>
+                <option value ="LuckChain~BASH">
+                    LuckChain
+                </option>
+                <option value ="IncaKoin~NKA">
+                    IncaKoin
+                </option>
+                <option value ="DraftCoin~DFT">
+                    DraftCoin
+                </option>
+                <option value ="FundYourselfNow~FYN">
+                    FundYourselfNow
+                </option>
+                <option value ="Unitus~UIS">
+                    Unitus
+                </option>
+                <option value ="ELTCOIN~ELTCOIN">
+                    ELTCOIN
+                </option>
+                <option value ="Kubera-Coin~KBR">
+                    Kubera-Coin
+                </option>
+                <option value ="Etheriya~RIYA">
+                    Etheriya
+                </option>
+                <option value ="Unify~UNIFY">
+                    Unify
+                </option>
+                <option value ="Linx~LINX">
+                    Linx
+                </option>
+                <option value ="CampusCoin~CMPCO">
+                    CampusCoin
+                </option>
+                <option value ="Gimli~GIM">
+                    Gimli
+                </option>
+                <option value ="Version~V">
+                    Version
+                </option>
+                <option value ="Elementrem~ELE">
+                    Elementrem
+                </option>
+                <option value ="Royal-Kingdom-Coin~RKC">
+                    Royal-Kingdom-Coin
+                </option>
+                <option value ="LeviarCoin~XLC">
+                    LeviarCoin
+                </option>
+                <option value ="Ethereum-Movie-Venture~EMV">
+                    Ethereum-Movie-Venture
+                </option>
+                <option value ="Canada-eCoin~CDN">
+                    Canada-eCoin
+                </option>
+                <option value ="FujiCoin~FJC">
+                    FujiCoin
+                </option>
+                <option value ="ArcticCoin~ARC">
+                    ArcticCoin
+                </option>
+                <option value ="BunnyCoin~BUN">
+                    BunnyCoin
+                </option>
+                <option value ="WorldCoin~WDC">
+                    WorldCoin
+                </option>
+                <option value ="Oceanlab~OCL">
+                    Oceanlab
+                </option>
+                <option value ="Bitradio~BRO">
+                    Bitradio
+                </option>
+                <option value ="ICO-OpenLedger~ICOO">
+                    ICO-OpenLedger
+                </option>
+                <option value ="PopularCoin~POP">
+                    PopularCoin
+                </option>
+                <option value ="CarTaxi-Token~CTX">
+                    CarTaxi-Token
+                </option>
+                <option value ="42-coin~42">
+                    42-coin
+                </option>
+                <option value ="Cryptojacks~CJ">
+                    Cryptojacks
+                </option>
+                <option value ="Copico~XCPO">
+                    Copico
+                </option>
+                <option value ="Bitcoin-Scrypt~BTCS">
+                    Bitcoin-Scrypt
+                </option>
+                <option value ="ERC20~ERC20">
+                    ERC20
+                </option>
+                <option value ="Bata~BTA">
+                    Bata
+                </option>
+                <option value ="Megacoin~MEC">
+                    Megacoin
+                </option>
+                <option value ="Darcrus~DAR">
+                    Darcrus
+                </option>
+                <option value ="NetCoin~NET">
+                    NetCoin
+                </option>
+                <option value ="Renos~RNS">
+                    Renos
+                </option>
+                <option value ="Cryptonite~XCN">
+                    Cryptonite
+                </option>
+                <option value ="UnbreakableCoin~UNB">
+                    UnbreakableCoin
+                </option>
+                <option value ="LiteDoge~LDOGE">
+                    LiteDoge
+                </option>
+                <option value ="AurumCoin~AU">
+                    AurumCoin
+                </option>
+                <option value ="FlutterCoin~FLT">
+                    FlutterCoin
+                </option>
+                <option value ="InsaneCoin~INSN">
+                    InsaneCoin
+                </option>
+                <option value ="Halcyon~HAL">
+                    Halcyon
+                </option>
+                <option value ="Moin~MOIN">
+                    Moin
+                </option>
+                <option value ="Desire~DSR">
+                    Desire
+                </option>
+                <option value ="CryptoForecast~CFT">
+                    CryptoForecast
+                </option>
+                <option value ="Bytecent~BYC">
+                    Bytecent
+                </option>
+                <option value ="MazaCoin~MZC">
+                    MazaCoin
+                </option>
+                <option value ="Digitalcoin~DGC">
+                    Digitalcoin
+                </option>
+                <option value ="Scorecoin~SCORE">
+                    Scorecoin
+                </option>
+                <option value ="Abjcoin~ABJ">
+                    Abjcoin
+                </option>
+                <option value ="Legends-Room~LGD">
+                    Legends-Room
+                </option>
+                <option value ="Fastcoin~FST">
+                    Fastcoin
+                </option>
+                <option value ="TittieCoin~TTC">
+                    TittieCoin
+                </option>
+                <option value ="Influxcoin~INFX">
+                    Influxcoin
+                </option>
+                <option value ="Ultimate-Secure-Cash~USC">
+                    Ultimate-Secure-Cash
+                </option>
+                <option value ="InflationCoin~IFLT">
+                    InflationCoin
+                </option>
+                <option value ="Kolion~KLN">
+                    Kolion
+                </option>
+                <option value ="Steneum-Coin~STN">
+                    Steneum-Coin
+                </option>
+                <option value ="SkinCoin~SKIN">
+                    SkinCoin
+                </option>
+                <option value ="Skeincoin~SKC">
+                    Skeincoin
+                </option>
+                <option value ="Tracto~TRCT">
+                    Tracto
+                </option>
+                <option value ="Jetcoin~JET">
+                    Jetcoin
+                </option>
+                <option value ="Ethereum-Cash~ECASH">
+                    Ethereum-Cash
+                </option>
+                <option value ="CryptoCarbon~CCRB">
+                    CryptoCarbon
+                </option>
+                <option value ="Cream~CRM">
+                    Cream
+                </option>
+                <option value ="DROXNE~DRXNE">
+                    DROXNE
+                </option>
+                <option value ="KekCoin~KEK">
+                    KekCoin
+                </option>
+                <option value ="FuckToken~FUCK">
+                    FuckToken
+                </option>
+                <option value ="Growers-International~GRWI">
+                    Growers-International
+                </option>
+                <option value ="Zetacoin~ZET">
+                    Zetacoin
+                </option>
+                <option value ="BlakeStar~BLAS">
+                    BlakeStar
+                </option>
+                <option value ="AltCommunity-Coin~ALTCOM">
+                    AltCommunity-Coin
+                </option>
+                <option value ="Zennies~ZENI">
+                    Zennies
+                </option>
+                <option value ="Eternity~ENT">
+                    Eternity
+                </option>
+                <option value ="UltraCoin~UTC">
+                    UltraCoin
+                </option>
+                <option value ="Janus~JNS">
+                    Janus
+                </option>
+                <option value ="MACRON~MCRN">
+                    MACRON
+                </option>
+                <option value ="iTicoin~ITI">
+                    iTicoin
+                </option>
+                <option value ="Miners'-Reward-Token~MRT">
+                    Miners'-Reward-Token
+                </option>
+                <option value ="SmartCoin~SMC">
+                    SmartCoin
+                </option>
+                <option value ="Ace~ACE">
+                    Ace
+                </option>
+                <option value ="Guncoin~GUN">
+                    Guncoin
+                </option>
+                <option value ="Atomic-Coin~ATOM">
+                    Atomic-Coin
+                </option>
+                <option value ="Woodcoin~LOG">
+                    Woodcoin
+                </option>
+                <option value ="Link-Platform~LNK">
+                    Link-Platform
+                </option>
+                <option value ="QubitCoin~Q2C">
+                    QubitCoin
+                </option>
+                <option value ="HOdlcoin~HODL">
+                    HOdlcoin
+                </option>
+                <option value ="I0Coin~I0C">
+                    I0Coin
+                </option>
+                <option value ="Orbitcoin~ORB">
+                    Orbitcoin
+                </option>
+                <option value ="PetroDollar~XPD">
+                    PetroDollar
+                </option>
+                <option value ="GAIA~GAIA">
+                    GAIA
+                </option>
+                <option value ="SagaCoin~SAGA">
+                    SagaCoin
+                </option>
+                <option value ="Capricoin~CPC">
+                    Capricoin
+                </option>
+                <option value ="Piggycoin~PIGGY">
+                    Piggycoin
+                </option>
+                <option value ="Minereum~MNE">
+                    Minereum
+                </option>
+                <option value ="Suretly~SUR">
+                    Suretly
+                </option>
+                <option value ="LanaCoin~LANA">
+                    LanaCoin
+                </option>
+                <option value ="Machinecoin~MAC">
+                    Machinecoin
+                </option>
+                <option value ="CoinonatX~XCXT">
+                    CoinonatX
+                </option>
+                <option value ="Authorship~ATS">
+                    Authorship
+                </option>
+                <option value ="BigUp~BIGUP">
+                    BigUp
+                </option>
+                <option value ="Netko~NETKO">
+                    Netko
+                </option>
+                <option value ="Octanox~OTX">
+                    Octanox
+                </option>
+                <option value ="TeslaCoin~TES">
+                    TeslaCoin
+                </option>
+                <option value ="HoboNickels~HBN">
+                    HoboNickels
+                </option>
+                <option value ="Kobocoin~KOBO">
+                    Kobocoin
+                </option>
+                <option value ="PureVidz~VIDZ">
+                    PureVidz
+                </option>
+                <option value ="Deutsche-eMark~DEM">
+                    Deutsche-eMark
+                </option>
+                <option value ="Fantomcoin~FCN">
+                    Fantomcoin
+                </option>
+                <option value ="BritCoin~BRIT">
+                    BritCoin
+                </option>
+                <option value ="Ethereum-Gold~ETG">
+                    Ethereum-Gold
+                </option>
+                <option value ="FUNCoin~FUNC">
+                    FUNCoin
+                </option>
+                <option value ="Nyancoin~NYAN">
+                    Nyancoin
+                </option>
+                <option value ="DaxxCoin~DAXX">
+                    DaxxCoin
+                </option>
+                <option value ="FuelCoin~FC2">
+                    FuelCoin
+                </option>
+                <option value ="Kurrent~KURT">
+                    Kurrent
+                </option>
+                <option value ="DFSCoin~DFS">
+                    DFSCoin
+                </option>
+                <option value ="Bitpark-Coin~BPC">
+                    Bitpark-Coin
+                </option>
+                <option value ="Aricoin~ARI">
+                    Aricoin
+                </option>
+                <option value ="Rimbit~RBT">
+                    Rimbit
+                </option>
+                <option value ="Bitcoin-Red~BTCRED">
+                    Bitcoin-Red
+                </option>
+                <option value ="Bitstar~BITS">
+                    Bitstar
+                </option>
+                <option value ="Visio~VISIO">
+                    Visio
+                </option>
+                <option value ="Billionaire-Token~XBL">
+                    Billionaire-Token
+                </option>
+                <option value ="Universe~UNI">
+                    Universe
+                </option>
+                <option value ="Newbium~NEWB">
+                    Newbium
+                </option>
+                <option value ="MaxCoin~MAX">
+                    MaxCoin
+                </option>
+                <option value ="AmsterdamCoin~AMS">
+                    AmsterdamCoin
+                </option>
+                <option value ="BitTokens~BXT">
+                    BitTokens
+                </option>
+                <option value ="OctoCoin~888">
+                    OctoCoin
+                </option>
+                <option value ="Opal~OPAL">
+                    Opal
+                </option>
+                <option value ="SwagBucks~BUCKS">
+                    SwagBucks
+                </option>
+                <option value ="Fujinto~NTO">
+                    Fujinto
+                </option>
+                <option value ="Triangles~TRI">
+                    Triangles
+                </option>
+                <option value ="Giga-Watt-Token~WTT">
+                    Giga-Watt-Token
+                </option>
+                <option value ="PoSToken~POS">
+                    PoSToken
+                </option>
+                <option value ="RouletteToken~RLT">
+                    RouletteToken
+                </option>
+                <option value ="WavesGo~WGO">
+                    WavesGo
+                </option>
+                <option value ="BiblePay~BBP">
+                    BiblePay
+                </option>
+                <option value ="Joulecoin~XJO">
+                    Joulecoin
+                </option>
+                <option value ="Madcoin~MDC">
+                    Madcoin
+                </option>
+                <option value ="CryptoInsight~TKR">
+                    CryptoInsight
+                </option>
+                <option value ="AmberCoin~AMBER">
+                    AmberCoin
+                </option>
+                <option value ="Ammo-Reloaded~AMMO">
+                    Ammo-Reloaded
+                </option>
+                <option value ="TrumpCoin~TRUMP">
+                    TrumpCoin
+                </option>
+                <option value ="Senderon~SDRN">
+                    Senderon
+                </option>
+                <option value ="UniCoin~UNIC">
+                    UniCoin
+                </option>
+                <option value ="SuperCoin~SUPER">
+                    SuperCoin
+                </option>
+                <option value ="Bit20~BTWTY">
+                    Bit20
+                </option>
+                <option value ="Happycoin~HPC">
+                    Happycoin
+                </option>
+                <option value ="HitCoin~HTC">
+                    HitCoin
+                </option>
+                <option value ="Truckcoin~TRK">
+                    Truckcoin
+                </option>
+                <option value ="Crystal-Clear-~CCT">
+                    Crystal-Clear-
+                </option>
+                <option value ="PlatinumBAR~XPTX">
+                    PlatinumBAR
+                </option>
+                <option value ="Nekonium~NUKO">
+                    Nekonium
+                </option>
+                <option value ="Confido~CFD">
+                    Confido
+                </option>
+                <option value ="Dashcoin~DSH">
+                    Dashcoin
+                </option>
+                <option value ="Titcoin~TIT">
+                    Titcoin
+                </option>
+                <option value ="MojoCoin~MOJO">
+                    MojoCoin
+                </option>
+                <option value ="Sugar-Exchange~SGR">
+                    Sugar-Exchange
+                </option>
+                <option value ="DigiCube~CUBE">
+                    DigiCube
+                </option>
+                <option value ="GoldBlocks~GB">
+                    GoldBlocks
+                </option>
+                <option value ="iEthereum~IETH">
+                    iEthereum
+                </option>
+                <option value ="WhaleCoin~WHL">
+                    WhaleCoin
+                </option>
+                <option value ="AdCoin~ACC">
+                    AdCoin
+                </option>
+                <option value ="RedCoin~RED">
+                    RedCoin
+                </option>
+                <option value ="Pakcoin~PAK">
+                    Pakcoin
+                </option>
+                <option value ="DigitalDevelopersFund~DDF">
+                    DigitalDevelopersFund
+                </option>
+                <option value ="KushCoin~KUSH">
+                    KushCoin
+                </option>
+                <option value ="HiCoin~XHI">
+                    HiCoin
+                </option>
+                <option value ="eBitcoinCash~EBCH">
+                    eBitcoinCash
+                </option>
+                <option value ="Veltor~VLT">
+                    Veltor
+                </option>
+                <option value ="Crave~CRAVE">
+                    Crave
+                </option>
+                <option value ="Sterlingcoin~SLG">
+                    Sterlingcoin
+                </option>
+                <option value ="8Bit~8BIT">
+                    8Bit
+                </option>
+                <option value ="Pioneer-Coin~PCOIN">
+                    Pioneer-Coin
+                </option>
+                <option value ="iCoin~ICN">
+                    iCoin
+                </option>
+                <option value ="Mincoin~MNC">
+                    Mincoin
+                </option>
+                <option value ="Hawala.Today~HAT">
+                    Hawala.Today
+                </option>
+                <option value ="C-Bit~XCT">
+                    C-Bit
+                </option>
+                <option value ="LiteBar~LTB">
+                    LiteBar
+                </option>
+                <option value ="Ccore~CCO">
+                    Ccore
+                </option>
+                <option value ="Blakecoin~BLC">
+                    Blakecoin
+                </option>
+                <option value ="Elcoin~EL">
+                    Elcoin
+                </option>
+                <option value ="Ethereum-Dark~ETHD">
+                    Ethereum-Dark
+                </option>
+                <option value ="Rasputin-Online-Coin~ROC">
+                    Rasputin-Online-Coin
+                </option>
+                <option value ="808Coin~808">
+                    808Coin
+                </option>
+                <option value ="StarCash-Network~STARS">
+                    StarCash-Network
+                </option>
+                <option value ="Argentum~ARG">
+                    Argentum
+                </option>
+                <option value ="ZoZoCoin~ZZC">
+                    ZoZoCoin
+                </option>
+                <option value ="Sovereign-Hero~HERO">
+                    Sovereign-Hero
+                </option>
+                <option value ="Coin(O)~CNO">
+                    Coin(O)
+                </option>
+                <option value ="Gapcoin~GAP">
+                    Gapcoin
+                </option>
+                <option value ="Xios~XIOS">
+                    Xios
+                </option>
+                <option value ="PostCoin~POST">
+                    PostCoin
+                </option>
+                <option value ="ChessCoin~CHESS">
+                    ChessCoin
+                </option>
+                <option value ="Tigercoin~TGC">
+                    Tigercoin
+                </option>
+                <option value ="Colossuscoin-V2~CV2">
+                    Colossuscoin-V2
+                </option>
+                <option value ="Phoenixcoin~PXC">
+                    Phoenixcoin
+                </option>
+                <option value ="Evil-Coin~EVIL">
+                    Evil-Coin
+                </option>
+                <option value ="Onix~ONX">
+                    Onix
+                </option>
+                <option value ="Ratecoin~XRA">
+                    Ratecoin
+                </option>
+                <option value ="SoonCoin~SOON">
+                    SoonCoin
+                </option>
+                <option value ="RevolverCoin~XRE">
+                    RevolverCoin
+                </option>
+                <option value ="Zlancer~ZCG">
+                    Zlancer
+                </option>
+                <option value ="Mineum~MNM">
+                    Mineum
+                </option>
+                <option value ="LiteBitcoin~LBTC">
+                    LiteBitcoin
+                </option>
+                <option value ="ChanCoin~CHAN">
+                    ChanCoin
+                </option>
+                <option value ="EOT-Token~EOT">
+                    EOT-Token
+                </option>
+                <option value ="GoldReserve~XGR">
+                    GoldReserve
+                </option>
+                <option value ="Bitcoin-Fast~BCF">
+                    Bitcoin-Fast
+                </option>
+                <option value ="Dix-Asset~DIX">
+                    Dix-Asset
+                </option>
+                <option value ="BERNcash~BERN">
+                    BERNcash
+                </option>
+                <option value ="Litecoin-Plus~LCP">
+                    Litecoin-Plus
+                </option>
+                <option value ="Bolivarcoin~BOLI">
+                    Bolivarcoin
+                </option>
+                <option value ="Motocoin~MOTO">
+                    Motocoin
+                </option>
+                <option value ="Helleniccoin~HNC">
+                    Helleniccoin
+                </option>
+                <option value ="Chronos~CRX">
+                    Chronos
+                </option>
+                <option value ="Swing~SWING">
+                    Swing
+                </option>
+                <option value ="CannaCoin~CCN">
+                    CannaCoin
+                </option>
+                <option value ="YENTEN~YTN">
+                    YENTEN
+                </option>
+                <option value ="Coin2.1~C2">
+                    Coin2.1
+                </option>
+                <option value ="Emerald-Crypto~EMD">
+                    Emerald-Crypto
+                </option>
+                <option value ="TagCoin~TAG">
+                    TagCoin
+                </option>
+                <option value ="AquariusCoin~ARCO">
+                    AquariusCoin
+                </option>
+                <option value ="Quatloo~QTL">
+                    Quatloo
+                </option>
+                <option value ="bitBTC~BITBTC">
+                    bitBTC
+                </option>
+                <option value ="Kayicoin~KAYI">
+                    Kayicoin
+                </option>
+                <option value ="Marscoin~MARS">
+                    Marscoin
+                </option>
+                <option value ="Dalecoin~DALC">
+                    Dalecoin
+                </option>
+                <option value ="ParallelCoin~DUO">
+                    ParallelCoin
+                </option>
+                <option value ="Dollarcoin~DLC">
+                    Dollarcoin
+                </option>
+                <option value ="Unity-Ingot~UNY">
+                    Unity-Ingot
+                </option>
+                <option value ="VirtualCoin~VC">
+                    VirtualCoin
+                </option>
+                <option value ="Hexx~HXX">
+                    Hexx
+                </option>
+                <option value ="Philosopher-Stones~PHS">
+                    Philosopher-Stones
+                </option>
+                <option value ="Sativacoin~STV">
+                    Sativacoin
+                </option>
+                <option value ="Bitgem~BTG">
+                    Bitgem
+                </option>
+                <option value ="Darsek~KED">
+                    Darsek
+                </option>
+                <option value ="BitCoal~COAL">
+                    BitCoal
+                </option>
+                <option value ="VoteCoin~VOT">
+                    VoteCoin
+                </option>
+                <option value ="Eryllium~ERY">
+                    Eryllium
+                </option>
+                <option value ="BumbaCoin~BUMBA">
+                    BumbaCoin
+                </option>
+                <option value ="Prime-XI~PXI">
+                    Prime-XI
+                </option>
+                <option value ="GlobalBoost-Y~BSTY">
+                    GlobalBoost-Y
+                </option>
+                <option value ="Catcoin~CAT">
+                    Catcoin
+                </option>
+                <option value ="GameUnits~UNITS">
+                    GameUnits
+                </option>
+                <option value ="FinCoin~FNC">
+                    FinCoin
+                </option>
+                <option value ="Independent-Money-System~IMS">
+                    Independent-Money-System
+                </option>
+                <option value ="Rubies~RBIES">
+                    Rubies
+                </option>
+                <option value ="LeaCoin~LEA">
+                    LeaCoin
+                </option>
+                <option value ="Eurocoin~EUC">
+                    Eurocoin
+                </option>
+                <option value ="Bitcoin-Planet~BTPL">
+                    Bitcoin-Planet
+                </option>
+                <option value ="Honey~HONEY">
+                    Honey
+                </option>
+                <option value ="SecureCoin~SRC">
+                    SecureCoin
+                </option>
+                <option value ="Marijuanacoin~MAR">
+                    Marijuanacoin
+                </option>
+                <option value ="SpaceCoin~SPACE">
+                    SpaceCoin
+                </option>
+                <option value ="SixEleven~611">
+                    SixEleven
+                </option>
+                <option value ="Rupaya~RUPX">
+                    Rupaya
+                </option>
+                <option value ="Virtacoinplus~XVP">
+                    Virtacoinplus
+                </option>
+                <option value ="ICOBID~ICOB">
+                    ICOBID
+                </option>
+                <option value ="BROTHER~BRAT">
+                    BROTHER
+                </option>
+                <option value ="Beatcoin~XBTS">
+                    Beatcoin
+                </option>
+                <option value ="RonPaulCoin~RPC">
+                    RonPaulCoin
+                </option>
+                <option value ="BriaCoin~BRIA">
+                    BriaCoin
+                </option>
+                <option value ="MustangCoin~MST">
+                    MustangCoin
+                </option>
+                <option value ="CacheCoin~CACH">
+                    CacheCoin
+                </option>
+                <option value ="NevaCoin~NEVA">
+                    NevaCoin
+                </option>
+                <option value ="CompuCoin~CPN">
+                    CompuCoin
+                </option>
+                <option value ="FuzzBalls~FUZZ">
+                    FuzzBalls
+                </option>
+                <option value ="GlobalToken~GLT">
+                    GlobalToken
+                </option>
+                <option value ="QuazarCoin~QCN">
+                    QuazarCoin
+                </option>
+                <option value ="ReeCoin~REE">
+                    ReeCoin
+                </option>
+                <option value ="Coinonat~CXT">
+                    Coinonat
+                </option>
+                <option value ="Gold-Pressed-Latinum~GPL">
+                    Gold-Pressed-Latinum
+                </option>
+                <option value ="Evotion~EVO">
+                    Evotion
+                </option>
+                <option value ="Zurcoin~ZUR">
+                    Zurcoin
+                </option>
+                <option value ="Advanced-Internet-Blocks~AIB">
+                    Advanced-Internet-Blocks
+                </option>
+                <option value ="BitAsean~BAS">
+                    BitAsean
+                </option>
+                <option value ="Mao-Zedong~MAO">
+                    Mao-Zedong
+                </option>
+                <option value ="BitQuark~BTQ">
+                    BitQuark
+                </option>
+                <option value ="EagleCoin~EAGLE">
+                    EagleCoin
+                </option>
+                <option value ="Creatio~XCRE">
+                    Creatio
+                </option>
+                <option value ="Cannation~CNNC">
+                    Cannation
+                </option>
+                <option value ="Yellow-Token~YEL">
+                    Yellow-Token
+                </option>
+                <option value ="ETHGAS~EGAS">
+                    ETHGAS
+                </option>
+                <option value ="X-Coin~XCO">
+                    X-Coin
+                </option>
+                <option value ="Acoin~ACOIN">
+                    Acoin
+                </option>
+                <option value ="GPU-Coin~GPU">
+                    GPU-Coin
+                </option>
+                <option value ="TEKcoin~TEK">
+                    TEKcoin
+                </option>
+                <option value ="SOILcoin~SOIL">
+                    SOILcoin
+                </option>
+                <option value ="300-Token~300">
+                    300-Token
+                </option>
+                <option value ="HempCoin~HMP">
+                    HempCoin
+                </option>
+                <option value ="Kronecoin~KRONE">
+                    Kronecoin
+                </option>
+                <option value ="SongCoin~SONG">
+                    SongCoin
+                </option>
+                <option value ="GoldPieces~GP">
+                    GoldPieces
+                </option>
+                <option value ="BipCoin~BIP">
+                    BipCoin
+                </option>
+                <option value ="Money~$$$">
+                    Money
+                </option>
+                <option value ="Flaxscript~FLAX">
+                    Flaxscript
+                </option>
+                <option value ="DIBCOIN~DIBC">
+                    DIBCOIN
+                </option>
+                <option value ="Digital-Rupees~DRS">
+                    Digital-Rupees
+                </option>
+                <option value ="eREAL~EREAL">
+                    eREAL
+                </option>
+                <option value ="EcoCoin~ECO">
+                    EcoCoin
+                </option>
+                <option value ="AllSafe~ASAFE2">
+                    AllSafe
+                </option>
+                <option value ="BenjiRolls~BENJI">
+                    BenjiRolls
+                </option>
+                <option value ="Bolenum~BLN">
+                    Bolenum
+                </option>
+                <option value ="Solarflarecoin~SFC">
+                    Solarflarecoin
+                </option>
+                <option value ="Cthulhu-Offerings~OFF">
+                    Cthulhu-Offerings
+                </option>
+                <option value ="Global-Tour-Coin~GTC">
+                    Global-Tour-Coin
+                </option>
+                <option value ="Allion~ALL">
+                    Allion
+                </option>
+                <option value ="Comet~CMT">
+                    Comet
+                </option>
+                <option value ="Enigma~XNG">
+                    Enigma
+                </option>
+                <option value ="Debitcoin~DBTC">
+                    Debitcoin
+                </option>
+                <option value ="BnrtxCoin~BNX">
+                    BnrtxCoin
+                </option>
+                <option value ="Sojourn~SOJ">
+                    Sojourn
+                </option>
+                <option value ="Luna-Coin~LUNA">
+                    Luna-Coin
+                </option>
+                <option value ="HealthyWormCoin~WORM">
+                    HealthyWormCoin
+                </option>
+                <option value ="ZetaMicron~ZMC">
+                    ZetaMicron
+                </option>
+                <option value ="Neuro~NRO">
+                    Neuro
+                </option>
+                <option value ="Spots~SPT">
+                    Spots
+                </option>
+                <option value ="iDice~ICE">
+                    iDice
+                </option>
+                <option value ="VapersCoin~VPRC">
+                    VapersCoin
+                </option>
+                <option value ="Printerium~PRX">
+                    Printerium
+                </option>
+                <option value ="LiteCoin-Ultra~LTCU">
+                    LiteCoin-Ultra
+                </option>
+                <option value ="Californium~CF">
+                    Californium
+                </option>
+                <option value ="Aerium~AERM">
+                    Aerium
+                </option>
+                <option value ="Braincoin~BRAIN">
+                    Braincoin
+                </option>
+                <option value ="Torcoin~TOR">
+                    Torcoin
+                </option>
+                <option value ="Master-Swiscoin~MSCN">
+                    Master-Swiscoin
+                </option>
+                <option value ="BOAT~BOAT">
+                    BOAT
+                </option>
+                <option value ="WARP~WARP">
+                    WARP
+                </option>
+                <option value ="Iconic~ICON">
+                    Iconic
+                </option>
+                <option value ="Artex-Coin~ATX">
+                    Artex-Coin
+                </option>
+                <option value ="MiloCoin~MILO">
+                    MiloCoin
+                </option>
+                <option value ="bitEUR~BITEUR">
+                    bitEUR
+                </option>
+                <option value ="PonziCoin~PONZI">
+                    PonziCoin
+                </option>
+                <option value ="Roofs~ROOFS">
+                    Roofs
+                </option>
+                <option value ="ExchangeN~EXN">
+                    ExchangeN
+                </option>
+                <option value ="WomenCoin~WOMEN">
+                    WomenCoin
+                </option>
+                <option value ="Speedcash~SCS">
+                    Speedcash
+                </option>
+                <option value ="AnarchistsPrime~ACP">
+                    AnarchistsPrime
+                </option>
+                <option value ="SocialCoin~SOCC">
+                    SocialCoin
+                </option>
+                <option value ="Slevin~SLEVIN">
+                    Slevin
+                </option>
+                <option value ="GeertCoin~GEERT">
+                    GeertCoin
+                </option>
+                <option value ="JavaScript-Token~JS">
+                    JavaScript-Token
+                </option>
+                <option value ="Dollar-Online~DOLLAR">
+                    Dollar-Online
+                </option>
+                <option value ="PRCoin~PRC">
+                    PRCoin
+                </option>
+                <option value ="JobsCoin~JOBS">
+                    JobsCoin
+                </option>
+                <option value ="CybCSec~XCS">
+                    CybCSec
+                </option>
+                <option value ="Veros~VRS">
+                    Veros
+                </option>
+                <option value ="Coimatic-3.0~CTIC3">
+                    Coimatic-3.0
+                </option>
+                <option value ="RSGPcoin~RSGP">
+                    RSGPcoin
+                </option>
+                <option value ="Coupecoin~COUPE">
+                    Coupecoin
+                </option>
+                <option value ="Argus~ARGUS">
+                    Argus
+                </option>
+                <option value ="SydPak~SDP">
+                    SydPak
+                </option>
+                <option value ="Xonecoin~XOC">
+                    Xonecoin
+                </option>
+                <option value ="Vault-Coin~VLTC">
+                    Vault-Coin
+                </option>
+                <option value ="AgrolifeCoin~AGLC">
+                    AgrolifeCoin
+                </option>
+                <option value ="Bitvolt~VOLT">
+                    Bitvolt
+                </option>
+                <option value ="Coimatic-2.0~CTIC2">
+                    Coimatic-2.0
+                </option>
+                <option value ="Project-X~NANOX">
+                    Project-X
+                </option>
+                <option value ="Ulatech~ULA">
+                    Ulatech
+                </option>
+                <option value ="CrevaCoin~CREVA">
+                    CrevaCoin
+                </option>
+                <option value ="Magnum~MGM">
+                    Magnum
+                </option>
+                <option value ="GeyserCoin~GSR">
+                    GeyserCoin
+                </option>
+                <option value ="CaliphCoin~CALC">
+                    CaliphCoin
+                </option>
+                <option value ="EXRNchain~EXRN">
+                    EXRNchain
+                </option>
+                <option value ="Tristar-Coin~TSTR">
+                    Tristar-Coin
+                </option>
+                <option value ="Digital-Credits~DGCS">
+                    Digital-Credits
+                </option>
+                <option value ="HarmonyCoin~HMC">
+                    HarmonyCoin
+                </option>
+                <option value ="Digital-Money-Bits~DMB">
+                    Digital-Money-Bits
+                </option>
+                <option value ="Abncoin~ABN">
+                    Abncoin
+                </option>
+                <option value ="AppleCoin~APW">
+                    AppleCoin
+                </option>
+                <option value ="Jinn~JINN">
+                    Jinn
+                </option>
+                <option value ="Prospectors-Gold~PGL">
+                    Prospectors-Gold
+                </option>
+                <option value ="Virtacoin~VTA">
+                    Virtacoin
+                </option>
+                <option value ="The-ChampCoin~TCC">
+                    The-ChampCoin
+                </option>
+                <option value ="EncryptoTel-[WAVES]~ETT">
+                    EncryptoTel-[WAVES]
+                </option>
+                <option value ="Arcade-Token~ARC">
+                    Arcade-Token
+                </option>
+                <option value ="Rustbits~RUSTBITS">
+                    Rustbits
+                </option>
+                <option value ="CryptCoin~CRYPT">
+                    CryptCoin
+                </option>
+                <option value ="Monster-Byte~MBI">
+                    Monster-Byte
+                </option>
+                <option value ="Smart-Investment-Fund-Token~SIFT">
+                    Smart-Investment-Fund-Token
+                </option>
+                <option value ="PiplCoin~PIPL">
+                    PiplCoin
+                </option>
+                <option value ="InPay~INPAY">
+                    InPay
+                </option>
+                <option value ="EthBet~EBET">
+                    EthBet
+                </option>
+                <option value ="CorgiCoin~CORG">
+                    CorgiCoin
+                </option>
+                <option value ="StarCredits~STRC">
+                    StarCredits
+                </option>
+                <option value ="YashCoin~YASH">
+                    YashCoin
+                </option>
+                <option value ="Shorty~SHORTY">
+                    Shorty
+                </option>
+                <option value ="ShadowCash~SDC">
+                    ShadowCash
+                </option>
+                <option value ="BitBar~BTB">
+                    BitBar
+                </option>
+                <option value ="Trollcoin~TROLL">
+                    Trollcoin
+                </option>
+                <option value ="Bitcurrency~BTCR">
+                    Bitcurrency
+                </option>
+                <option value ="Pascal-Lite~PASL">
+                    Pascal-Lite
+                </option>
+                <option value ="Grimcoin~GRIM">
+                    Grimcoin
+                </option>
+                <option value ="Signatum~SIGT">
+                    Signatum
+                </option>
+                <option value ="Tattoocoin-(Standard-Edition)~TSE">
+                    Tattoocoin-(Standard-Edition)
+                </option>
+                <option value ="Prototanium~PR">
+                    Prototanium
+                </option>
+                <option value ="BlockPay~BLOCKPAY">
+                    BlockPay
+                </option>
+                <option value ="Stress~STS">
+                    Stress
+                </option>
+                <option value ="MetalCoin~METAL">
+                    MetalCoin
+                </option>
+                <option value ="FIMKrypto~FIMK">
+                    FIMKrypto
+                </option>
+                <option value ="PayCoin~XPY">
+                    PayCoin
+                </option>
+                <option value ="Casino~CASINO">
+                    Casino
+                </option>
+                <option value ="Bankcoin~B@">
+                    Bankcoin
+                </option>
+                <option value ="WayGuide~WAY">
+                    WayGuide
+                </option>
+                <option value ="Valorbit~VAL">
+                    Valorbit
+                </option>
+                <option value ="Trident-Group~TRDT">
+                    Trident-Group
+                </option>
+                <option value ="Flycoin~FLY">
+                    Flycoin
+                </option>
+                <option value ="BTCtalkcoin~TALK">
+                    BTCtalkcoin
+                </option>
+                <option value ="GlobalCoin~GLC">
+                    GlobalCoin
+                </option>
+                <option value ="Grantcoin~GRT">
+                    Grantcoin
+                </option>
+                <option value ="PX~PX">
+                    PX
+                </option>
+                <option value ="Bitz~BITZ">
+                    Bitz
+                </option>
+                <option value ="Joincoin~J">
+                    Joincoin
+                </option>
+                <option value ="BTSR~BTSR">
+                    BTSR
+                </option>
+                <option value ="Network-Token~NTWK">
+                    Network-Token
+                </option>
+                <option value ="bitSilver~BITSILVER">
+                    bitSilver
+                </option>
+                <option value ="Remicoin~RMC">
+                    Remicoin
+                </option>
+                <option value ="Cypher~CYP">
+                    Cypher
+                </option>
+                <option value ="bitGold~BITGOLD">
+                    bitGold
+                </option>
+                <option value ="Cashcoin~CASH">
+                    Cashcoin
+                </option>
+                <option value ="Jin-Coin~JIN">
+                    Jin-Coin
+                </option>
+                <option value ="Shadow-Token~SHDW">
+                    Shadow-Token
+                </option>
+                <option value ="PayCon~CON">
+                    PayCon
+                </option>
+                <option value ="WMCoin~WMC">
+                    WMCoin
+                </option>
+                <option value ="SecretCoin~SCRT">
+                    SecretCoin
+                </option>
+                <option value ="Franko~FRK">
+                    Franko
+                </option>
+                <option value ="SproutsExtreme~SPEX">
+                    SproutsExtreme
+                </option>
+                <option value ="Yacoin~YAC">
+                    Yacoin
+                </option>
+                <option value ="IslaCoin~ISL">
+                    IslaCoin
+                </option>
+                <option value ="Theresa-May-Coin~MAY">
+                    Theresa-May-Coin
+                </option>
+                <option value ="Freicoin~FRC">
+                    Freicoin
+                </option>
+                <option value ="Sling~SLING">
+                    Sling
+                </option>
+                <option value ="Virta-Unique-Coin~VUC">
+                    Virta-Unique-Coin
+                </option>
+                <option value ="GBCGoldCoin~GBC">
+                    GBCGoldCoin
+                </option>
+                <option value ="SACoin~SAC">
+                    SACoin
+                </option>
+                <option value ="USDe~USDE">
+                    USDe
+                </option>
+                <option value ="TajCoin~TAJ">
+                    TajCoin
+                </option>
+                <option value ="SatoshiMadness~MAD">
+                    SatoshiMadness
+                </option>
+                <option value ="Impact~IMX">
+                    Impact
+                </option>
+                <option value ="Jewels~JWL">
+                    Jewels
+                </option>
+                <option value ="Blackstar~BSTAR">
+                    Blackstar
+                </option>
+                <option value ="Firecoin~FIRE">
+                    Firecoin
+                </option>
+                <option value ="CoExistCoin~COXST">
+                    CoExistCoin
+                </option>
+                <option value ="Crypto~CTO">
+                    Crypto
+                </option>
+                <option value ="GuccioneCoin~GCC">
+                    GuccioneCoin
+                </option>
+                <option value ="VectorAI~VEC2">
+                    VectorAI
+                </option>
+                <option value ="Tychocoin~TYCHO">
+                    Tychocoin
+                </option>
+                <option value ="Asiadigicoin~ADCN">
+                    Asiadigicoin
+                </option>
+                <option value ="Bitcoin-21~XBTC21">
+                    Bitcoin-21
+                </option>
+                <option value ="AntiBitcoin~ANTI">
+                    AntiBitcoin
+                </option>
+                <option value ="Dreamcoin~DRM">
+                    Dreamcoin
+                </option>
+                <option value ="Uro~URO">
+                    Uro
+                </option>
+                <option value ="CryptoWorldX-Token~CWXT">
+                    CryptoWorldX-Token
+                </option>
+                <option value ="Useless-Ethereum-Token~UET">
+                    Useless-Ethereum-Token
+                </option>
+                <option value ="VIP-Tokens~VIP">
+                    VIP-Tokens
+                </option>
+                <option value ="Metal-Music-Coin~MTLMC3">
+                    Metal-Music-Coin
+                </option>
+                <option value ="BeaverCoin~BVC">
+                    BeaverCoin
+                </option>
+                <option value ="PlayerCoin~PLACO">
+                    PlayerCoin
+                </option>
+                <option value ="Litecred~LTCR">
+                    Litecred
+                </option>
+                <option value ="Ride-My-Car~RIDE">
+                    Ride-My-Car
+                </option>
+                <option value ="MindCoin~MND">
+                    MindCoin
+                </option>
+                <option value ="BillaryCoin~BLRY">
+                    BillaryCoin
+                </option>
+                <option value ="PLNcoin~PLNC">
+                    PLNcoin
+                </option>
+                <option value ="FlavorCoin~FLVR">
+                    FlavorCoin
+                </option>
+                <option value ="Destiny~DES">
+                    Destiny
+                </option>
+                <option value ="PIECoin~PIE">
+                    PIECoin
+                </option>
+                <option value ="Quebecoin~QBC">
+                    Quebecoin
+                </option>
+                <option value ="Zayedcoin~ZYD">
+                    Zayedcoin
+                </option>
+                <option value ="Pulse~PULSE">
+                    Pulse
+                </option>
+                <option value ="CryptoEscudo~CESC">
+                    CryptoEscudo
+                </option>
+                <option value ="Ripto-Bux~RBX">
+                    Ripto-Bux
+                </option>
+                <option value ="ARbit~ARB">
+                    ARbit
+                </option>
+                <option value ="TAGRcoin~TAGR">
+                    TAGRcoin
+                </option>
+                <option value ="Steps~STEPS">
+                    Steps
+                </option>
+                <option value ="BiosCrypto~BIOS">
+                    BiosCrypto
+                </option>
+                <option value ="Wild-Beast-Block~WBB">
+                    Wild-Beast-Block
+                </option>
+                <option value ="Shilling~SH">
+                    Shilling
+                </option>
+                <option value ="GameBet-Coin~GBT">
+                    GameBet-Coin
+                </option>
+                <option value ="DAPPSTER~DLISK">
+                    DAPPSTER
+                </option>
+                <option value ="BowsCoin~BSC">
+                    BowsCoin
+                </option>
+                <option value ="PosEx~PEX">
+                    PosEx
+                </option>
+                <option value ="Credence-Coin~CRDNC">
+                    Credence-Coin
+                </option>
+                <option value ="Unrealcoin~URC">
+                    Unrealcoin
+                </option>
+                <option value ="OsmiumCoin~OS76">
+                    OsmiumCoin
+                </option>
+                <option value ="KingN-Coin~KNC">
+                    KingN-Coin
+                </option>
+                <option value ="LetItRide~LIR">
+                    LetItRide
+                </option>
+                <option value ="BioBar~BIOB">
+                    BioBar
+                </option>
+                <option value ="iBank~IBANK">
+                    iBank
+                </option>
+                <option value ="G3N~G3N">
+                    G3N
+                </option>
+                <option value ="Orlycoin~ORLY">
+                    Orlycoin
+                </option>
+                <option value ="Zonecoin~ZNE">
+                    Zonecoin
+                </option>
+                <option value ="Elysium~ELS">
+                    Elysium
+                </option>
+                <option value ="High-Voltage~HVCO">
+                    High-Voltage
+                </option>
+                <option value ="ImpulseCoin~IMPS">
+                    ImpulseCoin
+                </option>
+                <option value ="EGO~EGO">
+                    EGO
+                </option>
+                <option value ="Cabbage~CAB">
+                    Cabbage
+                </option>
+                <option value ="CRTCoin~CRT">
+                    CRTCoin
+                </option>
+                <option value ="Corethum~CRTM">
+                    Corethum
+                </option>
+                <option value ="LevoPlus~LVPS">
+                    LevoPlus
+                </option>
+                <option value ="Antilitecoin~ALTC">
+                    Antilitecoin
+                </option>
+                <option value ="FuturXe~FXE">
+                    FuturXe
+                </option>
+                <option value ="Save-and-Gain~SANDG">
+                    Save-and-Gain
+                </option>
+                <option value ="P7Coin~P7C">
+                    P7Coin
+                </option>
+                <option value ="Rawcoin~XRC">
+                    Rawcoin
+                </option>
+                <option value ="NodeCoin~NODC">
+                    NodeCoin
+                </option>
+                <option value ="Concoin~CONX">
+                    Concoin
+                </option>
+                <option value ="Selfiecoin~SLFI">
+                    Selfiecoin
+                </option>
+                <option value ="Lex4All~LEX">
+                    Lex4All
+                </option>
+                <option value ="CoffeeCoin~CFC">
+                    CoffeeCoin
+                </option>
+                <option value ="CCMiner~CCM100">
+                    CCMiner
+                </option>
+                <option value ="PizzaCoin~PIZZA">
+                    PizzaCoin
+                </option>
+                <option value ="Ebittree-Coin~EBT">
+                    Ebittree-Coin
+                </option>
+                <option value ="BurstOcean~OCEAN">
+                    BurstOcean
+                </option>
+                <option value ="TopChain~TOPC">
+                    TopChain
+                </option>
+                <option value ="ATMCoin~ATMC">
+                    ATMCoin
+                </option>
+                <option value ="SwftCoin~SWFTC">
+                    SwftCoin
+                </option>
+                <option value ="DATA~DTA">
+                    DATA
+                </option>
+                <option value ="Odyssey~OCN">
+                    Odyssey
+                </option>
+                <option value ="SmartMesh~SMT">
+                    SmartMesh
+                </option>
+                <option value ="OFCOIN~OF">
+                    OFCOIN
+                </option>
+                <option value ="Genaro-Network~GNX">
+                    Genaro-Network
+                </option>
+                <option value ="Zilliqa~ZIL">
+                    Zilliqa
+                </option>
+                <option value ="Show~SHOW">
+                    Show
+                </option>
+                <option value ="Bitcoin-Diamond~BCD">
+                    Bitcoin-Diamond
+                </option>
+                <option value ="Qbao~QBT">
+                    Qbao
+                </option>
+                <option value ="CoinMeet~MEE">
+                    CoinMeet
+                </option>
+                <option value ="Fortuna~FOTA">
+                    Fortuna
+                </option>
+                <option value ="WaykiChain~WIC">
+                    WaykiChain
+                </option>
+                <option value ="AI-Doctor~AIDOC">
+                    AI-Doctor
+                </option>
+                <option value ="Scry.info~DDD">
+                    Scry.info
+                </option>
+                <option value ="Yee~YEE">
+                    Yee
+                </option>
+                <option value ="LinkEye~LET">
+                    LinkEye
+                </option>
+                <option value ="Viuly~VIU">
+                    Viuly
+                </option>
+                <option value ="ChatCoin~CHAT">
+                    ChatCoin
+                </option>
+                <option value ="True-Chain~TRUE">
+                    True-Chain
+                </option>
+                <option value ="EchoLink~EKO">
+                    EchoLink
+                </option>
+                <option value ="BitcoinX~BCX">
+                    BitcoinX
+                </option>
+                <option value ="Olympus-Labs~MOT">
+                    Olympus-Labs
+                </option>
+                <option value ="CRYPTO20~C20">
+                    CRYPTO20
+                </option>
+                <option value ="Profile-Utility-Token~PUT">
+                    Profile-Utility-Token
+                </option>
+                <option value ="carVertical~CV">
+                    carVertical
+                </option>
+                <option value ="OriginTrail~TRAC">
+                    OriginTrail
+                </option>
+                <option value ="Acute-Angle-Cloud~AAC">
+                    Acute-Angle-Cloud
+                </option>
+                <option value ="Kcash~KCASH">
+                    Kcash
+                </option>
+                <option value ="Hydro-Protocol~HOT">
+                    Hydro-Protocol
+                </option>
+                <option value ="SingularityNET~AGI">
+                    SingularityNET
+                </option>
+                <option value ="RealChain~RCT">
+                    RealChain
+                </option>
+                <option value ="Bottos~BTO">
+                    Bottos
+                </option>
+                <option value ="Aidos-Kuneen~ADK">
+                    Aidos-Kuneen
+                </option>
+                <option value ="FairGame~FAIR">
+                    FairGame
+                </option>
+                <option value ="SelfSell~SSC">
+                    SelfSell
+                </option>
+                <option value ="Super-Bitcoin~SBTC">
+                    Super-Bitcoin
+                </option>
+                <option value ="ugChain~UGC">
+                    ugChain
+                </option>
+                <option value ="Hyper-Pay~HPY">
+                    Hyper-Pay
+                </option>
+                <option value ="LightChain~LIGHT">
+                    LightChain
+                </option>
+                <option value ="Energo~TSL">
+                    Energo
+                </option>
+                <option value ="Molecular-Future~MOF">
+                    Molecular-Future
+                </option>
+                <option value ="IPChain~IPC">
+                    IPChain
+                </option>
+                <option value ="indaHash~IDH">
+                    indaHash
+                </option>
+                <option value ="StarChain~STC">
+                    StarChain
+                </option>
+                <option value ="Qube~QUBE">
+                    Qube
+                </option>
+                <option value ="AICHAIN~AIT">
+                    AICHAIN
+                </option>
+                <option value ="Fargocoin~FRGC">
+                    Fargocoin
+                </option>
+                <option value ="Happy-Creator-Coin~HCC">
+                    Happy-Creator-Coin
+                </option>
+                <option value ="UnlimitedIP~UIP">
+                    UnlimitedIP
+                </option>
+                <option value ="SpaceChain~SPC">
+                    SpaceChain
+                </option>
+                <option value ="Lightning-Bitcoin-[Futures]~LBTC">
+                    Lightning-Bitcoin-[Futures]
+                </option>
+                <option value ="EDUCare~EKT">
+                    EDUCare
+                </option>
+                <option value ="RefToken~REF">
+                    RefToken
+                </option>
+                <option value ="Mobius~MOBI">
+                    Mobius
+                </option>
+                <option value ="Ignis~IGNIS">
+                    Ignis
+                </option>
+                <option value ="AidCoin~AID">
+                    AidCoin
+                </option>
+                <option value ="InvestDigital~IDT">
+                    InvestDigital
+                </option>
+                <option value ="Read~READ">
+                    Read
+                </option>
+                <option value ="UG-Token~UGT">
+                    UG-Token
+                </option>
+                <option value ="CFun~CFUN">
+                    CFun
+                </option>
+                <option value ="Rebellious~REBL">
+                    Rebellious
+                </option>
+                <option value ="SegWit2x~B2X">
+                    SegWit2x
+                </option>
+                <option value ="Tezos-(Pre-Launch)~XTZ">
+                    Tezos-(Pre-Launch)
+                </option>
+                <option value ="Pundi-X~PXS">
+                    Pundi-X
+                </option>
+                <option value ="COMSA-[ETH]~CMS">
+                    COMSA-[ETH]
+                </option>
+                <option value ="Titanium-Blockchain~BAR">
+                    Titanium-Blockchain
+                </option>
+                <option value ="ShareX~SEXC">
+                    ShareX
+                </option>
+                <option value ="Hackspace-Capital~HAC">
+                    Hackspace-Capital
+                </option>
+                <option value ="Content-and-AD-Network~CAN">
+                    Content-and-AD-Network
+                </option>
+                <option value ="Bitcoin-Atom-[Futures]~BCA">
+                    Bitcoin-Atom-[Futures]
+                </option>
+                <option value ="MOAC~MOAC">
+                    MOAC
+                </option>
+                <option value ="HomeBlockCoin~HBC">
+                    HomeBlockCoin
+                </option>
+                <option value ="POLY-AI~AI">
+                    POLY-AI
+                </option>
+                <option value ="Safe-Trade-Coin~XSTC">
+                    Safe-Trade-Coin
+                </option>
+                <option value ="EA-Coin~EAG">
+                    EA-Coin
+                </option>
+                <option value ="InsurePal~IPL">
+                    InsurePal
+                </option>
+                <option value ="aXpire~AXP">
+                    aXpire
+                </option>
+                <option value ="BlockCDN~BCDN">
+                    BlockCDN
+                </option>
+                <option value ="Infinitecoin~IFC">
+                    Infinitecoin
+                </option>
+                <option value ="ATN~ATN">
+                    ATN
+                </option>
+                <option value ="BigONE-Token~BIG">
+                    BigONE-Token
+                </option>
+                <option value ="COMSA-[XEM]~CMS">
+                    COMSA-[XEM]
+                </option>
+                <option value ="StrongHands~SHND">
+                    StrongHands
+                </option>
+                <option value ="Bitcoin-Lightning~BLT">
+                    Bitcoin-Lightning
+                </option>
+                <option value ="BitSoar~BSR">
+                    BitSoar
+                </option>
+                <option value ="United-Bitcoin~UBTC">
+                    United-Bitcoin
+                </option>
+                <option value ="Mixin~XIN">
+                    Mixin
+                </option>
+                <option value ="TokenClub~TCT">
+                    TokenClub
+                </option>
+                <option value ="Numus~NMS">
+                    Numus
+                </option>
+                <option value ="AWARE~AWR">
+                    AWARE
+                </option>
+                <option value ="EtherDelta-Token~EDT">
+                    EtherDelta-Token
+                </option>
+                <option value ="Crypterium~CRPT">
+                    Crypterium
+                </option>
+                <option value ="Filecoin-[Futures]~FIL">
+                    Filecoin-[Futures]
+                </option>
+                <option value ="Swisscoin~SIC">
+                    Swisscoin
+                </option>
+                <option value ="Measurable-Data-Token~MDT">
+                    Measurable-Data-Token
+                </option>
+                <option value ="CryptopiaFeeShares~CEFS">
+                    CryptopiaFeeShares
+                </option>
+                <option value ="DavorCoin~DAV">
+                    DavorCoin
+                </option>
+                <option value ="Ignition~IC">
+                    Ignition
+                </option>
+                <option value ="Maggie~MAG">
+                    Maggie
+                </option>
+                <option value ="Sparks~SPK">
+                    Sparks
+                </option>
+                <option value ="Coinlancer~CL">
+                    Coinlancer
+                </option>
+                <option value ="Cloud~CLD">
+                    Cloud
+                </option>
+                <option value ="PressOne~PRS">
+                    PressOne
+                </option>
+                <option value ="Tokugawa~TOK">
+                    Tokugawa
+                </option>
+                <option value ="Gatcoin~GAT">
+                    Gatcoin
+                </option>
+                <option value ="Bankex~BKX">
+                    Bankex
+                </option>
+                <option value ="IDEX-Membership~IDXM">
+                    IDEX-Membership
+                </option>
+                <option value ="StrikeBitClub~SBC">
+                    StrikeBitClub
+                </option>
+                <option value ="InfChain~INF">
+                    InfChain
+                </option>
+                <option value ="Sphre-AIR-~XID">
+                    Sphre-AIR-
+                </option>
+                <option value ="Jingtum-Tech~SWTC">
+                    Jingtum-Tech
+                </option>
+                <option value ="Infinity-Economics~XIN">
+                    Infinity-Economics
+                </option>
+                <option value ="ClubCoin~CLUB">
+                    ClubCoin
+                </option>
+                <option value ="Harvest-Masternode-Coin~HC">
+                    Harvest-Masternode-Coin
+                </option>
+                <option value ="Smartlands~SLT">
+                    Smartlands
+                </option>
+                <option value ="ArbitrageCT~ARCT">
+                    ArbitrageCT
+                </option>
+                <option value ="Block-Array~ARY">
+                    Block-Array
+                </option>
+                <option value ="Tokenbox~TBX">
+                    Tokenbox
+                </option>
+                <option value ="FidentiaX~FDX">
+                    FidentiaX
+                </option>
+                <option value ="Jiyo~JIYO">
+                    Jiyo
+                </option>
+                <option value ="PlusCoin~PLC">
+                    PlusCoin
+                </option>
+                <option value ="Vezt~VZT">
+                    Vezt
+                </option>
+                <option value ="WETH~WETH">
+                    WETH
+                </option>
+                <option value ="Golfcoin~GOLF">
+                    Golfcoin
+                </option>
+                <option value ="Maverick-Chain~MVC">
+                    Maverick-Chain
+                </option>
+                <option value ="WeAreSatoshi~WSX">
+                    WeAreSatoshi
+                </option>
+                <option value ="Galactrum~ORE">
+                    Galactrum
+                </option>
+                <option value ="GameChain-System~GCS">
+                    GameChain-System
+                </option>
+                <option value ="B3Coin~KB3">
+                    B3Coin
+                </option>
+                <option value ="TimesCoin~TMC">
+                    TimesCoin
+                </option>
+                <option value ="MSD~MSD">
+                    MSD
+                </option>
+                <option value ="HTML5COIN~HTML5">
+                    HTML5COIN
+                </option>
+                <option value ="Golos-Gold~GBG">
+                    Golos-Gold
+                </option>
+                <option value ="TOKYO~TOKC">
+                    TOKYO
+                </option>
+                <option value ="GOLD-Reward-Token~GRX">
+                    GOLD-Reward-Token
+                </option>
+                <option value ="Zap~ZAP">
+                    Zap
+                </option>
+                <option value ="ZenGold~ZENGOLD">
+                    ZenGold
+                </option>
+                <option value ="Purpose~PRPS">
+                    Purpose
+                </option>
+                <option value ="Escroco~ESC">
+                    Escroco
+                </option>
+                <option value ="TerraNova~TER">
+                    TerraNova
+                </option>
+                <option value ="CasinoCoin~CSC">
+                    CasinoCoin
+                </option>
+                <option value ="MergeCoin~MGC">
+                    MergeCoin
+                </option>
+                <option value ="BOScoin~BOS">
+                    BOScoin
+                </option>
+                <option value ="DIMCOIN~DIM">
+                    DIMCOIN
+                </option>
+                <option value ="BitSerial~BTE">
+                    BitSerial
+                </option>
+                <option value ="SISA~SISA">
+                    SISA
+                </option>
+                <option value ="Bitair~BTCA">
+                    Bitair
+                </option>
+                <option value ="Cyder~CYDER">
+                    Cyder
+                </option>
+                <option value ="Decentralized-Universal-Basic-Income~DUBI">
+                    Decentralized-Universal-Basic-Income
+                </option>
+                <option value ="Chronologic~DAY">
+                    Chronologic
+                </option>
+                <option value ="United-Traders-Token~UTT">
+                    United-Traders-Token
+                </option>
+                <option value ="Elacoin~ELC">
+                    Elacoin
+                </option>
+                <option value ="Bitcoin-God~GOD">
+                    Bitcoin-God
+                </option>
+                <option value ="XTD-Coin~XTD">
+                    XTD-Coin
+                </option>
+                <option value ="MagicCoin~MAGE">
+                    MagicCoin
+                </option>
+                <option value ="TechShares~THS">
+                    TechShares
+                </option>
+                <option value ="Protean~PRN">
+                    Protean
+                </option>
+                <option value ="Kzcash~KZC">
+                    Kzcash
+                </option>
+                <option value ="International-Diamond~XID">
+                    International-Diamond
+                </option>
+                <option value ="Ethereum-Lite~ELITE">
+                    Ethereum-Lite
+                </option>
+                <option value ="Phantomx~PNX">
+                    Phantomx
+                </option>
+                <option value ="Peacecoin~PEC">
+                    Peacecoin
+                </option>
+                <option value ="DimonCoin~FUDD">
+                    DimonCoin
+                </option>
+                <option value ="NEO-GOLD~NEOG">
+                    NEO-GOLD
+                </option>
+                <option value ="Compcoin~CMP">
+                    Compcoin
+                </option>
+                <option value ="Animecoin~ANI">
+                    Animecoin
+                </option>
+                <option value ="ZSEcoin~ZSE">
+                    ZSEcoin
+                </option>
+                <option value ="VPNCoin~VASH">
+                    VPNCoin
+                </option>
+                <option value ="Bitcedi~BXC">
+                    Bitcedi
+                </option>
+                <option value ="CORION~COR">
+                    CORION
+                </option>
+                <option value ="T-coin~TCOIN">
+                    T-coin
+                </option>
+                <option value ="LiteCoin-Gold~LTG">
+                    LiteCoin-Gold
+                </option>
+                <option value ="NamoCoin~NAMO">
+                    NamoCoin
+                </option>
+                <option value ="First-Bitcoin~BIT">
+                    First-Bitcoin
+                </option>
+                <option value ="IrishCoin~IRL">
+                    IrishCoin
+                </option>
+                <option value ="Quotient~XQN">
+                    Quotient
+                </option>
+                <option value ="iQuant~IQT">
+                    iQuant
+                </option>
+                <option value ="NumusCash~NUMUS">
+                    NumusCash
+                </option>
+                <option value ="Akuya-Coin~AKY">
+                    Akuya-Coin
+                </option>
+                <option value ="Fazzcoin~FAZZ">
+                    Fazzcoin
+                </option>
+                <option value ="BT2-[CST]~BT2">
+                    BT2-[CST]
+                </option>
+                <option value ="Rupaya-[OLD]~RUPX">
+                    Rupaya-[OLD]
+                </option>
+                <option value ="Bitcoin-Silver~BTCS">
+                    Bitcoin-Silver
+                </option>
+                <option value ="SIGMAcoin~SIGMA">
+                    SIGMAcoin
+                </option>
+                <option value ="Sharkcoin~SAK">
+                    Sharkcoin
+                </option>
+                <option value ="iBTC~IBTC">
+                    iBTC
+                </option>
+                <option value ="Alphabit~ABC">
+                    Alphabit
+                </option>
+                <option value ="HODL-Bucks~HDLB">
+                    HODL-Bucks
+                </option>
+                <option value ="Rcoin~RCN">
+                    Rcoin
+                </option>
+                <option value ="TurboCoin~TURBO">
+                    TurboCoin
+                </option>
+                <option value ="Musiconomi~MCI">
+                    Musiconomi
+                </option>
+                <option value ="SafeCoin~SFE">
+                    SafeCoin
+                </option>
+                <option value ="BestChain~BEST">
+                    BestChain
+                </option>
+                <option value ="Vulcano~VULC">
+                    Vulcano
+                </option>
+                <option value ="Macro~MCR">
+                    Macro
+                </option>
+                <option value ="LandCoin~LDCN">
+                    LandCoin
+                </option>
+                <option value ="Starbase~STAR">
+                    Starbase
+                </option>
+                <option value ="GlassCoin~GLS">
+                    GlassCoin
+                </option>
+                <option value ="Matryx~MTX">
+                    Matryx
+                </option>
+                <option value ="GoldMaxCoin~GMX">
+                    GoldMaxCoin
+                </option>
+                <option value ="FAPcoin~FAP">
+                    FAPcoin
+                </option>
+                <option value ="Fonziecoin~FONZ">
+                    Fonziecoin
+                </option>
+                <option value ="Pirate-Blocks~SKULL">
+                    Pirate-Blocks
+                </option>
+                <option value ="ShellCoin~SHELL">
+                    ShellCoin
+                </option>
+                <option value ="Granite~GRN">
+                    Granite
+                </option>
+                <option value ="EDRCoin~EDRC">
+                    EDRCoin
+                </option>
+                <option value ="FlappyCoin~FLAP">
+                    FlappyCoin
+                </option>
+                <option value ="Triaconta~TRIA">
+                    Triaconta
+                </option>
+                <option value ="Nitro~NOX">
+                    Nitro
+                </option>
+                <option value ="Sakuracoin~SKR">
+                    Sakuracoin
+                </option>
+                <option value ="WA-Space~WA">
+                    WA-Space
+                </option>
+                <option value ="Nimfamoney~NIMFA">
+                    Nimfamoney
+                </option>
+                <option value ="TodayCoin~TODAY">
+                    TodayCoin
+                </option>
+                <option value ="EncryptoTel-[ETH]~ETT">
+                    EncryptoTel-[ETH]
+                </option>
+                <option value ="Cubits~QBT">
+                    Cubits
+                </option>
+                <option value ="Francs~FRN">
+                    Francs
+                </option>
+                <option value ="PlexCoin~PLX">
+                    PlexCoin
+                </option>
+                <option value ="Antimatter~ANTX">
+                    Antimatter
+                </option>
+                <option value ="Internet-of-Things~XOT">
+                    Internet-of-Things
+                </option>
+                <option value ="DynamicCoin~DMC">
+                    DynamicCoin
+                </option>
+                <option value ="SHACoin~SHA">
+                    SHACoin
+                </option>
+                <option value ="FireFlyCoin~FFC">
+                    FireFlyCoin
+                </option>
+                <option value ="PeepCoin~PCN">
+                    PeepCoin
+                </option>
+                <option value ="President-Trump~PRES">
+                    President-Trump
+                </option>
+                <option value ="BTCMoon~BTCM">
+                    BTCMoon
+                </option>
+                <option value ="eGold~EGOLD">
+                    eGold
+                </option>
+                <option value ="High-Gain~HIGH">
+                    High-Gain
+                </option>
+                <option value ="India-Coin~INDIA">
+                    India-Coin
+                </option>
+                <option value ="UniversalRoyalCoin~UNRC">
+                    UniversalRoyalCoin
+                </option>
+                <option value ="Wowcoin~WOW">
+                    Wowcoin
+                </option>
+                <option value ="RabbitCoin~RBBT">
+                    RabbitCoin
+                </option>
+                <option value ="Birds~BIRDS">
+                    Birds
+                </option>
+                <option value ="Bitbase~BTBc">
+                    Bitbase
+                </option>
+                <option value ="MarxCoin~MARX">
+                    MarxCoin
+                </option>
+                <option value ="Wink~WINK">
+                    Wink
+                </option>
+                <option value ="GUESS~GUESS">
+                    GUESS
+                </option>
+                <option value ="Cheapcoin~CHEAP">
+                    Cheapcoin
+                </option>
+                <option value ="UR~UR">
+                    UR
+                </option>
+                <option value ="UGAIN~GAIN">
+                    UGAIN
+                </option>
+                <option value ="Huncoin~HNC">
+                    Huncoin
+                </option>
+                <option value ="OX-Fina~OX">
+                    OX-Fina
+                </option>
+                <option value ="Everus~EVR">
+                    Everus
+                </option>
+                <option value ="Pabyosi-Coin-(Special)~PCS">
+                    Pabyosi-Coin-(Special)
+                </option>
+                <option value ="GAY-Money~GAY">
+                    GAY-Money
+                </option>
+                <option value ="TopCoin~TOP">
+                    TopCoin
+                </option>
+                <option value ="Aces~ACES">
+                    Aces
+                </option>
+                <option value ="Wi-Coin~WIC">
+                    Wi-Coin
+                </option>
+                <option value ="Bitcoin2x~BTC2X">
+                    Bitcoin2x
+                </option>
+                <option value ="AlpaCoin~APC">
+                    AlpaCoin
+                </option>
+                <option value ="Tellurion~TELL">
+                    Tellurion
+                </option>
+                <option value ="Cashme~CME">
+                    Cashme
+                </option>
+                <option value ="Donationcoin~DON">
+                    Donationcoin
+                </option>
+                <option value ="Storjcoin-X~SJCX">
+                    Storjcoin-X
+                </option>
+                <option value ="BitAlphaCoin~BAC">
+                    BitAlphaCoin
+                </option>
+                <option value ="TeraCoin~TERA">
+                    TeraCoin
+                </option>
+                <option value ="Minex~MINEX">
+                    Minex
+                </option>
+                <option value ="Cash-Poker-Pro~CASH">
+                    Cash-Poker-Pro
+                </option>
+                <option value ="Swapcoin~SWP">
+                    Swapcoin
+                </option>
+                <option value ="First-Bitcoin-Capital~BITCF">
+                    First-Bitcoin-Capital
+                </option>
+                <option value ="netBit~NBIT">
+                    netBit
+                </option>
+                <option value ="DeusCoin~DEUS">
+                    DeusCoin
+                </option>
+                <option value ="Topaz-Coin~TOPAZ">
+                    Topaz-Coin
+                </option>
+                <option value ="Bitok~BITOK">
+                    Bitok
+                </option>
+                <option value ="ANRYZE~RYZ">
+                    ANRYZE
+                </option>
+                <option value ="Magnetcoin~MAGN">
+                    Magnetcoin
+                </option>
+                <option value ="CBD-Crystals~CBD">
+                    CBD-Crystals
+                </option>
+                <option value ="Soma~SCT">
+                    Soma
+                </option>
+                <option value ="UNCoin~UNC">
+                    UNCoin
+                </option>
+                <option value ="PrismChain~PRM">
+                    PrismChain
+                </option>
+                <option value ="RoyalCoin~ROYAL">
+                    RoyalCoin
+                </option>
+                <option value ="PeopleCoin~MEN">
+                    PeopleCoin
+                </option>
+                <option value ="Bastonet~BSN">
+                    Bastonet
+                </option>
+                <option value ="EventChain~EVC">
+                    EventChain
+                </option>
+                <option value ="Hyper-TV~HYTV">
+                    Hyper-TV
+                </option>
+                <option value ="Regacoin~REGA">
+                    Regacoin
+                </option>
+                <option value ="Sand-Coin~SND">
+                    Sand-Coin
+                </option>
+                <option value ="Zilbercoin~ZBC">
+                    Zilbercoin
+                </option>
+                <option value ="President-Johnson~GARY">
+                    President-Johnson
+                </option>
+                <option value ="Digital-Bullion-Gold~DBG">
+                    Digital-Bullion-Gold
+                </option>
+                <option value ="eUSD~EUSD">
+                    eUSD
+                </option>
+                <option value ="CyberCoin~CC">
+                    CyberCoin
+                </option>
+                <option value ="PokeCoin~POKE">
+                    PokeCoin
+                </option>
+                <option value ="PayPeer~PAYP">
+                    PayPeer
+                </option>
+                <option value ="Primulon~PRIMU">
+                    Primulon
+                </option>
+                <option value ="Dubstep~DUB">
+                    Dubstep
+                </option>
+                <option value ="BlazerCoin~BLAZR">
+                    BlazerCoin
+                </option>
+                <option value ="AvatarCoin~AV">
+                    AvatarCoin
+                </option>
+                <option value ="Tattoocoin-(Limited-Edition)~TLE">
+                    Tattoocoin-(Limited-Edition)
+                </option>
+                <option value ="Blockchain-Index~BLX">
+                    Blockchain-Index
+                </option>
+                <option value ="Dutch-Coin~DUTCH">
+                    Dutch-Coin
+                </option>
+                <option value ="10M-Token~10MT">
+                    10M-Token
+                </option>
+                <option value ="BetaCoin~BET">
+                    BetaCoin
+                </option>
+                <option value ="BITFID~FID">
+                    BITFID
+                </option>
+                <option value ="Halloween-Coin~HALLO">
+                    Halloween-Coin
+                </option>
+                <option value ="Natcoin~NTC">
+                    Natcoin
+                </option>
+                <option value ="STEX~STEX">
+                    STEX
+                </option>
+                <option value ="Faceblock~FBL">
+                    Faceblock
+                </option>
+                <option value ="Avoncoin~ACN">
+                    Avoncoin
+                </option>
+                <option value ="Qora~QORA">
+                    Qora
+                </option>
+                <option value ="Karmacoin~KARMA">
+                    Karmacoin
+                </option>
+                <option value ="RubleBit~RUBIT">
+                    RubleBit
+                </option>
+                <option value ="eBIT~EBIT">
+                    eBIT
+                </option>
+                <option value ="UAHPay~UAHPAY">
+                    UAHPay
+                </option>
+                <option value ="Opescoin~OPES">
+                    Opescoin
+                </option>
+                <option value ="Infinity-Pay~IPY">
+                    Infinity-Pay
+                </option>
+                <option value ="TrickyCoin~TRICK">
+                    TrickyCoin
+                </option>
+                <option value ="Dashs~DASHS">
+                    Dashs
+                </option>
+                <option value ="MMXVI~MMXVI">
+                    MMXVI
+                </option>
+                <option value ="PinkDog~PDG">
+                    PinkDog
+                </option>
+                <option value ="Leek-Coin~LEEK">
+                    Leek-Coin
+                </option>
+                <option value ="Mavro~MAVRO">
+                    Mavro
+                </option>
+                <option value ="Lazaruscoin~LAZ">
+                    Lazaruscoin
+                </option>
+                <option value ="Bubble~BUB">
+                    Bubble
+                </option>
+                <option value ="Yescoin~YES">
+                    Yescoin
+                </option>
+                <option value ="Moneta~MONETA">
+                    Moneta
+                </option>
+                <option value ="MoneyCoin~MONEY">
+                    MoneyCoin
+                </option>
+                <option value ="The-Vegan-Initiative~XVE">
+                    The-Vegan-Initiative
+                </option>
+                <option value ="DarkLisk~DISK">
+                    DarkLisk
+                </option>
+                <option value ="EggCoin~EGG">
+                    EggCoin
+                </option>
+                <option value ="DeltaCredits~DCRE">
+                    DeltaCredits
+                </option>
+                <option value ="TeamUp~TEAM">
+                    TeamUp
+                </option>
+                <option value ="Aseancoin~ASN">
+                    Aseancoin
+                </option>
+                <option value ="KashhCoin~KASHH">
+                    KashhCoin
+                </option>
+                <option value ="Voyacoin~VOYA">
+                    Voyacoin
+                </option>
+                <option value ="Omicron~OMC">
+                    Omicron
+                </option>
+                <option value ="X2~X2">
+                    X2
+                </option>
+                <option value ="LinkedCoin~LKC">
+                    LinkedCoin
+                </option>
+                <option value ="LAthaan~LTH">
+                    LAthaan
+                </option>
+                <option value ="Xaucoin~XAU">
+                    Xaucoin
+                </option>
+                <option value ="TheCreed~TCR">
+                    TheCreed
+                </option>
+                <option value ="SnakeEyes~SNAKE">
+                    SnakeEyes
+                </option>
+                <option value ="Psilocybin~PSY">
+                    Psilocybin
+                </option>
+                <option value ="RichCoin~RICHX">
+                    RichCoin
+                </option>
+                <option value ="SportsCoin~SPORT">
+                    SportsCoin
+                </option>
+                <option value ="eLTC~ELTC2">
+                    eLTC
+                </option>
+                <option value ="LePen~LEPEN">
+                    LePen
+                </option>
+                <option value ="Axiom~AXIOM">
+                    Axiom
+                </option>
+                <option value ="MobileCash~MBL">
+                    MobileCash
+                </option>
+                <option value ="GameLeagueCoin~GML">
+                    GameLeagueCoin
+                </option>
+                <option value ="XDE-II~XDE2">
+                    XDE-II
+                </option>
+                <option value ="FrankyWillCoin~FRWC">
+                    FrankyWillCoin
+                </option>
+                <option value ="UtaCoin~UTA">
+                    UtaCoin
+                </option>
+                <option value ="FutCoin~FUTC">
+                    FutCoin
+                </option>
+                <option value ="Cycling-Coin~CYC">
+                    Cycling-Coin
+                </option>
+                <option value ="Runners~RUNNERS">
+                    Runners
+                </option>
+                <option value ="Hyper~HYPER">
+                    Hyper
+                </option>
+                <option value ="Facecoin~FC">
+                    Facecoin
+                </option>
+                <option value ="InvisibleCoin~IVZ">
+                    InvisibleCoin
+                </option>
+                <option value ="Operand~OP">
+                    Operand
+                </option>
+                <option value ="TeslaCoilCoin~TESLA">
+                    TeslaCoilCoin
+                </option>
+                <option value ="RHFCoin~RHFC">
+                    RHFCoin
+                </option>
+                <option value ="GoldUnionCoin~GUC">
+                    GoldUnionCoin
+                </option>
+                <option value ="LLToken~LLT">
+                    LLToken
+                </option>
+                <option value ="WINCOIN~WC">
+                    WINCOIN
+                </option>
+                <option value ="OCOW~OCOW">
+                    OCOW
+                </option>
+                <option value ="Global-Business-Revolution~GBRC">
+                    Global-Business-Revolution
+                </option>
+                <option value ="BT1-[CST]~BT1">
+                    BT1-[CST]
+                </option>
+                <option value ="ENTCash~ENT">
+                    ENTCash
+                </option>
+                <option value ="KemCredit~KMC">
+                    KemCredit
+                </option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="cryptoPrice" class="container">
+    <div class="row">
+        <div *ngIf="cryptoCoinDetail && cryptoCoinDetail.imageUrl" class="col-sm-1" style="padding-top: 20px;">
+            <img src="{{cryptoCoinDetail.imageUrl}}" class="img-responsive img-rounded"/>
+        </div>
+        <div class="col-md-4">
+            <h3>{{cryptoPrice.name}} <small>{{cryptoPrice.symbol}} &nbsp;<a (click)="invokeCryptoServiceForSymbol(name)"><i class="fa fa-refresh"></i></a></small></h3>
+            <h6 *ngIf="cryptoPrice.price_usd">{{cryptoPrice.price_usd}} <small>USD</small></h6>
+            <h6 *ngIf="cryptoPrice.price_btc">{{cryptoPrice.price_btc}} <small>BTC</small></h6>
+            <a *ngIf="cryptoCoinDetail && cryptoCoinDetail.twitterUrl"  href="{{cryptoCoinDetail.twitterUrl}}" target="_blank" title="twitter"><i class="fa  fa-2x fa-twitter" style="color: #00aced;"></i></a>
+            &nbsp;&nbsp;<a *ngIf="cryptoCoinDetail && cryptoCoinDetail.facebookUrl"  href="{{cryptoCoinDetail.facebookUrl}}" target="_blank" title="facebook"><i class="fa  fa-2x fa-facebook-official" style="color: #3b5998;"></i></a>
+            &nbsp;&nbsp;<a *ngIf="cryptoCoinDetail && cryptoCoinDetail.redditUrl"  href="{{cryptoCoinDetail.redditUrl}}" target="_blank" title="reddit"><i class="fa  fa-2x fa-reddit" style="color: darkred;"></i></a>
+        </div>
+        <div class="col-md-4">
+            <br/>
+            <p *ngIf="cryptoPrice.percent_change_1h" class="remove-pad-marg property-labels">Hourly change : <span [ngClass] ="(cryptoPrice.percent_change_1h != null && cryptoPrice.percent_change_1h.includes('-') ? 'numbers-negative' : 'numbers-positive')"> <b>{{cryptoPrice.percent_change_1h}} % </b></span></p>
+            <p *ngIf="cryptoPrice.percent_change_24h" class="remove-pad-marg property-labels">Daily change : <span [ngClass] ="(cryptoPrice.percent_change_24h != null && cryptoPrice.percent_change_24h.includes('-') ? 'numbers-negative' : 'numbers-positive')"> <b>{{cryptoPrice.percent_change_24h}} % </b></span></p>
+            <p *ngIf="cryptoPrice.percent_change_7d" class="remove-pad-marg property-labels">Weekly change : <span [ngClass] ="(cryptoPrice.percent_change_7d != null && cryptoPrice.percent_change_7d.includes('-') ? 'numbers-negative' : 'numbers-positive')"> <b>{{cryptoPrice.percent_change_7d}} % </b></span></p>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="cryptoPrice" class="container">
+    <div class="row">
+    <div *ngIf="cryptoCoinDetail && cryptoCoinDetail.codeRepoLinks" class="col-md-4">
+        <i class="fa fa-code" aria-hidden="true"></i> Source Code
+        <br/>
+            <ng-container *ngFor="let item of cryptoCoinDetail.codeRepoLinks">
+                <a href="{{item}}" target="_blank" class="detail-link">{{item}}</a><br/>
+            </ng-container>
+        </div>
+
+        <div *ngIf="cryptoCoinDetail" class="col-md-3">
+            <strong>Properties</strong><br/>
+            <p class="remove-pad-marg">Algorithm : <span><b>{{cryptoCoinDetail.algorithm}}</b></span></p>
+            <p class="remove-pad-marg">Pre Mined : <span><b>{{cryptoCoinDetail.isPreMined}}</b></span></p>
+            <p class="remove-pad-marg">Proof : <span><b>{{cryptoCoinDetail.proofType}}</b></span></p>
+        </div>
+
+        <div class="col-md-3">
+            <strong>Supply</strong><br/>
+        <div *ngIf="cryptoPrice.available_supply && cryptoPrice.available_supply != ''" class="row">
+            <div class="col-md-3" style="float:left"><p class="remove-pad-marg">Available</p></div>
+            <div class="col-md-8"><p class="p-numbers-font">{{cryptoPrice.available_supply}}</p></div>
+        </div>
+        <div *ngIf="cryptoPrice.total_supply && cryptoPrice.total_supply != ''" class="row">
+            <div class="col-md-3" style="float:left"><p class="remove-pad-marg">Total</p></div>
+            <div class="col-md-8"><p class="p-numbers-font">{{cryptoPrice.total_supply}}</p></div>
+        </div>
+        <div *ngIf="cryptoPrice.max_supply && cryptoPrice.max_supply != ''" class="row">
+            <div class="col-md-3" style="float:left"><p class="remove-pad-marg">Max</p></div>
+            <div class="col-md-8"><p class="p-numbers-font">{{cryptoPrice.max_supply}}</p></div>
+        </div>
+    </div>
+    <div *ngIf="cryptoPrice.market_cap_usd" class="col-md-2">
+        <strong>Market Cap</strong><br/>
+        <h6>{{cryptoPrice.market_cap_usd}}</h6>
+    </div>
+    </div>
+</div>
+<hr/>
+<div class="container" style="border-top: solid">
+    <br/>
+    <div class="col-md-3">
+        <h6>Time Range</h6>
+    </div>
+    <div class="col-md-1">
+        <button class="btn-primary btn-block" [ngClass]="this.period == 'DAY' ? 'active' : ''" (click)="this.period='DAY';invokeHistoService('DAY', symbol)">D</button>
+    </div>
+    <div class="col-md-1">
+        <button class="btn-primary btn-block" [ngClass]="this.period == 'WEEK' ? 'active' : ''" (click)="this.period='WEEK';invokeHistoService('WEEK', symbol)">W</button>
+    </div>
+    <div class="col-md-1">
+        <button class="btn-primary btn-block" [ngClass]="this.period == 'MONTH' ? 'active' : ''" (click)="this.period='MONTH';invokeHistoService('MONTH', symbol)">M</button>
+    </div>
+    <div class="col-md-1">
+        <button class="btn-primary btn-block" [ngClass]="this.period == 'THREE_MONTHS' ? 'active' : ''" (click)="this.period='THREE_MONTHS';invokeHistoService('THREE_MONTHS', symbol)">3 M</button>
+    </div>
+    <div class="col-md-1">
+        <button class="btn-primary btn-block" [ngClass]="this.period == 'SIX_MONTHS' ? 'active' : ''" (click)="this.period='SIX_MONTHS';invokeHistoService('SIX_MONTHS', symbol)">6 M</button>
+    </div>
+    <div class="col-md-1">
+        <button class="btn-primary btn-block" [ngClass]="this.period == 'YEAR' ? 'active' : ''" (click)="this.period='YEAR';invokeHistoService('YEAR', symbol)">Y</button>
+    </div>
+</div>
+<div class="container">
+    <div id="chartContainer3" class="row">
+        <div class="col-lg-12">
+            <canvas #timeline1></canvas>
+        </div>
+    </div>
+</div>
+

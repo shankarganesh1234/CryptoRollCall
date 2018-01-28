@@ -8,6 +8,7 @@ import {Currencies} from "../models/currencies";
 import {CurrencyService} from "../services/currency.service";
 import * as numeral from 'numeral';
 import Chart from 'chart.js';
+import {isUndefined} from "util";
 
 
 
@@ -59,6 +60,15 @@ export class CryptoFavoritesComponent implements OnInit{
     cryptoHourGainers : CryptoFavorite[] = [];
     cryptoDayGainers : CryptoFavorite[] = [];
     cryptoWeekGainers : CryptoFavorite[] = [];
+
+    // amount invested
+    amountInvested: number = 0.0;
+    amountInvestedCurr: string = "USD";
+    amountInvestedDiffCurr: string = '';
+    // local storage keys
+    crypto_amountInvested: string = "crypto_amountInvested";
+    crypto_currencyPreference: string = "crypto_currencyPreference";
+
 
     constructor(private route: ActivatedRoute, private router: Router, private cryptoService: CryptoService, private titleService: Title, private currencyService: CurrencyService){
         route.params.subscribe(val => {
@@ -383,7 +393,8 @@ export class CryptoFavoritesComponent implements OnInit{
                     "title": {
                         "display":true,
                         "text": this.totalPortfolioStr + ' ' + this.currStr,
-                        "fontSize":20
+                        "fontSize":30,
+                        "fontColor":'black'
                     }
                 }
             }
@@ -409,8 +420,16 @@ export class CryptoFavoritesComponent implements OnInit{
         this.currencyExchange = currExch;
 
         // get from local storage if present
-        if(localStorage.getItem(this.localStorageKey + "currencyPreference") != null)
-            this.currStr = localStorage.getItem(this.localStorageKey + "currencyPreference");
+        if(localStorage.getItem(this.crypto_currencyPreference) != null)
+            this.currStr = localStorage.getItem(this.crypto_currencyPreference);
+
+        // set amount invested
+        if(localStorage.getItem(this.crypto_amountInvested) != null) {
+            this.amountInvestedDiffCurr = localStorage.getItem(this.crypto_amountInvested);
+            let currInfo: string[] = this.amountInvestedDiffCurr.split(" ");
+            this.amountInvested = parseFloat(currInfo[0]);
+            this.amountInvestedCurr = currInfo[1];
+        }
 
         this.getFavs();
     }
@@ -425,7 +444,7 @@ export class CryptoFavoritesComponent implements OnInit{
         this.favs = [];
         this.favsCopy = [];
         for(var i=0; i<localStorage.length; i++) {
-            if(localStorage.key(i).includes(this.localStorageKey) && localStorage.key(i) != 'crypto_currencyPreference') {
+            if(localStorage.key(i).includes(this.localStorageKey) && localStorage.key(i) != this.crypto_currencyPreference && localStorage.key(i) != this.crypto_amountInvested) {
                 let fav: CryptoFavorite = JSON.parse(localStorage.getItem(localStorage.key(i)));
 
                 this.cryptoService
@@ -450,6 +469,9 @@ export class CryptoFavoritesComponent implements OnInit{
     }
 
     setResult(result : any, fav: CryptoFavorite) : void {
+
+        if(fav == null || fav === undefined)
+            return;
 
         let q: number = fav.quantity;
         fav = result[0];
@@ -585,7 +607,7 @@ export class CryptoFavoritesComponent implements OnInit{
                 this.totalPortfolioStr = (this.totalPortfolioUsd * exchangeRate).toFixed(2);
         }
             // set choice in local storage
-            localStorage.setItem(this.localStorageKey + "currencyPreference", currency);
+            localStorage.setItem(this.crypto_currencyPreference, currency);
             this.initChart(this.favsCopy);
     }
 
@@ -874,6 +896,15 @@ export class CryptoFavoritesComponent implements OnInit{
                 }
             }
         );
+    }
+
+    /**
+     * Invoked when changing amount invested
+     */
+    changeAmountInvested(amount: number, currency: string): void {
+
+        this.amountInvestedDiffCurr = this.amountInvested + " " + this.amountInvestedCurr;
+        localStorage.setItem(this.crypto_amountInvested, this.amountInvestedDiffCurr);
     }
 }
 

@@ -12,7 +12,8 @@
         "favicon.ico",
         "sitemap.txt",
         "googlecb377c866ab9d006.html",
-        "google7a2362fdb2bcdf44.html"
+        "google7a2362fdb2bcdf44.html",
+        "BingSiteAuth.xml"
       ],
       "index": "index.html",
       "main": "main.ts",
