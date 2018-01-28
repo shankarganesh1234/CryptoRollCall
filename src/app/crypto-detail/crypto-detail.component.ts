@@ -42,7 +42,7 @@ export class CryptoDetailComponent implements OnInit {
         window.scrollTo(0, 0);
         this.route.params.subscribe(params => {
             this.symbol = params['symbol'];
-            this.name = params['name'].replace(" ","-");
+            this.name = params['name'].replace(/\s/g,"-");
             this.selectVal = this.name + "~" + this.symbol;
             this.invokeCryptoServiceForSymbol(this.name);
             this.invokeCryptoServiceDetail(this.symbol);
