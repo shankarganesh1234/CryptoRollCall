@@ -4502,6 +4502,7 @@
             <h3>{{cryptoPrice.name}} <small>{{cryptoPrice.symbol}} &nbsp;<a (click)="invokeCryptoServiceForSymbol(name)"><i class="fa fa-refresh"></i></a></small></h3>
             <h6 *ngIf="cryptoPrice.price_usd">{{cryptoPrice.price_usd}} <small>USD</small></h6>
             <h6 *ngIf="cryptoPrice.price_btc">{{cryptoPrice.price_btc}} <small>BTC</small></h6>
+            <h6 *ngIf="cryptoCoinDetail && cryptoCoinDetail.websiteUrl"> <strong>Website : <a class="detail-link" href="{{cryptoCoinDetail.websiteUrl}}" target="_blank">{{cryptoCoinDetail.websiteUrl}}</a></strong></h6>
             <a *ngIf="cryptoCoinDetail && cryptoCoinDetail.twitterUrl"  href="{{cryptoCoinDetail.twitterUrl}}" target="_blank" title="twitter"><i class="fa  fa-2x fa-twitter" style="color: #00aced;"></i></a>
             &nbsp;&nbsp;<a *ngIf="cryptoCoinDetail && cryptoCoinDetail.facebookUrl"  href="{{cryptoCoinDetail.facebookUrl}}" target="_blank" title="facebook"><i class="fa  fa-2x fa-facebook-official" style="color: #3b5998;"></i></a>
             &nbsp;&nbsp;<a *ngIf="cryptoCoinDetail && cryptoCoinDetail.redditUrl"  href="{{cryptoCoinDetail.redditUrl}}" target="_blank" title="reddit"><i class="fa  fa-2x fa-reddit" style="color: darkred;"></i></a>

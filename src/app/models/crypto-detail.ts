@@ -10,4 +10,5 @@ export class CryptoDetail {
     redditUrl: string;
     facebookUrl: string;
     codeRepoLinks: string[];
+    websiteUrl: string;
 }
