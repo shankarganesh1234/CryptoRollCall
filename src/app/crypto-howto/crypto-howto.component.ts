@@ -3,7 +3,6 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {Title} from "@angular/platform-browser";
 
 declare const $: any;
-declare const AOS:any;
 @Component({
     selector: 'crypto-about',
     templateUrl: `./crypto-howto.component.html`,
@@ -15,7 +14,6 @@ export class CryptoHowToComponent implements OnInit{
     isGetStarted: boolean  = false;
 
     constructor(private route: ActivatedRoute, private router: Router,private titleService: Title) {
-        AOS.init();
         route.params.subscribe(val => {
             // hide the welcome message
             $('#welcomeMessage').hide();
@@ -24,9 +22,6 @@ export class CryptoHowToComponent implements OnInit{
 
     ngOnInit(): void {
         this.titleService.setTitle('CryptoRollCall - Questions regarding crypto currencies');
-        $(window).on('load', function() {
-            AOS.refresh();
-        });
     }
 
 }

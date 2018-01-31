@@ -27,16 +27,14 @@
         "assets/css/font-awesome.min.css",
         "assets/css/scrolling-nav.css",
         "assets/css/style.css",
-        "assets/css/default.css",
-        "../node_modules/aos/dist/aos.css"
+        "assets/css/default.css"
       ],
       "scripts": [
         "assets/js/jquery-3.1.1.min.js",
         "assets/js/jquery.easing.min.js",
         "assets/js/pace.min.js",
         "assets/js/bootstrap.min.js",
-        "assets/js/scrolling-nav.js",
-        "../node_modules/aos/dist/aos.js"
+        "assets/js/scrolling-nav.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
