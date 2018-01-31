@@ -22,7 +22,6 @@
     "@angular/router": "^4.4.6",
     "@types/numeral": "0.0.22",
     "angular2-image-upload": "^0.6.6",
-    "aos": "^2.2.0",
     "bootstrap": "^3.3.7",
     "chart.js": "^2.7.1",
     "classlist.js": "^1.1.20150312",

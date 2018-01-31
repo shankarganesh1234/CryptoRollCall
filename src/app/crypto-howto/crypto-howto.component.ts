@@ -23,5 +23,6 @@ export class CryptoHowToComponent implements OnInit{
     ngOnInit(): void {
         this.titleService.setTitle('CryptoRollCall - Questions regarding crypto currencies');
     }
+
 }
 
