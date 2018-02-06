@@ -1494,3 +1494,4 @@ http://www.cryptorollcall.com/detail/BT1-[CST]/BT1
 http://www.cryptorollcall.com/detail/Farstcoin/FRCT
 http://www.cryptorollcall.com/detail/ENTCash/ENT
 http://www.cryptorollcall.com/detail/KemCredit/KMC
+http://www.cryptorollcall.com/api

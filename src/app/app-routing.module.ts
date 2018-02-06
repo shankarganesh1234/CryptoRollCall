@@ -7,6 +7,7 @@ import {CryptoAboutComponent} from "./crypto-about/crypto-about.component";
 import {CryptoHowToComponent} from "./crypto-howto/crypto-howto.component";
 import {CryptoDetailComponent} from "./crypto-detail/crypto-detail.component";
 import {CryptoReferralComponent} from "./crypto-referral/crypto-referral.component";
+import {CryptoApiComponent} from "./crypto-api/crypto-api.component";
 
 const routes: Routes = [
     {path: '', component: CryptoPricesComponent},
@@ -17,6 +18,7 @@ const routes: Routes = [
     {path: 'detail', component: CryptoPricesComponent},
     {path: 'detail/:name/:symbol', component: CryptoDetailComponent},
     {path: 'referral', component: CryptoReferralComponent},
+    {path: 'api', component: CryptoApiComponent}
 ];
 @NgModule({
     imports: [RouterModule.forRoot(routes)],
