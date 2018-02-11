@@ -40,6 +40,10 @@ export class CryptoPricesComponent implements OnInit {
     @ViewChild('horbar2') horbar2: ElementRef;
     @ViewChild('horbar3') horbar3: ElementRef;
 
+    hourChart: any;
+    dayChart: any;
+    weekChart: any;
+
     gainersHourData: number[] = [];
     gainersHourLabels: string[] = [];
 
@@ -49,7 +53,7 @@ export class CryptoPricesComponent implements OnInit {
     gainersWeekData: number[] = [];
     gainersWeekLabels: string[] = [];
 
-    recordsPerPage: number = 100;
+    recordsPerPage: number = 50;
 
     constructor(private route: ActivatedRoute, private router: Router, private cryptoService: CryptoService, private titleService: Title, private currencyService: CurrencyService) {
 
@@ -269,6 +273,9 @@ export class CryptoPricesComponent implements OnInit {
      */
     initGainersHourChart(): void {
 
+        if(this.hourChart != null)
+            this.hourChart.destroy();
+
         let barCtx = this.horbar1.nativeElement.getContext('2d');
         var data = {
             labels: this.gainersHourLabels,
@@ -331,7 +338,7 @@ export class CryptoPricesComponent implements OnInit {
                 }]
         };
 
-        var chart = new Chart(
+        this.hourChart = new Chart(
             barCtx,
             {
                 "type": 'horizontalBar',
@@ -358,6 +365,9 @@ export class CryptoPricesComponent implements OnInit {
      *
      */
     initGainersDayChart(): void {
+
+        if(this.dayChart != null)
+            this.dayChart.destroy();
 
         let barCtx = this.horbar2.nativeElement.getContext('2d');
         var data = {
@@ -421,7 +431,7 @@ export class CryptoPricesComponent implements OnInit {
                 }]
         };
 
-        var chart = new Chart(
+        this.dayChart = new Chart(
             barCtx,
             {
                 "type": 'horizontalBar',
@@ -448,6 +458,9 @@ export class CryptoPricesComponent implements OnInit {
      *
      */
     initGainersWeekChart(): void {
+
+        if(this.weekChart != null)
+            this.weekChart.destroy();
 
         let barCtx = this.horbar3.nativeElement.getContext('2d');
         var data = {
@@ -511,7 +524,7 @@ export class CryptoPricesComponent implements OnInit {
                 }]
         };
 
-        var chart = new Chart(
+        this.weekChart = new Chart(
             barCtx,
             {
                 "type": 'horizontalBar',
