@@ -1,49 +1,48 @@
 import {Component, ElementRef, OnInit, ViewChild} from "@angular/core";
 import {ActivatedRoute, Router} from "@angular/router";
 import {CryptoService} from "../services/crypto.service";
-import {CryptoPrice} from "../models/crypto-price";
-import {CryptoFavorite} from "../models/crypto-favorite";
 import {Title} from "@angular/platform-browser";
-import {isUndefined} from "util";
-import {CurrencyService} from "../services/currency.service";
 import {CurrencyExchange} from "../models/currency-exchange";
 import {Currencies} from "../models/currencies";
+import {CurrencyService} from "../services/currency.service";
 import * as numeral from "numeral";
 import Chart from "chart.js";
-import {ChartDataList} from "../models/chart-data-list";
-import {CryptoDetail} from "../models/crypto-detail";
+import {CryptoPrice} from "../models/crypto-price";
 
 
-declare const $: any;
+declare const $:any;
 @Component({
-    selector: 'crypto-prices',
-    templateUrl: `./crypto-prices.component.html`,
-    styleUrls: ['crypto-prices.component.css']
+    selector: 'crypto-watch',
+    templateUrl: `./crypto-watch.component.html`,
+    styleUrls: ['crypto-watch.component.css']
 })
 
 
-export class CryptoPricesComponent implements OnInit {
+export class CryptoWatchComponent implements OnInit{
 
-    cryptoPrices: CryptoPrice[] = [];
-    cryptoPricesCopy: CryptoPrice[] = [];
-
-    filterText: string;
-    localStorageKey: string = "crypto_";
+    watchList: CryptoPrice[] = [];
+    watchListCopy: CryptoPrice[] = [];
+    filterText: string = '';
     localStorageWatchKey: string = "cryptowatch_";
 
-    // currency related
+    // currency related changes
     currencyExchange: CurrencyExchange;
     staticCurrencies: Currencies = new Currencies();
     currStr: string = "USD";
 
-    // chart related
-    @ViewChild('horbar1') horbar1: ElementRef;
-    @ViewChild('horbar2') horbar2: ElementRef;
-    @ViewChild('horbar3') horbar3: ElementRef;
+    chartData: number[] = [];
+    barChartData: number[] = [];
+    chartLabels: string[] = [];
 
     hourChart: any;
     dayChart: any;
     weekChart: any;
+
+    itemLen: number = 0;
+
+    @ViewChild('horbar1') horbar1: ElementRef;
+    @ViewChild('horbar2') horbar2: ElementRef;
+    @ViewChild('horbar3') horbar3: ElementRef;
 
     gainersHourData: number[] = [];
     gainersHourLabels: string[] = [];
@@ -54,17 +53,96 @@ export class CryptoPricesComponent implements OnInit {
     gainersWeekData: number[] = [];
     gainersWeekLabels: string[] = [];
 
-    recordsPerPage: number = 50;
+    cryptoHourGainers : CryptoPrice[] = [];
+    cryptoDayGainers : CryptoPrice[] = [];
+    cryptoWeekGainers : CryptoPrice[] = [];
 
-    constructor(private route: ActivatedRoute, private router: Router, private cryptoService: CryptoService, private titleService: Title, private currencyService: CurrencyService) {
+    // local storage keys
+    crypto_currencyPreference: string = "crypto_currencyPreference";
+    crypto_amountInvested: string = "crypto_amountInvested";
 
+
+    constructor(private route: ActivatedRoute, private router: Router, private cryptoService: CryptoService, private titleService: Title, private currencyService: CurrencyService){
         route.params.subscribe(val => {
             this.invokeCurrencyService();
         });
     }
 
     ngOnInit(): void {
-        this.titleService.setTitle('CryptoRollCall - Crypto currency tracker, portfolio manager and more');
+        this.titleService.setTitle('CryptoRollCall - Crypto portfolio manager and crypto tracker');
+    }
+
+    initChart(cryptoPrices: CryptoPrice[]): void {
+        this.itemLen = 0;
+        this.chartData = [];
+        this.barChartData = [];
+        this.chartLabels = [];
+
+        if(this.watchListCopy.length == 0)
+        {
+            $('#chartContainer').hide();
+            $('#chartContainer1').hide();
+
+            return;
+        } else {
+            $('#chartContainer').show();
+            $('#chartContainer1').show();
+
+        }
+
+        for(let i=0; i<this.watchListCopy.length; i++) {
+            this.chartLabels.push(this.watchListCopy[i].symbol);
+        }
+
+        // reset all fields
+        this.cryptoHourGainers = [];
+        this.cryptoDayGainers = [];
+        this.cryptoWeekGainers = [];
+
+        this.gainersHourLabels = [];
+        this.gainersDayLabels = [];
+        this.gainersWeekLabels = [];
+
+        this.gainersHourData = [];
+        this.gainersDayData = [];
+        this.gainersWeekData = [];
+
+
+        this.cryptoHourGainers = cryptoPrices;
+        this.cryptoDayGainers = cryptoPrices;
+        this.cryptoWeekGainers = cryptoPrices;
+
+        // top 5 charts
+        this.cryptoHourGainers = this.cryptoHourGainers.slice().sort(function(a,b) {
+            return numeral(a['percent_change_1h']).value() < numeral(b['percent_change_1h']).value() ? 1 : -1;
+        }).slice(0,5);
+
+        this.cryptoDayGainers = this.cryptoDayGainers.slice().sort(function(a,b) {
+            return numeral(a['percent_change_24h']).value() < numeral(b['percent_change_24h']).value() ? 1 : -1;
+        }).slice(0,5);
+
+        this.cryptoWeekGainers = this.cryptoWeekGainers.slice().sort(function(a,b) {
+            return numeral(a['percent_change_7d']).value() < numeral(b['percent_change_7d']).value() ? 1 : -1;
+        }).slice(0,5);
+
+        for(let i=0; i<this.cryptoHourGainers.length; i++) {
+            this.gainersHourLabels.push(this.cryptoHourGainers[i].name);
+            this.gainersHourData.push(parseFloat(this.cryptoHourGainers[i].percent_change_1h));
+        }
+
+        for(let i=0; i<this.cryptoDayGainers.length; i++) {
+            this.gainersDayLabels.push(this.cryptoDayGainers[i].name);
+            this.gainersDayData.push(parseFloat(this.cryptoDayGainers[i].percent_change_24h));
+        }
+
+        for(let i=0; i<this.cryptoWeekGainers.length; i++) {
+            this.gainersWeekLabels.push(this.cryptoWeekGainers[i].name);
+            this.gainersWeekData.push(parseFloat(this.cryptoWeekGainers[i].percent_change_7d));
+        }
+
+        this.initGainersHourChart();
+        this.initGainersDayChart();
+        this.initGainersWeekChart();
     }
 
     /**
@@ -72,7 +150,7 @@ export class CryptoPricesComponent implements OnInit {
      */
     invokeCurrencyService(): void {
         // hide the welcome message
-        $('#welcomeMessage').show();
+        $('#welcomeMessage').hide();
         this.currencyService
             .getCurrExchRates(this.currStr)
             .subscribe(
@@ -85,176 +163,107 @@ export class CryptoPricesComponent implements OnInit {
         this.currencyExchange = currExch;
 
         // get from local storage if present
-        if(localStorage.getItem(this.localStorageKey + "currencyPreference") != null)
-            this.currStr = localStorage.getItem(this.localStorageKey + "currencyPreference");
+        if(localStorage.getItem(this.crypto_currencyPreference) != null)
+            this.currStr = localStorage.getItem(this.crypto_currencyPreference);
 
-        this.invokeCryptoService();
+        this.getWatchList();
     }
 
     /**
      *
      */
-    invokeCryptoService(): void {
-        this.cryptoService
-            .getPriceTicker()
-            .subscribe(
-                result => this.setResult(result),
-                error => console.log(error),
-            );
+    getWatchList() : void {
+
+        this.watchList = [];
+        this.watchListCopy = [];
+        for(var i=0; i<localStorage.length; i++) {
+            if(localStorage.key(i).includes(this.localStorageWatchKey) && localStorage.key(i) != this.crypto_currencyPreference && localStorage.key(i) != this.crypto_amountInvested) {
+                let fav: CryptoPrice = JSON.parse(localStorage.getItem(localStorage.key(i)));
+
+                this.cryptoService
+                    .getPriceTickerForId(fav.id)
+                    .subscribe(
+                        result => this.setResult(result, fav),
+                        error => console.log(error),
+                    );
+                this.itemLen = this.itemLen + 1;
+            }
+        }
+        if(this.itemLen == 0) {
+            $('#chartContainer').hide();
+            $('#chartContainer1').hide();
+
+        } else {
+            $('#chartContainer').show();
+            $('#chartContainer1').show();
+        }
     }
 
-    invokeChartService(): void {
-        this.cryptoService
-            .getChartsHome()
-            .subscribe(
-                result => this.setCharts(result),
-                error => console.log(error),
-            );
-    }
+    setResult(result : any, fav: CryptoPrice) : void {
 
-    setCharts(result: ChartDataList): void {
+        if(fav == null || fav === undefined)
+            return;
 
-        this.gainersHourLabels = [];
-        this.gainersDayLabels = [];
-        this.gainersWeekLabels = [];
+        fav = result[0];
 
-        this.gainersHourData = [];
-        this.gainersDayData = [];
-        this.gainersWeekData = [];
-
-
-        for(let i=0; i<5; i++) {
-            this.gainersHourLabels.push(result['hourlyList'][i].label);
-            this.gainersHourData.push(result['hourlyList'][i].data);
-
-            this.gainersDayLabels.push(result['dailyList'][i].label);
-            this.gainersDayData.push(result['dailyList'][i].data);
-
-            this.gainersWeekLabels.push(result['weeklyList'][i].label);
-            this.gainersWeekData.push(result['weeklyList'][i].data);
+        // curremcy changes for price and total
+        if(this.currStr === "USD") {
+            fav.price = fav.price_usd;
+        } else {
+            fav.price = (parseFloat(fav.price_usd) * parseFloat(this.currencyExchange.rates[this.currStr])).toFixed(2);
         }
 
-        this.initChart();
-    }
-    /**
-     *
-     * @param result
-     */
-    setResult(result: CryptoPrice[]): void {
-
-        this.cryptoPrices = result;
-        for (var i = 0; i < this.cryptoPrices.length; i++) {
-
-            if (localStorage.getItem(this.localStorageKey + this.cryptoPrices[i].symbol) != null && !isUndefined(localStorage.getItem(this.localStorageKey + this.cryptoPrices[i].symbol))) {
-                this.cryptoPrices[i].isFavorite = true;
-            } else {
-                this.cryptoPrices[i].isFavorite = false;
-            }
-
-            if (localStorage.getItem(this.localStorageWatchKey + this.cryptoPrices[i].symbol) != null && !isUndefined(localStorage.getItem(this.localStorageWatchKey + this.cryptoPrices[i].symbol))) {
-                this.cryptoPrices[i].isWatch = true;
-            } else {
-                this.cryptoPrices[i].isWatch = false;
-            }
-
-
-            if(this.currStr === "USD")
-                this.cryptoPrices[i].price = this.cryptoPrices[i].price_usd;
-            else
-                this.cryptoPrices[i].price = (parseFloat(this.cryptoPrices[i].price_usd) * parseFloat(this.currencyExchange.rates[this.currStr])).toFixed(2);
-
-            if(this.cryptoPrices[i].market_cap_usd != '') {
-                this.cryptoPrices[i].market_cap_usd = numeral(parseInt(this.cryptoPrices[i].market_cap_usd)).format('0.0a');
-            }
-
+        if(fav.market_cap_usd != '') {
+            fav.market_cap_usd = numeral(parseInt(fav.market_cap_usd)).format('0.0a');
         }
-        this.cryptoPricesCopy = this.cryptoPrices;
 
-        // chart related
-        this.invokeChartService();
+        if(fav.available_supply != '') {
+            fav.available_supply = numeral(parseInt(fav.available_supply)).format('0.0a');
+        }
+
+        this.watchList.push(fav);
+        this.watchListCopy.push(fav);
+
+        // total length equal
+        if(this.itemLen == this.watchListCopy.length) {
+            this.initChart(this.watchListCopy);
+        }
+
+        this.watchList.sort(function(a, b) {
+            return a.rank - b.rank;
+        });
+
+        this.watchListCopy.sort(function(a, b) {
+            return a.rank - b.rank;
+        });
     }
-
-
 
     /**
      *
      * @param filterText
      */
-    filterResults(filterText: string): void {
-        if (filterText.trim() == '') {
-            this.cryptoPrices = this.cryptoPricesCopy;
+    filterResults(filterText: string) : void {
+        if(filterText.trim() == '') {
+            this.watchList = this.watchListCopy;
         } else {
-            this.cryptoPrices = this.cryptoPricesCopy.filter(
-                (cryptoPrice) => cryptoPrice.symbol.includes(filterText.toUpperCase()));
+            this.watchList = this.watchListCopy.filter(
+                (fav) => fav.symbol.includes(filterText.toUpperCase()));
         }
     }
 
     /**
      *
-     * @param item
+     * @param symbol
      */
-    addToFavorites(item: CryptoPrice): void {
-
-        if (item.isFavorite) {
-            localStorage.removeItem(this.localStorageKey + item.symbol);
-            item.isFavorite = false;
-
-            $("#favRemoved").text(item.symbol + " removed from Portfolio");
-            $("#favRemoved").addClass("in");
-            window.setTimeout(function () {
-                $("#favRemoved").removeClass("in");
-            }, 2000);
-
-        } else {
-            let cryptoFavorite: CryptoFavorite = new CryptoFavorite();
-            cryptoFavorite.id = item.id;
-            cryptoFavorite.symbol = item.symbol;
-            cryptoFavorite.quantity = 1;
-            cryptoFavorite.rank = item.rank;
-            localStorage.setItem(this.localStorageKey + cryptoFavorite.symbol, JSON.stringify(cryptoFavorite));
-            item.isFavorite = true;
-
-            // alert for adding to favorites
-            $("#favAdded").text(item.symbol + " added to Portfolio");
-            $("#favAdded").addClass("in");
-            window.setTimeout(function () {
-                $("#favAdded").removeClass("in");
-            }, 2000);
-        }
-    }
-
-    /**
-     * Add item to watch list
-     * @param item
-     */
-    addToWatchList(item: CryptoPrice): void {
-
-        if (item.isWatch) {
-            localStorage.removeItem(this.localStorageWatchKey + item.symbol);
-            item.isWatch = false;
-
-            $("#favRemoved").text(item.symbol + " removed from Watch List");
-            $("#favRemoved").addClass("in");
-            window.setTimeout(function () {
-                $("#favRemoved").removeClass("in");
-            }, 2000);
-
-        } else {
-            let cryptoFavorite: CryptoFavorite = new CryptoFavorite();
-            cryptoFavorite.id = item.id;
-            cryptoFavorite.symbol = item.symbol;
-            cryptoFavorite.quantity = 1;
-            cryptoFavorite.rank = item.rank;
-            localStorage.setItem(this.localStorageWatchKey + cryptoFavorite.symbol, JSON.stringify(cryptoFavorite));
-            item.isWatch = true;
-
-            // alert for adding to favorites
-            $("#favAdded").text(item.symbol + " added to Watch List");
-            $("#favAdded").addClass("in");
-            window.setTimeout(function () {
-                $("#favAdded").removeClass("in");
-            }, 2000);
-        }
+    removeWatch(symbol: string) : void {
+        localStorage.removeItem(this.localStorageWatchKey + symbol);
+        $("#favRemoved").text(symbol + " removed from Watch List");
+        $("#favRemoved").addClass("in");
+        window.setTimeout(function () {
+            $("#favRemoved").removeClass("in");
+        }, 2000);
+        this.itemLen = 0;
+        this.getWatchList();
     }
 
     /**
@@ -266,21 +275,27 @@ export class CryptoPricesComponent implements OnInit {
 
 
         let exchangeRate: number = this.currencyExchange.rates[currency];
-        for (var i = 0; i < this.cryptoPrices.length; i++) {
+        for (var i = 0; i < this.watchList.length; i++) {
 
-            if(currency == "USD")
-                this.cryptoPrices[i].price = this.cryptoPrices[i].price_usd;
-            else
-                this.cryptoPrices[i].price = (parseFloat(this.cryptoPrices[i].price_usd) * exchangeRate).toFixed(2);
+            if (currency == "USD") {
+                this.watchList[i].price = this.watchList[i].price_usd;
+            } else {
+                this.watchList[i].price = (parseFloat(this.watchList[i].price_usd) * exchangeRate).toFixed(2);
+            }
         }
-        for (var i = 0; i < this.cryptoPricesCopy.length; i++) {
-            if(currency == "USD")
-                this.cryptoPricesCopy[i].price = this.cryptoPricesCopy[i].price_usd;
-            else
-                this.cryptoPricesCopy[i].price = (parseFloat(this.cryptoPricesCopy[i].price_usd) * exchangeRate).toFixed(2);        }
+
+        for (var i = 0; i < this.watchListCopy.length; i++) {
+
+            if (currency == "USD") {
+                this.watchListCopy[i].price = this.watchListCopy[i].price_usd;
+            } else {
+                this.watchListCopy[i].price = (parseFloat(this.watchListCopy[i].price_usd) * exchangeRate).toFixed(2);
+            }
+        }
 
         // set choice in local storage
-        localStorage.setItem(this.localStorageKey + "currencyPreference", currency);
+        localStorage.setItem(this.crypto_currencyPreference, currency);
+        this.initChart(this.watchListCopy);
     }
 
     /**
@@ -290,21 +305,14 @@ export class CryptoPricesComponent implements OnInit {
      */
     sortData(sortField: string, sortDirection: string): void {
         if(sortDirection === 'up') {
-            this.cryptoPrices.sort(function(a,b) {
+            this.watchList.sort(function(a, b) {
                 return numeral(a[sortField]).value() < numeral(b[sortField]).value() ? 1 : -1;
             });
         } else if(sortDirection === 'down') {
-            this.cryptoPrices.sort(function(a,b) {
+            this.watchList.sort(function(a, b) {
                 return numeral(a[sortField]).value() > numeral(b[sortField]).value() ? 1 : -1;
             });
         }
-    }
-
-
-    initChart(): void {
-        this.initGainersHourChart();
-        this.initGainersDayChart();
-        this.initGainersWeekChart();
     }
 
     /**
@@ -391,7 +399,7 @@ export class CryptoPricesComponent implements OnInit {
                     },
                     "title": {
                         "display":true,
-                        "text":'Top 5 Gain (Hourly)',
+                        "text":'Top 5 Change (Hourly)',
                         "fontSize":20
                     },
                     "showTooltips": false
@@ -484,7 +492,7 @@ export class CryptoPricesComponent implements OnInit {
                     },
                     "title": {
                         "display":true,
-                        "text":'Top 5 Gain (Daily)',
+                        "text":'Top 5 Change (Daily)',
                         "fontSize":20
                     },
                     "showTooltips": false
@@ -577,7 +585,7 @@ export class CryptoPricesComponent implements OnInit {
                     },
                     "title": {
                         "display":true,
-                        "text":'Top 5 Gain (Weekly)',
+                        "text":'Top 5 Change (Weekly)',
                         "fontSize":20
                     },
                     "showTooltips": false
@@ -585,6 +593,5 @@ export class CryptoPricesComponent implements OnInit {
             }
         );
     }
-
 }
 

@@ -1,5 +1,6 @@
 <div class="container">
     <h3>My Portfolio &nbsp;<small><a (click)="getFavs()"><i class="fa fa-refresh"></i></a></small></h3>
+    <p>Track all your assets, update trade information and get insights into gains and losses</p>
     <h5 *ngIf="favsCopy.length > 0" class="text-muted">Amount invested : {{amountInvestedDiffCurr}}</h5>
     <div *ngIf="favsCopy.length <= 0" class="row text-center">
         <p>Your portfolio is empty at the moment.

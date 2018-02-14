@@ -1495,3 +1495,4 @@ http://www.cryptorollcall.com/detail/Farstcoin/FRCT
 http://www.cryptorollcall.com/detail/ENTCash/ENT
 http://www.cryptorollcall.com/detail/KemCredit/KMC
 http://www.cryptorollcall.com/api
+http://www.cryptorollcall.com/watch

@@ -16,6 +16,7 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
 import {CryptoDetailComponent} from "./crypto-detail/crypto-detail.component";
 import {CryptoReferralComponent} from "./crypto-referral/crypto-referral.component";
 import {CryptoApiComponent} from "./crypto-api/crypto-api.component";
+import {CryptoWatchComponent} from "./crypto-watch/crypto-watch.component";
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import {CryptoApiComponent} from "./crypto-api/crypto-api.component";
     CryptoHowToComponent,
     CryptoDetailComponent,
     CryptoReferralComponent,
-    CryptoApiComponent
+    CryptoApiComponent,
+    CryptoWatchComponent
   ],
   imports: [BrowserModule,
     FormsModule,

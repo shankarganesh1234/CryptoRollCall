@@ -11,7 +11,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a [routerLink]="'/'" title="Home" class="navbar-brand">
-                    <small class="header-links">Home</small>
+                    <small class="header-links"><i class="fa fa-home"></i>&nbsp;Home</small>
                 </a>
             </div>
 
@@ -22,27 +22,32 @@
             <ul class="nav navbar-nav">
                 <li>
                     <a [routerLink]="'/about'" title="Home">
-                    <small class="header-links">About</small>
+                    <small class="header-links"><i class="fa fa-info"></i>&nbsp;About</small>
                     </a>
                 </li>
                 <li>
                     <a [routerLink]="'/howto'" title="Home">
-                        <small class="header-links">How to</small>
+                        <small class="header-links"><i class="fa fa-question"></i>&nbsp;How to</small>
                     </a>
                 </li>
                 <li>
                     <a [routerLink]="'/favorites'" title="Portfolio Manager">
-                    <small class="header-links">Portfolio</small>
+                    <small class="header-links"><i class="fa fa-newspaper-o"></i>&nbsp;Portfolio</small>
+                    </a>
+                </li>
+                <li>
+                    <a [routerLink]="'/watch'" title="Watch List">
+                        <small class="header-links"><i class="fa fa-eye"></i>&nbsp;Watch List</small>
                     </a>
                 </li>
                 <li>
                     <a [routerLink]="['/detail', 'bitcoin', 'BTC']" title="Coin Details">
-                        <small class="header-links" style="color: darkviolet;font-size: large"><b>Coin Details</b> <i class="fa fa-star" style="color:gold"></i></small>
+                        <small class="header-links"><i class="fa fa-bitcoin"></i>&nbsp;Coin Details</small>
                     </a>
                 </li>
                 <li>
                     <a [routerLink]="'/api'" title="API">
-                        <small class="header-links" style="color: darkviolet;font-size: large"><b>API</b> <i class="fa fa-star" style="color:gold"></i></small>
+                        <small class="header-links"><i class="fa fa-code"></i>&nbsp;API</small>
                     </a>
                 </li>
                 <!--<li>-->
@@ -52,12 +57,12 @@
                 <!--</li>-->
                 <li>
                     <a [routerLink]="'/convert'" title="Converter">
-                    <small class="header-links">Currency Converter</small>
+                    <small class="header-links"><i class="fa fa-money"></i>&nbsp;Currency Converter</small>
                     </a>
                 </li>
                 <li>
                     <a title="Donate" href="#footerId" class="page-scroll">
-                        <small class="header-links">Donate</small>
+                        <small class="header-links"><i class="fa fa-hand-peace-o"></i>&nbsp;Donate</small>
                     </a>
                 </li>
             </ul>
