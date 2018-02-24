@@ -8,7 +8,7 @@ import Chart from "chart.js";
 import {HistoDataList} from "../models/histo-data-list";
 import {HistoData} from "../models/histo-data";
 import {CryptoDetail} from "../models/crypto-detail";
-
+import { Meta } from '@angular/platform-browser';
 
 declare const $: any;
 @Component({
@@ -31,12 +31,11 @@ export class CryptoDetailComponent implements OnInit {
     selectVal: string = "Bitcoin~BTC";
     cryptoCoinDetail: CryptoDetail;
 
-    constructor(private route: ActivatedRoute, private router: Router, private cryptoService: CryptoService, private titleService: Title, private currencyService: CurrencyService) {
+    constructor(private route: ActivatedRoute, private router: Router, private cryptoService: CryptoService, private titleService: Title, private currencyService: CurrencyService, private meta: Meta) {
 
     }
 
     ngOnInit(): void {
-        this.titleService.setTitle('CryptoRollCall - Crypto currency source code links, faceboook, twitter, reddit, market cap, available supply, price changes');
         // hide the welcome message
         $('#welcomeMessage').hide();
         window.scrollTo(0, 0);
@@ -72,9 +71,15 @@ export class CryptoDetailComponent implements OnInit {
         this.cryptoService
             .getCryptoDetail(symbol)
             .subscribe(
-                result => this.cryptoCoinDetail = result,
+                result => this.setCoinDetail(result),
                 error => this.cryptoCoinDetail = null
             )
+    }
+
+    setCoinDetail(result: CryptoDetail): void {
+        this.cryptoCoinDetail = result;
+        this.titleService.setTitle(this.cryptoCoinDetail.seoTitle)
+        this.meta.updateTag({name:'description', content:this.cryptoCoinDetail.seoDescription})
     }
 
     /**

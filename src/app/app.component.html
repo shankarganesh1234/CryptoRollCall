@@ -11,10 +11,9 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a [routerLink]="'/'" title="Home" class="navbar-brand">
-                    <small class="header-links">Home</small>
+                    <small class="header-links"><i class="fa fa-home"></i>&nbsp;Home</small>
                 </a>
             </div>
-
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -22,44 +21,58 @@
             <ul class="nav navbar-nav">
                 <li>
                     <a [routerLink]="'/about'" title="Home">
-                    <small class="header-links">About</small>
+                    <small class="header-links"><i class="fa fa-info"></i>&nbsp;About</small>
                     </a>
                 </li>
                 <li>
                     <a [routerLink]="'/howto'" title="Home">
-                        <small class="header-links">How to</small>
+                        <small class="header-links"><i class="fa fa-question"></i>&nbsp;How to</small>
                     </a>
                 </li>
                 <li>
                     <a [routerLink]="'/favorites'" title="Portfolio Manager">
-                    <small class="header-links">Portfolio</small>
+                    <small class="header-links"><i class="fa fa-newspaper-o"></i>&nbsp;Portfolio</small>
                     </a>
                 </li>
                 <li>
-                    <a [routerLink]="['/detail', 'Bitcoin', 'BTC']" title="Coin Details">
-                        <small class="header-links">Coin Details <i class="fa fa-line-chart" style="color:blue"></i></small>
+                    <a [routerLink]="'/watch'" title="Watch List">
+                        <small class="header-links"><i class="fa fa-eye"></i>&nbsp;Watch List</small>
                     </a>
                 </li>
                 <li>
-                    <a [routerLink]="['/referral']" title="Referral">
-                        <small class="header-links">Referral <i class="fa fa-star" style="color:gold"></i></small>
+                    <a [routerLink]="['/detail', 'bitcoin', 'BTC']" title="Coin Details">
+                        <small class="header-links"><i class="fa fa-bitcoin"></i>&nbsp;Coin Details</small>
                     </a>
                 </li>
+                <li>
+                    <a [routerLink]="'/api'" title="API">
+                        <small class="header-links"><i class="fa fa-code"></i>&nbsp;API</small>
+                    </a>
+                </li>
+                <!--<li>-->
+                    <!--<a [routerLink]="['/referral']" title="Referral">-->
+                        <!--<small class="header-links">Referral <i class="fa fa-star" style="color:gold"></i></small>-->
+                    <!--</a>-->
+                <!--</li>-->
                 <li>
                     <a [routerLink]="'/convert'" title="Converter">
-                    <small class="header-links">Currency Converter</small>
+                    <small class="header-links"><i class="fa fa-money"></i>&nbsp;Currency Converter</small>
                     </a>
                 </li>
                 <li>
                     <a title="Donate" href="#footerId" class="page-scroll">
-                        <small class="header-links">Donate</small>
+                        <small class="header-links"><i class="fa fa-hand-peace-o"></i>&nbsp;Donate</small>
                     </a>
                 </li>
             </ul>
          </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
-
+<div class="container">
+    <div class="row text-center">
+        <small>If you have found this website useful, please consider making a donation. No amount is small, and any amount is useful and would help in keeping the site running.</small>
+    </div>
+</div>
 <a id="goToTop" href="#top" class="page-scroll" title="Scroll to top" style="position:fixed;bottom: 20px;right: 30px">
     <i class="fa fa-2x fa-arrow-up" aria-hidden="true"></i>
 </a>

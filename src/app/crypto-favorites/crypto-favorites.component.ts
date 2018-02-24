@@ -42,6 +42,13 @@ export class CryptoFavoritesComponent implements OnInit{
     chartData: number[] = [];
     barChartData: number[] = [];
     chartLabels: string[] = [];
+
+    pieChart: any;
+    barChart: any;
+    hourChart: any;
+    dayChart: any;
+    weekChart: any;
+
     itemLen: number = 0;
 
     @ViewChild('horbar1') horbar1: ElementRef;
@@ -160,6 +167,9 @@ export class CryptoFavoritesComponent implements OnInit{
 
     initBarChart(): void {
 
+        if(this.barChart != null)
+            this.barChart.destroy();
+
         let barCtx = this.bar.nativeElement.getContext('2d');
         var data = {
             labels: this.chartLabels,
@@ -257,7 +267,7 @@ export class CryptoFavoritesComponent implements OnInit{
                 }]
         };
 
-        var chart = new Chart(
+        this.barChart = new Chart(
             barCtx,
             {
                 "type": 'horizontalBar',
@@ -281,6 +291,9 @@ export class CryptoFavoritesComponent implements OnInit{
     }
 
     initPieChart() : void {
+
+        if(this.pieChart != null)
+            this.pieChart.destroy();
 
         let donutCtx = this.donut.nativeElement.getContext('2d');
         var data = {
@@ -379,7 +392,7 @@ export class CryptoFavoritesComponent implements OnInit{
                 }]
         };
 
-        var chart = new Chart(
+        this.pieChart = new Chart(
             donutCtx,
             {
                 "type": 'doughnut',
@@ -633,6 +646,9 @@ export class CryptoFavoritesComponent implements OnInit{
      */
     initGainersHourChart(): void {
 
+        if(this.hourChart != null)
+            this.hourChart.destroy();
+
         let barCtx = this.horbar1.nativeElement.getContext('2d');
         var data = {
             labels: this.gainersHourLabels,
@@ -695,7 +711,7 @@ export class CryptoFavoritesComponent implements OnInit{
                 }]
         };
 
-        var chart = new Chart(
+        this.hourChart = new Chart(
             barCtx,
             {
                 "type": 'horizontalBar',
@@ -722,6 +738,9 @@ export class CryptoFavoritesComponent implements OnInit{
      *
      */
     initGainersDayChart(): void {
+
+        if(this.dayChart != null)
+            this.dayChart.destroy();
 
         let barCtx = this.horbar2.nativeElement.getContext('2d');
         var data = {
@@ -785,7 +804,7 @@ export class CryptoFavoritesComponent implements OnInit{
                 }]
         };
 
-        var chart = new Chart(
+        this.dayChart = new Chart(
             barCtx,
             {
                 "type": 'horizontalBar',
@@ -812,6 +831,9 @@ export class CryptoFavoritesComponent implements OnInit{
      *
      */
     initGainersWeekChart(): void {
+
+        if(this.weekChart != null)
+            this.weekChart.destroy();
 
         let barCtx = this.horbar3.nativeElement.getContext('2d');
         var data = {
@@ -875,7 +897,7 @@ export class CryptoFavoritesComponent implements OnInit{
                 }]
         };
 
-        var chart = new Chart(
+        this.weekChart = new Chart(
             barCtx,
             {
                 "type": 'horizontalBar',

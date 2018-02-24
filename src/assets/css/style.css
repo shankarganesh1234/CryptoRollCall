@@ -8405,3 +8405,12 @@ changes to UI
   font-size: large;
   font-weight: bold;
 }
+.red {
+  color: #B81324;
+}
+.bg-black {
+  background-color: black
+}
+.fb-color {
+  color: #3b5998;
+}

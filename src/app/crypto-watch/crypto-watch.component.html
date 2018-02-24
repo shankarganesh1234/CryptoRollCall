@@ -1,6 +1,13 @@
-
-<div class="container" id="cryptoprices">
-    <div class="row">
+<div class="container">
+    <h3>Watch List &nbsp;<small><a (click)="getWatchList()"><i class="fa fa-refresh"></i></a></small></h3>
+    <p>Track the coins you are interested in</p>
+    <div *ngIf="watchListCopy.length <= 0" class="row text-center">
+        <p>Your Watch List is empty at the moment.
+            <br/>Please add the crypto currencies you want to watch by clicking on the <small><b>Watch</b></small> link in the home page
+        </p>
+    </div>
+    <br/>
+    <div id="chartContainer1" class="row">
         <div class="col-md-4">
             <canvas #horbar1></canvas>
         </div>
@@ -11,11 +18,19 @@
             <canvas #horbar3></canvas>
         </div>
     </div>
-    <hr/>
-    <div class="row">
-    <div class="col-md-3">
-        <input type="text" (ngModelChange)="filterResults($event)" [(ngModel)]="filterText" class="form-control" id="filter" aria-describedby="filterHelp" placeholder="Filter Results">
-    </div>
+    <br/><br/>
+    <div *ngIf="watchListCopy.length > 0" class="row">
+        <div class="col-md-2">
+
+            <select [(ngModel)]="filterText" (ngModelChange)="filterResults($event)" class="form-control" id="cryptoSelect">
+                <option value="">
+                    Filter results
+                </option>
+                <option *ngFor="let item of watchListCopy" value= {{item.symbol}}>
+                    {{item.symbol}} : {{item.name}}
+                </option>
+            </select>
+        </div>
         <div class="col-md-3">
             <select [(ngModel)]="currStr" (ngModelChange)="currencyChanged($event)" class="form-control" id="cryptoSelect">
                 <option *ngFor="let item of staticCurrencies.values" value= {{item.value}}>
@@ -23,33 +38,35 @@
                 </option>
             </select>
         </div>
-    <div class="col-md-5"></div>
-    <div class="col-md-1"><a (click)="invokeCryptoService()"><i class="fa fa-2x fa-refresh"></i></a> </div>
+        <div class="col-md-6">
+        </div>
+        <div class="col-md-1"> <a (click)="getWatchList()"><i class="fa fa-2x fa-refresh"></i></a></div>
+    </div>
 
 </div>
-    <br/>
-</div>
-
-<div class="container table-responsive">
-    <table class="table table-bordered table-striped table-condensed">
+<br/>
+<div *ngIf="watchListCopy.length > 0" class="container">
+    <table class="table table-bordered table-striped">
         <thead class="table-header-bg">
         <tr>
             <th class="col_1 col-md-1 align-top"></th>
-            <th scope="col" class="col_2 col-md-1 align-top">Price <small>({{currStr}})</small><br/><a (click)="sortData('price_usd','up')"><i class="fa fa-arrow-down"></i></a> <a (click)="sortData('price_usd','down')"><i class="fa fa-arrow-up"></i></a></th>
+            <th scope="col" class="col_2 col-md-2 align-top">Price <small>({{currStr}})</small><br/><a (click)="sortData('price_usd','up')"><i class="fa fa-arrow-down"></i></a> <a (click)="sortData('price_usd','down')"><i class="fa fa-arrow-up"></i></a></th>
             <th scope="col" class="col_3 col-md-1 align-top">Price <small>(BTC)</small><br/><a (click)="sortData('price_btc','up')"><i class="fa fa-arrow-down"></i></a> <a (click)="sortData('price_btc','down')"><i class="fa fa-arrow-up"></i></a></th>
             <th scope="col" class="col_4 col-md-3 align-top">Change %<br/> <small>1h <a (click)="sortData('percent_change_1h','up')"><i class="fa fa-arrow-down"></i></a> <a (click)="sortData('percent_change_1h','down')"><i class="fa fa-arrow-up"></i></a>/ 1d <a (click)="sortData('percent_change_24h','up')"><i class="fa fa-arrow-down"></i></a> <a (click)="sortData('percent_change_24h','down')"><i class="fa fa-arrow-up"></i></a>/ 7d <a (click)="sortData('percent_change_7d','up')"><i class="fa fa-arrow-down"></i></a> <a (click)="sortData('percent_change_7d','down')"><i class="fa fa-arrow-up"></i></a></small></th>
-            <th scope="col" class="col_5 col-md-1 align-top">Market Cap<br/><a (click)="sortData('market_cap_usd','up')"><i class="fa fa-arrow-down"></i></a> <a (click)="sortData('market_cap_usd','down')"><i class="fa fa-arrow-up"></i></a></th>
-            <th scope="col" class="col_6 col-md-2 align-top">Supply<br/><a (click)="sortData('available_supply','up')"><i class="fa fa-arrow-down"></i></a> <a (click)="sortData('available_supply','down')"><i class="fa fa-arrow-up"></i></a></th>
-            <th scope="col" class="col_7 col-md-2"></th>
-            <th scope="col" class="col_8 col-md-2"></th>
+            <th scope="col" class="col_5 col-md-2 align-top">Market Cap<br/><a (click)="sortData('market_cap_usd','up')"><i class="fa fa-arrow-down"></i></a> <a (click)="sortData('market_cap_usd','down')"><i class="fa fa-arrow-up"></i></a></th>
+            <th scope="col" class="col_6 col-md-1 align-top">Supply<br/><a (click)="sortData('available_supply','up')"><i class="fa fa-arrow-down"></i></a> <a (click)="sortData('available_supply','down')"><i class="fa fa-arrow-up"></i></a></th>
+            <th scope="col" class="col_7 col-md-1"></th>
         </tr>
         </thead>
         <tbody>
         <ng-container
-                *ngFor="let item of cryptoPrices;let j=index">
-            <tr *ngIf="j < recordsPerPage" [ngClass]="item.isFavorite ? 'favorite-row' : item.isWatch ? 'watch-row' : ''">
-                <th class="col_1">
-                    <a [routerLink]="['/detail', item.id.toLowerCase(), item.symbol]" target="_blank" class="detail-link">{{item.symbol}}</a>
+                *ngFor="let item of watchList; let j=index">
+            <tr>
+                <th scope="row" class="col_1">
+                    <a class="col_0" (click)="removeWatch(item.symbol)" title="Remove from portfolio">
+                        <i class="fa fa-2x fa-minus-circle text-danger" aria-hidden="true"></i><br/>
+                    </a>
+                    <a [routerLink]="['/detail', item.id.toLowerCase(), item.symbol]" class="detail-link" target="_blank">{{item.symbol}}</a>
                     <small class="subscript-span">{{item.name}}</small>
                 </th>
                 <td class="numbers-font col_2">{{item.price}}</td>
@@ -57,31 +74,14 @@
                 <td class="numbers-font col_4"><span [ngClass] = "(item.percent_change_1h != null && item.percent_change_1h.includes('-') ? 'numbers-negative' : 'numbers-positive')">{{item.percent_change_1h}} <i [ngClass] = "(item.percent_change_1h != null && item.percent_change_1h.includes('-') ? 'fa fa-arrow-down' : 'fa fa-arrow-up')"></i></span> / <span [ngClass] = "(item.percent_change_24h != null && item.percent_change_24h.includes('-') ? 'numbers-negative' : 'numbers-positive')">{{item.percent_change_24h}} <i [ngClass] = "(item.percent_change_24h != null && item.percent_change_24h.includes('-') ? 'fa fa-arrow-down' : 'fa fa-arrow-up')"></i></span> / <span [ngClass] = "(item.percent_change_7d != null && item.percent_change_7d.includes('-') ? 'numbers-negative' : 'numbers-positive')">{{item.percent_change_7d}} <i [ngClass] = "(item.percent_change_7d != null && item.percent_change_7d.includes('-') ? 'fa fa-arrow-down' : 'fa fa-arrow-up')"></i></span></td>
                 <td class="numbers-font col_5">{{item.market_cap_usd}} <small>USD</small></td>
                 <td class="numbers-font col_6">{{item.available_supply}} <small>{{item.symbol}}</small></td>
-                <td class="col_7 text-center">
-                    <a (click)="addToFavorites(item)" title="Add/Remove from portfolio">
-                        <i [ngClass]="item.isFavorite ? 'fa fa-2x fa-minus-circle red' : 'fa fa-2x fa-plus'" aria-hidden="true"></i>
-                        <br/>
-                        <small *ngIf="item.isFavorite">Remove coin</small>
-                        <small *ngIf="!item.isFavorite">Add coin</small>
-                    </a>
-                </td>
-                <td class="text-center">
-                    <a (click)="addToWatchList(item)" title="Add/Remove from watch list">
-                        <small *ngIf="item.isWatch" class="red"><b>Remove Watch</b></small>
-                        <small *ngIf="!item.isWatch"><b>Watch</b></small>
-                        <br/>
+                <td class="col_8 text-center">
+                    <a (click)="removeWatch(item.symbol)" class="red" title="Remove from Watch List">
+                        <b>Remove Watch</b>
                     </a>
                 </td>
             </tr>
         </ng-container>
         </tbody>
+
     </table>
-    <div class="row">
-        <div class="col-md-12 text-center">
-            <button class="btn-primary btn-lg" (click)="recordsPerPage = recordsPerPage + 100">Load more</button>
-        </div>
-    </div>
 </div>
-
-
-

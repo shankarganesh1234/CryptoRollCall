@@ -55,5 +55,16 @@
     "ts-node": "~2.0.0",
     "tslint": "~4.5.0",
     "typescript": "~2.2.0"
-  }
+  },
+  "description": "Single Page App that powers http://www.cryptorollcall.com",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shankarganesh1234/CryptoRollCall.git"
+  },
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/shankarganesh1234/CryptoRollCall/issues"
+  },
+  "homepage": "https://github.com/shankarganesh1234/CryptoRollCall#readme"
 }

@@ -11,4 +11,7 @@ export class CryptoDetail {
     facebookUrl: string;
     codeRepoLinks: string[];
     websiteUrl: string;
+    availableExchanges: string[];
+    seoTitle: string;
+    seoDescription: string;
 }
