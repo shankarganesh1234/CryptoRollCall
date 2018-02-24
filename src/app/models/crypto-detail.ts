@@ -12,4 +12,6 @@ export class CryptoDetail {
     codeRepoLinks: string[];
     websiteUrl: string;
     availableExchanges: string[];
+    seoTitle: string;
+    seoDescription: string;
 }
