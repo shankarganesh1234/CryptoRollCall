@@ -4533,6 +4533,7 @@
         </div>
         <div class="col-md-4">
             <h3>{{cryptoPrice.name}} <small>{{cryptoPrice.symbol}} &nbsp;<a (click)="invokeCryptoServiceForSymbol(name)"><i class="fa fa-refresh"></i></a></small></h3>
+            <strong><a class="page-scroll detail-link" href="#news-section">Latest News</a></strong>
             <h6 *ngIf="cryptoPrice.price_usd">{{cryptoPrice.price_usd}} <small>USD</small></h6>
             <h6 *ngIf="cryptoPrice.price_btc">{{cryptoPrice.price_btc}} <small>BTC</small></h6>
             <h6 *ngIf="cryptoCoinDetail && cryptoCoinDetail.websiteUrl"> <strong>Website : <a class="detail-link" href="{{cryptoCoinDetail.websiteUrl}}" target="_blank">{{cryptoCoinDetail.websiteUrl}}</a></strong></h6>
@@ -4630,5 +4631,20 @@
             <canvas #timeline1></canvas>
         </div>
     </div>
+</div>
+<hr/>
+<div id="news-section" class="container" *ngIf="cryptoCoinDetail && cryptoCoinDetail.coinNews && cryptoCoinDetail.coinNews.items">
+    <div class="row">
+    <div class="col-md-10">
+        <h6>Trending News for {{cryptoCoinDetail.fullName}}</h6>
+    </div>
+    </div>
+    <ng-container *ngFor="let item of cryptoCoinDetail.coinNews.items">
+        <div class="row">
+           <div class="col-md-10" [innerHtml] = item.description>
+           </div>
+       </div>
+        <hr/>
+    </ng-container>
 </div>
 
