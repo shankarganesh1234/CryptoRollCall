@@ -55,8 +55,13 @@
                     <!--</a>-->
                 <!--</li>-->
                 <li>
+                    <a [routerLink]="['/detail', 'bitcoin', 'BTC']" title="News">
+                        <small class="header-links"><i class="fa fa-newspaper-o"></i>&nbsp;News</small>
+                    </a>
+                </li>
+                <li>
                     <a [routerLink]="'/convert'" title="Converter">
-                    <small class="header-links"><i class="fa fa-money"></i>&nbsp;Currency Converter</small>
+                        <small class="header-links"><i class="fa fa-money"></i>&nbsp;Currency Converter</small>
                     </a>
                 </li>
                 <li>
@@ -68,11 +73,7 @@
          </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
-<div class="container">
-    <div class="row text-center">
-        <small>If you have found this website useful, please consider making a donation. No amount is small, and any amount is useful and would help in keeping the site running.</small>
-    </div>
-</div>
+
 <a id="goToTop" href="#top" class="page-scroll" title="Scroll to top" style="position:fixed;bottom: 20px;right: 30px">
     <i class="fa fa-2x fa-arrow-up" aria-hidden="true"></i>
 </a>

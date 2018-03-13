@@ -1,3 +1,5 @@
+import {CryptoNews} from "./crypto-news";
+
 export class CryptoDetail {
     id: string;
     imageUrl: string;
@@ -14,4 +16,6 @@ export class CryptoDetail {
     availableExchanges: string[];
     seoTitle: string;
     seoDescription: string;
+    coinNews: CryptoNews;
+    fullName: string;
 }
