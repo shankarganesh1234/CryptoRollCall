@@ -1,55 +1,168 @@
 <div class="container">
     <h5>CryptoRollCall Public APIs (Alpha)</h5>
-    <a href="https://github.com/shankarganesh1234/CryptoRollCallService" target="_blank"><i class="fa fa-2x fa-github"></i></a> &nbsp; <a href="mailto:cryptorollcall@gmail.com"><i class="fa fa-2x fa-envelope-o"></i></a>
-
+    
     <div class="row">
         <div class="col-md-12">
+            <p>For detailed information, sample requests and responses, field descriptions and to try it out for free, please visit
+                <a class="detail-link" href="https://app.swaggerhub.com/apis/cryptorollcall/CryptoRollCall/1.0.0" target="_blank">https://app.swaggerhub.com/apis/cryptorollcall/CryptoRollCall/1.0.0</a>
+            </p>
             <span>List of available APIs</span>
-            <br/>
             <ul>
-            <li><span>GET - <mark>/ticker/list</mark>
+                <li><span>GET - <mark>/ticker/list</mark>
             </span>
-                <footer>Retrieves the entire list of crypto currency tickers</footer>
-            </li>
+                    <footer>Retrieves the entire list of crypto currency tickers</footer>
 
+                    Example GET url : <b>https://www.cryptorollcall.com/crcserver/ticker/list</b>
+                    <br/>
+                    Example Response (response is trimmed since actual response would be too big) :
+                    <pre>
+                {{[
+                    {
+                    "id": "bitcoin",
+                    "name": "Bitcoin",
+                    "symbol": "BTC",
+                    "rank": "1",
+                    "price_usd": "8238.48",
+                    "price_btc": "1.0",
+                    "24h_volume_usd": "6576590000.0",
+                    "market_cap_usd": "139451927112",
+                    "available_supply": "16926900.0",
+                    "total_supply": "16926900.0",
+                    "max_supply": "21000000.0",
+                    "percent_change_1h": "0.92",
+                    "percent_change_24h": "3.77",
+                    "percent_change_7d": "-14.25",
+                    "last_updated": "1521415167"
+                    }]| json
+                    }}
+            </pre>
+                </li>
                 <li>
                      <span>GET - <mark>/ticker/(id)</mark>
             </span>
                     <footer>Retrieves the crypto currency ticker for the specified id.</footer>
+                    Example GET url : <b>https://www.cryptorollcall.com/crcserver/ticker/ethereum</b>
+                    <br/>
+                    Example Response :
+                    <pre>
+                {{
+                        [
+    {
+        "id": "ethereum",
+        "name": "Ethereum",
+        "symbol": "ETH",
+        "rank": "2",
+        "price_usd": "538.767",
+        "price_btc": "0.0656415",
+        "24h_volume_usd": "2668620000.0",
+        "market_cap_usd": "52945985024.0",
+        "available_supply": "98272509.0",
+        "total_supply": "98272509.0",
+        "max_supply": null,
+        "percent_change_1h": "1.05",
+        "percent_change_24h": "-2.25",
+        "percent_change_7d": "-25.79",
+        "last_updated": "1521416052"
+    }
+]| json
+                    }}
+            </pre>
                 </li>
                 <li>
                      <span>GET - <mark>/currency/(currency)</mark>
             </span>
                     <footer>List of exchange rates based on the base currency.</footer>
+                    Example GET url : <b>https://www.cryptorollcall.com/crcserver/currency/USD</b>
+                    <br/>
+                    Example Response :
+                    <pre>
+                {{
+                        {"base":"USD","date":"2018-03-16","rates":
+                        {"AUD":1.2893,"BGN":1.59,"BRL":3.2895,"CAD":1.3078,"CHF":0.9513,"CNY":6.3255,"CZK":20.661,"DKK":6.0553,"EUR":0.81294,"GBP":0.71745,"HKD":7.8429,"HRK":6.0408,"HUF":252.86,"IDR":13761.0,"ILS":3.4543,"INR":64.927,"ISK":99.748,"JPY":105.85,"KRW":1067.7,"MXN":18.729,"MYR":3.9085,"NOK":7.7156,"NZD":1.3822,"PHP":51.954,"PLN":3.4284,"RON":3.7928,"RUB":57.634,"SEK":8.1945,"SGD":1.3155,"THB":31.2,"TRY":3.9141,"ZAR":11.942
+                        }
+                        }
+                        | json
+                 }}
+            </pre>
                 </li>
                 <li>
                      <span>GET - <mark>/charts/histo/(period)/(id)</mark>
             </span>
                     <footer>Retrieves the chart data for the top performing coins in the previous hour, previous day and previous week.</footer>
+                    Example GET url : <b>https://www.cryptorollcall.com/crcserver/charts/histo/DAY/BTC</b>
+                    <br/>
+                    Example Response :
+                    <pre>
+                {{
+                        {
+                            "market_cap" : [[1521320066000, 132852571584]],
+                            "price" : [[1521320066000, 132852571584]],
+                            "volume" : [[1521320066000, 132852571584]]
+                        }
+                        | json
+                 }}
+            </pre>
+
                 </li>
                 <li>
                      <span>GET - <mark>/coindetail/(symbol)</mark>
             </span>
                     <footer>Retrieves all the details for the specified coin, including social links, source code repositories and available exchanges</footer>
+
+                    Example GET url : <b>https://www.cryptorollcall.com/crcserver/coindetail/nano</b>
+                    <br/>
+                    Example Response :
+                    <pre>
+                {{
+                        {
+	"id": "172091",
+	"imageUrl": "https://d4joa9r2yj65e.cloudfront.net/XRB.png",
+	"symbol": "XRB",
+	"name": "XRB",
+	"algorithm": "Blake2b",
+	"proofType": "PoW",
+	"isPreMined": false,
+	"twitterUrl": "https://twitter.com/raiblocks",
+	"redditUrl": "https://www.reddit.com/r/RaiBlocks/",
+	"codeRepoLinks": ["https://github.com/nanocurrency/raiblocks"],
+	"websiteUrl": "https://nano.org/en",
+	"availableExchanges": ["BitGrail", "Binance", "BitFlip", "Cryptopia", "Kucoin", "BitZ"],
+	"seoTitle": "Nano (XRB) Live and historical prices, social links and more",
+	"seoDescription": "Nano (XRB) Stay up to date with the latest price movements. Live and historical price charts, social links, supply, market cap and breaking news.",
+	"fullName": "Nano (XRB)",
+	"coinNews": {
+		"status": "ok",
+		"items": [{
+			"guid": "",
+			"pubDate": "2018-03-15 16:04:00",
+			"title": "BitGrail will refund $195M worth of stolen Nano – but only if you promise not to sue",
+			"description": "",
+			"link": "https: //thenextweb.com/hardfork/2018/03/15/bitgrail-nano-hack-cryptocurrency/"
+		}]
+	}
+}
+                        | json
+                 }}
+            </pre>
+
                 </li>
                 <li>
                     <span>GET - <mark>/charts/home</mark>
             </span>
                     <footer>Retrieves the chart data for the top performing coins in the previous hour, previous day and previous week.</footer>
-                </li>
-                <li>
-                    <span>GET - <mark>/coindetail/(symbol)</mark>
-            </span>
-                    <footer>Retrieves all the details for the specified coin, including social links, source code repositories and available exchanges</footer>
+
+                    Example GET url : <b>https://www.cryptorollcall.com/crcserver/charts/home</b>
+                    <br/>
+                    Example Response :
+                    <pre>
+                {{
+                        {"hourlyList":[{"label":"SatoshiMadness","data":100.6},{"label":"BuzzCoin","data":90.92},{"label":"Carboncoin","data":74.22},{"label":"Dashcoin","data":52.01},{"label":"TeamUp","data":50.38}],"dailyList":[{"label":"LandCoin","data":188.46},{"label":"NuShares","data":158.63},{"label":"Influxcoin","data":115.22},{"label":"Maverick Chain","data":109.24},{"label":"Leadcoin","data":107.75}],"weeklyList":[{"label":"High Voltage","data":790.24},{"label":"ERA","data":293.63},{"label":"RabbitCoin","data":176.81},{"label":"Cheapcoin","data":175.0},{"label":"Unity Ingot","data":143.0}]}
+                        | json
+                 }}
+            </pre>
+
                 </li>
             </ul>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <p>For more detailed information, please visit
-                <a class="detail-link" href="https://app.swaggerhub.com/apis/cryptorollcall/CryptoRollCall/1.0.0" target="_blank">https://app.swaggerhub.com/apis/cryptorollcall/CryptoRollCall/1.0.0</a>
-            </p>
         </div>
     </div>
 </div>
