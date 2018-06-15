@@ -1,0 +1,78 @@
+.auto-height-margin {
+    height: auto;
+    margin-bottom:30%
+}
+
+.vertical-alignment {
+    vertical-align: top
+}
+
+.numbers-font {
+    font-family: 'Arial';
+    font-size: medium;
+    font-weight: bold;
+}
+
+.numbers-negative {
+    color: red;
+}
+.numbers-positive {
+    color: green;
+}
+
+@media screen and (min-width: 10px) and (max-width: 320px) {
+    .col_3, .col_4, .col_5, .col_6{
+        display:none;
+        width:0;
+        height:0;
+        opacity:0;
+        visibility: collapse;
+    }
+}
+
+@media screen and (min-width: 321px) and (max-width: 480px) {
+     .col_3, .col_4, .col_5, .col_6{
+        display:none;
+        width:0;
+        height:0;
+        opacity:0;
+        visibility: collapse;
+    }
+}
+
+@media screen and (min-width: 481px) and (max-width: 720px) {
+     .col_5, .col_6{
+        display:none;
+        width:0;
+        height:0;
+        opacity:0;
+        visibility: collapse;
+    }
+}
+
+@media screen and (min-width: 721px) and (max-width: 1080px) {
+     .col_6{
+        display:none;
+        width:0;
+        height:0;
+        opacity:0;
+        visibility: collapse;
+    }
+}
+
+table tbody tr td {
+    border-color: #e9e9e9;
+}
+
+.align-top {
+    vertical-align: top;
+}
+
+.favorite-row {
+    background-color: #e8edff !important;
+}
+
+.subscript-span {
+    display: block;
+    width: 20px;
+}
