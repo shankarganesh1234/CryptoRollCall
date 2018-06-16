@@ -20,7 +20,7 @@ declare const $: any;
 
 export class CryptoVisualComponent implements OnInit {
 
-    pair: string = "ethnano";
+    pair: string = "btcnano";
     chart: any;
     ws: any;
     totalTrades: number = 0;
