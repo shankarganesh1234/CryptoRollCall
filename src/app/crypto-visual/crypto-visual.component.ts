@@ -20,7 +20,7 @@ declare const $: any;
 
 export class CryptoVisualComponent implements OnInit {
 
-    pair: string = "btcnano";
+    pair: string = "nanobtc";
     chart: any;
     ws: any;
     totalTrades: number = 0;
@@ -48,7 +48,7 @@ export class CryptoVisualComponent implements OnInit {
      * Init websocket with binance
      */
     initWebsocket() : void {
-        let pair = 'bnbbtc';
+        let pair = 'nanobtc';
         if ("WebSocket" in window) {
             //alert("WebSocket is supported by your Browser!");
             let _this = this;
@@ -65,6 +65,7 @@ export class CryptoVisualComponent implements OnInit {
             this.ws.onmessage = function (evt) {
                 //alert("Message is received...");
                 let received_msg = evt.data;
+                console.log(received_msg);
                 let q = JSON.parse(received_msg).q;
 
                 _this.addDataset(q);
