@@ -4,13 +4,32 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-3">
-            <span>Number of trades</span> <h3>{{totalTrades}}</h3>
+        <div class="col-md-2">
+            <span>Sell Orders</span> <h2>{{totalSold}}</h2>
         </div>
         <div class="col-md-2">
-            <span>Quantity traded</span><h3>{{totalQuantity  | number:'1.2-2'}}</h3>
+            <span>Quantity Sold</span><h2>{{totalQuantitySold | number:'1.2-2'}}</h2>
+        </div>
+
+        <div class="col-md-2">&nbsp; </div>
+
+        <div class="col-md-2">
+            <span>Buy Orders</span> <h2>{{totalBought}}</h2>
+        </div>
+        <div class="col-md-2">
+            <span>Quantity Bought</span><h2>{{totalQuantityBought | number:'1.2-2'}}</h2>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <canvas id="chart-0"></canvas>
+        </div>
+        <div class="col-md-6">
+            <canvas id="chart-1"></canvas>
         </div>
     </div>
-    <canvas id="chart-0"></canvas>
+
 </div>
 
