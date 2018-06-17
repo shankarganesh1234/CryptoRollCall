@@ -155,6 +155,17 @@ export class CryptoVisualComponent implements OnInit {
     /**
      *
      */
+    resetCharts(): void {
+        this.totalQuantityBought = 0;
+        this.totalQuantitySold = 0;
+        this.totalBought = 0;
+        this.totalSold = 0;
+        this.initChart();
+     }
+
+    /**
+     *
+     */
     initChart(): void {
 
       this.sellChart = new Chart('chart-0',
@@ -215,7 +226,7 @@ export class CryptoVisualComponent implements OnInit {
                             "y": 0,
                             "r": 0
                         }],
-                        "backgroundColor": "#00F260"
+                        "backgroundColor": "#0b6623"
                     }]
                 },
                 "options": {

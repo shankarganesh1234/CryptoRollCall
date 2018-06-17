@@ -1,32 +1,43 @@
 <div class="container">
     <h2>NANO BTC Trading Activity</h2>
+    <p class="lead">Captures real time trade activity for NANO-BTC pair from Binance</p>
 </div>
 
 <div class="container">
     <div class="row">
-        <div class="col-md-2">
-            <span>Sell Orders</span> <h2>{{totalSold}}</h2>
+        <div class="col-md-4">
+            <a class="btn-primary btn-lg" (click)="resetCharts()">Reset Charts</a>
         </div>
-        <div class="col-md-2">
-            <span>Quantity Sold</span><h2>{{totalQuantitySold | number:'1.2-2'}}</h2>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-md-2 bg-danger">
+            <span>Trade : Sell</span> <h2>{{totalSold}}</h2>
         </div>
-
-        <div class="col-md-2">&nbsp; </div>
-
-        <div class="col-md-2">
-            <span>Buy Orders</span> <h2>{{totalBought}}</h2>
-        </div>
-        <div class="col-md-2">
-            <span>Quantity Bought</span><h2>{{totalQuantityBought | number:'1.2-2'}}</h2>
+        <div class="col-md-2 bg-danger">
+            <span>Amount (NANO)</span><h2>{{totalQuantitySold | number:'1.2-2'}}</h2>
         </div>
 
+        <div class="col-md-2 bg-danger">
+            <span> &nbsp;</span> <h2>&nbsp;</h2>
+        </div>
+
+        <div class="col-md-2 bg-success">
+            <span>Trade : Buy</span> <h2>{{totalBought}}</h2>
+        </div>
+        <div class="col-md-2 bg-success">
+            <span>Amount (NANO)</span><h2>{{totalQuantityBought | number:'1.2-2'}}</h2>
+        </div>
+        <div class="col-md-2 bg-success">
+            <span> &nbsp;</span> <h2>&nbsp;</h2>
+        </div>
     </div>
 
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-6 bg-danger">
             <canvas id="chart-0"></canvas>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 bg-success">
             <canvas id="chart-1"></canvas>
         </div>
     </div>
