@@ -196,7 +196,7 @@ export class CryptoVisualComponent implements OnInit {
                         "display": false,
                         "xAxes": [{
                             "gridLines": {
-                                "display":true
+                                "display":false
                             },
                             "ticks": {
                                 "display": false
@@ -204,7 +204,7 @@ export class CryptoVisualComponent implements OnInit {
                         }],
                         "yAxes": [{
                             "gridLines": {
-                                "display":true
+                                "display":false
                             },
                             "ticks": {
                                 "display": false
@@ -243,7 +243,7 @@ export class CryptoVisualComponent implements OnInit {
                         "display": false,
                         "xAxes": [{
                             "gridLines": {
-                                "display":true
+                                "display":false
                             },
                             "ticks": {
                                 "display": false
@@ -251,7 +251,7 @@ export class CryptoVisualComponent implements OnInit {
                         }],
                         "yAxes": [{
                             "gridLines": {
-                                "display":true
+                                "display":false
                             },
                             "ticks": {
                                 "display": false

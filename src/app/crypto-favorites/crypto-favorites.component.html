@@ -85,7 +85,7 @@
             <th scope="col" class="col_4 align-top col-md-1">Quantity <br/><a (click)="sortData('quantity','up')"><i class="fa fa-arrow-down"></i></a> <a (click)="sortData('price_usd','down')"><i class="fa fa-arrow-up"></i></a></th>
             <th scope="col" class="col_5 align-top col-md-1">Total <br/><a (click)="sortData('total','up')"><i class="fa fa-arrow-down"></i></a> <a (click)="sortData('total','down')"><i class="fa fa-arrow-up"></i></a></th>
             <th scope="col" class="col_6 align-top col-md-1">Total <small>(BTC)</small></th>
-            <th scope="col" class="col_7 align-top col-md-3">Change %<br/> <small>1h <a (click)="sortData('percent_change_1h','up')"><i class="fa fa-arrow-down"></i></a> <a (click)="sortData('percent_change_1h','down')"><i class="fa fa-arrow-up"></i></a>/ 1d <a (click)="sortData('percent_change_24h','up')"><i class="fa fa-arrow-down"></i></a> <a (click)="sortData('percent_change_24h','down')"><i class="fa fa-arrow-up"></i></a>/ 7d <a (click)="sortData('percent_change_7d','up')"><i class="fa fa-arrow-down"></i></a> <a (click)="sortData('percent_change_7d','down')"><i class="fa fa-arrow-up"></i></a></small></th>
+            <th scope="col" class="col_7 align-top col-md-3">Change %<br/> <small>H <a (click)="sortData('percent_change_1h','up')"><i class="fa fa-arrow-down"></i></a> <a (click)="sortData('percent_change_1h','down')"><i class="fa fa-arrow-up"></i></a>/ D <a (click)="sortData('percent_change_24h','up')"><i class="fa fa-arrow-down"></i></a> <a (click)="sortData('percent_change_24h','down')"><i class="fa fa-arrow-up"></i></a>/ W <a (click)="sortData('percent_change_7d','up')"><i class="fa fa-arrow-down"></i></a> <a (click)="sortData('percent_change_7d','down')"><i class="fa fa-arrow-up"></i></a></small></th>
             <th scope="col" class="col_8 col-md-1"></th>
         </tr>
         </thead>
@@ -109,7 +109,7 @@
                 <td class="numbers-font col_7"><span [ngClass] = "(item.percent_change_1h != null && item.percent_change_1h.includes('-') ? 'numbers-negative' : 'numbers-positive')">{{item.percent_change_1h}} <i [ngClass] = "(item.percent_change_1h != null && item.percent_change_1h.includes('-') ? 'fa fa-arrow-down' : 'fa fa-arrow-up')"></i></span> / <span [ngClass] = "(item.percent_change_24h != null && item.percent_change_24h.includes('-') ? 'numbers-negative' : 'numbers-positive')">{{item.percent_change_24h}} <i [ngClass] = "(item.percent_change_24h != null && item.percent_change_24h.includes('-') ? 'fa fa-arrow-down' : 'fa fa-arrow-up')"></i></span> / <span [ngClass] = "(item.percent_change_7d != null && item.percent_change_7d.includes('-') ? 'numbers-negative' : 'numbers-positive')">{{item.percent_change_7d}} <i [ngClass] = "(item.percent_change_7d != null && item.percent_change_7d.includes('-') ? 'fa fa-arrow-down' : 'fa fa-arrow-up')"></i></span></td>
                 <td class="col_8 text-center">
                     <a (click)="removeFavorite(item.symbol)" title="Remove from portfolio">
-                        <i class="fa fa-2x fa-minus-circle text-danger" aria-hidden="true"></i><br/>
+                        <i class="fa fa-minus-circle text-danger" aria-hidden="true"></i><br/>
                         Remove coin
                     </a>
                 </td>
