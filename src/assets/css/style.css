@@ -8374,16 +8374,22 @@ changes to UI
   border-bottom: solid
 }
 .numbers-font {
-  font-family: 'Arial';
+  font-family: 'Courier';
   font-size: medium;
   font-weight: bold;
 }
 
 .numbers-negative {
   color: red;
+  font-family: 'Courier';
+  font-size: medium;
+  font-weight: bold;
 }
 .numbers-positive {
   color: green;
+  font-family: 'Courier';
+  font-size: medium;
+  font-weight: bold;
 }
 .p-numbers-font {
   font-family: 'Arial';

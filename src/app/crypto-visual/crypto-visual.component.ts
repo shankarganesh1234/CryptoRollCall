@@ -20,16 +20,21 @@ declare const $: any;
 
 export class CryptoVisualComponent implements OnInit {
 
-    pair: string = "ethnano";
-    chart: any;
+    pair: string = "nanobtc";
+    sellChart: any;
+    buyChart: any;
     ws: any;
-    totalTrades: number = 0;
-    totalQuantity: number = 0;
+    totalSold: number = 0;
+    totalQuantitySold: number = 0;
+
+    totalBought: number = 0;
+    totalQuantityBought: number = 0;
+
     MIN_XY: number= 0;
     MAX_XY: number = 100;
 
-    minimum: number = 5;
-    maximum: number = 15;
+    minimum: number = 3;
+    maximum: number = 10;
 
     constructor(private route: ActivatedRoute, private router: Router, private cryptoService: CryptoService, private titleService: Title, private currencyService: CurrencyService, private meta: Meta) {
 
@@ -48,7 +53,7 @@ export class CryptoVisualComponent implements OnInit {
      * Init websocket with binance
      */
     initWebsocket() : void {
-        let pair = 'bnbbtc';
+        let pair = 'nanobtc';
         if ("WebSocket" in window) {
             //alert("WebSocket is supported by your Browser!");
             let _this = this;
@@ -65,11 +70,20 @@ export class CryptoVisualComponent implements OnInit {
             this.ws.onmessage = function (evt) {
                 //alert("Message is received...");
                 let received_msg = evt.data;
+                console.log(received_msg);
                 let q = JSON.parse(received_msg).q;
 
-                _this.addDataset(q);
-                _this.totalTrades++;
-                _this.totalQuantity += + q;
+
+
+                if(JSON.parse(received_msg)['m']=== false) {
+                    _this.addBuyDataset(q);
+                    _this.totalBought++;
+                    _this.totalQuantityBought += + q;
+                } else {
+                    _this.addSellDataset(q);
+                    _this.totalSold++;
+                    _this.totalQuantitySold += + q;
+                }
             };
 
             this.ws.onclose = function() {
@@ -98,15 +112,26 @@ export class CryptoVisualComponent implements OnInit {
      * Adds data to dataset
      * @param q
      */
-    addDataset(q: number) : void {
+    addSellDataset(q: number) : void {
 
-        this.chart.data.datasets[0].data.push({
+        this.sellChart.data.datasets[0].data.push({
             "x": this.rand(this.MIN_XY, this.MAX_XY),
             "y": this.rand(this.MIN_XY, this.MAX_XY),
             "r": this.getNormalizedRadius(q),
-            "label" : 'Quantity Traded : ' + q
+            "label" : 'Quantity Sold : ' + q
         });
-        this.chart.update();
+        this.sellChart.update();
+    }
+
+    addBuyDataset(q: number) : void {
+
+        this.buyChart.data.datasets[0].data.push({
+            "x": this.rand(this.MIN_XY, this.MAX_XY),
+            "y": this.rand(this.MIN_XY, this.MAX_XY),
+            "r": this.getNormalizedRadius(q),
+            "label" : 'Quantity Bought : ' + q
+        });
+        this.buyChart.update();
     }
 
     /**
@@ -115,11 +140,13 @@ export class CryptoVisualComponent implements OnInit {
      * @returns {number}
      */
     getNormalizedRadius(q: number) :  number {
-        var result: number = 5;
+        var result: number = 3;
         result = Math.abs(q - this.minimum)/ (this.maximum - this.minimum);
 
-        if(result < 5)
-            result = 7;
+        if(result < 3)
+            result = 3;
+        else if(result > 100)
+            result = 100;
 
         return result;
      }
@@ -128,24 +155,82 @@ export class CryptoVisualComponent implements OnInit {
     /**
      *
      */
+    resetCharts(): void {
+        this.totalQuantityBought = 0;
+        this.totalQuantitySold = 0;
+        this.totalBought = 0;
+        this.totalSold = 0;
+        this.initChart();
+     }
+
+    /**
+     *
+     */
     initChart(): void {
 
-      this.chart = new Chart('chart-0',
+      this.sellChart = new Chart('chart-0',
             {
                 "type": 'bubble',
                 "data": {
                     "datasets": [{
-                        "label": this.pair + " Trade Activity",
+                        "label": this.pair + " Sell Activity",
                         "data": [{
                             "x": 0,
                             "y": 0,
                             "r": 0
                         }],
-                        "backgroundColor": "rgb(30, 144, 255)"
+                        "backgroundColor": "#c31432"
                     }]
                 },
                 "options": {
-                    "aspectRatio": 2,
+                    "aspectRatio": 1,
+                    "responsive": true,
+                    "tooltips": {
+                        "callbacks": {
+                            "label": function(t, d) {
+                                return d.datasets[0].data[t.index].label;
+                            }
+                        }
+                    },
+                    "scales": {
+                        "display": false,
+                        "xAxes": [{
+                            "gridLines": {
+                                "display":false
+                            },
+                            "ticks": {
+                                "display": false
+                            }
+                        }],
+                        "yAxes": [{
+                            "gridLines": {
+                                "display":false
+                            },
+                            "ticks": {
+                                "display": false
+                            }
+                        }]
+                    }
+                }
+            }
+        );
+
+        this.buyChart = new Chart('chart-1',
+            {
+                "type": 'bubble',
+                "data": {
+                    "datasets": [{
+                        "label": this.pair + " Buy Activity",
+                        "data": [{
+                            "x": 0,
+                            "y": 0,
+                            "r": 0
+                        }],
+                        "backgroundColor": "#0b6623"
+                    }]
+                },
+                "options": {
+                    "aspectRatio": 1,
                     "responsive": true,
                     "tooltips": {
                         "callbacks": {
