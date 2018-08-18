@@ -4,6 +4,7 @@
     <list default="true" id="31d72324-d0a4-473a-a679-d94728f8af92" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/crypto-footer/crypto-footer.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/crypto-footer/crypto-footer.component.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -20,17 +21,8 @@
       <file leaf-file-name="crypto-favorites.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/crypto-favorites/crypto-favorites.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1695">
+            <state relative-caret-position="1545">
               <caret line="113" column="16" selection-start-line="113" selection-start-column="11" selection-end-line="113" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/assets/css/style.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125865">
-              <caret line="8391" column="20" selection-start-line="8391" selection-start-column="20" selection-end-line="8391" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -38,17 +30,26 @@
       <file leaf-file-name="crypto-watch.component.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/crypto-watch/crypto-watch.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="258">
-              <caret line="82" column="23" lean-forward="true" selection-start-line="82" selection-start-column="23" selection-end-line="82" selection-end-column="23" />
+            <state relative-caret-position="1230">
+              <caret line="82" column="23" selection-start-line="82" selection-start-column="23" selection-end-line="82" selection-end-column="23" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.component.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="app.component.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/app.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="235">
-              <caret line="48" column="104" selection-start-line="48" selection-start-column="104" selection-end-line="48" selection-end-column="104" />
+            <state relative-caret-position="230">
+              <caret line="57" column="21" lean-forward="true" selection-start-line="57" selection-start-column="21" selection-end-line="57" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="crypto-footer.component.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/app/crypto-footer/crypto-footer.component.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="254">
+              <caret line="31" column="145" selection-start-line="31" selection-start-column="145" selection-end-line="31" selection-end-column="145" />
             </state>
           </provider>
         </entry>
@@ -62,15 +63,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="crypto-prices.component.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/crypto-prices/crypto-prices.component.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="975">
-              <caret line="65" column="668" selection-start-line="65" selection-start-column="668" selection-end-line="65" selection-end-column="668" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="crypto-favorites.component.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/crypto-favorites/crypto-favorites.component.css">
           <provider selected="true" editor-type-id="text-editor">
@@ -80,11 +72,29 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="crypto-prices.component.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/crypto-prices/crypto-prices.component.css">
+      <file leaf-file-name="crypto-prices.component.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/crypto-prices/crypto-prices.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="25" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
+            <state relative-caret-position="1965">
+              <caret line="144" column="25" selection-start-line="144" selection-start-column="13" selection-end-line="144" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="crypto-about.component.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/crypto-about/crypto-about.component.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="19" column="17" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="crypto-about.component.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/crypto-about/crypto-about.component.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="23" selection-start-column="23" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -92,17 +102,8 @@
       <file leaf-file-name="crypto-detail.component.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/crypto-detail/crypto-detail.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="67965">
+            <state relative-caret-position="393">
               <caret line="4531" column="89" selection-start-line="4531" selection-start-column="12" selection-end-line="4531" selection-end-column="89" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="crypto-prices.component.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/crypto-prices/crypto-prices.component.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1965">
-              <caret line="144" column="25" selection-start-line="144" selection-start-column="13" selection-end-line="144" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -202,7 +203,6 @@
         <option value="$PROJECT_DIR$/src/app/crypto-donate/crypto-donate.component.ts" />
         <option value="$PROJECT_DIR$/src/app/crypto-donate/crypto-donate.component.html" />
         <option value="$PROJECT_DIR$/src/index.html" />
-        <option value="$PROJECT_DIR$/src/app/crypto-footer/crypto-footer.component.html" />
         <option value="$PROJECT_DIR$/src/app/crypto-visual/crypto-detail.component.html" />
         <option value="$PROJECT_DIR$/src/app/app.module.ts" />
         <option value="$PROJECT_DIR$/src/app/app-routing.module.ts" />
@@ -214,6 +214,7 @@
         <option value="$PROJECT_DIR$/src/app/crypto-watch/crypto-watch.component.html" />
         <option value="$PROJECT_DIR$/src/app/crypto-favorites/crypto-favorites.component.html" />
         <option value="$PROJECT_DIR$/src/app/app.component.html" />
+        <option value="$PROJECT_DIR$/src/app/crypto-footer/crypto-footer.component.html" />
       </list>
     </option>
   </component>
@@ -313,14 +314,14 @@
               <item name="CryptoRollCall" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="crypto-howto" type="462c0819:PsiDirectoryNode" />
+              <item name="crypto-prices" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="CryptoRollCall" type="b2602c69:ProjectViewProjectNode" />
               <item name="CryptoRollCall" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="crypto-prices" type="462c0819:PsiDirectoryNode" />
+              <item name="crypto-referral" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="CryptoRollCall" type="b2602c69:ProjectViewProjectNode" />
@@ -518,34 +519,36 @@
       <workItem from="1529072360066" duration="2171000" />
       <workItem from="1529112547667" duration="9380000" />
       <workItem from="1529544870389" duration="3465000" />
-      <workItem from="1533349304799" duration="138000" />
+      <workItem from="1533349304799" duration="814000" />
+      <workItem from="1534046602062" duration="2000" />
+      <workItem from="1534560831049" duration="357000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="264942000" />
+    <option name="totallyTimeSpent" value="265977000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="797" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TypeScript" order="10" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25299507" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25299507" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32965517" />
       <window_info id="npm" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32965517" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.32857144" />
+      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.32857144" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32780084" />
     </layout>
@@ -562,13 +565,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/app/crypto-about/crypto-about.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="6" column="21" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/crypto-prices/crypto-prices.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -737,13 +733,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/crypto-about/crypto-about.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="23" selection-start-column="23" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/crypto-donate/crypto-donate.component.ts" />
     <entry file="file://$PROJECT_DIR$/src/index.html">
       <provider selected="true" editor-type-id="text-editor">
@@ -753,13 +742,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/crypto-donate/crypto-donate.component.html" />
-    <entry file="file://$PROJECT_DIR$/src/app/crypto-footer/crypto-footer.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="31" column="48" selection-start-line="31" selection-start-column="48" selection-end-line="31" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/package-lock.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
@@ -830,20 +812,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/crypto-detail/crypto-detail.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="67965">
-          <caret line="4531" column="89" selection-start-line="4531" selection-start-column="12" selection-end-line="4531" selection-end-column="89" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/crypto-prices/crypto-prices.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1965">
-          <caret line="144" column="25" selection-start-line="144" selection-start-column="13" selection-end-line="144" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/crypto-prices/crypto-prices.component.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -855,20 +823,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="191">
           <caret line="251" column="35" lean-forward="true" selection-start-line="251" selection-start-column="35" selection-end-line="251" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/crypto-favorites/crypto-favorites.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1695">
-          <caret line="113" column="16" selection-start-line="113" selection-start-column="11" selection-end-line="113" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/crypto-favorites/crypto-favorites.component.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="19" selection-start-column="19" selection-end-column="19" />
         </state>
       </provider>
     </entry>
@@ -895,15 +849,64 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/crypto-watch/crypto-watch.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="82" column="23" lean-forward="true" selection-start-line="82" selection-start-column="23" selection-end-line="82" selection-end-column="23" />
+        <state relative-caret-position="1230">
+          <caret line="82" column="23" selection-start-line="82" selection-start-column="23" selection-end-line="82" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/crypto-favorites/crypto-favorites.component.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="19" selection-start-column="19" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/crypto-favorites/crypto-favorites.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1545">
+          <caret line="113" column="16" selection-start-line="113" selection-start-column="11" selection-end-line="113" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/crypto-prices/crypto-prices.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1965">
+          <caret line="144" column="25" selection-start-line="144" selection-start-column="13" selection-end-line="144" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/crypto-about/crypto-about.component.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="17" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/crypto-about/crypto-about.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="23" selection-start-column="23" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/crypto-detail/crypto-detail.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="393">
+          <caret line="4531" column="89" selection-start-line="4531" selection-start-column="12" selection-end-line="4531" selection-end-column="89" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/app.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="48" column="104" selection-start-line="48" selection-start-column="104" selection-end-line="48" selection-end-column="104" />
+        <state relative-caret-position="230">
+          <caret line="57" column="21" lean-forward="true" selection-start-line="57" selection-start-column="21" selection-end-line="57" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/crypto-footer/crypto-footer.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="254">
+          <caret line="31" column="145" selection-start-line="31" selection-start-column="145" selection-end-line="31" selection-end-column="145" />
         </state>
       </provider>
     </entry>
